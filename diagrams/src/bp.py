@@ -303,8 +303,9 @@ def formula_width(formula, size):
 
 
 def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foot=(), h=None, draw=True,
-         size=13.5, fsize=13.5, tsize=17, pad=16, dash=None, title_mono=False):
+         size=13.5, fsize=13.5, tsize=17, pad=16, dash=None, title_mono=False, anchor=None):
     """A card. formula: lean_block() output. say: a rich string set in italics. bullets and foot: rich strings.
+    anchor: a blueprint id, set as the id of a group around the card, so that poster.svg#id lands on it.
     Returns the height; draw=False measures only."""
     inner = w - 2 * pad
     lead, flead, fpad = round(size * 1.42, 1), round(fsize * 1.5, 1), 11
@@ -341,6 +342,9 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
         hh = max(h, hh)
     if not draw:
         return hh
+    if anchor:
+        c.add(f'<g id="{anchor}">')
+        c.anchors.append(anchor)
     c.blocks.append((x, y, x + w, y + hh, "node " + name))
     c.rect(x, y, w, hh, accent, dash=dash)
     if title_mono:
@@ -379,6 +383,8 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
                 c.add(render_line(x + pad, fy + size - 2, ln, size - 1, "muted"))
                 fy += round((size - 1) * 1.42, 1)
             fy += 2
+    if anchor:
+        c.add("</g>")
     return hh
 
 
@@ -438,7 +444,7 @@ def statement_card(g, k, w, drawn, rev, depth, main_names, diagram="R1", max_lin
         foot.append(f"Blueprint {code(n['_path'], 44)}")
     else:
         foot.append(f"Blueprint {code(n['_path'], 44)} ({chap}) · depth {depth.get(k, '—')} from the main theorems")
-    return dict(name=n["title"], accent=PROV_ACCENT[prov], pill=pill,
+    return dict(anchor=k, name=n["title"], accent=PROV_ACCENT[prov], pill=pill,
                 formula=formula, say=say, bullets=bullets, foot=foot,
                 dash="6 4" if n["kind"] == "definition" else None)
 

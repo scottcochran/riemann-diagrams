@@ -369,6 +369,10 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
 - **Each statement card carries its blueprint id** as the `id` of a group around it, so that
   `R3-zero-free-2026.11.22.svg#thm-landau-windows` lands on the card. A statement drawn on more than one poster
   has the same id on each.
+  Done 2026.11.22: `bp.node` takes an `anchor`, `statement_card` passes the statement's id, and R2's and F2's
+  chapter cards and F5's section cards pass theirs; a build fails on an id drawn twice or an anchor that is
+  not an XML name; each manifest entry lists its poster's anchors. The chapter-root cards of F5, R1's
+  `Statements.lean` card and F3's namespace cards have no blueprint id and no anchor.
 - **Ids link to the card that draws them.** An id in a Stated with, Proof uses or Used by footer links to its
   card on the same poster when there is one, else to its card on the poster that draws it in full (R1 and the
   traces into R3 to R8), else to the blueprint (below). A chapter card on

@@ -17,6 +17,7 @@ everything else falls back to light.
 Inline markup in any text: **bold**, `code`, and [[accent|text]] for an accent-coloured run.
 """
 import base64
+import collections
 import pathlib
 import re
 from xml.sax.saxutils import escape, unescape
@@ -299,6 +300,7 @@ class Canvas:
         self.x0, self.x1 = pad, width - pad
         self.blocks = []   # (x0, y0, x1, y1, name) of cards and tables, for the overlap check
         self.n_arrows = 0  # for the manifest
+        self.anchors = []  # blueprint ids set as the id of a card's group, for the manifest and the link check
         self.y = self._header()
 
     def stats(self):
@@ -593,6 +595,12 @@ class Canvas:
         Returns the warnings."""
         boxes = [b for b in TEXT_BOXES if b[4].strip()]
         warn = []
+        ids = re.findall(r' id="([^"]*)"', "\n".join(self.out))
+        for i in sorted(i for i, n in collections.Counter(ids).items() if n > 1):
+            warn.append(f"id drawn twice: {i!r}")
+        for a in self.anchors:
+            if not re.fullmatch(r"[A-Za-z_][\w.-]*", a) or a in ("t", "d") or a.startswith("arw-"):
+                warn.append(f"not usable as an anchor: {a!r}")
         drawn = set()
         for t in re.findall(r">([^<]+)<", "\n".join(self.out)):
             drawn |= set(unescape(t))
