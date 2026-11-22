@@ -70,6 +70,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2095.3" y="513.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">Sections nothing outside them uses</tspan>: <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="12.4">chap-theta/root</tspan>, <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="12.4">sec-outline-check</tspan>.</text>
 <text x="56.0" y="606.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">9 · Published results</tspan></text>
 <text x="56.0" y="634.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">14 cards, 12 arrows for 31 proof uses within the chapter; 17 taken from other chapters, 1306 given to them. Not drawn, it would point upward: <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">sec-lit-p-adic-hodge</tspan> → <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">sec-lit-galois-cohomology</tspan> (1).</text>
+<g id="sec-lit-abelian-schemes">
 <rect x="1396.8" y="658.0" width="606.4" height="308.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="688.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">7. Abelian schemes and their moduli</tspan></text>
 <rect x="1844.3" y="671.0" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -88,6 +89,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="908.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="928.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 72 to Heights, 43 to Galois, 21 to Sha, 20 to Families</text>
 <text x="1412.8" y="947.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-abelian-schemes/</tspan></text>
+</g>
+<g id="sec-lit-geometry">
 <rect x="2067.2" y="658.0" width="606.4" height="308.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="688.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">8. Algebraic, complex and Arakelov geometry</tspan></text>
 <rect x="2514.7" y="671.0" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -104,6 +107,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="908.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 6 from Heights</text>
 <text x="2083.2" y="928.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 41 to Heights, 2 to Galois</text>
 <text x="2083.2" y="947.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-geometry/</tspan></text>
+</g>
+<g id="sec-lit-gl-forms">
 <rect x="56.0" y="1158.2" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="72.0" y="1188.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">9. Automorphic representations of GL(n)</tspan></text>
 <rect x="503.5" y="1171.2" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -120,6 +125,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="72.0" y="1370.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 6 from Galois</text>
 <text x="72.0" y="1389.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 63 to Sha, 29 to Galois, 18 to Families, 4 to Theta</text>
 <text x="72.0" y="1409.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-gl-forms/</tspan></text>
+</g>
+<g id="sec-lit-real">
 <rect x="726.4" y="1158.2" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="742.4" y="1188.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">12. Representations of real unitary groups</tspan></text>
 <rect x="1173.9" y="1171.2" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -134,6 +141,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="742.4" y="1370.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="742.4" y="1389.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 67 to Theta, 45 to Families, 1 to Sha</text>
 <text x="742.4" y="1409.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-real/</tspan></text>
+</g>
+<g id="sec-lit-class-field-theory">
 <rect x="1396.8" y="1158.2" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="1188.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. Class field theory and hermitian forms</tspan></text>
 <rect x="1844.3" y="1171.2" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -149,6 +158,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="1370.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="1389.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 57 to Families, 54 to Sha, 46 to Theta, 25 to Galois, 12 to Heights</text>
 <text x="1412.8" y="1409.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-class-field-theory/</tspan></text>
+</g>
+<g id="sec-lit-galois-cohomology">
 <rect x="2737.6" y="1158.2" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="1188.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. Galois cohomology</tspan></text>
 <rect x="3185.1" y="1171.2" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -165,6 +176,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="1370.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="2753.6" y="1389.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 74 to Sha, 29 to Families</text>
 <text x="2753.6" y="1409.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-galois-cohomology/</tspan></text>
+</g>
+<g id="sec-lit-unitary-forms">
 <rect x="56.0" y="1620.0" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="72.0" y="1650.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">13. Automorphic forms on unitary groups</tspan></text>
 <rect x="503.5" y="1633.0" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -181,6 +194,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="72.0" y="1831.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="72.0" y="1851.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 52 to Theta, 29 to Families, 16 to Sha, 3 to Heights, 1 to Galois</text>
 <text x="72.0" y="1871.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-unitary-forms/</tspan></text>
+</g>
+<g id="sec-lit-padic-reps">
 <rect x="1396.8" y="1620.0" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="1650.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">10. Representations of p-adic general linear</tspan></text>
 <text x="1412.8" y="1671.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">groups</tspan></text>
@@ -196,6 +211,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="1831.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Outline, 1 from Galois</text>
 <text x="1412.8" y="1851.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 76 to Sha, 42 to Families, 33 to Galois, 18 to Theta</text>
 <text x="1412.8" y="1871.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-padic-reps/</tspan></text>
+</g>
+<g id="sec-lit-p-adic-hodge">
 <rect x="2737.6" y="1620.0" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="1650.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">6. p-adic Hodge theory</tspan></text>
 <rect x="3191.6" y="1633.0" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -212,6 +229,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="1831.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Heights</text>
 <text x="2753.6" y="1851.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 37 to Sha, 10 to Galois, 7 to Families, 3 to Heights</text>
 <text x="2753.6" y="1871.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-p-adic-hodge/</tspan></text>
+</g>
+<g id="sec-lit-theta">
 <rect x="56.0" y="2081.8" width="606.4" height="310.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="72.0" y="2111.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">14. Weil representations, Eisenstein series and</tspan></text>
 <text x="72.0" y="2132.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">the doubling method</tspan></text>
@@ -228,6 +247,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="72.0" y="2333.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Theta</text>
 <text x="72.0" y="2353.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 55 to Theta, 16 to Families, 4 to Sha</text>
 <text x="72.0" y="2373.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-theta/</tspan></text>
+</g>
+<g id="sec-lit-depth-zero">
 <rect x="726.4" y="2081.8" width="606.4" height="310.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="742.4" y="2111.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">11. Depth zero and finite groups of Lie type</tspan></text>
 <rect x="1180.4" y="2094.8" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -244,6 +265,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="742.4" y="2333.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="742.4" y="2353.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 28 to Sha, 15 to Families, 5 to Galois, 5 to Heights, 5 to Theta, 1 to Zero-free</text>
 <text x="742.4" y="2373.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-depth-zero/</tspan></text>
+</g>
+<g id="sec-lit-complex-multiplication">
 <rect x="1396.8" y="2081.8" width="606.4" height="310.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="2111.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Complex multiplication</tspan></text>
 <rect x="1850.8" y="2094.8" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -260,6 +283,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="2333.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="2353.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 14 to Sha, 7 to Families, 6 to Theta, 1 to Zero-free</text>
 <text x="1412.8" y="2373.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">sec-lit-complex-multiplication/</tspan></text>
+</g>
+<g id="sec-lit-l-functions">
 <rect x="2067.2" y="2081.8" width="606.4" height="310.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="2111.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. L-functions and primes</tspan></text>
 <rect x="2514.7" y="2094.8" width="142.9" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -275,6 +300,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="2333.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="2083.2" y="2353.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 29 to Sha, 14 to Theta, 4 to Families, 2 to Zero-free</text>
 <text x="2083.2" y="2373.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-l-functions/</tspan></text>
+</g>
+<g id="sec-lit-hecke-characters">
 <rect x="2737.6" y="2081.8" width="606.4" height="310.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="2111.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. Algebraic Hecke characters and their Galois</tspan></text>
 <text x="2753.6" y="2132.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">characters</tspan></text>
@@ -293,6 +320,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="2333.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Outline</text>
 <text x="2753.6" y="2353.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 20 to Sha, 15 to Galois, 10 to Families</text>
 <text x="2753.6" y="2373.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-literature/sec-lit-hecke-characters/</tspan></text>
+</g>
 <path d="M 1700.0 1428.0 L 1700.0 1534.6 L 2025.2 1534.6 L 2025.2 1975.1 L 1700.0 1975.1 L 1700.0 2081.8" fill="none" stroke="#166b5b" class="s-teal" stroke-width="2" marker-end="url(#arw-teal)" stroke-linejoin="round"/>
 <rect x="2014.6" y="1743.4" width="21.1" height="22.9" rx="5" fill="#ffffff" stroke="#166b5b" class="f-bg s-teal" stroke-width="1"/>
 <text x="2025.2" y="1756.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">2</text>
@@ -331,6 +359,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="258.1" y="1937.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">3</text>
 <text x="56.0" y="2483.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">5 · Theta lifts, periods and the Siegel-Weil formula</tspan></text>
 <text x="56.0" y="2512.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">11 cards, 24 arrows for 46 proof uses within the chapter; 268 taken from other chapters, 38 given to them.</text>
+<g id="sec-theta-siegel-weil">
 <rect x="1396.8" y="2535.3" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="2565.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. The Siegel-Weil formula</tspan></text>
 <rect x="1850.8" y="2548.3" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -346,6 +375,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="2728.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 17 from Literature</text>
 <text x="1412.8" y="2747.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 17 to Families, 1 to Galois, 1 to Literature, 1 to Sha</text>
 <text x="1412.8" y="2767.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-siegel-weil/</tspan></text>
+</g>
+<g id="sec-theta-towers">
 <rect x="1396.8" y="3089.9" width="606.4" height="193.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="3119.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Theta towers and their step identities</tspan></text>
 <rect x="1850.8" y="3102.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -358,6 +389,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="3225.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 111 from Literature</text>
 <text x="1412.8" y="3244.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Families</text>
 <text x="1412.8" y="3264.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-towers/</tspan></text>
+</g>
+<g id="sec-theta-counting">
 <rect x="726.4" y="3586.9" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="742.4" y="3616.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">9. Counting automorphic forms and mass</tspan></text>
 <text x="742.4" y="3637.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">constants</tspan></text>
@@ -372,6 +405,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="742.4" y="3779.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 2 from Literature</text>
 <text x="742.4" y="3799.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 2 to Families</text>
 <text x="742.4" y="3819.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-counting/</tspan></text>
+</g>
+<g id="sec-theta-separation">
 <rect x="1396.8" y="3586.9" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="3616.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. Non-vanishing and separation of theta lifts</tspan></text>
 <rect x="1850.8" y="3599.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -387,6 +422,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="3779.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 25 from Literature</text>
 <text x="1412.8" y="3799.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 3 to Families, 1 to Sha</text>
 <text x="1412.8" y="3819.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-separation/</tspan></text>
+</g>
+<g id="sec-theta-test-vectors">
 <rect x="2067.2" y="3586.9" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="3616.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. Rational test vectors</tspan></text>
 <rect x="2521.2" y="3599.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -400,6 +437,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="3779.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 28 from Literature</text>
 <text x="2083.2" y="3799.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 2 to Families</text>
 <text x="2083.2" y="3819.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-test-vectors/</tspan></text>
+</g>
+<g id="sec-theta-bessel">
 <rect x="2737.6" y="3586.9" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="3616.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">7. Bessel transforms and archimedean models</tspan></text>
 <rect x="3191.6" y="3599.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -415,6 +454,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="3779.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="2753.6" y="3799.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 2 to Families</text>
 <text x="2753.6" y="3819.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-bessel/</tspan></text>
+</g>
+<g id="sec-theta-valuations">
 <rect x="726.4" y="4141.6" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="742.4" y="4171.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">10. Valuations of periods and CM theta measures</tspan></text>
 <rect x="1180.4" y="4154.6" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -427,6 +468,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="742.4" y="4355.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 2 from Literature</text>
 <text x="742.4" y="4375.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Families</text>
 <text x="742.4" y="4394.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-valuations/</tspan></text>
+</g>
+<g id="sec-theta-witt">
 <rect x="1396.8" y="4141.6" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="4171.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. L-values along Witt towers and the indefinite</tspan></text>
 <text x="1412.8" y="4192.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">slope bound</tspan></text>
@@ -443,6 +486,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="4355.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 37 from Literature, 1 from Families</text>
 <text x="1412.8" y="4375.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 4 to Families</text>
 <text x="1412.8" y="4394.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-witt/</tspan></text>
+</g>
+<g id="sec-theta-period-identity">
 <rect x="2067.2" y="4141.6" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="4171.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">6. The isometric period identity</tspan></text>
 <rect x="2521.2" y="4154.6" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -457,6 +502,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="4355.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 43 from Literature</text>
 <text x="2083.2" y="4375.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Families</text>
 <text x="2083.2" y="4394.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-period-identity/</tspan></text>
+</g>
+<g id="sec-theta-offdiag">
 <rect x="2737.6" y="4141.6" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="4171.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">8. The off-diagonal bound</tspan></text>
 <rect x="3191.6" y="4154.6" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -471,6 +518,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="4355.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 2 from Literature</text>
 <text x="2753.6" y="4375.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Families</text>
 <text x="2753.6" y="4394.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-theta/sec-theta-offdiag/</tspan></text>
+</g>
 <rect x="1396.8" y="4717.2" width="606.4" height="194.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="4747.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of Theta lifts, periods and the</tspan></text>
 <text x="1412.8" y="4768.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">Siegel-Weil formula</tspan></text>
@@ -557,6 +605,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1700.0" y="4581.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">1</text>
 <text x="56.0" y="5004.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">6 · Heights and the covolume bound</tspan></text>
 <text x="56.0" y="5032.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">7 cards, 12 arrows for 28 proof uses within the chapter; 136 taken from other chapters, 18 given to them.</text>
+<g id="sec-ht-hilbert-samuel">
 <rect x="1396.8" y="5055.5" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="5085.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Arithmetic Hilbert-Samuel inequalities</tspan></text>
 <rect x="1850.8" y="5068.5" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -572,6 +621,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="5248.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 5 from Literature</text>
 <text x="1412.8" y="5268.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Literature</text>
 <text x="1412.8" y="5287.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-heights/sec-ht-hilbert-samuel/</tspan></text>
+</g>
+<g id="sec-ht-models">
 <rect x="2067.2" y="5055.5" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="5085.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. Integral models and degenerations</tspan></text>
 <rect x="2521.2" y="5068.5" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -587,6 +638,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="5248.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 12 from Literature</text>
 <text x="2083.2" y="5268.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 10 to Families</text>
 <text x="2083.2" y="5287.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-heights/sec-ht-models/</tspan></text>
+</g>
+<g id="sec-ht-volumes">
 <rect x="1396.8" y="5456.1" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="5486.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. Mean arithmetic volumes on flag towers</tspan></text>
 <rect x="1850.8" y="5469.1" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -601,6 +654,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="5648.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 23 from Literature</text>
 <text x="1412.8" y="5668.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Literature</text>
 <text x="1412.8" y="5688.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-heights/sec-ht-volumes/</tspan></text>
+</g>
+<g id="sec-ht-toroidal">
 <rect x="2067.2" y="5456.1" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="5486.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. Toroidal compactifications</tspan></text>
 <rect x="2521.2" y="5469.1" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -616,6 +671,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="5648.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 29 from Literature</text>
 <text x="2083.2" y="5668.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="5688.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-heights/sec-ht-toroidal/</tspan></text>
+</g>
+<g id="sec-ht-deep-covers">
 <rect x="1396.8" y="5856.7" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="5886.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. Heights on deep covers</tspan></text>
 <rect x="1850.8" y="5869.7" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -630,6 +687,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="6049.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 35 from Literature</text>
 <text x="1412.8" y="6069.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="6089.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-heights/sec-ht-deep-covers/</tspan></text>
+</g>
+<g id="sec-ht-resolution">
 <rect x="2067.2" y="5856.7" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="5886.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">6. Resolution of singularities</tspan></text>
 <rect x="2521.2" y="5869.7" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -645,6 +704,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="6049.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="2083.2" y="6069.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 5 to Literature</text>
 <text x="2083.2" y="6089.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-heights/sec-ht-resolution/</tspan></text>
+</g>
 <rect x="1396.8" y="6257.3" width="606.4" height="173.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="6287.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of Heights and the covolume bound</tspan></text>
 <rect x="1856.6" y="6270.3" width="130.6" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -694,6 +754,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1649.7" y="5758.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">1</text>
 <text x="56.0" y="6523.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">8 · Galois representations</tspan></text>
 <text x="56.0" y="6551.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">9 cards, 12 arrows for 23 proof uses within the chapter; 167 taken from other chapters, 49 given to them.</text>
+<g id="sec-gal-cuspidal">
 <rect x="1396.8" y="6574.7" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="6604.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">8. The forms used by the families</tspan></text>
 <rect x="1850.8" y="6587.7" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -709,6 +770,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="6767.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 12 from Literature, 1 from Outline</text>
 <text x="1412.8" y="6787.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 9 to Families, 7 to Sha, 6 to Literature, 2 to Outline</text>
 <text x="1412.8" y="6807.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-cuspidal/</tspan></text>
+</g>
+<g id="sec-gal-shimura-models">
 <rect x="1396.8" y="7017.3" width="606.4" height="252.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="7047.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">6. Integral models of compact unitary Shimura</tspan></text>
 <text x="1412.8" y="7068.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">varieties</tspan></text>
@@ -724,6 +787,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="7211.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 29 from Literature</text>
 <text x="1412.8" y="7231.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="7251.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-shimura-models/</tspan></text>
+</g>
+<g id="sec-gal-kuga-sato">
 <rect x="726.4" y="7461.7" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="742.4" y="7491.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. Kuga-Sato varieties over unitary Shimura</tspan></text>
 <text x="742.4" y="7512.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">varieties</tspan></text>
@@ -738,6 +803,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="742.4" y="7675.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 17 from Literature</text>
 <text x="742.4" y="7695.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="742.4" y="7715.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-kuga-sato/</tspan></text>
+</g>
+<g id="sec-gal-ramified">
 <rect x="1396.8" y="7461.7" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="7491.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Local-global compatibility at ramified places</tspan></text>
 <rect x="1850.8" y="7474.7" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -752,6 +819,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="7675.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 56 from Literature, 2 from Outline</text>
 <text x="1412.8" y="7695.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="7715.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-ramified/</tspan></text>
+</g>
+<g id="sec-gal-base-change">
 <rect x="2067.2" y="7461.7" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="7491.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">7. Base change between definite unitary groups</tspan></text>
 <text x="2083.2" y="7512.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">and GL(n)</tspan></text>
@@ -768,6 +837,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="7675.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 3 from Literature</text>
 <text x="2083.2" y="7695.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 14 to Sha, 8 to Families, 1 to Literature</text>
 <text x="2083.2" y="7715.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-base-change/</tspan></text>
+</g>
+<g id="sec-gal-eigenspaces">
 <rect x="2737.6" y="7461.7" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="7491.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. Hecke eigenspaces in etale cohomology</tspan></text>
 <rect x="3191.6" y="7474.7" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -783,6 +854,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="7675.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 8 from Literature</text>
 <text x="2753.6" y="7695.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2753.6" y="7715.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-eigenspaces/</tspan></text>
+</g>
+<g id="sec-gal-assembly">
 <rect x="1396.8" y="7925.3" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="7955.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. From odd rank and theta lifts to all polarized</tspan></text>
 <text x="1412.8" y="7976.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">pairs</tspan></text>
@@ -799,6 +872,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="8139.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 36 from Literature, 1 from Theta</text>
 <text x="1412.8" y="8158.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="8178.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-assembly/</tspan></text>
+</g>
+<g id="sec-gal-odd-rank">
 <rect x="2067.2" y="7925.3" width="606.4" height="271.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="7955.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. Geometric Galois representations in odd rank</tspan></text>
 <rect x="2521.2" y="7938.3" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -813,6 +888,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="8139.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 2 from Literature</text>
 <text x="2083.2" y="8158.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="8178.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-galois/sec-gal-odd-rank/</tspan></text>
+</g>
 <rect x="1396.8" y="8388.9" width="606.4" height="173.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="8418.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of Galois representations</tspan></text>
 <rect x="1856.6" y="8401.9" width="130.6" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -862,6 +938,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1282.3" y="7335.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">4</text>
 <text x="56.0" y="8654.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">7 · The Tate-Shafarevich bound</tspan></text>
 <text x="56.0" y="8683.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">8 cards, 7 arrows for 21 proof uses within the chapter; 471 taken from other chapters, 2 given to them. Not drawn, it would point upward: <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">chap-sha/root</tspan> → <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">sec-sha-kato</tspan> (1), <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">sec-sha-gsp4</tspan> → <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">chap-sha/root</tspan> (1), <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">sec-sha-h2</tspan> → <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="13.3">chap-sha/root</tspan> (1).</text>
+<g id="sec-sha-reciprocity">
 <rect x="1396.8" y="8706.3" width="606.4" height="212.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="8736.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. Kato's explicit reciprocity law</tspan></text>
 <rect x="1850.8" y="8719.3" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -875,6 +952,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="8860.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Literature</text>
 <text x="1412.8" y="8880.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="8900.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-reciprocity/</tspan></text>
+</g>
+<g id="sec-sha-kato">
 <rect x="1396.8" y="9054.5" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="9084.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Selmer groups from Kato's Euler system</tspan></text>
 <rect x="1850.8" y="9067.5" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -890,6 +969,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="9247.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 85 from Literature, 2 from Outline, 2 from Galois</text>
 <text x="1412.8" y="9267.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="9286.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-kato/</tspan></text>
+</g>
 <rect x="1396.8" y="9441.1" width="606.4" height="269.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="9471.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of The Tate-Shafarevich bound</tspan></text>
 <rect x="1850.8" y="9454.1" width="136.4" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -902,6 +982,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="9653.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 57 from Literature, 8 from Galois, 2 from Outline</text>
 <text x="1412.8" y="9672.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Outline</text>
 <text x="1412.8" y="9692.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/</tspan></text>
+<g id="sec-sha-lifting">
 <rect x="2067.2" y="9441.1" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="9471.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">7. Local lifting theorems for crystalline lattices</tspan></text>
 <rect x="2521.2" y="9454.1" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -918,6 +999,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="9653.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 32 from Literature</text>
 <text x="2083.2" y="9672.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="9692.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-lifting/</tspan></text>
+</g>
+<g id="sec-sha-congruence">
 <rect x="2737.6" y="9441.1" width="606.4" height="269.8" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="9471.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">6. Congruence modules and Selmer groups</tspan></text>
 <rect x="3191.6" y="9454.1" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -932,6 +1015,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="9653.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 3 from Literature</text>
 <text x="2753.6" y="9672.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2753.6" y="9692.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-congruence/</tspan></text>
+</g>
+<g id="sec-sha-h2">
 <rect x="1396.8" y="9846.9" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="9876.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. Second cohomology of Tate twists</tspan></text>
 <rect x="1850.8" y="9859.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -944,6 +1029,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="10020.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 38 from Literature, 1 from Galois</text>
 <text x="1412.8" y="10040.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="10060.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-h2/</tspan></text>
+</g>
+<g id="sec-sha-gsp4">
 <rect x="2067.2" y="9846.9" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="9876.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. Automorphy of symplectic lifts</tspan></text>
 <rect x="2521.2" y="9859.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -957,6 +1044,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="10020.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 143 from Literature, 7 from Galois, 4 from Outline</text>
 <text x="2083.2" y="10040.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="10060.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-gsp4/</tspan></text>
+</g>
+<g id="sec-sha-error">
 <rect x="2737.6" y="9846.9" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="9876.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. The error term of the families</tspan></text>
 <rect x="3191.6" y="9859.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -971,6 +1060,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="10020.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 78 from Literature, 4 from Galois, 2 from Families, 2 from Theta</text>
 <text x="2753.6" y="10040.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Families</text>
 <text x="2753.6" y="10060.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-error/</tspan></text>
+</g>
 <path d="M 1801.1 9710.9 L 1801.1 9765.3 L 2370.4 9765.3 L 2370.4 9846.9" fill="none" stroke="#166b5b" class="s-teal" stroke-width="2" marker-end="url(#arw-teal)" stroke-linejoin="round"/>
 <rect x="2088.8" y="9753.8" width="21.1" height="22.9" rx="5" fill="#ffffff" stroke="#166b5b" class="f-bg s-teal" stroke-width="1"/>
 <text x="2099.3" y="9767.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">3</text>
@@ -994,6 +1084,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1773.2" y="9011.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">1</text>
 <text x="56.0" y="10170.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">4 · Families of definite unitary groups</tspan></text>
 <text x="56.0" y="10198.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">6 cards, 6 arrows for 7 proof uses within the chapter; 363 taken from other chapters, 5 given to them.</text>
+<g id="sec-fam-objects">
 <rect x="1396.8" y="10221.9" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="10251.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. Families and the family hypotheses</tspan></text>
 <rect x="1850.8" y="10234.9" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1008,6 +1099,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="10395.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="10415.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="10435.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-objects/</tspan></text>
+</g>
+<g id="sec-fam-membership">
 <rect x="1396.8" y="10561.3" width="606.4" height="212.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="10591.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Members, Siegel masses and admissible data</tspan></text>
 <rect x="1837.7" y="10574.3" width="149.5" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1021,6 +1114,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="10715.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 201 from Literature, 13 from Theta, 11 from Galois, 5 from Heights</text>
 <text x="1412.8" y="10735.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 2 to Sha</text>
 <text x="1412.8" y="10755.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-membership/</tspan></text>
+</g>
+<g id="sec-fam-local">
 <rect x="2067.2" y="10561.3" width="606.4" height="212.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="10591.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. Local estimates at the points of a family</tspan></text>
 <rect x="2521.2" y="10574.3" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1034,6 +1129,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="10715.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 50 from Literature, 5 from Galois, 4 from Heights, 2 from Theta</text>
 <text x="2083.2" y="10735.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Theta</text>
 <text x="2083.2" y="10755.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-local/</tspan></text>
+</g>
+<g id="sec-fam-basic">
 <rect x="1396.8" y="10881.5" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="10911.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. The basic conditions</tspan></text>
 <rect x="1850.8" y="10894.5" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1048,6 +1145,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="11074.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 24 from Literature, 1 from Theta</text>
 <text x="1412.8" y="11094.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="11113.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-basic/</tspan></text>
+</g>
+<g id="sec-fam-conditions">
 <rect x="2067.2" y="10881.5" width="606.4" height="250.6" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="10911.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. The full list of family conditions</tspan></text>
 <rect x="2521.2" y="10894.5" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1063,6 +1162,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="11074.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 21 from Literature, 9 from Theta, 1 from Heights</text>
 <text x="2083.2" y="11094.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="11113.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-conditions/</tspan></text>
+</g>
 <rect x="1396.8" y="11240.1" width="606.4" height="173.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="11270.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of Families of definite unitary groups</tspan></text>
 <rect x="1856.6" y="11253.1" width="130.6" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -1094,6 +1194,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1739.7" y="10818.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">1</text>
 <text x="56.0" y="11505.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">3 · From prime sums to the zero-free half-plane</tspan></text>
 <text x="56.0" y="11534.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">6 cards, 3 arrows for 4 proof uses within the chapter; 4 taken from other chapters, 4 given to them.</text>
+<g id="sec-zf-auxiliary-fields">
 <rect x="1396.8" y="11557.4" width="606.4" height="193.0" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="11587.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. Auxiliary CM fields</tspan></text>
 <rect x="1850.8" y="11570.4" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1106,6 +1207,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="11692.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 2 from Literature</text>
 <text x="1412.8" y="11712.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Outline</text>
 <text x="1412.8" y="11732.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-zero-free/sec-zf-auxiliary-fields/</tspan></text>
+</g>
+<g id="sec-zf-local-link">
 <rect x="1396.8" y="11858.4" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="11888.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">5. The local link at inert primes</tspan></text>
 <rect x="1850.8" y="11871.4" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1119,6 +1222,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="12031.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="12051.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="12071.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-zero-free/sec-zf-local-link/</tspan></text>
+</g>
+<g id="sec-zf-windows">
 <rect x="2067.2" y="11858.4" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="11888.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. Landau's theorem on windows</tspan></text>
 <rect x="2521.2" y="11871.4" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1133,6 +1238,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="12031.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="2083.2" y="12051.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="12071.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-zero-free/sec-zf-windows/</tspan></text>
+</g>
+<g id="sec-zf-core">
 <rect x="2737.6" y="11858.4" width="606.4" height="231.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2753.6" y="11888.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. The core inequality</tspan></text>
 <rect x="3191.6" y="11871.4" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1147,6 +1254,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2753.6" y="12031.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Literature</text>
 <text x="2753.6" y="12051.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2753.6" y="12071.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-zero-free/sec-zf-core/</tspan></text>
+</g>
+<g id="sec-zf-slope-data">
 <rect x="1396.8" y="12197.8" width="606.4" height="212.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="12227.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">4. Slope data from families</tspan></text>
 <rect x="1850.8" y="12210.8" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1160,6 +1269,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="12352.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 1 from Literature</text>
 <text x="1412.8" y="12371.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 1 to Outline</text>
 <text x="1412.8" y="12391.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-zero-free/sec-zf-slope-data/</tspan></text>
+</g>
 <rect x="2067.2" y="12197.8" width="606.4" height="212.2" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="12227.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of From prime sums to the zero-free</tspan></text>
 <text x="2083.2" y="12248.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">half-plane</tspan></text>
@@ -1183,6 +1293,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2319.9" y="12145.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#166b5b" class="f-teal" text-anchor="middle">1</text>
 <text x="56.0" y="12502.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">2 · The proof in outline</tspan></text>
 <text x="56.0" y="12530.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">4 cards, 2 arrows for 4 proof uses within the chapter; 9 taken from other chapters, 15 given to them.</text>
+<g id="sec-outline-check">
 <rect x="1396.8" y="12553.6" width="606.4" height="212.2" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="12583.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">3. Points to check</tspan></text>
 <rect x="1856.6" y="12566.6" width="130.6" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1196,6 +1307,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="12707.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="12727.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="1412.8" y="12747.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">architecture/sec-outline-check/</tspan></text>
+</g>
+<g id="sec-outline-interfaces">
 <rect x="1396.8" y="12861.8" width="606.4" height="252.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="1412.8" y="12891.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">1. What the stages pass to each other</tspan></text>
 <rect x="1850.8" y="12874.8" width="136.4" height="21.5" rx="10.75" fill="#166b5b" stroke="#166b5b" class="f-teal s-teal" stroke-width="1.2"/>
@@ -1211,6 +1324,8 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="1412.8" y="13056.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> nothing from another chapter</text>
 <text x="1412.8" y="13076.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> 8 to Sha, 3 to Galois, 2 to Literature, 1 to Families</text>
 <text x="1412.8" y="13095.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">architecture/sec-outline-interfaces/</tspan></text>
+</g>
+<g id="sec-outline-chain">
 <rect x="2067.2" y="12861.8" width="606.4" height="252.4" rx="8" fill="#e8f5f1" stroke="#166b5b" class="ft-teal s-teal" stroke-width="1.6"/>
 <text x="2083.2" y="12891.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">2. From the Tate-Shafarevich bound to the</tspan></text>
 <text x="2083.2" y="12912.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#166b5b" class="f-teal" text-anchor="start"><tspan font-weight="bold">half-plane</tspan></text>
@@ -1226,6 +1341,7 @@ svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;-
 <text x="2083.2" y="13056.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Takes</tspan> 3 from Zero-free, 2 from Galois, 1 from Families</text>
 <text x="2083.2" y="13076.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><tspan font-weight="bold">Gives</tspan> nothing to another chapter</text>
 <text x="2083.2" y="13095.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">architecture/sec-outline-chain/</tspan></text>
+</g>
 <rect x="1396.8" y="13210.2" width="606.4" height="173.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="13240.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">At the root of The proof in outline</tspan></text>
 <rect x="1856.6" y="13223.2" width="130.6" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>

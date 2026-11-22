@@ -227,7 +227,7 @@ def build():
             "Blueprint " + bp.code((u.split("/")[0] + "/") if root else sec_dir[u], 44),
         ]
         pill = f"{len(ks)} statement{'s' if len(ks) != 1 else ''} · {prov['new']} new"
-        return dict(name=name, accent="grey" if root else "teal", pill=pill, formula=[], say=say, bullets=bullets,
+        return dict(anchor=None if root else u, name=name, accent="grey" if root else "teal", pill=pill, formula=[], say=say, bullets=bullets,
                     foot=foot, dash="6 4" if root else None)
 
     for ch in ORDER:
