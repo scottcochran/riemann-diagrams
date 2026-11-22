@@ -29,7 +29,8 @@
    "def-trivial-statement",
    "def-zero-free-primitive",
    "def-zeros-on-line"
-  ]
+  ],
+  "links": 94
  },
  "F2": {
   "file": "map-F2-new-2026.11.22.svg",
@@ -46,21 +47,24 @@
    "chap-theta",
    "chap-zero-free",
    "main-theorems"
-  ]
+  ],
+  "links": 0
  },
  "F3": {
   "file": "map-F3-modules-2026.11.22.svg",
   "title": "The proof as code: the blueprint's nine chapters against the formalisation's modules, and what each statement stands for in Lean",
   "cards": 10,
   "arrows": 0,
-  "anchors": []
+  "anchors": [],
+  "links": 0
  },
  "F4": {
   "file": "map-F4-literature-2026.11.22.svg",
   "title": "The proof as literature: the 209 references of the blueprint on a timeline, which statements cite each, and what falls if one is wrong",
   "cards": 0,
   "arrows": 0,
-  "anchors": []
+  "anchors": [],
+  "links": 0
  },
  "F5": {
   "file": "map-F5-sections-2026.11.22.svg",
@@ -126,14 +130,16 @@
    "sec-zf-local-link",
    "sec-zf-slope-data",
    "sec-zf-windows"
-  ]
+  ],
+  "links": 75
  },
  "F6": {
   "file": "map-F6-depth-2026.11.22.svg",
   "title": "Depth as geometry: every statement of the blueprint on one wheel, rings by distance from the main theorems, sectors by chapter",
   "cards": 0,
   "arrows": 0,
-  "anchors": []
+  "anchors": [],
+  "links": 0
  },
  "R1": {
   "file": "map-R1-main-theorems-2026.11.22.svg",
@@ -164,7 +170,8 @@
    "thm-sha-bound",
    "thm-zero-free-from-connected",
    "thm-zero-free-from-families"
-  ]
+  ],
+  "links": 113
  },
  "R2": {
   "file": "map-R2-chapters-2026.11.22.svg",
@@ -181,7 +188,8 @@
    "chap-theta",
    "chap-zero-free",
    "main-theorems"
-  ]
+  ],
+  "links": 90
  },
  "R3": {
   "file": "map-R3-zero-free-2026.11.22.svg",
@@ -213,7 +221,8 @@
    "thm-twisted-admissibility",
    "thm-zero-free-from-connected",
    "thm-zero-free-from-windows"
-  ]
+  ],
+  "links": 131
  },
  "R4": {
   "file": "map-R4-families-2026.11.22.svg",
@@ -265,7 +274,8 @@
    "thm-inner-form-multiplicities-equal",
    "thm-pseudo-coefficients-unitary",
    "thm-twisting-index-and-archimedean-bounds"
-  ]
+  ],
+  "links": 179
  },
  "R5": {
   "file": "map-R5-theta-2026.11.22.svg",
@@ -334,7 +344,8 @@
    "thm-theta-tower-step-identities",
    "thm-weighted-bessel-sum-bound",
    "thm-witt-tower-square-ratios"
-  ]
+  ],
+  "links": 282
  },
  "R6": {
   "file": "map-R6-heights-2026.11.22.svg",
@@ -374,7 +385,8 @@
    "thm-toroidal-compactification-unitary",
    "thm-unitary-integral-models",
    "thm-unitary-rigid-boundary-charts"
-  ]
+  ],
+  "links": 163
  },
  "R7": {
   "file": "map-R7-sha-2026.11.22.svg",
@@ -417,7 +429,8 @@
    "thm-siegel-units-eisenstein",
    "thm-siegel-units-mackey",
    "thm-wach-lifting-theorem"
-  ]
+  ],
+  "links": 145
  },
  "R8": {
   "file": "map-R8-galois-2026.11.22.svg",
@@ -463,7 +476,8 @@
    "thm-unitary-shimura-integral-models",
    "thm-universal-first-order-deformation",
    "thm-wave-kernels-gln-c"
-  ]
+  ],
+  "links": 207
  },
  "T1": {
   "file": "map-T1-trace-deepest-2026.11.22.svg",
@@ -482,7 +496,8 @@
    "thm-half-plane",
    "thm-offdiagonal-bound",
    "thm-riemann-hypothesis"
-  ]
+  ],
+  "links": 45
  },
  "T2": {
   "file": "map-T2-trace-landau-2026.11.22.svg",
@@ -496,6 +511,7 @@
    "thm-riemann-hypothesis",
    "thm-zero-free-from-connected",
    "thm-zero-free-from-windows"
-  ]
+  ],
+  "links": 25
  }
 }

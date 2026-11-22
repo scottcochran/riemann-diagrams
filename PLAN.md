@@ -378,6 +378,10 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   traces into R3 to R8), else to the blueprint (below). A chapter card on
   R2 or F2 links to that chapter's poster. The targets are computed from the posters' own card lists at build
   time, not written by hand.
+  Done in part 2026.11.22, the links within a poster: `Canvas.link` runs over the finished poster, and a code
+  run whose text is exactly one of the poster's anchors becomes `<a href="#id">` around its `<tspan>`, so
+  footers, card text and keys link alike; a build fails on a link to no card. The links to other posters and
+  out are still to do.
 - **The rest link out, at the pins.** An id with no card on any poster links to the blueprint; the Lean line to
   the declaration in `leanprover-community/riemann-hypothesis` at `MIRROR_COMMIT`, at the file and line
   `lean_location` gives (`…/blob/<commit>/<file>#L<line>`). Which blueprint target to use is open decision 6.
@@ -407,6 +411,8 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   heavier card border, an underlined id), since an SVG link otherwise looks like any other text. The root
   `<svg>` loses `role="img"`, which hides its links from a screen reader and the keyboard; its `<title>` and
   `<desc>` stay.
+  Done in part 2026.11.22: the id runs are `<a>` inside `<text>` with a plain `href`, the style has the hover
+  rule for them, and the root `<svg>` has lost `role="img"`; `Canvas.card` does not yet take an `href`.
 - **The build checks the links**, as it checks the arrows: every relative `href` names a file in the set's
   manifest, every fragment is an `id` in that file, every id is a blueprint id, and every external link is at a
   pinned commit. A poster with a broken link fails the build.

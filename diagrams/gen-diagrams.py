@@ -51,7 +51,7 @@ def main(argv):
         out = out_dir / f"{'map-' if MAP else ''}{m.ID}-{m.SLUG}-{DATE}.svg"
         out.write_text(svg, encoding="utf-8")
         print(out.relative_to(HERE.parent))
-        manifest[m.ID] = {"file": out.name, "title": canvas.title, **canvas.stats(), "anchors": sorted(canvas.anchors)}
+        manifest[m.ID] = {"file": out.name, "title": canvas.title, **canvas.stats(), "anchors": sorted(canvas.anchors), "links": canvas.links}
         for w in canvas.warnings:
             print("  WARNING", w)
             failed += 1
