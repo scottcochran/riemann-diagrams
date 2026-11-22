@@ -51,6 +51,9 @@ EXPECTED = {
     ("chap-theta", "chap-families"): 16, ("chap-theta", "chap-sha"): 1,
     ("chap-zero-free", "architecture"): 4,
 }
+# The reading the matrix card gives of the two heaviest cross-chapter flows. The build fails if they are no
+# longer these two pairs, so that the sentence is re-read rather than left standing.
+HEAVIEST = {("chap-theta", "chap-families"), ("chap-heights", "chap-families")}
 # The new statements that no new statement's proof or statement uses: the tops of the new work.
 TOPS = [
     "lem-hilbert-samuel-block", "lem-kodaira-spencer-from-rigid-charts", "lem-p-divisible-period-matrices",
@@ -129,6 +132,11 @@ def build():
     down = {p: n for p, n in cross.items() if rowof_place[p[0]] <= rowof_place[p[1]]}
     up = {p: n for p, n in cross.items() if rowof_place[p[0]] > rowof_place[p[1]]}
     up_edges = [(a, b) for a, b in e_proof if (chap(a), chap(b)) in up]
+    heaviest = sorted(cross.items(), key=lambda t: (-t[1], t[0]))[:2]
+    if {p for p, _ in heaviest} != HEAVIEST:
+        raise ValueError(f"F2: the two heaviest cross-chapter flows are now {heaviest}, not {sorted(HEAVIEST)}; "
+                         "re-read the sentence 'the families are built from what those two chapters prove' on "
+                         "the matrix card and update HEAVIEST")
     iface_prov = {k: prov(k) for k in ("def-local-parameters", "def-galois-reps-polarized", "def-sha-bound")}
     if iface_prov != {"def-local-parameters": "modified", "def-galois-reps-polarized": "modified", "def-sha-bound": "new"}:
         raise ValueError(f"F2: the interface definitions' provenance has changed: {iface_prov}")
@@ -268,8 +276,9 @@ def build():
                  "A cell (A, B) counts the proof uses from new statements of chapter A to new statements of "
                  "chapter B: the arrow A → B. The diagonal is the chapter's own new work leaning on itself. "
                  "Stated-with uses are not counted here; the numbers card above has them.",
-                 "The heavy flows run into the families chapter, from theta lifts and from heights: the families "
-                 "are built from what those two chapters prove.",
+                 "The heaviest flows are " + " and ".join(
+                     f"{SHORT[a]} → {SHORT[b]}, {n_}" for (a, b), n_ in heaviest)
+                 + ": the families are built from what those two chapters prove.",
              ], "grey"),
              3: (3, 2, "What the stages pass to each other", [
                  "The three interface definitions of the outline, local parameters, polarised Galois "

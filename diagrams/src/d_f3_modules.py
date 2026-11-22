@@ -107,6 +107,10 @@ def build():
     fan = collections.Counter(len(g.nodes[k].get("lean", [])) for k in g.statements)
     pairs = collections.Counter(tuple(sorted(lf[x]["kind"] for x in g.nodes[k]["lean"]))
                                 for k in g.statements if len(g.nodes[k].get("lean", [])) == 2)
+    if pairs[("definition", "theorem")] * 2 <= fan[2]:
+        raise ValueError(f"F3: {pairs[('definition', 'theorem')]} of the {fan[2]} statements naming two declarations "
+                         "name a definition and a theorem, no longer a majority; re-read the fan-out sentence of "
+                         "the key card")
 
     c = Canvas(ID, "The proof as code: the blueprint's nine chapters against the formalisation's modules, and what "
                "each statement stands for in Lean",
