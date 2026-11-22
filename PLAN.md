@@ -172,7 +172,8 @@ because a poster's file name carries its date and a regeneration at a new pin re
   repository is public, the workflow attests the SVG bundle, and the notes carry the `gh attestation verify`
   line.
 - **Cadence:** a release when a pin moves, when a poster is added or removed, or when the checks change. Not
-  on every push: a wording fix waits for the next move, unless it changes what a poster says.
+  on every push: a wording fix waits for the next move, unless it changes what a poster says. Posters that
+  land as a phase are released together when the phase is done (Phase 6), not one by one.
 - **The first release**, `v0.1.0`, is the ten posters R1 to R8, T1 and T2 at blueprint `137d976` and mirror
   `2dea990069`, from the commit the plan went in at or the one after it.
 
@@ -247,7 +248,8 @@ questions the set cannot (what flows between stages; where the original work sit
 matrix third, the only frame that puts the paper and the formalisation side by side. The rest as wanted.
 
 **Done when** the three named posters build under the same checks as R1 to T2, in both sets, and the README
-and `diagrams/README.md` record them. Each poster is a MINOR release when it lands.
+and `diagrams/README.md` record them. One MINOR release, `v0.2.0`, once the phase is done, carrying the three
+posters together; no release per poster. Decided 2026.11.22, after F1 landed without one.
 
 **Started 2026.11.22.** The definitions poster is `F1-definitions-2026.11.22.svg`, `src/d_f1_definitions.py`,
 in both sets. Two things differ from the entry above. The consumption is drawn as a table, not as arrows: 24
