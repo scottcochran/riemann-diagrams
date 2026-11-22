@@ -2,9 +2,10 @@
 
 Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams the README records, and updated the
 same day as Phase 1, the five chapter posters that follow it, Phases 2, 3 and 5 were done. It is a plan, not a
-record: nothing below is built unless the README says so. Four of its first five phases are done; what is left
-is Phase 4, which waits on a machine, two hand steps under Phase 5, Phase 6, other frames to draw the same
-sources in, Phase 7, links between the posters on the Pages site, and the decisions under "Open" at the end.
+record: nothing below is built unless the README says so. Phases 1, 2, 3, 5 and 6 are done, the last with
+two of its eight posters waiting on things outside this repository; what is left is Phase 4, which waits on a
+machine, two hand steps under Phase 5, Phase 7, links between the posters on the Pages site, and the decisions
+under "Open" at the end.
 
 ## Goal
 
@@ -340,6 +341,11 @@ checks the depth histogram, the unreached statements and that the two chains are
 
 With F4, F5 and F6 the phase's buildable posters are in. The two that remain, change between pins and the
 declarations under a statement, wait on a blueprint move and on Phase 4.
+
+**Done 2026.11.22**, six of eight: F1 to F6 build in both sets under the same checks as R1 to T2, and the
+READMEs record them. Change between pins waits on the first pin move; the declarations under a statement
+wait on Phase 4. `v0.2.0` is cut from the commit this note goes in at, carrying the six posters and, since
+every file changed, the embedded fonts, the grey page and the sentence guards of the same day.
 
 ### Phase 7: links
 
