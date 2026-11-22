@@ -47,8 +47,9 @@ theorem get full cards, the rest short ones.
 
 ## Map mode
 
-[map/](map/) holds the same sixteen posters built with `--map`: nothing of the
-blueprint's text and nothing of the formal proof's source is quoted. Each card
+[map/](map/) holds the same sixteen posters built with `--map`, named
+`map-<id>-<slug>-<date>.svg`: nothing of the blueprint's text and nothing of
+the formal proof's source is quoted. Each card
 keeps the statement's title, id, kind, provenance, Lean name and file location,
 every edge, and a count of the paragraphs the blueprint spends on it; the
 section and chapter cards keep their titles and counts. The map set is the form
@@ -165,7 +166,7 @@ four files the generator reads.
 | `src/d_f4_literature.py` | F4: the references by decade, citations and upward cones; `N_REFS`, `YEARS`, `N_CITING`, `TOP` |
 | `src/d_f5_sections.py` | F5: the sections chapter by chapter, laid out by their edges; `EXPECTED`, `UPWARD` |
 | `src/d_f6_depth.py` | F6: the wheel, rings by depth and sectors by chapter; `EXPECTED_DEPTHS`, `UNREACHED` |
-| `map/` | the map set, and its own `manifest.json` |
+| `map/` | the map set, as `map-*.svg`, and its own `manifest.json` |
 | `TEXT.md`, `PAGE.md` | where each kind of text on a poster comes from; how the light page's grey was chosen |
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same

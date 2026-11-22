@@ -5,7 +5,8 @@ Each diagram is a module diagrams/src/d_<id>_<slug>.py exposing ID, SLUG and bui
 riemann-blueprint, its lean-facts.json and the mirror's Main.lean and Statements.lean at build time, and fails if
 they disagree with what the diagram draws. Output: diagrams/<ID>-<slug>-<DATE>.svg. Run with no arguments for all,
 or with ids (R1 R2). With --map, the map mode: nothing of the blueprint or the proof is quoted, and the output
-goes to diagrams/map/. Standard library only. Use Python 3.12 or later: sum() over floats changed in 3.12, and with it
+goes to diagrams/map/ as map-<ID>-<slug>-<DATE>.svg, so that a map poster has the same name in the tree, on the
+Pages site and among a release's flat assets. Standard library only. Use Python 3.12 or later: sum() over floats changed in 3.12, and with it
 the coordinates.
 
     uv run python diagrams/gen-diagrams.py
@@ -47,7 +48,7 @@ def main(argv):
             print(f"ERROR {name}: {e!r}")
             failed += 1
             continue
-        out = out_dir / f"{m.ID}-{m.SLUG}-{DATE}.svg"
+        out = out_dir / f"{'map-' if MAP else ''}{m.ID}-{m.SLUG}-{DATE}.svg"
         out.write_text(svg, encoding="utf-8")
         print(out.relative_to(HERE.parent))
         manifest[m.ID] = {"file": out.name, "title": canvas.title, **canvas.stats()}

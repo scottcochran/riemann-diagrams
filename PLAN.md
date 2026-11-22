@@ -391,7 +391,9 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   `R3-….svg`, and each resolves within its own set in the tree, on the site and in a release alike. The release
   workflow and the Pages check copy files as they are, without renaming; the asset names `v0.1.x` cited do not
   change; only the tree's and the site's map paths gain the prefix, which the README and the Pages index follow.
-  This rename lands first, on its own, before any poster carries a link.
+  This rename lands first, on its own, before any poster carries a link. Done 2026.11.22: the generator writes
+  `diagrams/map/map-*.svg`, the release and Pages workflows copy without renaming, and the release notes read the
+  name from the manifest. The map SVGs are byte for byte what they were; only their names moved.
 - **Links that leave the set cannot be pinned by a relative path**, so they are absolute: the
   mirror at `MIRROR_COMMIT`, the blueprint as open decision 6 settles, and never the Pages site, which holds one
   release at a time and would send a reader of an old release to the current posters.
