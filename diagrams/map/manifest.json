@@ -5,6 +5,12 @@
   "cards": 24,
   "arrows": 18
  },
+ "F2": {
+  "file": "F2-new-2026.11.22.svg",
+  "title": "What is new: the 200 statements new in Alpöge's proof, where they sit, how they lean on each other, and what they take from the literature",
+  "cards": 9,
+  "arrows": 11
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.22.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

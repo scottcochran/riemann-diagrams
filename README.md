@@ -43,6 +43,10 @@ and zoom in.
   the proof in a second frame, its 24 definitions rather than its theorems,
   each above the definitions stated in terms of it, with a table of which
   chapter makes each one and which chapters consume it.
+- [What is new](diagrams/F2-new-2026.11.22.svg): the proof organised by
+  provenance, its 200 new statements by chapter and section, how the new
+  work of one chapter leans on another's, what it takes from the literature
+  and where it reaches back into it.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 

@@ -452,11 +452,13 @@ def code(s, limit=34):
 
 
 # ------------------------------------------------------------------------------------------------ arrows
-def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=()):
+def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), labels=None):
     """Draw every (a, b) of `edges` as an arrow from the bottom (or top) of card a to the top of card b: a is
     drawn above b, or in the same row. Adjacent cards in a row are joined across the gutter; other pairs in a row
     go over the lane above; cards one row apart go through the lane between; farther pairs drop through a free
-    gutter, or round a margin. Edges sharing a lane or a gutter are staggered."""
+    gutter, or round a margin. Edges sharing a lane or a gutter are staggered. `labels`: (a, b) -> text set on
+    the arrow's lane segment."""
+    labels = labels or {}
     rows = {}
     for k, r in rowof.items():
         rows.setdefault(r, []).append(k)
@@ -527,23 +529,25 @@ def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=()):
     for kind, a, b, data in plans:
         acc = "amber" if (a, b) in dashed else accent(a)
         dash = "7 5" if (a, b) in dashed else None
+        lab = {"label": labels[(a, b)], "lpos": 0.5} if (a, b) in labels else {}
         xa, ya, wa, ha = pos[a]
         xb, yb, wb, hb = pos[b]
         if kind == "across":
             yy = ya + 100
             pts = [(xa + wa, yy), (xb, yy)] if xa < xb else [(xa, yy), (xb + wb, yy)]
-            c.arrow(pts, acc, dash=dash)
+            c.arrow(pts, acc, dash=dash, **lab)
         elif kind == "over":
             ly = lane_y(data, a, b)
-            c.arrow([(ex[a][b], ya), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc, dash=dash)
+            c.arrow([(ex[a][b], ya), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc, dash=dash, **lab)
         elif kind == "down":
             ly = lane_y(data, a, b)
             if abs(ex[a][b] - en[b][a]) < 2:
-                c.arrow([(ex[a][b], ya + ha), (en[b][a], yb)], acc, dash=dash)
+                c.arrow([(ex[a][b], ya + ha), (en[b][a], yb)], acc, dash=dash, **lab)
             else:
-                c.arrow([(ex[a][b], ya + ha), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc, dash=dash)
+                c.arrow([(ex[a][b], ya + ha), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc, dash=dash,
+                        **lab)
         else:
             gx = gx_of(data, a, b)
             l1, l2 = lane_y(rowof[a], a, b), lane_y(rowof[b] - 1, a, b)
             c.arrow([(ex[a][b], ya + ha), (ex[a][b], l1), (gx, l1), (gx, l2), (en[b][a], l2), (en[b][a], yb)], acc,
-                    dash=dash)
+                    dash=dash, **lab)

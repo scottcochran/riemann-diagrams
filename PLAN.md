@@ -15,9 +15,9 @@ what the diagram draws.
 
 R1 shows the top of the tree (the five theorems and the chain of reductions), R2 the map of the chapters, R3 to
 R8 the inside of each stage chapter, lemma by lemma, and T1 and T2 one chain each through the whole, read as a
-proof, and F1 the definitions in a frame of their own. What is drawn is now every statement of the blueprint but
-the published-results chapter, and CI rebuilds all eleven posters from the pinned sources on every push. The next
-level is to make the edges true (Phase 4).
+proof, F1 the definitions in a frame of their own, and F2 the new work by chapter and section. What is drawn is
+now every statement of the blueprint but the published-results chapter, and CI rebuilds all twelve posters from
+the pinned sources on every push. The next level is to make the edges true (Phase 4).
 
 ## Rules the design keeps
 
@@ -259,8 +259,21 @@ and the same counts stand in each card's footer. And the grid gained a frame of 
 joined by a `uses` edge are laid out by `chapter.layout`, the families chapter's tower from auxiliary field
 data to family data running down seven rows, and the 10 that no edge touches fill the emptiest rows. The
 build checks the 18 definition-to-definition edges (`EXPECTED`), the three interface definitions under
-`architecture/sec-outline-interfaces/` (`INTERFACES`), and the count of definitions. The what-is-new poster
-and the chapter-against-module matrix are next.
+`architecture/sec-outline-interfaces/` (`INTERFACES`), and the count of definitions.
+
+The what-is-new poster is `F2-new-2026.11.22.svg`, `src/d_f2_new.py`, in both sets (9 chapter
+cards, 11 arrows). It is not the poster the entry above describes: 200 new statements with 263
+proof-use edges among them and chains 16 long are three times R5, and a card each would not be legible. So it
+works one level up, the chapters as cards holding only their new work, with the proof uses between the new
+statements of different chapters as labelled arrows and as a 9 × 9 matrix, every section by provenance as the
+map of where the new work sits, the twenty inputs the new work leans on most, and the 24 new lemmas that
+published results' proofs use. Two findings the data forced into the design: proof uses among new statements
+run upward against R2's chapter order in five chapter pairs (the outline's local-parameters theorem, used by
+the Sha and Galois chapters, is most of it), so those are listed and counted rather than drawn; and the
+published-results chapter has two new lemmas of its own. The build checks the provenance counts (`COUNTS`),
+the cross-chapter pair counts (`EXPECTED`), the 16 tops of the new work (`TOPS`), and the provenance of the
+three interface definitions. The arrow router gained per-edge labels for it; the other posters are unchanged
+to the byte. The chapter-against-module matrix is next.
 
 ## Risks
 
