@@ -34,6 +34,11 @@ and zoom in.
   [heights](diagrams/R6-heights-2026.11.22.svg),
   [the Tate–Shafarevich bound](diagrams/R7-sha-2026.11.22.svg) and
   [Galois representations](diagrams/R8-galois-2026.11.22.svg).
+- Two traces, one chain of reductions each as cards in reading order:
+  [the deepest chain](diagrams/T1-trace-deepest-2026.11.22.svg), eleven
+  statements from a local lattice count up to the Riemann Hypothesis, and
+  [the chain to Landau's theorem](diagrams/T2-trace-landau-2026.11.22.svg),
+  the analytic end of the proof in six steps.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 
@@ -44,16 +49,15 @@ the two disagree with what is drawn: see [diagrams/README.md](diagrams/README.md
 
 The dependency graph drawn as a state space: the theorems of `Main.lean` are
 the start, a `uses` edge is a step, and a statement's depth is the number of
-steps from the main theorems.
+steps from the main theorems. The single-chain traces this family had are
+retired in favour of the T posters above; `trace_proof.py` still prints and
+draws a chain on request.
 
 | File | What it shows |
 |---|---|
 | `riemann_chapters.png` | the nine chapters of the blueprint and which chapters use which, with statement counts by provenance |
 | `riemann_depth3.png` | every statement within 3 reductions of the main theorems (27 statements); the cut-off boxes say how many statements lie below |
 | `riemann_depth4.png` / `.svg` | the same to depth 4 (147 statements): the wide poster |
-| `riemann_trace.png` | the deepest chain of reductions: 10 steps from `riemannHypothesis` down to a lemma on local lattice counts |
-| `riemann_trace_first_thm-half-plane.png` | the chain found by following the first proof use at each step, from the half-plane theorem |
-| `riemann_trace_to_thm-landau-windows.png` | the 5-step chain from `riemannHypothesis` to Landau's theorem, the analytic end of the proof |
 | `riemann_full.dot` / `.svg` | all 416 statements and 2004 edges; each node links to its page on the blueprint site |
 
 Every box is one statement: its title, blueprint id, kind and provenance,
@@ -63,8 +67,7 @@ The theorems of `Main.lean` are yellow; the other fills are the blueprint
 site's own colours for published, modified and new results. Solid edges are
 proof uses (the reductions), dashed edges are statement uses (the definitions
 and hypotheses a statement is written in). Definitions have dashed borders,
-remarks dotted. A trace ends in a red box naming the statement's source in
-the literature.
+remarks dotted.
 
 ## Running the Graphviz scripts
 
@@ -108,7 +111,7 @@ Depth | Statements | Published | Modified | New
 |---|---|
 | `blueprint_graph.py` | reads the blueprint into a graph: nodes, `uses` edges, depths, traces, box labels and colours |
 | `visualize_theorems.py` | the depth-limited tree, the chapter overview and the full graph |
-| `trace_proof.py` | a single chain of reductions |
+| `trace_proof.py` | prints a single chain of reductions, and draws it with Graphviz on request |
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
 
