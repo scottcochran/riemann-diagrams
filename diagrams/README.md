@@ -30,6 +30,10 @@ same; only the quotations are left out, and a map poster says so in its subtitle
 
 ## Where the content comes from
 
+[TEXT.md](TEXT.md) goes through every kind of text on a poster: what is quoted from the blueprint's prose, what
+is read from its front matter and the Lean facts, what is quoted from the formal proof, and what is written in
+the poster modules, with the limits and transformations each one passes through.
+
 The diagrams are a second reading of the blueprint, and the generator is strict about it. At build time it reads
 the [riemann-blueprint](../../riemann-blueprint/) (every drawn statement's front matter, body and proof, the
 chapter and section files, and `lean-facts.json`) and the
