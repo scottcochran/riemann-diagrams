@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Graphviz source files the Python package writes before rendering; a successful
+# run deletes them (cleanup=True), a failed one leaves them beside the output
+riemann_*.gv
+riemann_depth[0-9]*
+!riemann_depth[0-9]*.png
+!riemann_depth[0-9]*.svg
+riemann_trace*
+!riemann_trace*.png
+riemann_chapters
+riemann_full
+!riemann_full.dot
+!riemann_full.svg
+
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/

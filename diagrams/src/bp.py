@@ -1,0 +1,446 @@
+"""Reading the blueprint, the Lean facts and the mirror at build time, and drawing a Lean node.
+
+Everything a diagram says about a statement is derived here from the files, strictly: a blueprint checkout at
+another commit than the one the diagrams were written against, a Lean name without a signature in lean-facts.json,
+a Main.lean theorem that no drawn node carries, or a title that does not fit its card raises, so the generator prints
+ERROR instead of drawing something stale.
+
+  load()                     the blueprint as a graph (blueprint_graph.Graph), after the commit checks
+  read_mirror()              the five theorems of Main.lean and the Prop definitions of Statements.lean
+  body(g, id) / proof(g, id) the Markdown of a statement and of its proof
+  rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
+  lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
+  node(canvas, ...)          a card: title, pill, Lean panel, the statement in italics, the proof as bullets, footer
+  arrows(canvas, ...)        the arrows between cards, routed through the lanes and gutters of a grid
+"""
+import json
+import pathlib
+import re
+import subprocess
+import sys
+from xml.sax.saxutils import escape
+
+import lib
+from lib import MONO, MONO_EM, fill, fs, render_line, wrap
+
+ROOT = pathlib.Path(__file__).resolve().parents[2]          # riemann-diagrams
+sys.path.insert(0, str(ROOT))
+from blueprint_graph import Graph, default_blueprint_dir, MAIN_LEAN_THEOREMS  # noqa: E402
+
+BLUEPRINT = pathlib.Path(default_blueprint_dir())
+MIRROR = ROOT.parent / "leanprover-community" / "riemann-hypothesis"
+
+# The state the diagrams were written against. The build fails if the blueprint checkout is at another commit, or
+# if it pins the mirror at another one; bump these after reading what changed.
+BP_COMMIT = "137d976"
+MIRROR_PIN = "8c90877c"
+
+PROV_ACCENT = {"new": "green", "modified": "amber", "published": "blue", None: "grey"}
+PROV_LABEL = {"new": "new in Alpöge's proof", "modified": "modified from the literature", "published": "published",
+              None: "unlabelled"}
+PROV_SHORT = {"new": "new", "modified": "modified", "published": "published", None: "unlabelled"}
+RESULTS = ("theorem", "proposition", "lemma", "corollary")
+
+
+# ------------------------------------------------------------------------------------------------ reading
+def git_short(path):
+    out = subprocess.run(["git", "-C", str(path), "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
+    if out.returncode:
+        raise ValueError(f"{path}: not a git checkout")
+    dirty = subprocess.run(["git", "-C", str(path), "status", "--porcelain"], capture_output=True, text=True).stdout
+    return out.stdout.strip() + ("+" if dirty.strip() else "")
+
+
+def load():
+    if not BLUEPRINT.is_dir():
+        raise ValueError(f"no blueprint at {BLUEPRINT}; set RIEMANN_BLUEPRINT")
+    rev = git_short(BLUEPRINT.parent)
+    if rev.rstrip("+") != BP_COMMIT:
+        raise ValueError(f"the blueprint is at {rev}, the diagrams were written against {BP_COMMIT}")
+    lake = (BLUEPRINT.parent / "lakefile.toml").read_text(encoding="utf-8")
+    pin = re.search(r'name = "tree"\ngit = ".*?riemann-hypothesis"\nrev = "(\w+)"', lake)
+    if not pin or not pin.group(1).startswith(MIRROR_PIN):
+        raise ValueError(f"the blueprint pins the mirror at {pin and pin.group(1)}, the diagrams expect {MIRROR_PIN}")
+    g = Graph(str(BLUEPRINT))
+    if not g.lean_facts:
+        raise ValueError("no lean-facts.json beside the blueprint: no Lean signatures to draw")
+    g.bp_commit, g.mirror_pin = rev, MIRROR_PIN
+    return g
+
+
+def read_mirror():
+    """The theorems of Main.lean and the Prop definitions of Statements.lean, checked against comparator.json."""
+    main = (MIRROR / "src" / "Main.lean").read_text(encoding="utf-8").splitlines()
+    theorems = []
+    for i, l in enumerate(main):
+        m = re.match(r"theorem (\w+) : ([\w.]+) := (.+)$", l)
+        if m:
+            theorems.append({"name": m.group(1), "prop": m.group(2), "proof": m.group(3), "line": i + 1, "src": l})
+        elif l.strip() and not l.startswith("import"):
+            raise ValueError(f"Main.lean:{i + 1}: cannot parse {l!r}")
+    stmts = (MIRROR / "src" / "Statements.lean").read_text(encoding="utf-8").splitlines()
+    props, cur = {}, None
+    for i, l in enumerate(stmts):
+        m = re.match(r"def (\w+) : Prop :=", l)
+        if m:
+            cur = m.group(1)
+            props[cur] = {"lines": [l], "line": i + 1}
+        elif cur and l.strip():
+            props[cur]["lines"].append(l)
+        else:
+            cur = None
+    cfg = json.loads((MIRROR / "comparator.json").read_text(encoding="utf-8"))
+    if cfg["theorem_names"] != [t["name"] for t in theorems]:
+        raise ValueError("comparator.json does not name the theorems of Main.lean in order")
+    for t in theorems:
+        if t["prop"] not in props and t["prop"] != "RiemannHypothesis":
+            raise ValueError(f"Main.lean: {t['name']} is stated with {t['prop']}, which Statements.lean does not define")
+    if set(theorems[i]["name"] for i in range(len(theorems))) != set(MAIN_LEAN_THEOREMS):
+        raise ValueError("Main.lean's theorems are not the ones blueprint_graph.MAIN_LEAN_THEOREMS maps to nodes")
+    return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"], "commit": git_short(MIRROR)}
+
+
+def _text_after_front_matter(path):
+    text = path.read_text(encoding="utf-8")
+    return text.split("+++", 2)[2].strip()
+
+
+def body(g, oid):
+    return _text_after_front_matter(BLUEPRINT / g.nodes[oid]["_path"])
+
+
+def proof(g, oid):
+    """The proof's Markdown, or None when the blueprint has no proof file for the statement."""
+    p = BLUEPRINT / g.nodes[oid]["_path"]
+    p = p.parent.with_suffix(".proof.md") if p.name == "_section.md" else p.with_suffix(".proof.md")
+    return _text_after_front_matter(p) if p.exists() else None
+
+
+# ------------------------------------------------------------------------------------------------ Markdown to rich text
+_MACROS = [
+    (r"\\tfrac\s*(\d)(\d)", r"\1/\2"), (r"\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}", r"(\1)/(\2)"),
+    (r"\\(?:mathrm|operatorname|text|mathbb|mathcal|mathbf|widehat|overline|bar|hat)\{([^{}]*)\}", r"\1"),
+    (r"\\big[lr]?|\\Big[lr]?|\\left|\\right|\\,|\;|\\!|\\quad|\\qquad|\\ ", " "),
+    (r"\\Re\b", "Re"), (r"\\Im\b", "Im"), (r"\\log\b", "log"), (r"\\cos\b", "cos"), (r"\\sin\b", "sin"),
+    (r"\\exp\b", "exp"), (r"\\deg\b", "deg"), (r"\\det\b", "det"), (r"\\dim\b", "dim"), (r"\\min\b", "min"),
+    (r"\\max\b", "max"), (r"\\rec\b", "rec"), (r"\\Res\b", "Res"), (r"\\Gal\b", "Gal"), (r"\\GL\b", "GL"),
+    (r"\\U\b", "U"), (r"\\bmod\b", "mod"), (r"\\pmod\b", "mod"), (r"\\le\b", "≤"), (r"\\leq\b", "≤"),
+    (r"\\ge\b", "≥"), (r"\\geq\b", "≥"), (r"\\neq\b", "≠"), (r"\\ne\b", "≠"), (r"\\to\b", "→"),
+    (r"\\rightarrow\b", "→"), (r"\\mapsto\b", "↦"), (r"\\times\b", "×"), (r"\\in\b", "∈"), (r"\\notin\b", "∉"),
+    (r"\\subset\b", "⊂"), (r"\\subseteq\b", "⊆"), (r"\\cup\b", "∪"), (r"\\cap\b", "∩"), (r"\\sum\b", "Σ"),
+    (r"\\prod\b", "Π"), (r"\\int\b", "∫"), (r"\\infty\b", "∞"), (r"\\equiv\b", "≡"), (r"\\pm\b", "±"),
+    (r"\\asymp\b", "≍"), (r"\\ll\b", "≪"), (r"\\gg\b", "≫"), (r"\\sim\b", "~"), (r"\\cdot\b", "·"),
+    (r"\\cdots\b", "⋯"), (r"\\dots\b", "…"), (r"\\ldots\b", "…"), (r"\\lfloor\b", "⌊"), (r"\\rfloor\b", "⌋"),
+    (r"\\langle\b", "⟨"), (r"\\rangle\b", "⟩"), (r"\\mid\b", "|"), (r"\\forall\b", "∀"), (r"\\exists\b", "∃"),
+    (r"\\circ\b", "∘"), (r"\\otimes\b", "⊗"), (r"\\oplus\b", "⊕"), (r"\\partial\b", "∂"), (r"\\nabla\b", "∇"),
+    (r"\\Q\b", "ℚ"), (r"\\Z\b", "ℤ"), (r"\\C\b", "ℂ"), (r"\\R\b", "ℝ"), (r"\\N\b", "ℕ"), (r"\\A\b", "𝔸"),
+    (r"\\Qp\b", "ℚ_p"), (r"\\Ql\b", "ℚ_l"), (r"\\Qlbar\b", "ℚ̄_l"), (r"\\Qbar\b", "ℚ̄"), (r"\\Fq\b", "𝔽_q"),
+    (r"\\alpha\b", "α"), (r"\\beta\b", "β"), (r"\\gamma\b", "γ"), (r"\\Gamma\b", "Γ"), (r"\\delta\b", "δ"),
+    (r"\\Delta\b", "Δ"), (r"\\varepsilon\b", "ε"), (r"\\epsilon\b", "ε"), (r"\\zeta\b", "ζ"), (r"\\eta\b", "η"),
+    (r"\\theta\b", "θ"), (r"\\Theta\b", "Θ"), (r"\\iota\b", "ι"), (r"\\kappa\b", "κ"), (r"\\lambda\b", "λ"),
+    (r"\\Lambda\b", "Λ"), (r"\\mu\b", "μ"), (r"\\nu\b", "ν"), (r"\\xi\b", "ξ"), (r"\\pi\b", "π"), (r"\\Pi\b", "Π"),
+    (r"\\rho\b", "ρ"), (r"\\sigma\b", "σ"), (r"\\Sigma\b", "Σ"), (r"\\tau\b", "τ"), (r"\\phi\b", "φ"),
+    (r"\\varphi\b", "φ"), (r"\\Phi\b", "Φ"), (r"\\chi\b", "χ"), (r"\\psi\b", "ψ"), (r"\\Psi\b", "Ψ"),
+    (r"\\omega\b", "ω"), (r"\\Omega\b", "Ω"), (r"\\ell\b", "ℓ"), (r"\\hbar\b", "ħ"),
+]
+
+
+def latex(s):
+    """A LaTeX run as readable Unicode. Not typesetting: enough to read the statement off a poster."""
+    s = s.replace("\\\\", " ")
+    for pat, rep in _MACROS:
+        s = re.sub(pat, rep, s)
+    s = re.sub(r"[\^_]\{([^{}]*)\}", lambda m: ("^" if m.group(0)[0] == "^" else "_") + (
+        m.group(1) if len(m.group(1)) <= 1 else "(" + m.group(1) + ")"), s)
+    s = re.sub(r"\\([A-Za-z]+)", r"\1", s)          # an unknown macro keeps its name
+    s = s.replace("{", "").replace("}", "")
+    return " ".join(s.split())
+
+
+def rich(md, join=" "):
+    """Blueprint Markdown (one paragraph) to rich text: links as code, maths as code, emphasis dropped."""
+    s = " ".join(md.split())
+    s = re.sub(r"\$\$(.+?)\$\$", lambda m: " `" + latex(m.group(1)) + "` ", s)
+    s = re.sub(r"\$(.+?)\$", lambda m: "`" + latex(m.group(1)) + "`", s)
+    s = re.sub(r"\[([A-Za-z0-9][\w-]*)\]", r"`\1`", s)
+    s = re.sub(r"(?<![*\w])\*(?!\*)([^*]+?)\*(?!\*)", r"\1", s)
+    s = re.sub(r"``+", "`", s)
+    s = re.sub(r"` +`", " ", s)
+    return " ".join(s.split())
+
+
+def paragraphs(md):
+    """Paragraphs of a Markdown body; a numbered or bulleted item is a paragraph of its own."""
+    out = []
+    for block in re.split(r"\n\s*\n", md.strip()):
+        for item in re.split(r"\n(?=\s*(?:\d+\.|[-*])\s)", block):
+            item = re.sub(r"^\s*(?:\d+\.|[-*])\s+", "", item.strip())
+            if item:
+                out.append(item)
+    return out
+
+
+def abridge(s, limit):
+    """Cut rich text at a sentence end under `limit` characters, never inside a code run."""
+    if len(s) <= limit:
+        return s
+    cut = max(s.rfind(". ", 0, limit), s.rfind("; ", 0, limit))
+    cut = cut + 1 if cut > limit // 3 else s.rfind(" ", 0, limit)
+    head = s[:cut]
+    if head.count("`") % 2:
+        head = head[:head.rfind("`")].rstrip()
+    return head.rstrip(" ,;:") + " …"
+
+
+# ------------------------------------------------------------------------------------------------ Lean
+def lean_block(sig, cols, max_lines=9):
+    """A Lean signature as formula lines (indent, text, is_comment), wrapped at `cols` characters. A wrapped line
+    continues four columns in from the line it came from."""
+    out = []
+    for src in sig.splitlines():
+        src = src.rstrip()
+        if not src:
+            continue
+        ind = len(src) - len(src.lstrip(" "))
+        line, cur, cont = [], ind, ind
+        words = []
+        for w in src.strip().split(" "):          # an identifier longer than the panel is broken where it must be
+            while len(w) > cols - ind - 4:
+                words.append(w[:cols - ind - 4])
+                w = w[cols - ind - 4:]
+            words.append(w)
+        for w in words:
+            if line and cur + 1 + len(w) > cols:
+                out.append((cont, " ".join(line), False))
+                cont = ind + 4
+                line, cur = [w], cont + len(w)
+            else:
+                cur += (1 if line else 0) + len(w)
+                line.append(w)
+        out.append((cont, " ".join(line), False))
+    if len(out) > max_lines:
+        rest = len(out) - (max_lines - 1)
+        out = out[:max_lines - 1] + [(out[max_lines - 1][0], f"… {rest} more lines", True)]
+    return out
+
+
+def lean_lines(lines, cols, max_lines=12):
+    return lean_block("\n".join(lines), cols, max_lines)
+
+
+def columns(w, pad=16, fpad=11, fsize=13.5):
+    """How many monospace characters fit the formula panel of a card of width w."""
+    return int((w - 2 * pad - 2 * fpad) / (MONO_EM * fsize))
+
+
+# ------------------------------------------------------------------------------------------------ drawing
+def mono_width(s, size):
+    return len(s) * MONO_EM * size
+
+
+def mono_line(x, y, s, size, color="ink", bold=False, italic=False):
+    """A line of code-font text. Registers itself for the overlap check."""
+    lib.TEXT_BOXES.append((x, y - size * 0.75, x + mono_width(s, size), y + size * 0.2, s))
+    b = ' font-weight="bold"' if bold else ""
+    it = ' font-style="italic"' if italic else ""
+    return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{MONO}" font-size="{size}"{b}{it} '
+            f'xml:space="preserve" {fill(color)}>{escape(s)}</text>')
+
+
+def formula_width(formula, size):
+    return max(mono_width(" " * ind + t, size) for ind, t, _ in formula) if formula else 0
+
+
+def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foot=(), h=None, draw=True,
+         size=13.5, fsize=13.5, tsize=17, pad=16, dash=None, title_mono=False):
+    """A card. formula: lean_block() output. say: a rich string set in italics. bullets and foot: rich strings.
+    Returns the height; draw=False measures only."""
+    inner = w - 2 * pad
+    lead, flead, fpad = round(size * 1.42, 1), round(fsize * 1.5, 1), 11
+    pw = lib.text_width(pill, 11.5, bold=True) + 18 + 12 if pill else 0
+    while True:                                   # a long title is set smaller, down to 14 px, before failing
+        tw = (mono_width(name, tsize) if title_mono else lib.text_width(name, tsize, bold=True)) + pw
+        if tw <= inner + 0.5:
+            break
+        if tsize <= 14:
+            raise ValueError(f"node {name}: the title needs {tw:.0f} px, the card has {inner:.0f}")
+        tsize -= 1
+    need = formula_width(formula, fsize) + 2 * fpad
+    if need > inner + 0.5:
+        raise ValueError(f"node {name}: formula needs {need:.0f} px, the card has {inner:.0f}")
+    say_lines = wrap(say, inner - 4, size) if say else []
+    blines = [wrap(b, inner - lib.width("•  ", size), size) for b in bullets]
+    flines = [wrap(f, inner, size - 1) for f in foot]
+    panel_h = len(formula) * flead + 2 * fpad - 5 if formula else 0
+    hh = pad + tsize + 12 + (panel_h + 12 if formula else 0)
+    if say_lines:
+        hh += len(say_lines) * lead + 8
+    for ls in blines:
+        hh += len(ls) * lead + 3
+    if flines:
+        hh += 10 + sum(len(ls) * round((size - 1) * 1.42, 1) + 2 for ls in flines)
+    hh += pad - 6
+    if h is not None:
+        hh = max(h, hh)
+    if not draw:
+        return hh
+    c.blocks.append((x, y, x + w, y + hh, "node " + name))
+    c.rect(x, y, w, hh, accent, dash=dash)
+    if title_mono:
+        c.add(mono_line(x + pad, y + pad + tsize - 3, name, tsize, accent, bold=True))
+    else:
+        c.add(render_line(x + pad, y + pad + tsize - 3, [(name, "b", None)], tsize, accent, bold=True))
+    if pill:
+        c.pill(x + w - pad, y + pad - 3, pill, accent, 11.5, anchor="end", solid=True)
+    cy = y + pad + tsize + 12
+    if formula:
+        c.add(f'<rect x="{x + pad:.1f}" y="{cy:.1f}" width="{inner:.1f}" height="{panel_h:.1f}" rx="6" '
+              f'{fs("bg", "line")} stroke-width="1"/>')
+        for i, (ind, t, is_comment) in enumerate(formula):
+            ly = cy + fpad + fsize - 1 + i * flead
+            lx = x + pad + fpad + ind * MONO_EM * fsize
+            c.add(mono_line(lx, ly, t, fsize, "faint" if is_comment else "ink", italic=is_comment))
+        cy += panel_h + 12
+    if say_lines:
+        for ln in say_lines:
+            c.add(render_line(x + pad + 2, cy + size - 1, ln, size, "muted").replace(
+                "<text ", '<text font-style="italic" ', 1))
+            cy += lead
+        cy += 8
+    for ls in blines:
+        for i, ln in enumerate(ls):
+            if i == 0:
+                c.add(render_line(x + pad, cy + size - 1, [("•", "b", None)], size, accent))
+            c.add(render_line(x + pad + lib.width("•  ", size), cy + size - 1, ln, size, "ink"))
+            cy += lead
+        cy += 3
+    if flines:
+        fy = y + hh - pad + 6 - sum(len(ls) * round((size - 1) * 1.42, 1) + 2 for ls in flines)
+        c.line(x + pad, fy - 6, x + w - pad, fy - 6, "line", sw=1)
+        for ls in flines:
+            for ln in ls:
+                c.add(render_line(x + pad, fy + size - 2, ln, size - 1, "muted"))
+                fy += round((size - 1) * 1.42, 1)
+            fy += 2
+    return hh
+
+
+def names(xs, limit=10):
+    """Ids as code runs, the first `limit` of them; the rest become a count."""
+    xs = list(xs)
+    head = ", ".join(code(x) for x in xs[:limit])
+    return head + (f" … and {len(xs) - limit} more" if len(xs) > limit else "")
+
+
+def code(s, limit=34):
+    """A code run that the wrapper can break: a path or dotted name longer than `limit` is split at its separators
+    into runs of about `limit` characters, so a long Lean name or file path folds instead of overflowing its card."""
+    if len(s) <= limit:
+        return f"`{s}`"
+    parts = re.split(r"(?<=[/.])", s)
+    runs, cur = [], ""
+    for p in parts:
+        if cur and len(cur) + len(p) > limit:
+            runs.append(cur)
+            cur = p
+        else:
+            cur += p
+    if cur:
+        runs.append(cur)
+    return " ".join(f"`{r}`" for r in runs)
+
+
+# ------------------------------------------------------------------------------------------------ arrows
+def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx):
+    """Draw every (a, b) of `edges` as an arrow from the bottom (or top) of card a to the top of card b: a is
+    drawn above b, or in the same row. Adjacent cards in a row are joined across the gutter; other pairs in a row
+    go over the lane above; cards one row apart go through the lane between; farther pairs drop through a free
+    gutter, or round a margin. Edges sharing a lane or a gutter are staggered."""
+    rows = {}
+    for k, r in rowof.items():
+        rows.setdefault(r, []).append(k)
+    top = {r: min(pos[k][1] for k in ks) for r, ks in rows.items()}
+    bot = {r: max(pos[k][1] + pos[k][3] for k in ks) for r, ks in rows.items()}
+
+    def cx(k):
+        return pos[k][0] + pos[k][2] / 2
+
+    outs, ins = {}, {}
+    for a, b in edges:
+        outs.setdefault(a, []).append(b)
+        ins.setdefault(b, []).append(a)
+
+    def spread(k, others):
+        srt = sorted(set(others), key=lambda o: (cx(o), o))
+        x, _, w, _ = pos[k]
+        return {o: x + w * (i + 1) / (len(srt) + 1) for i, o in enumerate(srt)}
+
+    ex = {a: spread(a, bs) for a, bs in outs.items()}
+    en = {b: spread(b, as_) for b, as_ in ins.items()}
+
+    gutter_x = [colx(i) - g / 2 for i in range(1, ncols)]
+
+    def gutter_free(gx, r):
+        return all(not (pos[k][0] < gx < pos[k][0] + pos[k][2]) for k in rows.get(r, []))
+
+    plans = []                 # (kind, a, b, data)
+    lane_use, gutter_use = {}, {}
+    for a, b in edges:
+        ra, rb = rowof[a], rowof[b]
+        if ra > rb:
+            raise ValueError(f"arrow {a} -> {b}: {a} is drawn below {b}")
+        if ra == rb:
+            xa, _, wa, _ = pos[a]
+            xb, _, wb, _ = pos[b]
+            if abs(xa + wa + g - xb) < 1 or abs(xb + wb + g - xa) < 1:
+                plans.append(("across", a, b, None))
+            else:
+                lane_use.setdefault(ra - 1, []).append((a, b))
+                plans.append(("over", a, b, ra - 1))
+        elif rb == ra + 1:
+            lane_use.setdefault(ra, []).append((a, b))
+            plans.append(("down", a, b, ra))
+        else:
+            free = [gx for gx in gutter_x if all(gutter_free(gx, r) for r in range(ra + 1, rb))]
+            free += [x0 - 28, x1 + 28]
+            gx = min(free, key=lambda v: abs(v - ex[a][b]))
+            lane_use.setdefault(ra, []).append((a, b))
+            lane_use.setdefault(rb - 1, []).append((a, b))
+            gutter_use.setdefault(gx, []).append((a, b))
+            plans.append(("drop", a, b, gx))
+
+    def lane_y(r, a, b):
+        es = sorted(lane_use[r], key=lambda e: (ex[e[0]][e[1]], e))
+        i, n = es.index((a, b)), len(es)
+        if r < 0 or r not in bot:
+            base = top[r + 1] - vg
+        else:
+            base = bot[r]
+        return base + vg * (i + 1) / (n + 1)
+
+    def gx_of(gx, a, b):
+        es = sorted(gutter_use[gx])
+        i, n = es.index((a, b)), len(es)
+        return gx + (i - (n - 1) / 2) * 10
+
+    for kind, a, b, data in plans:
+        acc = accent(a)
+        xa, ya, wa, ha = pos[a]
+        xb, yb, wb, hb = pos[b]
+        if kind == "across":
+            yy = ya + 100
+            pts = [(xa + wa, yy), (xb, yy)] if xa < xb else [(xa, yy), (xb + wb, yy)]
+            c.arrow(pts, acc)
+        elif kind == "over":
+            ly = lane_y(data, a, b)
+            c.arrow([(ex[a][b], ya), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc)
+        elif kind == "down":
+            ly = lane_y(data, a, b)
+            if abs(ex[a][b] - en[b][a]) < 2:
+                c.arrow([(ex[a][b], ya + ha), (en[b][a], yb)], acc)
+            else:
+                c.arrow([(ex[a][b], ya + ha), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc)
+        else:
+            gx = gx_of(data, a, b)
+            l1, l2 = lane_y(rowof[a], a, b), lane_y(rowof[b] - 1, a, b)
+            c.arrow([(ex[a][b], ya + ha), (ex[a][b], l1), (gx, l1), (gx, l2), (en[b][a], l2), (en[b][a], yb)], acc)
