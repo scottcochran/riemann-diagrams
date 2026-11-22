@@ -84,7 +84,8 @@ three files the generator reads.
 
 ```
 gen-diagrams.py              the generator
-src/lib.py, metrics.py       the drawing library: measured and wrapped text, cards, tables, arrows, two themes
+src/lib.py                   the drawing library: measured and wrapped text, cards, tables, arrows, two themes
+src/fonts/, metrics.py       the Noto faces every poster embeds, and their advance widths (see Fonts, below)
 src/bp.py                    reads the blueprint, the Lean facts and the mirror; Markdown and LaTeX to rich text;
                              the Lean card; the arrow router
 src/d_r1_main_theorems.py    R1
@@ -97,6 +98,32 @@ src/d_t1_deepest.py, d_t2_landau.py   T1 and T2, each holding the chain it expec
 src/d_f1_definitions.py      F1: the definitions, their EXPECTED uses, the INTERFACES, the packing of the grid
 ```
 
-`lib.py` and `metrics.py` are the drawing library of the TOPAK diagram family (Apache-2.0, same author), with
-the brand and date changed. `bp.py` is new here: the source is a blueprint, and the arrows are routed rather than
+`lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same author), with the brand, the date
+and the fonts changed. `bp.py` is new here: the source is a blueprint, and the arrows are routed rather than
 placed by hand, because a proof graph has many of them.
+
+## Fonts
+
+Every poster carries its fonts: Noto Sans (regular, bold, italic) for the text, Noto Sans Mono (regular, bold)
+for code and Lean, and Noto Sans Math for the symbols the other two lack, each subset to about 500 characters
+and embedded as WOFF2 in the poster's `<style>`. A poster so looks the same on every machine, opened on its own,
+on GitHub Pages or inside an `<img>`, at about 175 KB of base64 per poster. The arrows of code are drawn from
+Noto Sans Math too: Noto Sans Mono's are a third of an em tall.
+
+`src/metrics.py` holds the advance width of every character in every face, so text is wrapped and boxed at the
+width the browser draws it; kerning and ligatures are left out of the subsets to keep that exact. Measured in
+Chromium over all twenty-two posters, no line of 14,965 differs from its computed width by more than 0.7 px.
+A character outside the subsets is a WARNING, which fails the posters check, rather than a silent fallback to a
+system font.
+
+`tools/build-fonts.py` writes `src/fonts/*.woff2` and `src/metrics.py` from the Noto sources in google/fonts,
+pinned by commit and SHA-256 in the script. It needs fontTools and Brotli; the generator does not, since it only
+base64-encodes the committed files. Run it to add characters (its `WANT`) or change a face, then regenerate the
+posters:
+
+```
+uv run --with fonttools==4.68.0 --with brotli==1.2.0 python tools/build-fonts.py SRC_DIR
+```
+
+The fonts are under the SIL Open Font License 1.1, Copyright 2022 The Noto Project Authors
+(`src/fonts/OFL.txt`); each WOFF2 file keeps that notice in its name table.

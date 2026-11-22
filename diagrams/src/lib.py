@@ -1,10 +1,12 @@
 """Shared drawing library for the riemann diagrams.
 
-Taken from the TOPAK diagram family (Apache-2.0, same author); only the brand, date, generator and state line differ.
+Taken from the TOPAK diagram family (Apache-2.0, same author); the brand, date, generator and state line differ,
+and the fonts: TOPAK names system fonts, these posters embed Noto.
 
-Dependency-free. Every diagram is a Canvas; primitives measure their own text with the
-Liberation Sans advance widths in metrics.py (metric-compatible with Arial/Helvetica), wrap it,
-and return the height they used, so layouts are computed rather than hand-tuned.
+Dependency-free. Every diagram is a Canvas; primitives measure their own text with the advance
+widths in metrics.py, wrap it, and return the height they used, so layouts are computed rather
+than hand-tuned. The widths are those of the Noto faces in fonts/, which every poster embeds
+(tools/build-fonts.py writes both), so the text is drawn in the font it was measured in.
 
 Theming: every colour is written twice, once as a presentation attribute (the light theme, for
 renderers without CSS) and once as a class whose CSS custom property switches under
@@ -13,15 +15,35 @@ everything else falls back to light.
 
 Inline markup in any text: **bold**, `code`, and [[accent|text]] for an accent-coloured run.
 """
+import base64
+import pathlib
 import re
-from xml.sax.saxutils import escape
+from xml.sax.saxutils import escape, unescape
 
 from metrics import W as _W
 
-SANS = "Helvetica, Arial, 'Liberation Sans', sans-serif"
-MONO = "'DejaVu Sans Mono', Menlo, Consolas, monospace"
-MONO_EM = 0.602          # DejaVu Sans Mono / Menlo advance
+# The embedded faces, as tools/build-fonts.py subset them: (file, family, weight, style). Noto Sans Math is second
+# in both stacks, so a symbol the text face lacks is drawn from it, as metrics.py assumes. The system names after
+# the embedded ones serve renderers that do not read @font-face.
+FONTS = pathlib.Path(__file__).resolve().parent / "fonts"
+FACES = [
+    ("sans-regular", "RD Noto Sans", 400, "normal"),
+    ("sans-bold", "RD Noto Sans", 700, "normal"),
+    ("sans-italic", "RD Noto Sans", 400, "italic"),
+    ("mono-regular", "RD Noto Sans Mono", 400, "normal"),
+    ("mono-bold", "RD Noto Sans Mono", 700, "normal"),
+    ("math-regular", "RD Noto Sans Math", 400, "normal"),
+]
+SANS = "'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif"
+MONO = "'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace"
+MONO_EM = _W["m"]["0"]   # Noto Sans Mono's cell, 0.6 em; symbols it lacks come from Math at their own width
 MONO_SCALE = 0.92        # code runs are set slightly smaller than the surrounding text
+# style of a run -> its table in metrics.py. A bold run in an italic line is the italic face emboldened by the
+# browser, which keeps the italic advances.
+_TABLE = {"r": "r", "b": "b", "i": "i", "bi": "i", "m": "m", "mb": "mb"}
+# what every style can draw from the embedded faces, its own or Math; anything else is a WARNING (Canvas.check)
+COVERED = set.intersection(*(set(t) for t in _W.values()))
+_FALLBACK_EM = 0.62      # the width of a character in no table; the generator warns about every such character
 
 import os as _os
 BRAND = "RIEMANN · MAP" if _os.environ.get("RIEMANN_MAP") == "1" else "RIEMANN"
@@ -70,8 +92,20 @@ STATUS = {
 }
 
 
+def _font_faces():
+    out = []
+    for stem, family, weight, style in FACES:
+        data = base64.b64encode((FONTS / f"{stem}.woff2").read_bytes()).decode("ascii")
+        out.append(f"@font-face{{font-family:'{family}';font-weight:{weight};font-style:{style};"
+                   f"src:url(data:font/woff2;base64,{data}) format('woff2')}}")
+    return out
+
+
+_FONT_FACES = _font_faces()
+
+
 def _css():
-    lines = []
+    lines = list(_FONT_FACES)
     def block(idx_base, idx_s, idx_t):
         out = []
         for k, v in BASE.items():
@@ -147,25 +181,43 @@ def parse(s):
     return runs
 
 
+def em(s, style="r"):
+    """The advance of s in em, in one of the styles r, b, i, bi, m, mb."""
+    tbl = _W[_TABLE[style]]
+    return sum(tbl.get(c, _FALLBACK_EM) for c in s)
+
+
+def mono_width(s, size, bold=False):
+    """A run of code at its own size (no MONO_SCALE), as the Lean panels set it."""
+    return em(s, "mb" if bold else "m") * size
+
+
 def width(s, size, style="r"):
-    if style == "m":
-        return len(s) * MONO_EM * size * MONO_SCALE
-    tbl = _W["b" if style == "b" else "r"]
-    return sum(tbl.get(c, 0.62) for c in s) * size
+    if style in ("m", "mb"):
+        return em(s, style) * size * MONO_SCALE
+    return em(s, style) * size
 
 
-def text_width(s, size, bold=False):
-    return sum(width(t, size, "b" if (bold and st == "r") else st) for t, st, _ in parse(s))
+def restyle(st, bold=False, italic=False):
+    """The style of a run of style st set in a bold or an italic line."""
+    if bold:
+        st = {"r": "b", "m": "mb", "i": "bi"}.get(st, st)
+    if italic:
+        st = {"r": "i", "b": "bi"}.get(st, st)
+    return st
 
 
-def wrap(s, maxw, size, bold=False):
+def text_width(s, size, bold=False, italic=False):
+    return sum(width(t, size, restyle(st, bold, italic)) for t, st, _ in parse(s))
+
+
+def wrap(s, maxw, size, bold=False, italic=False):
     """Greedy wrap of rich text. Returns list of lines, each a list of runs. '\n' forces a break."""
     lines_out = []
     for para in s.split("\n"):
         words = []  # (text, style, accent) with trailing space info
         for txt, st, acc in parse(para):
-            if bold and st == "r":
-                st = "b"
+            st = restyle(st, bold, italic)
             parts = re.split(r"( )", txt)
             for p in parts:
                 if p == "":
@@ -209,21 +261,24 @@ def line_width(line, size):
 TEXT_BOXES = []   # (x0, y0, x1, y1, text) of every line drawn, for the overlap check
 
 
-def render_line(x, y, line, size, color="ink", anchor="start", bold=False):
+def render_line(x, y, line, size, color="ink", anchor="start", bold=False, italic=False):
+    """One line of wrap() output. bold and italic must be what the line was wrapped with."""
+    line = [(t, restyle(st, bold, italic), acc) for t, st, acc in line]
     lw = line_width(line, size)
     bx = x if anchor == "start" else (x - lw / 2 if anchor == "middle" else x - lw)
     TEXT_BOXES.append((bx, y - size * 0.75, bx + lw, y + size * 0.2, "".join(t for t, _, _ in line)))
     spans = []
     for t, st, acc in _merge(line):
         attrs = []
-        if st == "b" or bold:
+        if st in ("b", "bi", "mb"):
             attrs.append('font-weight="bold"')
-        if st == "m":
+        if st in ("m", "mb"):
             attrs.append(f'font-family="{MONO}" font-size="{size * MONO_SCALE:.1f}"')
         if acc:
             attrs.append(fill(acc))
         spans.append(f'<tspan {" ".join(attrs)}>{escape(t)}</tspan>' if attrs else escape(t))
-    return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{SANS}" font-size="{size}" '
+    it = ' font-style="italic"' if italic else ""
+    return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{SANS}" font-size="{size}"{it} '
             f'{fill(color)} text-anchor="{anchor}">{"".join(spans)}</text>')
 
 
@@ -531,9 +586,17 @@ class Canvas:
 
     # -- output
     def check(self):
-        """Warn about text lines whose boxes intersect, or that leave the canvas. Returns the warnings."""
+        """Warn about text lines whose boxes intersect, or that leave the canvas, and about characters the
+        embedded fonts do not have, which a browser would draw from a system font at an unmeasured width.
+        Returns the warnings."""
         boxes = [b for b in TEXT_BOXES if b[4].strip()]
         warn = []
+        drawn = set()
+        for t in re.findall(r">([^<]+)<", "\n".join(self.out)):
+            drawn |= set(unescape(t))
+        for ch in sorted(drawn - COVERED - {"\n"}):
+            warn.append(f"not in the embedded fonts: {ch!r} (U+{ord(ch):04X}); add it to WANT in "
+                        f"tools/build-fonts.py and rebuild the fonts")
         for b in boxes:
             if b[0] < 0 or b[2] > self.W + 0.5:
                 warn.append(f"off-canvas: {b[4][:60]!r} x={b[0]:.0f}..{b[2]:.0f}")
