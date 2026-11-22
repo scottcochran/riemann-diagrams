@@ -1,9 +1,9 @@
 # Development plan
 
 Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams the README records, and updated the
-same day as Phase 1, the five chapter posters that follow it, Phase 2 and Phase 3 were done. It is a plan, not
-a record: nothing below is built unless the README says so. Three of its first four phases are done; what is left
-is Phase 4, which waits on a machine, Phase 5, releases, and the decisions under "Open" at the end.
+same day as Phase 1, the five chapter posters that follow it, Phases 2, 3 and 5 were done. It is a plan, not a
+record: nothing below is built unless the README says so. Four of its five phases are done; what is left is
+Phase 4, which waits on a machine, two hand steps under Phase 5, and the decisions under "Open" at the end.
 
 ## Goal
 
@@ -137,7 +137,12 @@ because a poster's file name carries its date and a regeneration at a new pin re
 - **A release is an annotated `vMAJOR.MINOR.PATCH` tag on `main`, pushed by the custodian, never moved or
   reused.** The tag message is the release's opening: the kind of move, what changed, and one line saying which
   posters a reader must re-read. The workflow refuses a tag that is unannotated, off `main`, or not the
-  custodian's, as tla-kit's does.
+  custodian's, as tla-kit's does. A `v*` tag ruleset on GitHub (block deletion, update and non-fast-forward)
+  is the backstop; the workflow cannot create it, so it is a hand step in the repository settings.
+- **A published release is not edited.** Its assets and notes are what the workflow wrote from the tag, so
+  that "release X, run Y" names one thing. A release found wrong gets a successor tag whose message says what
+  was wrong; it is not patched in place. `v0.1.0` is the one exception, made before this rule was written (see
+  its done note).
 - **The number says what moved**, adapted from tla-kit's ADR-0014 to what a release can change for a reader:
 
   | Part | When it changes | What a reader of a cited poster has to do |
@@ -180,9 +185,16 @@ poster's card and arrow counts, and `tools/release-notes.py` writes the notes fr
 the manifests. One fault found on the first run: the checkout action fetches a tag peeled to its commit, so the
 notes opened with the commit message; the workflow now re-fetches the annotated tag, and `v0.1.0`'s notes were
 regenerated and replaced in place, the tag untouched. The first run also shipped the PNG renders as a 105 MB
-tarball; the renders were dropped the same day (see above), the tarball removed from `v0.1.0`, and its line taken
-out of the published `SHA256SUMS`, whose twenty SVG lines and `pins.json` line are unchanged. The refusal of a bad tag was not tested on this run, since
-the plan's test of a moved pin without regeneration already exercised the called check.
+tarball; the renders were dropped the same day (commit `e2ff184`, see above), the tarball removed from `v0.1.0`,
+and its line taken out of the published `SHA256SUMS`, whose twenty SVG lines and `pins.json` line are unchanged.
+So `v0.1.0`'s notes and checksum file were edited by hand twice after run 45018046898; the twenty SVGs were
+not, and are byte-identical to `main` at `e2ff184`. The rule above ("a published release is not edited") is
+the lesson. The tag was not moved: its message says nothing about renders, and the posters it names are the
+posters. A `v0.1.1` from `e2ff184`, whose every asset the workflow wrote, is available if the hand edits are
+felt to taint the citation; it would ship the same twenty files with the same checksums, so it is a choice,
+not a need, and is left open below. The refusal of a bad tag was not tested on this run, since the plan's
+test of a moved pin without regeneration already exercised the called check. Still to do by hand: the `v*`
+tag ruleset.
 
 ## Risks
 
@@ -229,3 +241,7 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
 4. **This plan** was kept out of the repository until 2026.11.22, when it went in with the decisions above still
    open, so that its history records them being taken. It stays at the root, beside the README, as tla-kit's
    does; a `decisions/` directory is for the records those decisions produce, if they are written up.
+5. **Whether to cut `v0.1.1`.** `v0.1.0`'s notes and `SHA256SUMS` were edited after its run (Phase 5's done
+   note). A `v0.1.1` from `e2ff184` would be the first release untouched after its run, with the same twenty
+   SVGs. Against it: a release that changes nothing a reader sees, when the cadence rule says a wording fix
+   waits for the next move. The next pin move settles it either way.
