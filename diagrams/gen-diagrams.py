@@ -11,6 +11,7 @@ the coordinates.
     uv run python diagrams/gen-diagrams.py
 """
 import importlib
+import json
 import os
 import pathlib
 import sys
@@ -31,6 +32,8 @@ def main(argv):
     want = {a.upper() for a in argv if not a.startswith("--")}
     out_dir = HERE / "map" if MAP else HERE
     out_dir.mkdir(exist_ok=True)
+    manifest_path = out_dir / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
     failed = 0
     for name in sorted(p.stem for p in (HERE / "src").glob("d_*.py")):
         if want and name.split("_")[1].upper() not in want:
@@ -47,9 +50,13 @@ def main(argv):
         out = out_dir / f"{m.ID}-{m.SLUG}-{DATE}.svg"
         out.write_text(svg, encoding="utf-8")
         print(out.relative_to(HERE.parent))
+        manifest[m.ID] = {"file": out.name, "title": canvas.title, **canvas.stats()}
         for w in canvas.warnings:
             print("  WARNING", w)
             failed += 1
+    if not failed:
+        manifest = {k: manifest[k] for k in sorted(manifest, key=lambda k: (k[0], int(k[1:])))}
+        manifest_path.write_text(json.dumps(manifest, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     return 1 if failed else 0
 
 

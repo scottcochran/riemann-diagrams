@@ -1,0 +1,98 @@
+# A release is a version tag, pushed by the custodian, never moved or reused (PLAN.md, Phase 5). This workflow
+# runs the posters check on the tag, as CI runs it on main, then renders each poster to PNG, writes pins.json and
+# SHA256SUMS, and creates the GitHub release with the SVGs of both sets, the PNGs in one tarball, the two files,
+# and notes that record what a reader needs to check a citation.
+#
+# The tag must be annotated, on main, vMAJOR.MINOR.PATCH, and the custodian's. Its message is the release's
+# opening: the kind of move, what changed, and one line saying which posters a reader must re-read.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: The tag is the custodian's, annotated, and on main
+        run: |
+          tag=${GITHUB_REF#refs/tags/}
+          [ "$GITHUB_ACTOR" = scottcochran ] || { echo "release: tags are pushed by the custodian only"; exit 1; }
+          [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "release: $tag is not vMAJOR.MINOR.PATCH"; exit 1; }
+          git fetch -q origin "refs/tags/$tag:refs/tags/$tag" --force
+          [ "$(git cat-file -t "refs/tags/$tag")" = tag ] || { echo "release: $tag is not annotated"; exit 1; }
+          [ -n "$(git tag -l --format='%(contents)' "$tag" | tr -d '[:space:]')" ] || { echo "release: $tag has no message"; exit 1; }
+          git merge-base --is-ancestor HEAD origin/main || { echo "release: $tag is not on main"; exit 1; }
+
+  check:
+    needs: tag
+    uses: ./.github/workflows/posters.yml
+
+  release:
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: rsvg-convert
+        run: sudo apt-get update -q && sudo apt-get install -y -q librsvg2-bin
+      - name: Stage the assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=${GITHUB_REF#refs/tags/}
+          mkdir -p stage png
+          cp diagrams/*.svg stage/
+          for f in diagrams/map/*.svg; do cp "$f" "stage/map-$(basename "$f")"; done
+          for f in stage/*.svg; do rsvg-convert -w 4000 "$f" -o "png/$(basename "${f%.svg}").png"; done
+          tar -czf stage/posters-png.tar.gz -C png .
+          bp=$(python3 -c "import re; print(re.search(r'^BP_COMMIT = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
+          mp=$(python3 -c "import re; print(re.search(r'^MIRROR_PIN = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
+          mc=$(python3 -c "import re; print(re.search(r'^MIRROR_COMMIT = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
+          bpfull=$(gh api "repos/chrisflav/riemann-blueprint/commits/$bp" -q .sha)
+          mcfull=$(gh api "repos/leanprover-community/riemann-hypothesis/commits/$mc" -q .sha)
+          python3 - "$tag" "$bp" "$bpfull" "$mp" "$mc" "$mcfull" <<'PY' > stage/pins.json
+          import json, platform, sys, os
+          tag, bp, bpfull, mp, mc, mcfull = sys.argv[1:]
+          sha = os.environ["GITHUB_SHA"]
+          print(json.dumps({
+            "tag": tag,
+            "blueprint": {"pin": bp, "commit": bpfull, "url": f"https://github.com/chrisflav/riemann-blueprint/commit/{bpfull}"},
+            "mirror_pin": mp,
+            "mirror": {"pin": mc, "commit": mcfull, "url": f"https://github.com/leanprover-community/riemann-hypothesis/commit/{mcfull}"},
+            "generator": {"commit": sha, "url": f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/commit/{sha}"},
+            "python": platform.python_version(),
+            "run": {"id": os.environ["GITHUB_RUN_ID"], "url": f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"},
+          }, indent=1))
+          PY
+          (cd stage && sha256sum *.svg posters-png.tar.gz pins.json > SHA256SUMS)
+          python3 tools/release-notes.py "$tag" stage/pins.json diagrams/manifest.json diagrams/map/manifest.json > notes.md
+          ls -la stage; head -30 notes.md
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=${GITHUB_REF#refs/tags/}
+          gh release create "$tag" --verify-tag --title "$tag" --notes-file notes.md stage/*

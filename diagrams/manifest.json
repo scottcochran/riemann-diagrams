@@ -1,0 +1,62 @@
+{
+ "R1": {
+  "file": "R1-main-theorems-2026.11.22.svg",
+  "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",
+  "cards": 24,
+  "arrows": 24
+ },
+ "R2": {
+  "file": "R2-chapters-2026.11.22.svg",
+  "title": "The proof, chapter by chapter: what each chapter of the blueprint proves, and which chapters use which",
+  "cards": 9,
+  "arrows": 17
+ },
+ "R3": {
+  "file": "R3-zero-free-2026.11.22.svg",
+  "title": "From prime sums to the zero-free half-plane: the analytic half of the proof, lemma by lemma",
+  "cards": 24,
+  "arrows": 19
+ },
+ "R4": {
+  "file": "R4-families-2026.11.22.svg",
+  "title": "Families of definite unitary groups: every statement of the chapter, and what each one rests on",
+  "cards": 44,
+  "arrows": 44
+ },
+ "R5": {
+  "file": "R5-theta-2026.11.22.svg",
+  "title": "Theta lifts, periods and the Siegel-Weil formula: every statement of the chapter, and what each one rests on",
+  "cards": 61,
+  "arrows": 90
+ },
+ "R6": {
+  "file": "R6-heights-2026.11.22.svg",
+  "title": "Heights and the covolume bound: every statement of the chapter, and what each one rests on",
+  "cards": 32,
+  "arrows": 55
+ },
+ "R7": {
+  "file": "R7-sha-2026.11.22.svg",
+  "title": "The Tate-Shafarevich bound: every statement of the chapter, and what each one rests on",
+  "cards": 35,
+  "arrows": 45
+ },
+ "R8": {
+  "file": "R8-galois-2026.11.22.svg",
+  "title": "Galois representations: every statement of the chapter, and what each one rests on",
+  "cards": 38,
+  "arrows": 62
+ },
+ "T1": {
+  "file": "T1-trace-deepest-2026.11.22.svg",
+  "title": "The deepest chain: from a count of lattices by isometries up to the Riemann Hypothesis",
+  "cards": 11,
+  "arrows": 10
+ },
+ "T2": {
+  "file": "T2-trace-landau-2026.11.22.svg",
+  "title": "The chain to Landau's theorem: from a theorem of 1905 up to the Riemann Hypothesis",
+  "cards": 6,
+  "arrows": 5
+ }
+}

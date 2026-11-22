@@ -241,7 +241,12 @@ class Canvas:
         self.ymax = 0
         self.x0, self.x1 = pad, width - pad
         self.blocks = []   # (x0, y0, x1, y1, name) of cards and tables, for the overlap check
+        self.n_arrows = 0  # for the manifest
         self.y = self._header()
+
+    def stats(self):
+        """What the release notes report: the cards that are statements, and the arrows."""
+        return {"cards": sum(1 for b in self.blocks if b[4].startswith("node ")), "arrows": self.n_arrows}
 
     # -- bookkeeping
     def add(self, s, bottom=None):
@@ -383,6 +388,8 @@ class Canvas:
               both=False, loff=(0, 0), lw=None):
         d = f' stroke-dasharray="{dash}"' if dash else ""
         path = "M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in pts)
+        if head:
+            self.n_arrows += 1
         me = f' marker-end="url(#arw-{accent})"' if head else ""
         ms = f' marker-start="url(#arw-{accent})"' if both else ""
         self.add(f'<path d="{path}" {sonly(accent)} stroke-width="{sw}"{d}{me}{ms} '

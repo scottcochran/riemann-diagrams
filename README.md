@@ -44,6 +44,11 @@ and zoom in.
 
 They are generated from the blueprint and the mirror, and the build fails if
 the two disagree with what is drawn: see [diagrams/README.md](diagrams/README.md).
+A release is a version tag; each one carries every poster as a file, both
+sets, with checksums and the pins they were drawn from, so a poster can be
+cited by release and fetched after the tree has moved on: see
+[the releases](https://github.com/scottcochran/riemann-diagrams/releases)
+and `PLAN.md`, Phase 5.
 Each poster also exists in a map form under [diagrams/map/](diagrams/map/) that
 quotes nothing of the blueprint's text or the proof's source, for use while
 the licensing of that text is open.
