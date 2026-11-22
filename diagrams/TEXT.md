@@ -102,23 +102,27 @@ definitions: 3 in Main theorems, …", "263 proof uses between new statements", 
 declaration". The numbers are the blueprint's data counted by the generator, and they change when the pin
 moves. A template's wording is written here; its values are not.
 
-**Interpretations.** A few sentences say what the data shows, in words chosen at the current pin. They are
-true at blueprint `137d976` and are not checked by the build, so a pin move could make one false without a
-check failing:
+**Interpretations.** A few sentences say what the data shows, in words chosen at the current pin. Each one
+is either computed, so that its wording follows the data, or guarded by an assertion that fails the build when
+the data no longer supports it, so that a pin move forces the sentence to be re-read rather than leaving it
+standing:
 
-- F1: "The tallest tower is the families chapter's, from auxiliary field data up to family data."
-- F2: "The heavy flows run into the families chapter, from theta lifts and from heights."
-- F3: "A statement that names two usually names a definition and a theorem."
+- F1, the tallest tower of definitions: computed. The sentence names the chain's two ends, their chapters and
+  its height from the longest path among the definition edges.
+- F2, the heaviest flows between chapters' new work: the two pairs and their counts are computed; the reading
+  that follows them, "the families are built from what those two chapters prove", stands behind a check that
+  the two heaviest pairs are still theta to families and heights to families (`HEAVIEST`).
+- F3, "a statement that names two usually names a definition and a theorem": guarded by a check that that pair
+  is the majority of the statements naming two declarations.
 - R1, band 5, the three cards on what is known about the formal proof. These paraphrase the mirror's
-  `verification/NOTES.md` as it read when R1 was written: that independent complete builds exist and compare
-  with the author's checksums, that the Comparator run's result is not yet recorded, and that the blueprint's
-  README says some edges are wrong. The generator does not read the notes file; R1's sources line names it,
-  which overstates what the build checks.
+  `verification/NOTES.md`: that independent complete builds exist and compare with the author's checksums, that
+  the Comparator run's result is not yet recorded, and that the blueprint's README says some edges are wrong.
+  The generator reads the file and fails if it no longer hashes to `NOTES_SHA256` in `src/bp.py`, so a mirror
+  bump that changes the notes stops the build until the cards are re-read against the new text.
 
 The rule for these is that a reader should be able to tell them from quotations. A quotation is in italics or
 in a Lean panel and its card links to the file it came from; an interpretation is in the posters' own voice in
-a grey or amber card. The plan records them as work to do: compute what can be computed, assert what cannot,
-and reword R1's sources line or have the build read the notes.
+a grey or amber card, and the build knows the fact it rests on.
 
 ## 5. Derived relations the blueprint does not state
 

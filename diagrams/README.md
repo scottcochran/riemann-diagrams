@@ -87,7 +87,7 @@ The sources are expected as sibling checkouts, `../riemann-blueprint` and `../le
 poster in both forms with Python 3.12, and fails if the generator prints a `WARNING` or `ERROR`, if any committed SVG differs
 from the regenerated one, or if a poster is regenerated that is not committed. So a pull request that moves a pin
 without regenerating fails, and one that regenerates passes. The mirror is checked out sparse, with only the
-three files the generator reads.
+four files the generator reads.
 
 ## Layout
 

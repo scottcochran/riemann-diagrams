@@ -300,6 +300,12 @@ between machines while every local run agrees with itself. Every ranking now sor
 statements are iterated sorted, and a new poster is regenerated under two `PYTHONHASHSEED` values before it is
 committed. The posters check prints the diff lines it finds, not only the stat.
 
+A second rule, from writing `diagrams/TEXT.md`: a sentence on a poster that reads the data is computed or
+guarded. Four were neither: F1's tallest tower (now computed), F2's heaviest flows (the pairs computed, the
+reading behind `HEAVIEST`), F3's fan-out pattern (behind a majority check), and R1's band 5, which paraphrases
+the mirror's `verification/NOTES.md`; the generator now reads that file and fails if it no longer hashes to
+`NOTES_SHA256`, and CI checks it out with the other three mirror files.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and

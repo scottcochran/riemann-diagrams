@@ -13,6 +13,7 @@ ERROR instead of drawing something stale.
   node(canvas, ...)          a card: title, pill, Lean panel, the statement in italics, the proof as bullets, footer
   arrows(canvas, ...)        the arrows between cards, routed through the lanes and gutters of a grid
 """
+import hashlib
 import json
 import os
 import pathlib
@@ -37,6 +38,9 @@ MIRROR = pathlib.Path(os.environ.get("RIEMANN_MIRROR") or ROOT.parent / "leanpro
 BP_COMMIT = "137d976"
 MIRROR_PIN = "8c90877c"
 MIRROR_COMMIT = "2dea990069"
+# verification/NOTES.md in the mirror, which band 5 of R1 paraphrases. The build fails if the file no longer
+# hashes to this, so that the three cards are re-read against the new text rather than left standing.
+NOTES_SHA256 = "e6aef7986005c0a8959a117302f0adacce37c6ea0b49663ea6435eb3348ade45"
 
 # Map mode: no text of the blueprint and no Lean source is quoted. Each card keeps the statement's title, id,
 # kind, provenance, Lean name and location, and every edge. Set by gen-diagrams.py --map, before the modules load.
@@ -100,7 +104,15 @@ def load():
 
 
 def read_mirror():
-    """The theorems of Main.lean and the Prop definitions of Statements.lean, checked against comparator.json."""
+    """The theorems of Main.lean and the Prop definitions of Statements.lean, checked against comparator.json;
+    and the verification notes, checked against NOTES_SHA256."""
+    notes = MIRROR / "verification" / "NOTES.md"
+    if not notes.exists():
+        raise ValueError(f"no {notes}: R1's band 5 paraphrases it, and the build checks it has not changed")
+    digest = hashlib.sha256(notes.read_bytes()).hexdigest()
+    if digest != NOTES_SHA256:
+        raise ValueError(f"the mirror's verification/NOTES.md hashes to {digest[:12]}…, not {NOTES_SHA256[:12]}…: "
+                         "re-read the three cards of R1's band 5 against it and update NOTES_SHA256")
     main = (MIRROR / "src" / "Main.lean").read_text(encoding="utf-8").splitlines()
     theorems = []
     for i, l in enumerate(main):
@@ -128,7 +140,7 @@ def read_mirror():
             raise ValueError(f"Main.lean: {t['name']} is stated with {t['prop']}, which Statements.lean does not define")
     if set(theorems[i]["name"] for i in range(len(theorems))) != set(MAIN_LEAN_THEOREMS):
         raise ValueError("Main.lean's theorems are not the ones blueprint_graph.MAIN_LEAN_THEOREMS maps to nodes")
-    return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"],
+    return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"], "notes_sha256": digest,
             "commit": git_at(MIRROR, MIRROR_COMMIT, "the mirror")}
 
 

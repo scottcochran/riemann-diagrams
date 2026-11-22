@@ -101,6 +101,18 @@ def build():
     iface_users = sum(len(rev[k]) for k in INTERFACES)
     iface_chapters = sorted({g.nodes[u]["_chapter"] for k in INTERFACES for u in rev[k]})
     towers = [k for k in defs if any(a in drawn for a in g.uses(k))]
+    succ = collections.defaultdict(list)
+    for a, b in edges:
+        succ[a].append(b)
+    memo = {}
+
+    def tower(k):                            # the longest chain of definitions stated in terms of k, from k
+        if k not in memo:
+            below = [tower(b) for b in sorted(succ[k])]
+            memo[k] = [k] + max(below, key=lambda t: (len(t), t)) if below else [k]
+        return memo[k]
+
+    tallest = max((tower(k) for k in defs), key=lambda t: (len(t), t))
     alone = [k for k in defs if k not in {x for e in edges for x in e}]
 
     c = Canvas(ID, f"What the stages pass to each other: the {len(defs)} definitions of the blueprint, how they are "
@@ -174,8 +186,8 @@ def build():
             f"{made[ch]} in {SHORT[ch]}" for ch in chapters if made[ch]) + ". By provenance: " + ", ".join(
             f"{v} {k}" for k, v in sorted(by_prov.items())) + ".",
         f"**Built from one another** {len(towers)} of them are stated in terms of another definition; the "
-        f"{len(edges)} arrows of the grid. The tallest tower is the families chapter's, from auxiliary field "
-        "data up to family data.",
+        f"{len(edges)} arrows of the grid. The tallest tower is {len(tallest)} definitions high, from "
+        f"`{tallest[0]}` ({SHORT[home[tallest[0]]]}) to `{tallest[-1]}` ({SHORT[home[tallest[-1]]]}).",
         "**Consumed** " + ", ".join(
             f"{SHORT[ch]} {sum(use[k][ch] for k in defs)}" for ch in chapters if any(use[k][ch] for k in defs))
         + " statements use a definition. **Used most** " + ", ".join(
