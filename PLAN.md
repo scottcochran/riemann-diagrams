@@ -306,6 +306,17 @@ reading behind `HEAVIEST`), F3's fan-out pattern (behind a majority check), and 
 the mirror's `verification/NOTES.md`; the generator now reads that file and fails if it no longer hashes to
 `NOTES_SHA256`, and CI checks it out with the other three mirror files.
 
+**The rest of the phase, on a branch (`phase6-rest`), from 2026.11.22.** The literature poster is
+`F4-literature-2026.11.22.svg`, `src/d_f4_literature.py`, in both sets. The reference list turned out richer
+than the entry above assumed: every entry carries author, title, journal and year, and 196 statements carry a
+`source` line citing entries, 90 of them more than one, so the timeline is drawn from the entries and the
+citations from the source lines, not from `uses` edges, which never point at a reference. Two findings: 35 of
+the 209 entries are cited by no statement, and the upward cones of 172 of the 174 cited references reach a
+theorem of `Main.lean`, so the Riemann Hypothesis rests, by the blueprint's own edges, on nearly every source
+it names; the two exceptions are Casselman–Shalika 1980 and Shintani 1976. This settles open decision 3: the
+published-results chapter has its poster, as the literature rather than as a grid of 163 leaves. The build
+checks the reference count, the year range, the number of citing statements and the four most-cited references.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
@@ -346,8 +357,9 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
    decide, and a poster split by section is the natural cut if it comes to that.
 3. **A poster for the published-results chapter.** 163 statements, nearly all of them leaves, so the chapter
    builder would draw a wide, flat grid that says little. R2's literature table already names the results the
-   proof leans on most. A poster of the top twenty, with the chapters that cite each, is the likely form if one
-   is wanted at all.
+   proof leans on most. Taken 2026.11.22: F4 draws the chapter as the literature, the 209 references by decade
+   with their citations and upward cones, and the top twenty-five with the chapters that lean on each; no grid
+   of the 163 statements is drawn.
 4. **This plan** was kept out of the repository until 2026.11.22, when it went in with the decisions above still
    open, so that its history records them being taken. It stays at the root, beside the README, as tla-kit's
    does; a `decisions/` directory is for the records those decisions produce, if they are written up.

@@ -51,6 +51,10 @@ and zoom in.
   chapters against the formalisation's modules, the only frame that puts the
   paper and the Lean side by side, with each chapter's footprint in the code
   and the fan-out from a statement to the declarations it stands for.
+- [The proof as literature](diagrams/F4-literature-2026.11.22.svg): the 209
+  references on a timeline by decade, which statements cite each, the
+  references the proof leans on most, and the upward cone of each, what
+  would fall if the result were wrong.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 
