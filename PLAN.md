@@ -4,7 +4,7 @@ Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams th
 same day as Phase 1, the five chapter posters that follow it, Phases 2, 3 and 5 were done. It is a plan, not a
 record: nothing below is built unless the README says so. Four of its first five phases are done; what is left
 is Phase 4, which waits on a machine, two hand steps under Phase 5, Phase 6, other frames to draw the same
-sources in, and the decisions under "Open" at the end.
+sources in, Phase 7, links between the posters on the Pages site, and the decisions under "Open" at the end.
 
 ## Goal
 
@@ -341,6 +341,61 @@ checks the depth histogram, the unreached statements and that the two chains are
 With F4, F5 and F6 the phase's buildable posters are in. The two that remain, change between pins and the
 declarations under a statement, wait on a blueprint move and on Phase 4.
 
+### Phase 7: links
+
+The Pages site serves each poster as `image/svg+xml`, opened on its own, and there an SVG `<a>` works: a reader
+can click from a card to the statement it names. Today nothing on a poster is a link, so every id in a footer
+is a name to look up by hand. This phase makes the ids links, in both sets, without changing what is drawn.
+Tested in Chromium on 2026.11.22: an SVG opened on its own scrolls to the element `poster.svg#id` names, both
+from the address bar and from an `<a>` inside it. Firefox and Safari are untested.
+
+- **Each statement card carries its blueprint id** as the `id` of a group around it, so that
+  `R3-zero-free-2026.11.22.svg#thm-landau-windows` lands on the card. A statement drawn on more than one poster
+  has the same id on each.
+- **Ids link to the card that draws them.** An id in a Stated with, Proof uses or Used by footer links to its
+  card on the same poster when there is one, else to its card on the poster that draws it in full (R1 and the
+  traces into R3 to R8), else to the blueprint (below). A chapter card on
+  R2 or F2 links to that chapter's poster. The targets are computed from the posters' own card lists at build
+  time, not written by hand.
+- **The rest link out, at the pins.** An id with no card on any poster links to the blueprint; the Lean line to
+  the declaration in `leanprover-community/riemann-hypothesis` at `MIRROR_COMMIT`, at the file and line
+  `lean_location` gives (`…/blob/<commit>/<file>#L<line>`). Which blueprint target to use is open decision 6.
+- **Each set links only within itself.** A map poster never links to a reader poster, so that following a link
+  from the set that may be published never opens the text that may not.
+- **A release's SVGs stay the tree's SVGs, byte for byte.** That is what a release pins: `SHA256SUMS` is checked
+  against the committed files (Phase 5), and the Pages job refuses a site that differs from the release. So no
+  workflow may rewrite a poster's links on the way out, and the links have to resolve, as committed, in both
+  layouts a poster is read in: the tree's (`diagrams/`, `diagrams/map/`, which the site copies) and the release's
+  (one flat list of assets, the map set renamed `map-*.svg`; a GitHub release has no directories). Today they
+  disagree, and a link written for the tree would do worse than break in a downloaded release: from
+  `map-R1-….svg`, a relative `R3-zero-free-….svg` opens the reader R3 beside it, the quoted text the map set
+  exists to leave out. The fix is to make the two layouts agree: the generator names the map posters
+  `map-*.svg` in the tree too, in `diagrams/map/`. Then a map poster links to `map-R3-….svg` and a reader to
+  `R3-….svg`, and each resolves within its own set in the tree, on the site and in a release alike. The release
+  workflow and the Pages check copy files as they are, without renaming; the asset names `v0.1.x` cited do not
+  change; only the tree's and the site's map paths gain the prefix, which the README and the Pages index follow.
+  This rename lands first, on its own, before any poster carries a link.
+- **Links that leave the set cannot be pinned by a relative path**, so they are absolute: the
+  mirror at `MIRROR_COMMIT`, the blueprint as open decision 6 settles, and never the Pages site, which holds one
+  release at a time and would send a reader of an old release to the current posters.
+- **The library.** `Canvas.card` takes an `href` and an `anchor`, and wraps the card in `<a>`; the id runs in
+  footers are `<a>` elements inside the `<text>`, which SVG allows. Plain `href`, not `xlink:href`. Neither
+  changes a measured width, so the overlap checks hold unchanged. The embedded `<style>` gains a hover rule (a
+  heavier card border, an underlined id), since an SVG link otherwise looks like any other text. The root
+  `<svg>` loses `role="img"`, which hides its links from a screen reader and the keyboard; its `<title>` and
+  `<desc>` stay.
+- **The build checks the links**, as it checks the arrows: every relative `href` names a file in the set's
+  manifest, every fragment is an `id` in that file, every id is a blueprint id, and every external link is at a
+  pinned commit. A poster with a broken link fails the build.
+- **What it does not do.** A poster inside an `<img>`, as the README embeds R1, or in GitHub's file viewer, draws
+  the same and links nowhere. The README points to the Pages site for reading.
+
+**Done when** every footer id and Lean line on all thirteen posters is a link, in both sets, the link check
+runs in CI and in the release workflow, a map poster's links resolve to map posters in a downloaded release
+and on the site, the release's `SHA256SUMS` still matches the committed files with no step between, and the README
+and `diagrams/README.md` say where links work. A PATCH release, since no pin, `EXPECTED` or `HYPOTHESES` list
+moves and the drawing is the same: the next after `v0.2.0`, or with it if Phase 6's release has not been cut.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
@@ -391,3 +446,8 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
    release untouched after its run. It ships the same twenty SVGs as `v0.1.0` with the same checksums; its tag
    message says so, and that a reader of `v0.1.0` has nothing to re-read. The reason it exists is the previous
    release's hand edits (Phase 5's done note), not anything a reader sees.
+6. **Where a blueprint id links to** (Phase 7). The blueprint site (`riemann.fuxi.merten.dev/#<id>`, which the
+   full Graphviz graph already links to) renders the statement for reading, but follows the blueprint's head,
+   not `BP_COMMIT`, so a link from an old release can land on a statement that has moved or gone. The
+   statement's file in `chrisflav/riemann-blueprint` at `BP_COMMIT` is what the poster was drawn from, and stays
+   true, but is raw Markdown and TOML. Rule 3 argues for the pinned file; a reader argues for the site.
