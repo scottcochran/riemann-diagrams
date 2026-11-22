@@ -1,4 +1,10 @@
 {
+ "F1": {
+  "file": "F1-definitions-2026.11.22.svg",
+  "title": "What the stages pass to each other: the 24 definitions of the blueprint, how they are built from one another, and which chapters use each",
+  "cards": 24,
+  "arrows": 18
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.22.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

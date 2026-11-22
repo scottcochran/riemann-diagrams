@@ -15,10 +15,11 @@ opened on their own and zoomed.
 | R6 | [Heights and the covolume bound, every statement](R6-heights-2026.11.22.svg) | the 32 statements of the Arakelov argument that bounds the lattices' covolumes. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R7 | [The Tate–Shafarevich bound, every statement](R7-sha-2026.11.22.svg) | the 35 statements from Kato's Euler system to the bound, with three results the main proof names as hypotheses. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R8 | [Galois representations, every statement](R8-galois-2026.11.22.svg) | the 38 statements that attach Galois representations to polarized pairs. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
+| F1 | [What the stages pass to each other](F1-definitions-2026.11.22.svg) | A different frame: the 24 definitions of the blueprint rather than its theorems. Each is a card with its Lean declaration, the definition in words, and the chapter that makes it; a definition stands above the definitions stated in terms of it, and the 18 arrows are those `uses` edges. The table at the foot counts, for each definition, the statements of each chapter that use it, with the chapter that makes it marked, so the flow of objects between the stages can be read off. The three definitions the outline names as the interfaces between stages are checked and set out in the outline's own words. |
 
 ## Map mode
 
-`diagrams/map/` holds the same ten posters built with `--map`: nothing of the blueprint's text and nothing of the
+`diagrams/map/` holds the same eleven posters built with `--map`: nothing of the blueprint's text and nothing of the
 formal proof's source is quoted. Each card keeps the statement's title, id, kind, provenance, Lean name and file
 location, every edge, and a count of the paragraphs the blueprint spends on it; the section and chapter cards
 keep their titles and counts. The map set is the form that can be published while the quoting question in
@@ -36,7 +37,8 @@ chapter and section files, and `lean-facts.json`) and the
 - the blueprint checkout is at another commit than the one the diagrams were written against (`BP_COMMIT` in
   `src/bp.py`), pins the mirror at another commit (`MIRROR_PIN`), or the mirror checkout is at another commit
   than `MIRROR_COMMIT`;
-- the proof uses between the drawn statements (R1, R3 to R8), the `uses` between chapters (R2), or the chain
+- the proof uses between the drawn statements (R1, R3 to R8), the `uses` between chapters (R2), the `uses`
+  between definitions (F1), or the chain
   (T1, T2) are not exactly the arrows or the path listed in the diagram's `EXPECTED`; or the results that proofs name in their text without
   listing them as uses (`HYPOTHESES`, R3 to R8) are not the ones recorded;
 - a theorem of `Main.lean` is carried by no drawn node, or `comparator.json` names other theorems;
@@ -92,6 +94,7 @@ src/chapter.py               the chapter poster: layout from the chapter's edges
 src/d_r4_families.py …       R4 to R8: one short module per chapter, holding its EXPECTED edges and HYPOTHESES
 src/trace.py                 the trace poster: one chain from the main theorems to a statement, as cards
 src/d_t1_deepest.py, d_t2_landau.py   T1 and T2, each holding the chain it expects
+src/d_f1_definitions.py      F1: the definitions, their EXPECTED uses, the INTERFACES, the packing of the grid
 ```
 
 `lib.py` and `metrics.py` are the drawing library of the TOPAK diagram family (Apache-2.0, same author), with

@@ -39,6 +39,10 @@ and zoom in.
   statements from a local lattice count up to the Riemann Hypothesis, and
   [the chain to Landau's theorem](diagrams/T2-trace-landau-2026.11.22.svg),
   the analytic end of the proof in six steps.
+- [What the stages pass to each other](diagrams/F1-definitions-2026.11.22.svg):
+  the proof in a second frame, its 24 definitions rather than its theorems,
+  each above the definitions stated in terms of it, with a table of which
+  chapter makes each one and which chapters consume it.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 

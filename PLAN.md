@@ -15,8 +15,9 @@ what the diagram draws.
 
 R1 shows the top of the tree (the five theorems and the chain of reductions), R2 the map of the chapters, R3 to
 R8 the inside of each stage chapter, lemma by lemma, and T1 and T2 one chain each through the whole, read as a
-proof. What is drawn is now every statement of the blueprint but the published-results chapter, and CI rebuilds
-all ten posters from the pinned sources on every push. The next level is to make the edges true (Phase 4).
+proof, and F1 the definitions in a frame of their own. What is drawn is now every statement of the blueprint but
+the published-results chapter, and CI rebuilds all eleven posters from the pinned sources on every push. The next
+level is to make the edges true (Phase 4).
 
 ## Rules the design keeps
 
@@ -247,6 +248,17 @@ matrix third, the only frame that puts the paper and the formalisation side by s
 
 **Done when** the three named posters build under the same checks as R1 to T2, in both sets, and the README
 and `diagrams/README.md` record them. Each poster is a MINOR release when it lands.
+
+**Started 2026.11.22.** The definitions poster is `F1-definitions-2026.11.22.svg`, `src/d_f1_definitions.py`,
+in both sets. Two things differ from the entry above. The consumption is drawn as a table, not as arrows: 24
+definitions reach nine chapters by 44 (definition, chapter) pairs, and 44 arrows into nine small cards through
+the grid's gutters would have been a thicket; the table has a cell per pair, with the making chapter marked,
+and the same counts stand in each card's footer. And the grid gained a frame of its own: the 14 definitions
+joined by a `uses` edge are laid out by `chapter.layout`, the families chapter's tower from auxiliary field
+data to family data running down seven rows, and the 10 that no edge touches fill the emptiest rows. The
+build checks the 18 definition-to-definition edges (`EXPECTED`), the three interface definitions under
+`architecture/sec-outline-interfaces/` (`INTERFACES`), and the count of definitions. The what-is-new poster
+and the chapter-against-module matrix are next.
 
 ## Risks
 
