@@ -117,7 +117,7 @@ Noto Sans Math too: Noto Sans Mono's are a third of an em tall.
 
 `src/metrics.py` holds the advance width of every character in every face, so text is wrapped and boxed at the
 width the browser draws it; kerning and ligatures are left out of the subsets to keep that exact. Measured in
-Chromium over all twenty-two posters, no line of 14,965 differs from its computed width by more than 0.7 px.
+Chromium over all twenty-six posters, no line of 19,271 differs from its computed width by more than 0.8 px.
 A character outside the subsets is a WARNING, which fails the posters check, rather than a silent fallback to a
 system font.
 
