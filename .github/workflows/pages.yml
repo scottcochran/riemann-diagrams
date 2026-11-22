@@ -100,7 +100,6 @@ jobs:
           print("\n".join(out))
           PY
           find site -type f | sort
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
@@ -118,5 +117,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
+      - uses: actions/configure-pages@v5     # needs the pages permission, which only this job has
       - id: deploy
         uses: actions/deploy-pages@v4
