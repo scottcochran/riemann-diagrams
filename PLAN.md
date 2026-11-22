@@ -149,12 +149,13 @@ because a poster's file name carries its date and a regeneration at a new pin re
   Before 1.0, releases stay at `0.x`, and a MAJOR change may take a MINOR. 1.0 waits on Phase 4, and on the
   first open decision below: the posters must not be published more widely than this repository until the
   quoting question is settled, and a release of a private repository is not wider.
-- **The workflow builds from the tag as CI does**, then does what CI does not: it renders each SVG to PNG with
-  `rsvg-convert` for readers without an SVG viewer, writes `pins.json` (the three pins, the commits they resolve
-  to, the generator's Python version, the tag) and `SHA256SUMS` over everything, and creates the GitHub release
-  with the SVGs, the PNGs, the two files and notes. The PNGs are a convenience and are not byte-checked:
-  `rsvg-convert` is not deterministic across versions, and the notes say so. The Graphviz outputs stay out of
-  releases for the same reason; they are in the tree as committed.
+- **The workflow builds from the tag as CI does**, then does what CI does not: it writes `pins.json` (the three
+  pins, the commits they resolve to, the generator's Python version, the tag) and `SHA256SUMS` over everything,
+  and creates the GitHub release with the SVGs, the two files and notes. No PNG renders: every browser draws an
+  SVG, and a render of these tall posters at a legible width (4000 px wide, body text about 14 px) is 2 to 15 MB a
+  poster, 120 MB for the twenty; halving the width halves the bytes and makes the text unreadable. The Graphviz
+  outputs stay out of releases too, since `dot` is not deterministic across versions; they are in the tree as
+  committed.
 - **The notes record what a reader needs to check a citation**: the kind of move; the three pins with links to
   the blueprint and mirror commits; one row per poster with its statement count and the number of arrows, so a
   reader can see what moved between releases without opening the SVGs; the CI run on `main` at the tagged
@@ -172,13 +173,15 @@ because a poster's file name carries its date and a regeneration at a new pin re
 the tagged commit, and a tag that is unannotated or off `main` is refused.
 
 **Done 2026.11.22.** `v0.1.0` was cut from `c6a6c6c` by `.github/workflows/release.yml`: the tag checks, the
-posters check reused from `posters.yml` as a called workflow, then PNG renders, `pins.json`, `SHA256SUMS` and the
-release with 23 assets, both sets as files and the PNGs in one tarball. All twenty SVG checksums in the published
+posters check reused from `posters.yml` as a called workflow, then `pins.json`, `SHA256SUMS` and the release with
+both sets as files. All twenty SVG checksums in the published
 `SHA256SUMS` match the committed files. The generator now writes `manifest.json` beside each set, with every
 poster's card and arrow counts, and `tools/release-notes.py` writes the notes from the tag message, the pins and
 the manifests. One fault found on the first run: the checkout action fetches a tag peeled to its commit, so the
 notes opened with the commit message; the workflow now re-fetches the annotated tag, and `v0.1.0`'s notes were
-regenerated and replaced in place, the tag untouched. The refusal of a bad tag was not tested on this run, since
+regenerated and replaced in place, the tag untouched. The first run also shipped the PNG renders as a 105 MB
+tarball; the renders were dropped the same day (see above), the tarball removed from `v0.1.0`, and its line taken
+out of the published `SHA256SUMS`, whose twenty SVG lines and `pins.json` line are unchanged. The refusal of a bad tag was not tested on this run, since
 the plan's test of a moved pin without regeneration already exercised the called check.
 
 ## Risks

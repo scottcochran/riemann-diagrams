@@ -1,7 +1,8 @@
 # A release is a version tag, pushed by the custodian, never moved or reused (PLAN.md, Phase 5). This workflow
-# runs the posters check on the tag, as CI runs it on main, then renders each poster to PNG, writes pins.json and
-# SHA256SUMS, and creates the GitHub release with the SVGs of both sets, the PNGs in one tarball, the two files,
-# and notes that record what a reader needs to check a citation.
+# runs the posters check on the tag, as CI runs it on main, then writes pins.json and SHA256SUMS, and creates the
+# GitHub release with the SVGs of both sets, the two files, and notes that record what a reader needs to check a
+# citation. No PNG renders: every browser draws an SVG, and renders of these tall posters ran to 100 MB at a
+# legible width (v0.1.0 shipped one such tarball; it was removed).
 #
 # The tag must be annotated, on main, vMAJOR.MINOR.PATCH, and the custodian's. Its message is the release's
 # opening: the kind of move, what changed, and one line saying which posters a reader must re-read.
@@ -56,8 +57,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: rsvg-convert
-        run: sudo apt-get update -q && sudo apt-get install -y -q librsvg2-bin
       - name: Stage the assets
         env:
           GH_TOKEN: ${{ github.token }}
@@ -66,11 +65,9 @@ jobs:
           # the checkout action fetches the tag peeled to its commit; the notes need the annotated tag's message
           git fetch -q --force origin "refs/tags/$tag:refs/tags/$tag"
           [ "$(git cat-file -t "refs/tags/$tag")" = tag ] || { echo "release: $tag is not annotated after fetch"; exit 1; }
-          mkdir -p stage png
+          mkdir -p stage
           cp diagrams/*.svg stage/
           for f in diagrams/map/*.svg; do cp "$f" "stage/map-$(basename "$f")"; done
-          for f in stage/*.svg; do rsvg-convert -w 4000 "$f" -o "png/$(basename "${f%.svg}").png"; done
-          tar -czf stage/posters-png.tar.gz -C png .
           bp=$(python3 -c "import re; print(re.search(r'^BP_COMMIT = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
           mp=$(python3 -c "import re; print(re.search(r'^MIRROR_PIN = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
           mc=$(python3 -c "import re; print(re.search(r'^MIRROR_COMMIT = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
@@ -90,7 +87,7 @@ jobs:
             "run": {"id": os.environ["GITHUB_RUN_ID"], "url": f"{os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}"},
           }, indent=1))
           PY
-          (cd stage && sha256sum *.svg posters-png.tar.gz pins.json > SHA256SUMS)
+          (cd stage && sha256sum *.svg pins.json > SHA256SUMS)
           python3 tools/release-notes.py "$tag" stage/pins.json diagrams/manifest.json diagrams/map/manifest.json > notes.md
           ls -la stage; head -30 notes.md
       - name: Create the release

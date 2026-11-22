@@ -46,9 +46,8 @@ def main(tag, pins_path, *manifests):
     out.append("## Checking a citation")
     out.append("")
     out.append("`SHA256SUMS` covers every asset. A poster's state line, at its foot, names the same pins as the table "
-               "above. The PNGs in `posters-png.tar.gz` are renders for readers without an SVG viewer; they are not "
-               "byte-checked, because `rsvg-convert` is not deterministic across versions, and `SHA256SUMS` covers "
-               "the tarball as uploaded, not the renders as a rule.")
+               "above. The posters are SVG only: every browser renders them, and a render to PNG at a legible width "
+               "runs to many megabytes a poster, so none is shipped.")
     out.append("")
     out.append(f"The posters were regenerated from the pinned sources and compared byte for byte with the tagged "
                f"commit in workflow run [{pins['run']['id']}]({pins['run']['url']}), which passed before this release "
