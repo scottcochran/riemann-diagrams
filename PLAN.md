@@ -196,6 +196,10 @@ not a need, and is left open below. The refusal of a bad tag was not tested on t
 test of a moved pin without regeneration already exercised the called check. Still to do by hand: the `v*`
 tag ruleset.
 
+`v0.1.1` was cut the same day from `2a58aff` (run 45019565926, 22 assets, nothing touched after it): the same
+twenty SVGs with the same checksums as `v0.1.0`, matching the committed files; its tag message says why it
+exists. Open decision 5 records the choice.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
