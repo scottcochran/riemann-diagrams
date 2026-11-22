@@ -42,7 +42,12 @@ def default_blueprint_dir():
     if env:
         return env
     here = os.path.dirname(os.path.abspath(__file__))
-    return os.path.normpath(os.path.join(here, "..", "riemann-blueprint", "blueprint"))
+    return os.path.normpath(os.path.join(here, "..", "..", "riemann-blueprint", "blueprint"))
+
+
+def output_dir():
+    """Where the scripts write: beside themselves, whatever the working directory."""
+    return os.path.dirname(os.path.abspath(__file__))
 
 
 class Graph:

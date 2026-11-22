@@ -6,16 +6,16 @@ __pycache__/
 
 # Graphviz source files the Python package writes before rendering; a successful
 # run deletes them (cleanup=True), a failed one leaves them beside the output
-riemann_*.gv
-riemann_depth[0-9]*
-!riemann_depth[0-9]*.png
-!riemann_depth[0-9]*.svg
-riemann_trace*
-!riemann_trace*.png
-riemann_chapters
-riemann_full
-!riemann_full.dot
-!riemann_full.svg
+graphs/riemann_*.gv
+graphs/riemann_depth[0-9]*
+!graphs/riemann_depth[0-9]*.png
+!graphs/riemann_depth[0-9]*.svg
+graphs/riemann_trace*
+!graphs/riemann_trace*.png
+graphs/riemann_chapters
+graphs/riemann_full
+!graphs/riemann_full.dot
+!graphs/riemann_full.svg
 
 # macOS and editors
 .DS_Store

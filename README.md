@@ -55,10 +55,10 @@ draws a chain on request.
 
 | File | What it shows |
 |---|---|
-| `riemann_chapters.png` | the nine chapters of the blueprint and which chapters use which, with statement counts by provenance |
-| `riemann_depth3.png` | every statement within 3 reductions of the main theorems (27 statements); the cut-off boxes say how many statements lie below |
-| `riemann_depth4.png` / `.svg` | the same to depth 4 (147 statements): the wide poster |
-| `riemann_full.dot` / `.svg` | all 416 statements and 2004 edges; each node links to its page on the blueprint site |
+| `graphs/riemann_chapters.png` | the nine chapters of the blueprint and which chapters use which, with statement counts by provenance |
+| `graphs/riemann_depth3.png` | every statement within 3 reductions of the main theorems (27 statements); the cut-off boxes say how many statements lie below |
+| `graphs/riemann_depth4.png` / `.svg` | the same to depth 4 (147 statements): the wide poster |
+| `graphs/riemann_full.dot` / `.svg` | all 416 statements and 2004 edges; each node links to its page on the blueprint site |
 
 Every box is one statement: its title, blueprint id, kind and provenance,
 its first Lean declaration with the file and line in the
@@ -77,17 +77,17 @@ at `../riemann-blueprint/blueprint`; set `RIEMANN_BLUEPRINT` or pass
 `--blueprint DIR` to read it from elsewhere.
 
 ```sh
-uv run visualize_theorems.py            # riemann_depth3.png and a depth table
-uv run visualize_theorems.py 4          # riemann_depth4.png and .svg
-uv run visualize_theorems.py --chapters # riemann_chapters.png
-uv run visualize_theorems.py --full     # riemann_full.dot and .svg
+uv run graphs/visualize_theorems.py            # riemann_depth3.png and a depth table
+uv run graphs/visualize_theorems.py 4          # riemann_depth4.png and .svg
+uv run graphs/visualize_theorems.py --chapters # riemann_chapters.png
+uv run graphs/visualize_theorems.py --full     # riemann_full.dot and .svg
 
-uv run trace_proof.py                            # the deepest chain
-uv run trace_proof.py --first thm-half-plane     # follow the first proof use from a statement
-uv run trace_proof.py --to thm-landau-windows    # the chain from the main theorems to a statement
+uv run graphs/trace_proof.py                            # the deepest chain
+uv run graphs/trace_proof.py --first thm-half-plane     # follow the first proof use from a statement
+uv run graphs/trace_proof.py --to thm-landau-windows    # the chain from the main theorems to a statement
 ```
 
-`visualize_theorems.py` also prints the statements by depth:
+The outputs land in `graphs/`, whatever the working directory. `visualize_theorems.py` also prints the statements by depth:
 
 ```
 Depth | Statements | Published | Modified | New
@@ -109,9 +109,9 @@ Depth | Statements | Published | Modified | New
 
 | File | What it is |
 |---|---|
-| `blueprint_graph.py` | reads the blueprint into a graph: nodes, `uses` edges, depths, traces, box labels and colours |
-| `visualize_theorems.py` | the depth-limited tree, the chapter overview and the full graph |
-| `trace_proof.py` | prints a single chain of reductions, and draws it with Graphviz on request |
+| `graphs/blueprint_graph.py` | reads the blueprint into a graph: nodes, `uses` edges, depths, traces, box labels and colours; the posters read the blueprint through it too |
+| `graphs/visualize_theorems.py` | the depth-limited tree, the chapter overview and the full graph |
+| `graphs/trace_proof.py` | prints a single chain of reductions, and draws it with Graphviz on request |
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
 

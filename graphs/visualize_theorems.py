@@ -5,14 +5,15 @@ The dependency graph drawn as a state space: the main theorems of Main.lean
 are the start state, a `uses` edge is a move, and the diagram shows every
 statement within `max_depth` reductions of the main theorems.
 
-    uv run visualize_theorems.py [max_depth] [--blueprint DIR]
-    uv run visualize_theorems.py --chapters      # the nine chapters and their uses edges
-    uv run visualize_theorems.py --full          # every statement, as riemann_full.dot/.svg
+    uv run graphs/visualize_theorems.py [max_depth] [--blueprint DIR]
+    uv run graphs/visualize_theorems.py --chapters      # the nine chapters and their uses edges
+    uv run graphs/visualize_theorems.py --full          # every statement, as riemann_full.dot/.svg
 """
 
 import sys
 import graphviz
-from blueprint_graph import Graph, default_blueprint_dir, summary, PROVENANCE_COLOR, ROOT_COLOR
+import os
+from blueprint_graph import Graph, default_blueprint_dir, output_dir, summary, PROVENANCE_COLOR, ROOT_COLOR
 
 
 def legend(dot):
@@ -131,20 +132,20 @@ def main():
 
     if "--chapters" in args:
         dot = create_chapter_overview(g)
-        dot.render("riemann_chapters", cleanup=True)
+        dot.render(os.path.join(output_dir(), "riemann_chapters"), cleanup=True)
         print("Generated riemann_chapters.png")
         return
     if "--full" in args:
         dot = create_full_graph(g)
-        dot.save("riemann_full.dot")
-        dot.render("riemann_full", cleanup=True)
+        dot.save(os.path.join(output_dir(), "riemann_full.dot"))
+        dot.render(os.path.join(output_dir(), "riemann_full"), cleanup=True)
         print("Generated riemann_full.dot and riemann_full.svg")
         return
 
     max_depth = int(args[0]) if args else 3
     print(f"Creating visualization (depth <= {max_depth}) ...")
     dot, n = create_visualization(g, max_depth=max_depth)
-    out = f"riemann_depth{max_depth}"
+    out = os.path.join(output_dir(), f"riemann_depth{max_depth}")
     dot.render(out, cleanup=True)
     print(f"Generated {out}.png with {n} statements")
     if max_depth > 3:

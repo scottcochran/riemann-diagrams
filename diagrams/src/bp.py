@@ -25,7 +25,7 @@ import lib
 from lib import MONO, MONO_EM, fill, fs, render_line, wrap
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]          # riemann-diagrams
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "graphs"))
 from blueprint_graph import Graph, default_blueprint_dir, MAIN_LEAN_THEOREMS  # noqa: E402
 
 BLUEPRINT = pathlib.Path(default_blueprint_dir())

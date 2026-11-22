@@ -6,14 +6,15 @@ one `uses` edge per step, down to a statement that uses nothing. By default it
 is the longest such chain (a shortest path from the main theorems to the
 statement farthest from them), which is how deep the proof goes.
 
-    uv run trace_proof.py                      # deepest chain
-    uv run trace_proof.py --first thm-half-plane   # follow the first proof use at each step
-    uv run trace_proof.py --to thm-landau-windows  # chain from the main theorems to one statement
+    uv run graphs/trace_proof.py                      # deepest chain
+    uv run graphs/trace_proof.py --first thm-half-plane   # follow the first proof use at each step
+    uv run graphs/trace_proof.py --to thm-landau-windows  # chain from the main theorems to one statement
 """
 
 import sys
 import graphviz
-from blueprint_graph import Graph, default_blueprint_dir, LEAF_COLOR
+import os
+from blueprint_graph import Graph, default_blueprint_dir, output_dir, LEAF_COLOR
 
 
 def trace_label(g, step, oid, prev, last):
@@ -80,7 +81,7 @@ def main():
     for i, oid in enumerate(path):
         print(f"  {i:2d}. {oid}  ({g.nodes[oid]['kind']}, {g.nodes[oid].get('provenance')})")
     dot = create_trace(g, path)
-    dot.render(out, cleanup=True)
+    dot.render(os.path.join(output_dir(), out), cleanup=True)
     print(f"Generated {out}.png")
 
 

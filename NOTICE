@@ -3,16 +3,15 @@ Copyright 2026 William Scott Cochran
 
 This repository is dual-licensed by content type.
 
-Source code and tooling -- the Python scripts at the root
-(blueprint_graph.py, visualize_theorems.py, trace_proof.py), the
+Source code and tooling -- the Graphviz scripts (graphs/*.py), the
 poster generator and its modules (diagrams/gen-diagrams.py and
-diagrams/src/), and the repository's configuration (pyproject.toml,
-uv.lock, .gitignore) -- are licensed under the Apache License,
-Version 2.0. See LICENSE.
+diagrams/src/), the CI workflow (.github/), and the repository's
+configuration (pyproject.toml, uv.lock, .gitignore) -- are licensed
+under the Apache License, Version 2.0. See LICENSE.
 
 Documentation -- the Markdown (.md) prose, and the rendered diagrams
-(diagrams/*.svg and the riemann_*.png, .svg and .dot files at the
-root), to the extent that they are this repository's own work -- is
+(diagrams/*.svg and the riemann_*.png, .svg and .dot files in
+graphs/), to the extent that they are this repository's own work -- is
 licensed under the Creative Commons Attribution 4.0 International
 License (CC BY 4.0). See LICENSE-DOCS.
 
