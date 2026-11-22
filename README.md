@@ -57,7 +57,8 @@ and zoom in.
 They are generated from the blueprint and the mirror, and the build fails if
 the two disagree with what is drawn: see [diagrams/README.md](diagrams/README.md).
 What on a poster is quoted, what is computed and what is written here is set
-out in [diagrams/TEXT.md](diagrams/TEXT.md).
+out in [diagrams/TEXT.md](diagrams/TEXT.md); why the light theme's page is a
+93% grey, and how that was measured, in [diagrams/PAGE.md](diagrams/PAGE.md).
 A release is a version tag; each one carries every poster as a file, both
 sets, with checksums and the pins they were drawn from, so a poster can be
 cited by release and fetched after the tree has moved on: see
