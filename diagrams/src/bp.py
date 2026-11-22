@@ -226,9 +226,15 @@ def abridge(s, limit):
 
 
 # ------------------------------------------------------------------------------------------------ Lean
+def cells(s):
+    """The width of s in cells of the code face: one per character it has, more for a symbol drawn from Noto
+    Sans Math, which is wider than the cell."""
+    return lib.em(s, "m") / MONO_EM
+
+
 def lean_block(sig, cols, max_lines=9):
-    """A Lean signature as formula lines (indent, text, is_comment), wrapped at `cols` characters. A wrapped line
-    continues four columns in from the line it came from."""
+    """A Lean signature as formula lines (indent, text, is_comment), wrapped at `cols` cells (see cells()). A
+    wrapped line continues four columns in from the line it came from."""
     out = []
     for src in sig.splitlines():
         src = src.rstrip()
@@ -243,12 +249,12 @@ def lean_block(sig, cols, max_lines=9):
                 w = w[cols - ind - 4:]
             words.append(w)
         for w in words:
-            if line and cur + 1 + len(w) > cols:
+            if line and cur + 1 + cells(w) > cols:
                 out.append((cont, " ".join(line), False))
                 cont = ind + 4
-                line, cur = [w], cont + len(w)
+                line, cur = [w], cont + cells(w)
             else:
-                cur += (1 if line else 0) + len(w)
+                cur += (1 if line else 0) + cells(w)
                 line.append(w)
         out.append((cont, " ".join(line), False))
     if len(out) > max_lines:
@@ -267,13 +273,13 @@ def columns(w, pad=16, fpad=11, fsize=13.5):
 
 
 # ------------------------------------------------------------------------------------------------ drawing
-def mono_width(s, size):
-    return len(s) * MONO_EM * size
+def mono_width(s, size, bold=False):
+    return lib.mono_width(s, size, bold)
 
 
 def mono_line(x, y, s, size, color="ink", bold=False, italic=False):
     """A line of code-font text. Registers itself for the overlap check."""
-    lib.TEXT_BOXES.append((x, y - size * 0.75, x + mono_width(s, size), y + size * 0.2, s))
+    lib.TEXT_BOXES.append((x, y - size * 0.75, x + mono_width(s, size, bold), y + size * 0.2, s))
     b = ' font-weight="bold"' if bold else ""
     it = ' font-style="italic"' if italic else ""
     return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{MONO}" font-size="{size}"{b}{it} '
@@ -294,7 +300,7 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     while True:                 # a long title is set smaller, down to 15 px, then wrapped to two lines, then fails
         if title_mono:
             tlines = [[(name, "b", None)]]
-            tw = mono_width(name, tsize) + pw
+            tw = mono_width(name, tsize, bold=True) + pw
         else:
             tlines = wrap(name, inner - pw, tsize, bold=True)
             tw = max(lib.line_width(ln, tsize) for ln in tlines) + pw
@@ -307,7 +313,7 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     need = formula_width(formula, fsize) + 2 * fpad
     if need > inner + 0.5:
         raise ValueError(f"node {name}: formula needs {need:.0f} px, the card has {inner:.0f}")
-    say_lines = wrap(say, inner - 4, size) if say else []
+    say_lines = wrap(say, inner - 4, size, italic=True) if say else []
     blines = [wrap(b, inner - lib.width("•  ", size), size) for b in bullets]
     flines = [wrap(f, inner, size - 1) for f in foot]
     panel_h = len(formula) * flead + 2 * fpad - 5 if formula else 0
@@ -343,8 +349,7 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
         cy += panel_h + 12
     if say_lines:
         for ln in say_lines:
-            c.add(render_line(x + pad + 2, cy + size - 1, ln, size, "muted").replace(
-                "<text ", '<text font-style="italic" ', 1))
+            c.add(render_line(x + pad + 2, cy + size - 1, ln, size, "muted", italic=True))
             cy += lead
         cy += 8
     for ls in blines:

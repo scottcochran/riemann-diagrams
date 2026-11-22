@@ -20,8 +20,16 @@ License (CC BY 4.0). See LICENSE-DOCS.
   SPDX-License-Identifier: CC-BY-4.0       (documentation)
 
 Material taken from TOPAK -- the drawing library diagrams/src/lib.py
-and its font metrics diagrams/src/metrics.py -- keeps the licence it
-has there (Apache-2.0), as its header says.
+-- keeps the licence it has there (Apache-2.0), as its header says.
+
+The fonts in diagrams/src/fonts/, which every poster embeds, are
+subsets of Noto Sans, Noto Sans Mono and Noto Sans Math, Copyright
+2022 The Noto Project Authors, licensed under the SIL Open Font
+License, Version 1.1 (diagrams/src/fonts/OFL.txt). They are not this
+repository's work and are covered by neither license above; the OFL
+applies to the fonts, not to the posters drawn with them. The advance
+widths in diagrams/src/metrics.py are read from them by
+tools/build-fonts.py.
 
 What the diagrams quote is not part of this repository's work and is
 not covered by either license. The posters under diagrams/map/ quote
