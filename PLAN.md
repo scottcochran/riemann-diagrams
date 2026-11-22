@@ -214,8 +214,10 @@ release job passed; the Pages deploy that follows it failed, and failed twice mo
 artifact was uploaded each time, and the deploy step, in the same job, listed the run's artifacts and found
 none. The artifact had grown from 476 KB at `v0.1.1` to 5 MB with the fonts and the six posters, and the
 listing raced the registration. The fix splits `pages.yml` into a build job that uploads and a deploy job
-that publishes, as GitHub's own Pages workflow does; `v0.2.0` is published to Pages by running it by hand once
-the fix is in. The release itself was not touched.
+that publishes, as GitHub's own Pages workflow does, with the configure step in the deploy job, which holds
+the `pages` permission (the first split had it in build, and failed once more). With that in, run 45035596381
+published `v0.2.0` to Pages by hand: the site's `pins.json` names the tag and its index lists all sixteen
+posters of both sets. The release itself was not touched.
 
 ### Phase 6: other frames
 
