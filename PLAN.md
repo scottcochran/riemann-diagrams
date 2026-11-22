@@ -208,6 +208,15 @@ tag ruleset.
 twenty SVGs with the same checksums as `v0.1.0`, matching the committed files; its tag message says why it
 exists. Open decision 5 records the choice.
 
+`v0.2.0` was cut the same day from `1de0cf2` (run 45033058428): 34 assets, the 32 SVGs of both sets with
+checksums matching the committed files, `pins.json` and `SHA256SUMS`, and the notes from the tag message. The
+release job passed; the Pages deploy that follows it failed, and failed twice more when run by hand: the site
+artifact was uploaded each time, and the deploy step, in the same job, listed the run's artifacts and found
+none. The artifact had grown from 476 KB at `v0.1.1` to 5 MB with the fonts and the six posters, and the
+listing raced the registration. The fix splits `pages.yml` into a build job that uploads and a deploy job
+that publishes, as GitHub's own Pages workflow does; `v0.2.0` is published to Pages by running it by hand once
+the fix is in. The release itself was not touched.
+
 ### Phase 6: other frames
 
 Every poster so far sits in one frame: the blueprint's `uses` graph, laid out as an argument from the main
