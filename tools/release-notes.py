@@ -52,8 +52,9 @@ def main(tag, pins_path, *manifests):
                f"commit in workflow run [{pins['run']['id']}]({pins['run']['url']}), which passed before this release "
                "was created.")
     out.append("")
-    out.append("No licence has been granted for the text the reader posters quote; see `NOTICE`. The reader set is "
-               "for readers of this repository, and the map set is the form that may be passed on.")
+    out.append("The blueprint's prose is quoted under the CC BY 4.0 licence its author granted on 2026.11.22; the Lean "
+               "signatures remain the formal proof's, published without a licence (see `NOTICE`). The map set quotes "
+               "neither.")
     print("\n".join(out))
 
 

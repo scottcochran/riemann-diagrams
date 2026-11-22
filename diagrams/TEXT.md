@@ -44,8 +44,8 @@ Four transformations stand between the file and the page, all in `src/bp.py`:
   is marked with ` …`. A card that shows an ellipsis is showing less than the blueprint says.
 
 The subtitle of every reader poster says that its text is the blueprint's, abridged, and the footer of every
-card gives the blueprint path. `NOTICE` records that no licence has been granted for this prose and that the
-reader set is not to be redistributed until one is.
+card gives the blueprint path. `NOTICE` records the CC BY 4.0 licence the blueprint's author granted for this prose on 2026.11.22, under
+which the reader set quotes it, attributed.
 
 ## 2. Read from the blueprint's front matter and structure (both sets)
 

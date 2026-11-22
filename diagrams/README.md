@@ -81,9 +81,9 @@ theorem get full cards, the rest short ones.
 the formal proof's source is quoted. Each card
 keeps the statement's title, id, kind, provenance, Lean name and file location,
 every edge, and a count of the paragraphs the blueprint spends on it; the
-section and chapter cards keep their titles and counts. The map set is the form
-that can be published while the quoting question in `PLAN.md` is open, and it
-is a third to a half the height of the reader set. The build and the checks
+section and chapter cards keep their titles and counts. The map set quotes nothing, so it
+can be passed on without the blueprint's licence or the proof's, and it is a
+third to a half the height of the reader set. The build and the checks
 are the same; only the quotations are left out, and a map poster says so in its
 subtitle and its brand line.
 
