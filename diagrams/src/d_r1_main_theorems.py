@@ -8,7 +8,7 @@ drawn statements, and the build fails if they are not exactly the ones listed in
 import re
 
 import bp
-from bp import PROV_ACCENT, PROV_SHORT, abridge, code, names, node, paragraphs, rich
+from bp import PROV_ACCENT, abridge, node, paragraphs, rich
 from lib import Canvas
 
 ID, SLUG = "R1", "main-theorems"
@@ -119,43 +119,7 @@ def build():
 
     # ---------------------------------------------------------------------------------- node content
     def stmt_node(k, w):
-        n = g.nodes[k]
-        prov = n.get("provenance")
-        lean = n.get("lean", [])
-        if not lean:
-            raise ValueError(f"R1: {k} has no Lean declaration to draw")
-        first = lean[0]
-        fact = g.lean_facts.get(first)
-        if not fact or not fact.get("signature"):
-            raise ValueError(f"R1: lean-facts.json has no signature for {first}")
-        is_main = any(x in main_names for x in lean)
-        pill = ("Main.lean · " if is_main else "") + f"{n['kind']} · {PROV_SHORT[prov]}"
-        say = abridge(rich(" ".join(paragraphs(bp.body(g, k))[:2])), 620)
-        pf = bp.proof(g, k)
-        bullets = []
-        if pf is not None:
-            paras = paragraphs(pf)
-            for p in paras[:4]:
-                bullets.append(abridge(rich(p), 330))
-            if len(paras) > 4:
-                bullets.append(f"… and {len(paras) - 4} more paragraphs in the blueprint's proof.")
-        elif n["kind"] != "definition":
-            bullets.append("The blueprint gives no proof for this statement.")
-        su, pu, ub = g.statement_uses(k), g.proof_uses(k), rev[k]
-        foot = ["**Stated with** " + (names(su) if su else "no other statement")]
-        if n["kind"] != "definition":
-            hidden = [u for u in pu if u not in drawn]
-            foot.append("**Proof uses** " + (names(pu) if pu else "nothing the blueprint names")
-                        + (f" · {len(hidden)} of these are not drawn here" if hidden else ""))
-        foot.append("**Used by** " + (names(ub) if ub else "no other statement: it is one of the five theorems"))
-        where = g.lean_location(first)
-        more = f" · and {len(lean) - 1} more: " + names(lean[1:4]) + (" …" if len(lean) > 4 else "") if len(lean) > 1 else ""
-        foot.append(f"**Lean** {code(first)} at {code(where)}{more}")
-        chap = g.nodes[n["_chapter"]]["title"]
-        foot.append(f"Blueprint `{n['_path']}` ({chap}) · depth {depth.get(k, '—')} from the main theorems")
-        return dict(name=n["title"], accent=PROV_ACCENT[prov], pill=pill,
-                    formula=bp.lean_block(fact["signature"], bp.columns(w)), say=say, bullets=bullets, foot=foot,
-                    dash="6 4" if n["kind"] == "definition" else None)
+        return bp.statement_card(g, k, w, drawn, rev, depth, main_names, "R1")
 
     pos, rowof = {}, {}
 

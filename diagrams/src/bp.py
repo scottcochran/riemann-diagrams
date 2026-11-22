@@ -148,12 +148,13 @@ _MACROS = [
 def latex(s):
     """A LaTeX run as readable Unicode. Not typesetting: enough to read the statement off a poster."""
     s = s.replace("\\\\", " ")
+    s = s.replace("\\#", "#").replace("\\{", "\x03").replace("\\}", "\x04")   # escaped braces survive the strip
     for pat, rep in _MACROS:
         s = re.sub(pat, rep, s)
     s = re.sub(r"[\^_]\{([^{}]*)\}", lambda m: ("^" if m.group(0)[0] == "^" else "_") + (
         m.group(1) if len(m.group(1)) <= 1 else "(" + m.group(1) + ")"), s)
     s = re.sub(r"\\([A-Za-z]+)", r"\1", s)          # an unknown macro keeps its name
-    s = s.replace("{", "").replace("}", "")
+    s = s.replace("{", "").replace("}", "").replace("\x03", "{").replace("\x04", "}")
     return " ".join(s.split())
 
 
@@ -325,6 +326,48 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     return hh
 
 
+def statement_card(g, k, w, drawn, rev, depth, main_names, diagram="R1", max_lines=9):
+    """The card for one blueprint statement: the Lean panel, the statement in italics, the proof as bullets, and
+    the Stated with / Proof uses / Used by / Lean / Blueprint footer. `drawn` says which proof uses have a card."""
+    n = g.nodes[k]
+    prov = n.get("provenance")
+    lean = n.get("lean", [])
+    if not lean:
+        raise ValueError(f"{diagram}: {k} has no Lean declaration to draw")
+    first = lean[0]
+    fact = g.lean_facts.get(first)
+    if not fact or not fact.get("signature"):
+        raise ValueError(f"{diagram}: lean-facts.json has no signature for {first}")
+    is_main = any(x in main_names for x in lean)
+    pill = ("Main.lean · " if is_main else "") + f"{n['kind']} · {PROV_SHORT[prov]}"
+    say = abridge(rich(" ".join(paragraphs(body(g, k))[:2])), 620)
+    pf = proof(g, k)
+    bullets = []
+    if pf is not None:
+        paras = paragraphs(pf)
+        for p in paras[:4]:
+            bullets.append(abridge(rich(p), 330))
+        if len(paras) > 4:
+            bullets.append(f"… and {len(paras) - 4} more paragraphs in the blueprint's proof.")
+    elif n["kind"] != "definition":
+        bullets.append("The blueprint gives no proof for this statement.")
+    su, pu, ub = g.statement_uses(k), g.proof_uses(k), rev[k]
+    foot = ["**Stated with** " + (names(su) if su else "no other statement")]
+    if n["kind"] != "definition":
+        hidden = [u for u in pu if u not in drawn]
+        foot.append("**Proof uses** " + (names(pu) if pu else "nothing the blueprint names")
+                    + (f" · {len(hidden)} of these are not drawn here" if hidden else ""))
+    foot.append("**Used by** " + (names(ub) if ub else "no other statement: it is one of the five theorems"))
+    where = g.lean_location(first)
+    more = f" · and {len(lean) - 1} more: " + names(lean[1:4]) + (" …" if len(lean) > 4 else "") if len(lean) > 1 else ""
+    foot.append(f"**Lean** {code(first)} at {code(where)}{more}")
+    chap = g.nodes[n["_chapter"]]["title"]
+    foot.append(f"Blueprint {code(n['_path'], 44)} ({chap}) · depth {depth.get(k, '—')} from the main theorems")
+    return dict(name=n["title"], accent=PROV_ACCENT[prov], pill=pill,
+                formula=lean_block(fact["signature"], columns(w), max_lines), say=say, bullets=bullets, foot=foot,
+                dash="6 4" if n["kind"] == "definition" else None)
+
+
 def names(xs, limit=10):
     """Ids as code runs, the first `limit` of them; the rest become a count."""
     xs = list(xs)
@@ -351,7 +394,7 @@ def code(s, limit=34):
 
 
 # ------------------------------------------------------------------------------------------------ arrows
-def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx):
+def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=()):
     """Draw every (a, b) of `edges` as an arrow from the bottom (or top) of card a to the top of card b: a is
     drawn above b, or in the same row. Adjacent cards in a row are joined across the gutter; other pairs in a row
     go over the lane above; cards one row apart go through the lane between; farther pairs drop through a free
@@ -424,23 +467,25 @@ def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx):
         return gx + (i - (n - 1) / 2) * 10
 
     for kind, a, b, data in plans:
-        acc = accent(a)
+        acc = "amber" if (a, b) in dashed else accent(a)
+        dash = "7 5" if (a, b) in dashed else None
         xa, ya, wa, ha = pos[a]
         xb, yb, wb, hb = pos[b]
         if kind == "across":
             yy = ya + 100
             pts = [(xa + wa, yy), (xb, yy)] if xa < xb else [(xa, yy), (xb + wb, yy)]
-            c.arrow(pts, acc)
+            c.arrow(pts, acc, dash=dash)
         elif kind == "over":
             ly = lane_y(data, a, b)
-            c.arrow([(ex[a][b], ya), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc)
+            c.arrow([(ex[a][b], ya), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc, dash=dash)
         elif kind == "down":
             ly = lane_y(data, a, b)
             if abs(ex[a][b] - en[b][a]) < 2:
-                c.arrow([(ex[a][b], ya + ha), (en[b][a], yb)], acc)
+                c.arrow([(ex[a][b], ya + ha), (en[b][a], yb)], acc, dash=dash)
             else:
-                c.arrow([(ex[a][b], ya + ha), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc)
+                c.arrow([(ex[a][b], ya + ha), (ex[a][b], ly), (en[b][a], ly), (en[b][a], yb)], acc, dash=dash)
         else:
             gx = gx_of(data, a, b)
             l1, l2 = lane_y(rowof[a], a, b), lane_y(rowof[b] - 1, a, b)
-            c.arrow([(ex[a][b], ya + ha), (ex[a][b], l1), (gx, l1), (gx, l2), (en[b][a], l2), (en[b][a], yb)], acc)
+            c.arrow([(ex[a][b], ya + ha), (ex[a][b], l1), (gx, l1), (gx, l2), (en[b][a], l2), (en[b][a], yb)], acc,
+                    dash=dash)

@@ -23,6 +23,10 @@ and zoom in.
 - [The proof, chapter by chapter](diagrams/R2-chapters-2026.11.22.svg): the
   nine chapters of the blueprint, what each proves, which chapters use which,
   and the published results the proof cites most.
+- [The zero-free chapter, lemma by lemma](diagrams/R3-zero-free-2026.11.22.svg):
+  the analytic half of the proof from the inside, all 24 statements of the
+  chapter as cards, with the argument's strands as columns and the chapter's
+  theorem at the foot.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 

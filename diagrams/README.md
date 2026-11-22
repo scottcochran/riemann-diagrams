@@ -6,6 +6,7 @@ opened on their own and zoomed.
 | Id | Diagram | What it shows |
 |----|---------|---------------|
 | R1 | [`Main.lean`, theorem by theorem](R1-main-theorems-2026.11.22.svg) | The five theorems of `Main.lean`, the definitions they are stated with, the chain of reductions from `GRH, half-plane form` down to the theorems the chapters prove, and those theorems. Each node is one blueprint statement: the Lean signature from `lean-facts.json`, the statement in words, its proof as bullets, and what it uses and is used by. Arrows are the proof uses between the drawn statements. Also `Main.lean` and `Statements.lean` as the mirror states them, the five stages of the proof, a table of statements by depth, and what has been checked of the formal proof. |
+| R3 | [The zero-free chapter, lemma by lemma](R3-zero-free-2026.11.22.svg) | All 24 statements of the blueprint's chapter "From prime sums to the zero-free half-plane", the analytic half of the proof, as cards. Solid arrows are the proof uses inside the chapter; two dashed arrows are the hypotheses the chapter theorem takes rather than proves, which the build checks against the proof's text. Also what the chapter uses from outside, and the five section introductions in the chapter's own words. |
 | R2 | [The proof, chapter by chapter](R2-chapters-2026.11.22.svg) | The nine chapters of the blueprint as cards: the Lean signature of the theorem each one proves, its introduction, its sections with statement counts, and which chapters it uses. Arrows are the chapter `uses` edges. Also the blueprint's own list of points to check first, and the twelve published results the proof cites most. |
 
 ## Where the content comes from
@@ -18,8 +19,9 @@ chapter and section files, and `lean-facts.json`) and the
 
 - the blueprint checkout is at another commit than the one the diagrams were written against (`BP_COMMIT` in
   `src/bp.py`), or pins the mirror at another commit;
-- the proof uses between the drawn statements (R1), or the `uses` between chapters (R2), are not exactly the
-  arrows listed in the diagram's `EXPECTED`;
+- the proof uses between the drawn statements (R1, R3), or the `uses` between chapters (R2), are not exactly the
+  arrows listed in the diagram's `EXPECTED`; or a dashed hypothesis arrow (R3) names a statement the proof's text
+  does not;
 - a theorem of `Main.lean` is carried by no drawn node, or `comparator.json` names other theorems;
 - a drawn Lean declaration has no signature in `lean-facts.json`;
 - the theorem drawn for a chapter is not the first result at that chapter's root;
@@ -36,7 +38,7 @@ source text and some are wrong; this is written on both posters.
 ## Regenerating
 
 ```bash
-uv run python diagrams/gen-diagrams.py        # all; or: uv run python diagrams/gen-diagrams.py R1
+uv run python diagrams/gen-diagrams.py        # all; or: uv run python diagrams/gen-diagrams.py R3
 ```
 
 The generator needs only the standard library, on Python 3.12 or later. The output is deterministic: unchanged
@@ -55,6 +57,7 @@ src/bp.py                    reads the blueprint, the Lean facts and the mirror;
                              the Lean card; the arrow router
 src/d_r1_main_theorems.py    R1
 src/d_r2_chapters.py         R2
+src/d_r3_zero_free.py        R3
 ```
 
 `lib.py` and `metrics.py` are the drawing library of the TOPAK diagram family (Apache-2.0, same author), with
