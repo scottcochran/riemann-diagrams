@@ -1,6 +1,7 @@
 # Publish a release's posters to GitHub Pages, so a reader can open one in the browser, served as image/svg+xml,
 # rather than in GitHub's file viewer. The site holds the tag's diagrams/*.svg and diagrams/map/*.svg at the paths
-# they have in the tree, the release's pins.json, and an index written from the two manifests. Before it deploys,
+# they have in the tree, the release's pins.json, and an index: diagrams/README.md at the tag, rendered, above the
+# list of the release's posters from the two manifests. Before it deploys,
 # the job checks the files against the release's SHA256SUMS, so the site is the release and nothing else. Pages
 # holds one release at a time; the others stay on their release pages.
 #
@@ -76,23 +77,51 @@ jobs:
           [ "$(ls check/*.svg | wc -l)" = "$(grep -c '\.svg$' release/SHA256SUMS)" ] || { echo "pages: the tag has SVGs the release does not"; exit 1; }
           cp release/pins.json site/
           python3 - "$tag" > site/index.html <<'PY'
-          import html, json, re, sys
+          import html, json, re, subprocess, sys
           tag = sys.argv[1]
           repo = "https://github.com/scottcochran/riemann-diagrams"
+          # The page is diagrams/README.md at the tag, rendered by GitHub's Markdown API, above the list of the
+          # release's posters from the two manifests. The README's links are relative to diagrams/: a poster's
+          # resolves on the site under diagrams/; anything else (a Markdown file, a directory, the NOTICE) goes to
+          # GitHub at the tag, so that nothing on the page lands on a 404.
+          md = open("diagrams/README.md", encoding="utf-8").read()
+          def target(m):
+              t = m.group(1)
+              if re.match(r"(https?:|/|#|mailto:)", t):
+                  return m.group(0)
+              if t.endswith(".svg"):
+                  return f"](diagrams/{t})"
+              path = re.sub(r"^(\.\./)+", "", t) if t.startswith("../") else f"diagrams/{t}"
+              kind = "tree" if path.endswith("/") else "blob"
+              return f"]({repo}/{kind}/{tag}/{path.rstrip('/')})"
+          md = re.sub(r"\]\(([^)\s]+)\)", target, md)
+          body = subprocess.run(["gh", "api", "-X", "POST", "markdown", "-f", "mode=gfm",
+                                 "-f", "context=scottcochran/riemann-diagrams", "-f", "text=" + md],
+                                capture_output=True, text=True, check=True).stdout
+          release = (f'<p class="release">The posters of release <a href="{repo}/releases/tag/{tag}">{tag}</a>, served '
+                     f'as SVG: open one and zoom in. The sources they were generated from are in '
+                     f'<a href="pins.json">pins.json</a>; the repository is <a href="{repo}">riemann-diagrams</a>, and '
+                     f'this page is its <a href="{repo}/blob/{tag}/diagrams/README.md">diagrams/README.md</a> at the '
+                     f'tag, above the list of the release\'s posters.</p>')
+          body = body.replace("</h1>", "</h1>\n" + release, 1)
           def fmt(t):
               return re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(t))
           out = ['<!doctype html>', '<html lang="en">', '<meta charset="utf-8">',
                  '<meta name="viewport" content="width=device-width, initial-scale=1">',
                  f'<title>Riemann Hypothesis proof diagrams, {tag}</title>',
-                 '<style>body{font:16px/1.5 Helvetica,Arial,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem}'
-                 'li{margin:.4rem 0}code{font-size:.9em}</style>',
-                 '<h1>Riemann Hypothesis proof diagrams</h1>',
-                 f'<p>The posters of release <a href="{repo}/releases/tag/{tag}">{tag}</a>, served as SVG: open one '
-                 f'and zoom in. The sources they were generated from are in <a href="pins.json">pins.json</a>; '
-                 f'the repository is <a href="{repo}">riemann-diagrams</a>.</p>']
+                 '<style>body{font:16px/1.5 -apple-system,Helvetica,Arial,sans-serif;max-width:56rem;margin:2rem auto;'
+                 'padding:0 1rem;color:#1f2328;background:#fff} li{margin:.4rem 0} h1,h2,h3{line-height:1.25}'
+                 'code{font-size:.9em;background:#f3f4f6;padding:.1em .3em;border-radius:4px}'
+                 'pre{background:#f3f4f6;padding:.8rem;overflow:auto} pre code{background:none;padding:0}'
+                 'table{border-collapse:collapse;display:block;overflow:auto}'
+                 'th,td{border:1px solid #d0d7de;padding:.3rem .6rem;vertical-align:top;text-align:left}'
+                 '.release{border-left:4px solid #d0d7de;padding-left:.8rem}'
+                 '@media (prefers-color-scheme:dark){body{background:#0d1117;color:#e6edf3} a{color:#4493f8}'
+                 'code,pre{background:#161b22} th,td,.release{border-color:#30363d}}</style>',
+                 body, '<hr>', f'<h2>The posters of {tag}</h2>']
           for path, heading, prefix in (("diagrams/manifest.json", "The reader set", "diagrams/"),
                                         ("diagrams/map/manifest.json", "The map set (nothing quoted)", "diagrams/map/")):
-              out.append(f"<h2>{heading}</h2>")
+              out.append(f"<h3>{heading}</h3>")
               out.append("<ul>")
               for pid, p in sorted(json.load(open(path, encoding="utf-8")).items()):
                   out.append(f'<li><a href="{prefix}{p["file"]}">{pid}</a>: {fmt(p["title"])}</li>')
