@@ -238,8 +238,10 @@ def build():
             pos[k] = (colx(i), y, span(n), hh)
         if r == 1:
             node(c, colx(3), y, span(2), h=hh, **stm_node)
-        if extra:
+            pos["_statements"], rowof["_statements"] = (colx(3), y, span(2), hh), r
+        if extra:        # registered with the arrow router as an obstacle, so no arrow is routed through it
             c.card(colx(extra[1]), y, span(extra[2]), extra[3], extra[4], extra[5], h=hh, size=S, tint=False)
+            pos[f"_{extra[0]}"], rowof[f"_{extra[0]}"] = (colx(extra[1]), y, span(extra[2]), hh), r
         y += hh + VG
     y -= VG
 

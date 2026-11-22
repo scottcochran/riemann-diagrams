@@ -20,7 +20,7 @@ S = 13.5
 
 # Where each chapter sits: id -> (row, column, columns spanned). Used chapters sit above their users.
 PLACE = {
-    "chap-literature": (0, 0, 5),
+    "chap-literature": (0, 0, 3),
     "chap-theta": (1, 0, 2), "chap-heights": (1, 2, 1), "chap-galois": (1, 3, 2),
     "chap-sha": (2, 2, 3),
     "chap-families": (3, 0, 3),
@@ -179,10 +179,12 @@ def build():
     for k, (r, i, n) in PLACE.items():
         rows.setdefault(r, []).append((k, i, n))
         rowof[k] = r
-    EXTRA = {2: (0, 2, "How to read a chapter", key, "grey"),
-             3: (3, 2, "The five stages of the proof (the architecture chapter's own list)",
+    # The cards that are not chapters: row -> (column, columns spanned, title, body, accent). They are registered
+    # with the arrow router as obstacles, so no arrow is routed through them.
+    EXTRA = {0: (3, 2, "How to read a chapter", key, "grey"),
+             2: (0, 2, "The five stages of the proof (the architecture chapter's own list)",
                  [abridge(s, 460) for s in stages], "grey"),
-             4: (3, 2, "Points to check first (the blueprint's own list, `rem-points-to-check`)", checks[:6], "red")}
+             3: (3, 2, "Points to check first (the blueprint's own list, `rem-points-to-check`)", checks[:6], "red")}
     for r in sorted(rows):
         items = [(k, i, n, chapter_node(k, span(n))) for k, i, n in rows[r]]
         hh = max(node(c, 0, 0, span(n), draw=False, **kw) for _, _, n, kw in items)
@@ -194,6 +196,7 @@ def build():
             pos[k] = (colx(i), y, span(n), hh)
         if ex:
             c.card(colx(ex[0]), y, span(ex[1]), ex[2], ex[3], ex[4], h=hh, size=S, tint=ex[4] == "red")
+            pos[f"_extra{r}"], rowof[f"_extra{r}"] = (colx(ex[0]), y, span(ex[1]), hh), r
         y += hh + VG
     y -= VG
     bp.arrows(c, pos, rowof, edges, lambda a: ACCENT.get(a, "green"), VG, G, X0, X1, 5, colx)
