@@ -5,6 +5,8 @@ opened on their own and zoomed. In the light theme the page behind the cards is 
 luminance of the content, 93% white; [PAGE.md](PAGE.md) records how that was measured and how to measure it
 again.
 
+[about.md](../narrative/about.md) is a short note on what these diagrams are and who stands behind them.
+
 | Id | Diagram | What it shows |
 |----|---------|---------------|
 | R1 | [`Main.lean`, theorem by theorem](R1-main-theorems-2026.11.22.svg) | The five theorems of `Main.lean`, the definitions they are stated with, the chain of reductions from `GRH, half-plane form` down to the theorems the chapters prove, and those theorems. Each node is one blueprint statement: the Lean signature from `lean-facts.json`, the statement in words, its proof as bullets, and what it uses and is used by. Arrows are the proof uses between the drawn statements. Also `Main.lean` and `Statements.lean` as the mirror states them, the five stages of the proof, a table of statements by depth, and what has been checked of the formal proof. |
