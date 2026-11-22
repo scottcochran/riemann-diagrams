@@ -4,11 +4,8 @@
 # citation. No PNG renders: every browser draws an SVG, and renders of these tall posters ran to 100 MB at a
 # legible width (v0.1.0 shipped one such tarball; it was removed).
 #
-# Once the release exists, the pages job publishes the tag's posters to GitHub Pages at the paths they have in the
-# tree (diagrams/*.svg, diagrams/map/*.svg), with the release's pins.json and an index written from the two
-# manifests, so a reader can open a poster in the browser, served as image/svg+xml, rather than in GitHub's file
-# viewer. Pages holds the latest release only; older ones stay on their release pages. The job needs Pages set to
-# "GitHub Actions" in the repository's settings, and the github-pages environment must allow tags matching v*.
+# Once the release exists, the pages job calls pages.yml with the tag, which publishes the release's posters to
+# GitHub Pages (see that file).
 #
 # The tag must be annotated, on main, vMAJOR.MINOR.PATCH, and the custodian's. Its message is the release's
 # opening: the kind of move, what changed, and one line saying which posters a reader must re-read.
@@ -105,54 +102,10 @@ jobs:
 
   pages:
     needs: release
-    runs-on: ubuntu-latest
     permissions:
       contents: read
       pages: write
       id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v5
-      - name: Stage the site
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          tag=${GITHUB_REF#refs/tags/}
-          mkdir -p site/diagrams/map
-          cp diagrams/*.svg site/diagrams/
-          cp diagrams/map/*.svg site/diagrams/map/
-          touch site/.nojekyll
-          gh release download "$tag" -p pins.json -D site
-          python3 - "$tag" > site/index.html <<'PY'
-          import html, json, re, sys
-          tag = sys.argv[1]
-          repo = "https://github.com/scottcochran/riemann-diagrams"
-          def fmt(t):
-              return re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(t))
-          out = ['<!doctype html>', '<html lang="en">', '<meta charset="utf-8">',
-                 '<meta name="viewport" content="width=device-width, initial-scale=1">',
-                 f'<title>Riemann Hypothesis proof diagrams, {tag}</title>',
-                 '<style>body{font:16px/1.5 Helvetica,Arial,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem}'
-                 'li{margin:.4rem 0}code{font-size:.9em}</style>',
-                 '<h1>Riemann Hypothesis proof diagrams</h1>',
-                 f'<p>The posters of release <a href="{repo}/releases/tag/{tag}">{tag}</a>, served as SVG: open one '
-                 f'and zoom in. The sources they were generated from are in <a href="pins.json">pins.json</a>; '
-                 f'the repository is <a href="{repo}">riemann-diagrams</a>.</p>']
-          for path, heading, prefix in (("diagrams/manifest.json", "The reader set", "diagrams/"),
-                                        ("diagrams/map/manifest.json", "The map set (nothing quoted)", "diagrams/map/")):
-              out.append(f"<h2>{heading}</h2>")
-              out.append("<ul>")
-              for pid, p in sorted(json.load(open(path, encoding="utf-8")).items()):
-                  out.append(f'<li><a href="{prefix}{p["file"]}">{pid}</a>: {fmt(p["title"])}</li>')
-              out.append("</ul>")
-          print("\n".join(out))
-          PY
-          find site -type f | sort
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
-        with:
-          path: site
-      - id: deploy
-        uses: actions/deploy-pages@v4
+    uses: ./.github/workflows/pages.yml
+    with:
+      tag: ${{ github.ref_name }}

@@ -1,0 +1,111 @@
+# Publish a release's posters to GitHub Pages, so a reader can open one in the browser, served as image/svg+xml,
+# rather than in GitHub's file viewer. The site holds the tag's diagrams/*.svg and diagrams/map/*.svg at the paths
+# they have in the tree, the release's pins.json, and an index written from the two manifests. Before it deploys,
+# the job checks the files against the release's SHA256SUMS, so the site is the release and nothing else. Pages
+# holds one release at a time; the others stay on their release pages.
+#
+# release.yml calls this with each new tag. Run it by hand (Actions, pages, Run workflow, from main) with an
+# existing tag to publish that release: the first one before the next tag, or an older one back. Only the custodian
+# may.
+#
+# Needs Pages set to "GitHub Actions" in the repository's settings, and the github-pages environment to allow
+# main (for a run by hand) and tags matching v* (for a call from release.yml).
+name: pages
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: The release tag to publish
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The release tag to publish, e.g. v0.1.1
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: The tag is a release, and the run is the custodian's
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          [ "$GITHUB_ACTOR" = scottcochran ] || { echo "pages: only the custodian publishes"; exit 1; }
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "pages: $TAG is not vMAJOR.MINOR.PATCH"; exit 1; }
+          gh release view "$TAG" --json tagName -q .tagName >/dev/null || { echo "pages: $TAG has no release"; exit 1; }
+      - uses: actions/checkout@v5
+        with:
+          ref: refs/tags/${{ inputs.tag }}
+      - name: Stage the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          tag=$TAG
+          mkdir -p site/diagrams/map
+          cp diagrams/*.svg site/diagrams/
+          cp diagrams/map/*.svg site/diagrams/map/
+          touch site/.nojekyll
+          gh release download "$tag" -p pins.json -p SHA256SUMS -D release
+          # the site must be the release: every SVG at the tag, under its release name, and pins.json, as summed
+          mkdir check
+          cp diagrams/*.svg check/
+          for f in diagrams/map/*.svg; do cp "$f" "check/map-$(basename "$f")"; done
+          cp release/pins.json release/SHA256SUMS check/
+          (cd check && sha256sum --strict -c SHA256SUMS)
+          [ "$(ls check/*.svg | wc -l)" = "$(grep -c '\.svg$' release/SHA256SUMS)" ] || { echo "pages: the tag has SVGs the release does not"; exit 1; }
+          cp release/pins.json site/
+          python3 - "$tag" > site/index.html <<'PY'
+          import html, json, re, sys
+          tag = sys.argv[1]
+          repo = "https://github.com/scottcochran/riemann-diagrams"
+          def fmt(t):
+              return re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(t))
+          out = ['<!doctype html>', '<html lang="en">', '<meta charset="utf-8">',
+                 '<meta name="viewport" content="width=device-width, initial-scale=1">',
+                 f'<title>Riemann Hypothesis proof diagrams, {tag}</title>',
+                 '<style>body{font:16px/1.5 Helvetica,Arial,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem}'
+                 'li{margin:.4rem 0}code{font-size:.9em}</style>',
+                 '<h1>Riemann Hypothesis proof diagrams</h1>',
+                 f'<p>The posters of release <a href="{repo}/releases/tag/{tag}">{tag}</a>, served as SVG: open one '
+                 f'and zoom in. The sources they were generated from are in <a href="pins.json">pins.json</a>; '
+                 f'the repository is <a href="{repo}">riemann-diagrams</a>.</p>']
+          for path, heading, prefix in (("diagrams/manifest.json", "The reader set", "diagrams/"),
+                                        ("diagrams/map/manifest.json", "The map set (nothing quoted)", "diagrams/map/")):
+              out.append(f"<h2>{heading}</h2>")
+              out.append("<ul>")
+              for pid, p in sorted(json.load(open(path, encoding="utf-8")).items()):
+                  out.append(f'<li><a href="{prefix}{p["file"]}">{pid}</a>: {fmt(p["title"])}</li>')
+              out.append("</ul>")
+          print("\n".join(out))
+          PY
+          find site -type f | sort
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
