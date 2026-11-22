@@ -262,32 +262,32 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="3103.0" y="1188.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">4</text>
 <text x="3253.0" y="1188.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <rect x="56" y="1200.6" width="3288.0" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
-<text x="65.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.RealPlaceAnalysis</tspan></text>
+<text x="65.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.GammaFactorNonvanishing</tspan></text>
 <text x="525.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">4</tspan></text>
-<text x="635.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
+<text x="635.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">4</text>
 <text x="909.2" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1183.4" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1457.7" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="1731.9" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">4</text>
+<text x="1731.9" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2006.1" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2280.3" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2554.6" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2828.8" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="3103.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
+<text x="3103.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <text x="3253.0" y="1221.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <rect x="56" y="1233.2" width="3288.0" height="32.6" fill="#ffffff" stroke="#d4d8e0" class="f-bg s-line" stroke-width="1"/>
-<text x="65.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.GammaFactorNonvanishing</tspan></text>
+<text x="65.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.RealPlaceAnalysis</tspan></text>
 <text x="525.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">4</tspan></text>
-<text x="635.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">4</text>
+<text x="635.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="909.2" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1183.4" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1457.7" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="1731.9" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
+<text x="1731.9" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">4</text>
 <text x="2006.1" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2280.3" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2554.6" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2828.8" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="3103.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
+<text x="3103.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="3253.0" y="1253.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <rect x="56" y="1265.8" width="3288.0" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
 <text x="65.0" y="1286.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.FrobeniusOrbits</tspan></text>
@@ -318,7 +318,7 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="3103.0" y="1318.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="3253.0" y="1318.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <rect x="56" y="1331.0" width="3288.0" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
-<text x="65.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.ThetaLogCoordinates</tspan></text>
+<text x="65.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.SizeWindowBrackets</tspan></text>
 <text x="525.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">2</tspan></text>
 <text x="635.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="909.2" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
@@ -329,10 +329,10 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="2280.3" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2554.6" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2828.8" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="3103.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
+<text x="3103.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <text x="3253.0" y="1351.5" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <rect x="56" y="1363.6" width="3288.0" height="32.6" fill="#ffffff" stroke="#d4d8e0" class="f-bg s-line" stroke-width="1"/>
-<text x="65.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.SizeWindowBrackets</tspan></text>
+<text x="65.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.ThetaLogCoordinates</tspan></text>
 <text x="525.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">2</tspan></text>
 <text x="635.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="909.2" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
@@ -343,24 +343,24 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="2280.3" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2554.6" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2828.8" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="3103.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
+<text x="3103.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="3253.0" y="1384.1" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2</text>
 <rect x="56" y="1396.2" width="3288.0" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
-<text x="65.0" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.PolynomialDimension</tspan></text>
+<text x="65.0" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.AdmissibleDesigns</tspan></text>
 <text x="525.0" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">1</tspan></text>
 <text x="635.0" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="909.2" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="1183.4" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
+<text x="1183.4" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1457.7" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1731.9" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2006.1" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="2280.3" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
+<text x="2280.3" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="2554.6" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2828.8" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="3103.0" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="3253.0" y="1416.7" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <rect x="56" y="1428.8" width="3288.0" height="32.6" fill="#ffffff" stroke="#d4d8e0" class="f-bg s-line" stroke-width="1"/>
-<text x="65.0" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.StatementOC</tspan></text>
+<text x="65.0" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.PolynomialDimension</tspan></text>
 <text x="525.0" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">1</tspan></text>
 <text x="635.0" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="909.2" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
@@ -374,15 +374,15 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="3103.0" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="3253.0" y="1449.3" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <rect x="56" y="1461.4" width="3288.0" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
-<text x="65.0" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.AdmissibleDesigns</tspan></text>
+<text x="65.0" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.StatementOC</tspan></text>
 <text x="525.0" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">1</tspan></text>
 <text x="635.0" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="909.2" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="1183.4" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
+<text x="1183.4" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
 <text x="1457.7" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="1731.9" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2006.1" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
-<text x="2280.3" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
+<text x="2280.3" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2554.6" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="2828.8" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"></text>
 <text x="3103.0" y="1481.9" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">1</text>
@@ -663,23 +663,23 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="742.4" y="2580.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
 <text x="754.6" y="2580.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">GaloisCohomology</tspan> 5: 5 definitions in 2 sub-modules; named by Literature 3, Outline 2</text>
 <text x="742.4" y="2602.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2602.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">RealPlaceAnalysis</tspan> 4: 4 definitions in 2 sub-modules; named by Theta 4</text>
+<text x="754.6" y="2602.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">GammaFactorNonvanishing</tspan> 4: 4 theorems in 2 sub-modules; named by Main theorems 4</text>
 <text x="742.4" y="2624.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2624.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">GammaFactorNonvanishing</tspan> 4: 4 theorems in 2 sub-modules; named by Main theorems 4</text>
+<text x="754.6" y="2624.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">RealPlaceAnalysis</tspan> 4: 4 definitions in 2 sub-modules; named by Theta 4</text>
 <text x="742.4" y="2646.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
 <text x="754.6" y="2646.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">FrobeniusOrbits</tspan> 3: 2 definitions, 1 theorem in 2 sub-modules; named by Zero-free 3</text>
 <text x="742.4" y="2668.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
 <text x="754.6" y="2668.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">GL3MeanSquares</tspan> 2: 2 theorems; named by Literature 2</text>
 <text x="742.4" y="2691.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2691.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">ThetaLogCoordinates</tspan> 2: 2 theorems; named by Zero-free 2</text>
+<text x="754.6" y="2691.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">SizeWindowBrackets</tspan> 2: 1 definition, 1 theorem in 2 sub-modules; named by Zero-free 2</text>
 <text x="742.4" y="2713.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2713.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">SizeWindowBrackets</tspan> 2: 1 definition, 1 theorem in 2 sub-modules; named by Zero-free 2</text>
+<text x="754.6" y="2713.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">ThetaLogCoordinates</tspan> 2: 2 theorems; named by Zero-free 2</text>
 <text x="742.4" y="2735.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2735.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">PolynomialDimension</tspan> 1: 1 definition; named by Zero-free 1</text>
+<text x="754.6" y="2735.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">AdmissibleDesigns</tspan> 1: 1 theorem; named by Sha 1</text>
 <text x="742.4" y="2757.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2757.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">StatementOC</tspan> 1: 1 definition; named by Zero-free 1</text>
+<text x="754.6" y="2757.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">PolynomialDimension</tspan> 1: 1 definition; named by Zero-free 1</text>
 <text x="742.4" y="2779.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
-<text x="754.6" y="2779.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">AdmissibleDesigns</tspan> 1: 1 theorem; named by Sha 1</text>
+<text x="754.6" y="2779.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">StatementOC</tspan> 1: 1 definition; named by Zero-free 1</text>
 <text x="742.4" y="2802.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">•</tspan></text>
 <text x="754.6" y="2802.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">UnipotentAdelicQuotients</tspan> 1: 1 definition; named by Theta 1</text>
 <line x1="742.4" y1="2815.7" x2="1316.8" y2="2815.7" fill="none" stroke="#d4d8e0" class="s-line" stroke-width="1"/>
@@ -802,7 +802,7 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="1275.0" y="3246.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">6</text>
 <text x="1375.0" y="3246.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">11</text>
 <text x="1465.0" y="3246.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">229</text>
-<text x="1575.0" y="3246.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 14, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Main</tspan> 5, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Supplements.Kernels</tspan> 4</text>
+<text x="1575.0" y="3246.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 14, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Main</tspan> 5, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.GammaFactorNonvanishing</tspan> 4</text>
 <rect x="56" y="3258.1" width="3288" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
 <text x="65.0" y="3278.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2. The proof in outline</text>
 <text x="585.0" y="3278.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">11</text>
@@ -854,7 +854,7 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="1275.0" y="3376.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">11</text>
 <text x="1375.0" y="3376.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">137</text>
 <text x="1465.0" y="3376.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">2,441</text>
-<text x="1575.0" y="3376.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AbelianVarietyTheory</tspan> 54, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 49, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Formalism.HermitianCurvature</tspan> 18</text>
+<text x="1575.0" y="3376.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AbelianVarietyTheory</tspan> 54, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 49, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.WeilBound</tspan> 18</text>
 <rect x="56" y="3388.5" width="3288" height="32.6" fill="#fafbfc" stroke="#d4d8e0" class="f-zebra s-line" stroke-width="1"/>
 <text x="65.0" y="3409.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">6. Heights and the covolume bound</text>
 <text x="585.0" y="3409.0" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">32</text>
@@ -977,7 +977,7 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="1135.0" y="3827.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">published</text>
 <text x="1255.0" y="3827.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">15</text>
 <text x="1335.0" y="3827.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">12 theorems, 3 definitions</text>
-<text x="1665.0" y="3827.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AbelianVarietyTheory</tspan> 5, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.WeilBound</tspan> 4, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicSpectrum</tspan> 3, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 3</text>
+<text x="1665.0" y="3827.6" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AbelianVarietyTheory</tspan> 5, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.WeilBound</tspan> 4, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 3, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicSpectrum</tspan> 3</text>
 <rect x="56" y="3839.7" width="2588" height="32.6" fill="#edf2fb" stroke="#d4d8e0" class="ft-blue s-line" stroke-width="1"/>
 <rect x="56" y="3839.7" width="5" height="32.6" fill="#2f5aa8" class="f-blue"/>
 <text x="65.0" y="3860.2" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">thm-arithmetic-intersection-theory</tspan></text>
@@ -1040,7 +1040,7 @@ svg[data-theme=dark]{--bg:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;
 <text x="1135.0" y="4055.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">new</text>
 <text x="1255.0" y="4055.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">8</text>
 <text x="1335.0" y="4055.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start">8 theorems</text>
-<text x="1665.0" y="4055.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 4, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AbelianVarietyTheory</tspan> 4</text>
+<text x="1665.0" y="4055.8" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AbelianVarietyTheory</tspan> 4, <tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">Development.AutomorphicArithmetic</tspan> 4</text>
 <rect x="56" y="4067.9" width="2588" height="32.6" fill="#edf6ee" stroke="#d4d8e0" class="ft-green s-line" stroke-width="1"/>
 <rect x="56" y="4067.9" width="5" height="32.6" fill="#2e7d32" class="f-green"/>
 <text x="65.0" y="4088.4" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-size="13.5" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-family="'DejaVu Sans Mono', Menlo, Consolas, monospace" font-size="12.4">thm-archimedean-models</tspan></text>

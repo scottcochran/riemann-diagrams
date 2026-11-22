@@ -37,6 +37,12 @@ EXPECTED = {
 TOP_N = 12
 
 
+def ranked(counter, n=None):
+    """(key, count) by count descending then key, so that ties do not depend on insertion order."""
+    items = sorted(counter.items(), key=lambda t: (-t[1], str(t[0])))
+    return items if n is None else items[:n]
+
+
 def build():
     g = bp.load()
     mirror = bp.read_mirror()
@@ -49,7 +55,7 @@ def build():
         return g.nodes[k]["_chapter"]
 
     named_by = {}
-    for k in g.statements:
+    for k in sorted(g.statements):
         for x in g.nodes[k].get("lean", []):
             if x in named_by:
                 raise ValueError(f"F3: {x} is named by {named_by[x]} and {k}; the poster assumes one statement each")
@@ -152,15 +158,15 @@ def build():
     ]
     nums = [
         f"**{len(decls)} declarations** in {n_modules} modules and {n_files} files, spanning {n_lines:,} lines: "
-        + ", ".join(f"{v} {k}s" for k, v in sorted(kinds.items(), key=lambda t: -t[1])) + ".",
-        f"**{len(t1)} namespaces**: " + ", ".join(f"`{k}` {v}" for k, v in t1.most_common()) + ".",
+        + ", ".join(f"{v} {k}s" for k, v in ranked(kinds)) + ".",
+        f"**{len(t1)} namespaces**: " + ", ".join(f"`{k}` {v}" for k, v in ranked(t1)) + ".",
         f"**{len(t2)} theories** at the second level; the three largest, "
-        + ", ".join(f"`{k}` ({v})" for k, v in t2.most_common(3))
-        + f", hold {sum(v for _, v in t2.most_common(3)) * 100 // len(decls)}% of the declarations.",
+        + ", ".join(f"`{k}` ({v})" for k, v in ranked(t2, 3))
+        + f", hold {sum(v for _, v in ranked(t2, 3)) * 100 // len(decls)}% of the declarations.",
         f"**{len(g.statements) - len(no_lean)} of {len(g.statements)} statements** name a declaration; the three "
         "that do not are " + names(no_lean) + ". **Each declaration is named by one statement**; none is shared.",
         f"**Fan-out**: " + ", ".join(f"{fan[n]} name {n}" for n in sorted(fan)) + f". Of the {fan[2]} that name two, "
-        + ", ".join(f"{v} name a {a} and a {b}" if a != b else f"{v} name two {a}s" for (a, b), v in pairs.most_common())
+        + ", ".join(f"{v} name a {a} and a {b}" if a != b else f"{v} name two {a}s" for (a, b), v in ranked(pairs))
         + ".",
         f"**One declaration carries a docstring** in the index: " + ", ".join(
             code(x) for x in decls if lf[x].get("doc")) + ".",
@@ -180,8 +186,8 @@ def build():
     cw = (WW - 460 - 110 - 150 - 100) / len(chapters)
     mcols += [(SHORT[ch], cw) for ch in chapters] + [("Statements", 150), ("Files", 100)]
     mrows = []
-    for ns, n_ns in t1.most_common():
-        mods = [(m, v) for m, v in t2.most_common() if m.split(".")[0] == ns]
+    for ns, n_ns in ranked(t1):
+        mods = [(m, v) for m, v in ranked(t2) if m.split(".")[0] == ns]
         mrows.append({"group": f"{ns}: {n_ns} declarations in {len(mods)} " + ("theory" if len(mods) == 1 else "theories"),
                       "accent": "grey"})
         for m, v in mods:
@@ -201,18 +207,18 @@ def build():
              f"One card per namespace, largest first: its theories with their declarations, sub-modules and "
              "kinds, and the chapters whose statements name them most.")
     cards = []
-    for ns, n_ns in t1.most_common():
+    for ns, n_ns in ranked(t1):
         xs = [x for x in decls if top(x, 1) == ns]
         bullets = []
-        for m, v in [(m, v) for m, v in t2.most_common() if m.split(".")[0] == ns]:
+        for m, v in [(m, v) for m, v in ranked(t2) if m.split(".")[0] == ns]:
             ys = [x for x in xs if top(x, 2) == m]
             sub = len({top(x, 3) for x in ys})
             kk = collections.Counter(lf[x]["kind"] for x in ys)
             chs = collections.Counter(chap(named_by[x]) for x in ys)
             short = m.split(".", 1)[1] if "." in m else "(the namespace itself)"
-            bullets.append(f"**{short}** {v}: " + ", ".join(f"{n_} {k}{'s' if n_ > 1 else ''}" for k, n_ in kk.most_common())
+            bullets.append(f"**{short}** {v}: " + ", ".join(f"{n_} {k}{'s' if n_ > 1 else ''}" for k, n_ in ranked(kk))
                            + (f" in {sub} sub-modules" if sub > 1 else "")
-                           + "; named by " + ", ".join(f"{SHORT[ch]} {n_}" for ch, n_ in chs.most_common(3))
+                           + "; named by " + ", ".join(f"{SHORT[ch]} {n_}" for ch, n_ in ranked(chs, 3))
                            + (" …" if len(chs) > 3 else ""))
         files = {lf[x]["range"]["file"] for x in xs}
         root = sorted({src(x).split("/")[0] for x in xs})
@@ -220,7 +226,7 @@ def build():
         foot = [("**Under** " + ", ".join(f"`src/{r}`" for r in root if r not in dep)
                  + (" · a dependency, under `.lake/packages/`, not the proof's own tree" if dep else "")).replace("**Under**  ·", "**Under**"),
                 f"**{len(files)} files**, {sum(lines(x) for x in xs):,} lines spanned",
-                "**Named by** " + ", ".join(f"{SHORT[ch]} {n_}" for ch, n_ in collections.Counter(chap(named_by[x]) for x in xs).most_common())]
+                "**Named by** " + ", ".join(f"{SHORT[ch]} {n_}" for ch, n_ in ranked(collections.Counter(chap(named_by[x]) for x in xs)))]
         cards.append(dict(name=ns, pill=f"{n_ns} declarations", bullets=bullets, foot=foot, formula=[],
                           accent="teal" if ns == "Development" else "grey", title_mono=True))
     for i in range(0, len(cards), NCOLS):
@@ -236,7 +242,7 @@ def build():
              "What the statements of each chapter stand for in Lean, counted from the index.")
     crows = []
     for ch in chapters:
-        st = [k for k in g.statements if chap(k) == ch]
+        st = sorted(k for k in g.statements if chap(k) == ch)
         xs = [x for k in st for x in g.nodes[k].get("lean", [])]
         kk = collections.Counter(lf[x]["kind"] for x in xs)
         with_lean = sum(1 for k in st if g.nodes[k].get("lean"))
@@ -245,7 +251,7 @@ def build():
                       str(kk["theorem"]), str(kk["definition"]), str(kk["structure"] + kk["inductive"]),
                       f"{len(xs) / with_lean:.1f}" if with_lean else "—", str(len(mods)),
                       str(len({lf[x]["range"]["file"] for x in xs})), f"{sum(lines(x) for x in xs):,}",
-                      ", ".join(f"`{m}` {v}" for m, v in mods.most_common(3))])
+                      ", ".join(f"`{m}` {v}" for m, v in ranked(mods, 3))])
     crows.append(["**All chapters**", str(len(g.statements)), str(len(g.statements) - len(no_lean)), str(len(decls)),
                   str(kinds["theorem"]), str(kinds["definition"]), str(kinds["structure"] + kinds["inductive"]),
                   f"{len(decls) / (len(g.statements) - len(no_lean)):.1f}", str(len(t2)), str(n_files), f"{n_lines:,}", ""])
@@ -264,8 +270,8 @@ def build():
         kk = collections.Counter(lf[x]["kind"] for x in xs)
         mods = collections.Counter(top(x, 2) for x in xs)
         frows.append({"cells": [k, g.nodes[k]["title"], SHORT[chap(k)], bp.PROV_SHORT[g.nodes[k].get("provenance")],
-                                str(len(xs)), ", ".join(f"{v} {a}{'s' if v > 1 else ''}" for a, v in kk.most_common()),
-                                ", ".join(f"`{m}` {v}" for m, v in mods.most_common(4)) + (" …" if len(mods) > 4 else "")],
+                                str(len(xs)), ", ".join(f"{v} {a}{'s' if v > 1 else ''}" for a, v in ranked(kk)),
+                                ", ".join(f"`{m}` {v}" for m, v in ranked(mods, 4)) + (" …" if len(mods) > 4 else "")],
                       "accent": bp.PROV_ACCENT[g.nodes[k].get("provenance")]})
     fcols = [("Statement", 380, {"mono": True}), ("Title", 560), ("Chapter", 130), ("Provenance", 120),
              ("Decls", 80), ("Kinds", 330), ("Theories", WW - 380 - 560 - 130 - 120 - 80 - 330 - 700)]
