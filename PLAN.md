@@ -5,7 +5,7 @@ same day as Phase 1, the five chapter posters that follow it, Phases 2, 3, 5, 6 
 not a record: nothing below is built unless the README says so. Phases 1, 2, 3, 5, 6 and 7 are done, Phase 6
 with two of its eight posters waiting on things outside this repository, Phase 7 released as `v0.2.1`, the
 first release whose posters link; what is left is Phase 4, which waits on a machine, two hand steps under
-Phase 5, and the decisions under "Open" at the end, of which 6 is taken.
+Phase 5, and the decisions under "Open" at the end, of which 1 and 6 are taken.
 
 ## Goal
 
@@ -158,9 +158,8 @@ because a poster's file name carries its date and a regeneration at a new pin re
   | MINOR | A source pin moves (`BP_COMMIT`, `MIRROR_PIN`, `MIRROR_COMMIT`), or a poster is added or removed | Re-read the posters the tag message names; the others are the same drawing at a new date |
   | PATCH | Layout, wording or library changes; no pin moves and every `EXPECTED` and `HYPOTHESES` list is unchanged | Nothing: the same statements and arrows, drawn again |
 
-  Before 1.0, releases stay at `0.x`, and a MAJOR change may take a MINOR. 1.0 waits on Phase 4, and on the
-  first open decision below: the posters must not be published more widely than this repository until the
-  quoting question is settled, and a release of a private repository is not wider.
+  Before 1.0, releases stay at `0.x`, and a MAJOR change may take a MINOR. 1.0 waits on Phase 4. The first open
+  decision below was settled on 2026.11.22, so a release may be wider than this repository.
 - **The workflow builds from the tag as CI does**, then does what CI does not: it writes `pins.json` (the three
   pins, the commits they resolve to, the generator's Python version, the tag) and `SHA256SUMS` over everything,
   and creates the GitHub release with the SVGs, the two files and notes. No PNG renders: every browser draws an
@@ -468,7 +467,8 @@ in the blueprint's reference files; until the blueprint carries one, the table h
   proof was published without one. The NOTICE says so. The plan asked for the question of how much is fair to
   reproduce to be settled before Phase 1 shipped; it was not, and the ten posters now quote the statement, an
   abridged proof and a Lean signature of some 250 statements. The question is open below, and more pressing
-  than it was.
+  than it was. Settled 2026.11.22 for the blueprint's prose, by its author's
+  CC BY 4.0 grant (Open, 1); the Lean signatures remain unlicensed.
 - **The edges are wrong in places.** A chapter poster laid out around a wrong edge draws a wrong argument with
   confidence. Phase 4 is the fix. Until then, the dashed arrows are the symptom to watch: in three chapters a
   proof's text names a result its `uses` list leaves out, and the diagram cannot tell a hypothesis the Lean
@@ -486,6 +486,9 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
    blueprint link, which makes the posters maps rather than readers. Both are in hand since 2026.11.22: an
    issue asking for a licence is drafted, and `--map` builds the trimmed form into `diagrams/map/`, checked in
    CI beside the readers. Until the answer comes, the map set is what may be published; the readers stay here.
+   Taken 2026.11.22: Christian Merten, the blueprint's author, licensed its prose under CC BY 4.0, by a message
+   on Zulip; `NOTICE` records the grant, the reader set may be passed on under it with the attribution kept, and
+   the map set stays as the form that quotes nothing. The Lean signatures remain unlicensed.
 2. **The height of the big chapter posters.** Theta is 16k pixels, Galois 14k. Decide once, for all six, between
    a second poster per big chapter and a denser row of short cards; the reader who has read them at zoom should
    decide, and a poster split by section is the natural cut if it comes to that.

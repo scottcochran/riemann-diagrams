@@ -42,7 +42,8 @@ locations.
     time from the riemann-blueprint
     (https://github.com/chrisflav/riemann-blueprint), whose repository
     carries no licence file at the commit the diagrams were drawn from.
-    They remain its authors'.
+    They remain its author's, and are quoted under the CC BY 4.0
+    licence he granted (below).
 
   * The Lean declaration names, signatures, file paths and line numbers
     come from that blueprint's lean-facts.json and from the mirror
@@ -53,15 +54,20 @@ locations.
   * The mathematics the diagrams describe is Alpöge's. A diagram here
     says nothing about whether the formal proof is correct.
 
-No licence has been granted for any of this. The quotations on the
-reader posters rest on quotation for commentary, attributed and
-abridged, and a request for a licence on the blueprint's prose is open
-with its authors. Until it is answered, the reader posters
-(diagrams/*.svg) are for readers of this repository and are not to be
-redistributed; the map posters (diagrams/map/*.svg) quote nothing and
-may be. A reader who wants the authors' words should read the
-blueprint, which the footer of every card links; a card's text is an
-abridgement.
+The blueprint's prose is licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0): Christian Merten,
+the blueprint's author, granted it in a message to this repository's
+custodian on Zulip on 2026-11-22. The blueprint repository carries no
+licence file at the commit the diagrams were drawn from, so the grant
+is recorded here. The quotations on the reader posters (diagrams/*.svg)
+are made under it, attributed to the blueprint and abridged where
+marked, and the reader posters may be redistributed under this
+repository's CC BY 4.0 with that attribution kept. The map posters
+(diagrams/map/*.svg) quote nothing of it. The grant does not reach the
+Lean signatures the reader posters quote, which remain the formal
+proof's, published without a license, as above. A reader who wants the
+author's words should read the blueprint, which the footer of every
+card links; a card's text is an abridgement.
 
 Third-party software is not part of this repository and is not covered
 by either license: the graphviz Python package and the Graphviz `dot`

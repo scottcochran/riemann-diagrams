@@ -75,8 +75,9 @@ cited by release and fetched after the tree has moved on: see
 [the releases](https://github.com/scottcochran/riemann-diagrams/releases)
 and `PLAN.md`, Phase 5.
 Each poster also exists in a map form under [diagrams/map/](diagrams/map/) that
-quotes nothing of the blueprint's text or the proof's source, for use while
-the licensing of that text is open.
+quotes nothing of the blueprint's text or the proof's source. The blueprint's
+prose is CC BY 4.0 by its author's grant of 2026.11.22; the proof's source is
+not licensed; [NOTICE](NOTICE) records both.
 On a poster opened on its own, as the Pages site serves it, an id that names
 a card on the same poster, or on another poster of the set, is a link to it,
 and the Lean line and the blueprint path at the foot of a card link to the
