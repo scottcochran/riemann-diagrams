@@ -1,0 +1,89 @@
+# Regenerate every poster from the pinned sources and fail if the committed SVGs differ.
+#
+# The pins are read from diagrams/src/bp.py: the blueprint's commit (BP_COMMIT) and the mirror commit that
+# Main.lean and Statements.lean are read from (MIRROR_COMMIT). The generator itself checks that each checkout is
+# at its pin, that the blueprint pins the mirror where the diagrams expect, and that every arrow it draws is an
+# edge of the blueprint; any WARNING or ERROR line makes it exit 1. The byte comparison then says whether the
+# committed posters are the ones these sources produce.
+name: posters
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out riemann-diagrams
+        uses: actions/checkout@v4
+        with:
+          path: riemann-diagrams
+
+      - name: Read the pins
+        id: pins
+        shell: bash
+        run: |
+          cd riemann-diagrams
+          for name in BP_COMMIT MIRROR_COMMIT; do
+            value=$(python3 -c "import re,sys; print(re.search(r'^$name = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
+            echo "$name=$value" | tee -a "$GITHUB_OUTPUT"
+          done
+
+      - name: Resolve the pins to full commits
+        id: full
+        shell: bash
+        run: |
+          bp=$(gh api "repos/chrisflav/riemann-blueprint/commits/${{ steps.pins.outputs.BP_COMMIT }}" -q .sha)
+          mirror=$(gh api "repos/leanprover-community/riemann-hypothesis/commits/${{ steps.pins.outputs.MIRROR_COMMIT }}" -q .sha)
+          echo "blueprint=$bp" | tee -a "$GITHUB_OUTPUT"
+          echo "mirror=$mirror" | tee -a "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Check out the blueprint at its pin
+        uses: actions/checkout@v4
+        with:
+          repository: chrisflav/riemann-blueprint
+          ref: ${{ steps.full.outputs.blueprint }}
+          path: riemann-blueprint
+
+      - name: Check out the mirror at its pin, only the files the generator reads
+        uses: actions/checkout@v4
+        with:
+          repository: leanprover-community/riemann-hypothesis
+          ref: ${{ steps.full.outputs.mirror }}
+          path: leanprover-community/riemann-hypothesis
+          filter: blob:none
+          sparse-checkout: |
+            src/Main.lean
+            src/Statements.lean
+            comparator.json
+          sparse-checkout-cone-mode: false
+
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate the posters
+        shell: bash
+        run: |
+          cd riemann-diagrams
+          python3 diagrams/gen-diagrams.py
+
+      - name: The committed posters are the regenerated ones
+        shell: bash
+        run: |
+          cd riemann-diagrams
+          git status --porcelain -- diagrams
+          if [ -n "$(git status --porcelain -- diagrams)" ]; then
+            echo "::error::a poster differs from its sources, or is not committed; regenerate and commit"
+            git diff --stat -- diagrams
+            exit 1
+          fi

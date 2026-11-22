@@ -14,6 +14,7 @@ ERROR instead of drawing something stale.
   arrows(canvas, ...)        the arrows between cards, routed through the lanes and gutters of a grid
 """
 import json
+import os
 import pathlib
 import re
 import subprocess
@@ -28,12 +29,14 @@ sys.path.insert(0, str(ROOT))
 from blueprint_graph import Graph, default_blueprint_dir, MAIN_LEAN_THEOREMS  # noqa: E402
 
 BLUEPRINT = pathlib.Path(default_blueprint_dir())
-MIRROR = ROOT.parent / "leanprover-community" / "riemann-hypothesis"
+MIRROR = pathlib.Path(os.environ.get("RIEMANN_MIRROR") or ROOT.parent / "leanprover-community" / "riemann-hypothesis")
 
-# The state the diagrams were written against. The build fails if the blueprint checkout is at another commit, or
-# if it pins the mirror at another one; bump these after reading what changed.
+# The state the diagrams were written against: the blueprint's commit, the mirror commit it pins in its lakefile,
+# and the mirror commit Main.lean and Statements.lean are read from. The build fails if a checkout is at another
+# commit; bump these after reading what changed. CI checks the sources out at exactly these (.github/workflows).
 BP_COMMIT = "137d976"
 MIRROR_PIN = "8c90877c"
+MIRROR_COMMIT = "2dea990069"
 
 PROV_ACCENT = {"new": "green", "modified": "amber", "published": "blue", None: "grey"}
 PROV_LABEL = {"new": "new in Alpöge's proof", "modified": "modified from the literature", "published": "published",
@@ -43,20 +46,23 @@ RESULTS = ("theorem", "proposition", "lemma", "corollary")
 
 
 # ------------------------------------------------------------------------------------------------ reading
-def git_short(path):
-    out = subprocess.run(["git", "-C", str(path), "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
+def git_at(path, pin, what):
+    """The commit of a checkout, ten characters, checked against `pin`; a dirty tree gets a trailing +. A fixed
+    length, not git's --short, so that two checkouts with different object counts print the same."""
+    out = subprocess.run(["git", "-C", str(path), "rev-parse", "HEAD"], capture_output=True, text=True)
     if out.returncode:
         raise ValueError(f"{path}: not a git checkout")
+    full = out.stdout.strip()
+    if not full.startswith(pin):
+        raise ValueError(f"{what} is at {full[:10]}, the diagrams were written against {pin}")
     dirty = subprocess.run(["git", "-C", str(path), "status", "--porcelain"], capture_output=True, text=True).stdout
-    return out.stdout.strip() + ("+" if dirty.strip() else "")
+    return full[:10] + ("+" if dirty.strip() else "")
 
 
 def load():
     if not BLUEPRINT.is_dir():
         raise ValueError(f"no blueprint at {BLUEPRINT}; set RIEMANN_BLUEPRINT")
-    rev = git_short(BLUEPRINT.parent)
-    if rev.rstrip("+") != BP_COMMIT:
-        raise ValueError(f"the blueprint is at {rev}, the diagrams were written against {BP_COMMIT}")
+    rev = git_at(BLUEPRINT.parent, BP_COMMIT, "the blueprint")
     lake = (BLUEPRINT.parent / "lakefile.toml").read_text(encoding="utf-8")
     pin = re.search(r'name = "tree"\ngit = ".*?riemann-hypothesis"\nrev = "(\w+)"', lake)
     if not pin or not pin.group(1).startswith(MIRROR_PIN):
@@ -97,7 +103,8 @@ def read_mirror():
             raise ValueError(f"Main.lean: {t['name']} is stated with {t['prop']}, which Statements.lean does not define")
     if set(theorems[i]["name"] for i in range(len(theorems))) != set(MAIN_LEAN_THEOREMS):
         raise ValueError("Main.lean's theorems are not the ones blueprint_graph.MAIN_LEAN_THEOREMS maps to nodes")
-    return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"], "commit": git_short(MIRROR)}
+    return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"],
+            "commit": git_at(MIRROR, MIRROR_COMMIT, "the mirror")}
 
 
 def _text_after_front_matter(path):

@@ -23,7 +23,8 @@ chapter and section files, and `lean-facts.json`) and the
 `comparator.json`), and fails if:
 
 - the blueprint checkout is at another commit than the one the diagrams were written against (`BP_COMMIT` in
-  `src/bp.py`), or pins the mirror at another commit;
+  `src/bp.py`), pins the mirror at another commit (`MIRROR_PIN`), or the mirror checkout is at another commit
+  than `MIRROR_COMMIT`;
 - the proof uses between the drawn statements (R1, R3 to R8), or the `uses` between chapters (R2), are not
   exactly the arrows listed in the diagram's `EXPECTED`; or the results that proofs name in their text without
   listing them as uses (`HYPOTHESES`, R3 to R8) are not the ones recorded;
@@ -51,7 +52,19 @@ inputs give unchanged bytes, so a diff in an SVG after regenerating means the bl
 under a diagram. Any `WARNING` or `ERROR` line is a failure. After a change, look at the result in both themes.
 
 To move the diagrams to a newer blueprint, bump `BP_COMMIT` (and `MIRROR_PIN` if the blueprint re-pinned the
-mirror) in `src/bp.py`, regenerate, and fix whatever the checks report.
+mirror, and `MIRROR_COMMIT` if `Main.lean` is read from a newer mirror) in `src/bp.py`, regenerate, and fix
+whatever the checks report.
+
+The sources are expected as sibling checkouts, `../riemann-blueprint` and `../leanprover-community/riemann-hypothesis`;
+`RIEMANN_BLUEPRINT` (the `blueprint/` directory) and `RIEMANN_MIRROR` point elsewhere.
+
+## In CI
+
+`.github/workflows/posters.yml` checks out the blueprint and the mirror at the three pins above, regenerates every
+poster with Python 3.12, and fails if the generator prints a `WARNING` or `ERROR`, if any committed SVG differs
+from the regenerated one, or if a poster is regenerated that is not committed. So a pull request that moves a pin
+without regenerating fails, and one that regenerates passes. The mirror is checked out sparse, with only the
+three files the generator reads.
 
 ## Layout
 
