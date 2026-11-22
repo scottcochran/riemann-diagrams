@@ -289,7 +289,13 @@ the finding that 200 of the 416 statements name exactly two declarations, 130 of
 theorem, the `Prop`-and-proof pattern R1 shows for `Main.lean`. The build checks the declaration count,
 the kinds, the module count, the per-chapter counts, the three statements without a declaration, and that no
 declaration is named twice. With F3 the three named posters are in, and the phase's done-when is met: `v0.2.0`
-is the next step, to be cut from the commit after this one.
+is the next step, from `c042157` or later.
+
+One fault found by CI on F3's first commit, and a rule from it: `Graph.statements` is a Python set, so a
+`Counter` built by iterating it orders equal counts by the process's hash seed, and `most_common()` then differs
+between machines while every local run agrees with itself. Every ranking now sorts by count then name, the
+statements are iterated sorted, and a new poster is regenerated under two `PYTHONHASHSEED` values before it is
+committed. The posters check prints the diff lines it finds, not only the stat.
 
 ## Risks
 
