@@ -108,9 +108,9 @@ written on both posters.
 
 The diagrams are a second reading of the blueprint, and the generator is
 strict about it. At build time it reads the
-[riemann-blueprint](../../riemann-blueprint/) (every drawn statement's front
+[riemann-blueprint](https://github.com/chrisflav/riemann-blueprint) (every drawn statement's front
 matter, body and proof, the chapter and section files, and `lean-facts.json`)
-and the [mirror](../../leanprover-community/riemann-hypothesis/)
+and the [mirror](https://github.com/leanprover-community/riemann-hypothesis)
 (`src/Main.lean`, `src/Statements.lean`, `comparator.json`). Each poster
 module records what it expects to find, and the build fails if the sources
 say otherwise.
