@@ -1,7 +1,9 @@
 # Diagrams of the Lean proof of the Riemann Hypothesis
 
 Generated SVG posters of the proof, drawn for teaching. They adapt to light and dark, and are meant to be
-opened on their own and zoomed.
+opened on their own and zoomed. In the light theme the page behind the cards is a grey matched to the mean
+luminance of the content, 93% white; [PAGE.md](PAGE.md) records how that was measured and how to measure it
+again.
 
 | Id | Diagram | What it shows |
 |----|---------|---------------|

@@ -1,7 +1,8 @@
 """Shared drawing library for the riemann diagrams.
 
 Taken from the TOPAK diagram family (Apache-2.0, same author); the brand, date, generator and state line differ,
-and the fonts: TOPAK names system fonts, these posters embed Noto.
+the fonts: TOPAK names system fonts, these posters embed Noto; and the light theme's page background, a grey
+matched to the content (diagrams/PAGE.md) where TOPAK's is white.
 
 Dependency-free. Every diagram is a Canvas; primitives measure their own text with the advance
 widths in metrics.py, wrap it, and return the height they used, so layouts are computed rather
@@ -55,6 +56,7 @@ STATE = "State drawn: see each diagram's state line"
 # Theme tokens: name -> (light, dark)
 BASE = {
     "bg":    ("#ffffff", "#12151b"),
+    "page":  ("#eeeeee", "#12151b"),   # the page behind the cards: in light, the mean luminance of the content (PAGE.md)
     "ink":   ("#1e2430", "#e6e9ef"),
     "muted": ("#4a5262", "#b0b8c6"),
     "faint": ("#7d8596", "#7f8898"),
@@ -645,7 +647,7 @@ class Canvas:
                 f'<title id="t">{BRAND} {escape(self.ident)} — {escape(re.sub(r"[*`]", "", self.title))}</title>\n'
                 f'<desc id="d">{escape(re.sub(r"[*`]", "", self.subtitle))}</desc>\n'
                 f'<style>\n{_css()}\n</style>\n<defs>{markers}</defs>\n'
-                f'<rect width="{self.W}" height="{H}" {fill("bg")}/>\n')
+                f'<rect width="{self.W}" height="{H}" {fill("page")}/>\n')
         self.warnings = self.check()
         TEXT_BOXES.clear()
         return head + "\n".join(self.out) + "\n</svg>\n"

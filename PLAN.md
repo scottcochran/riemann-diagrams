@@ -35,6 +35,9 @@ the edges true (Phase 4).
 5. **No Lean is built.** The blueprint's edges come from static analysis of the source text and some are wrong;
    every proof status reads absent. Every poster says so, and no diagram claims that a statement is proved.
 6. **Standard library only** for the posters, so that anyone with Python 3.12 can regenerate them.
+7. **The page matches the content.** In the light theme the page behind the cards is the mean relative
+   luminance of the content, measured once on R2 and applied to every poster (`diagrams/PAGE.md`,
+   `tools/measure-page.py`); the dark theme is as the library had it.
 
 ## Phases
 
