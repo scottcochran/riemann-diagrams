@@ -162,9 +162,38 @@ which Lean declarations a statement stands for, not that they are proved.
 That belongs to the kernel checks described in the mirror's
 `verification/NOTES.md`.
 
-The proof, the formal proof and the announcement are the work of Levent
-Alpöge. The blueprint is by the riemann-blueprint authors, built with the
-[blueprint](https://github.com/chrisflav/blueprint) tool.
+## Attribution
+
+* **The proof, the formal proof and the announcement** are the work of
+  **Levent Alpöge**, published at <https://alpo.ge/remark.pdf> and as the Lean
+  archive linked there. The mathematics these diagrams describe is his. The
+  formal proof was published without a license; this repository contains none
+  of its source. The reader posters quote a declaration's signature, with the
+  file and line it is at; the map posters carry only its name and location.
+* **The blueprint** [chrisflav/riemann-blueprint](https://github.com/chrisflav/riemann-blueprint)
+  and its authors wrote the statements, proofs, introductions and `source`
+  lines the diagrams draw, and resolved the `uses` edges they follow. The
+  posters read them at build time, at the pinned commit, and quote them
+  abridged and attributed. The blueprint carries no licence file at that
+  commit, and a request for one is open with its authors ([NOTICE](NOTICE)).
+* **The community mirror**
+  [leanprover-community/riemann-hypothesis](https://github.com/leanprover-community/riemann-hypothesis)
+  and its maintainers provided `Main.lean`, `Statements.lean` and
+  `comparator.json`, which R1 states the theorems from, and the verification
+  notes (`verification/NOTES.md`), which R1's band on what has been checked
+  paraphrases.
+* **The blueprint tool** [chrisflav/blueprint](https://github.com/chrisflav/blueprint)
+  defines the format the blueprint is written in and builds its website, which
+  the full Graphviz graph links each statement to.
+* **[Mathlib](https://github.com/leanprover-community/mathlib4)** and
+  **[Lean](https://lean-lang.org)** underlie the formal proof.
+* **[Graphviz](https://graphviz.org)** lays out the diagrams under `graphs/`.
+* **The Noto fonts** every poster embeds are Copyright 2022 The Noto Project
+  Authors, under the SIL Open Font License 1.1 (`diagrams/src/fonts/OFL.txt`).
+  The drawing library `diagrams/src/lib.py` is TOPAK's, Apache-2.0, by the
+  same author as this repository.
+* **The classical results** the proof cites are attributed to their authors in
+  the blueprint's text of each statement, and by the `source` lines F4 draws.
 
 ## License
 
