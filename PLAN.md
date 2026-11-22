@@ -1,11 +1,11 @@
 # Development plan
 
 Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams the README records, and updated the
-same day as Phase 1, the five chapter posters that follow it, Phases 2, 3 and 5 were done. It is a plan, not a
-record: nothing below is built unless the README says so. Phases 1, 2, 3, 5 and 6 are done, the last with
-two of its eight posters waiting on things outside this repository; what is left is Phase 4, which waits on a
-machine, two hand steps under Phase 5, Phase 7, links between the posters on the Pages site, and the decisions
-under "Open" at the end.
+same day as Phase 1, the five chapter posters that follow it, Phases 2, 3, 5, 6 and 7 were done. It is a plan,
+not a record: nothing below is built unless the README says so. Phases 1, 2, 3, 5, 6 and 7 are done, Phase 6
+with two of its eight posters waiting on things outside this repository, Phase 7 released as `v0.2.1`, the
+first release whose posters link; what is left is Phase 4, which waits on a machine, two hand steps under
+Phase 5, and the decisions under "Open" at the end, of which 6 is taken.
 
 ## Goal
 
@@ -434,11 +434,13 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
 - **What it does not do.** A poster inside an `<img>`, as the README embeds R1, or in GitHub's file viewer, draws
   the same and links nowhere. The README points to the Pages site for reading.
 
-**Done when** every footer id and Lean line on all thirteen posters is a link, in both sets, the link check
+**Done when** every footer id and Lean line on all sixteen posters is a link, in both sets, the link check
 runs in CI and in the release workflow, a map poster's links resolve to map posters in a downloaded release
 and on the site, the release's `SHA256SUMS` still matches the committed files with no step between, and the README
 and `diagrams/README.md` say where links work. A PATCH release, since no pin, `EXPECTED` or `HYPOTHESES` list
 moves and the drawing is the same: the next after `v0.2.0`, or with it if Phase 6's release has not been cut.
+Done 2026.11.22, in five pull requests, the map rename first: the READMEs say where links work and where they
+do not, and `v0.2.1` is the release.
 
 ## Risks
 
