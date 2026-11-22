@@ -95,8 +95,9 @@ jobs:
               kind = "tree" if path.endswith("/") else "blob"
               return f"]({repo}/{kind}/{tag}/{path.rstrip('/')})"
           md = re.sub(r"\]\(([^)\s]+)\)", target, md)
-          body = subprocess.run(["gh", "api", "-X", "POST", "markdown", "-f", "mode=gfm",
-                                 "-f", "context=scottcochran/riemann-diagrams", "-f", "text=" + md],
+          # mode=markdown renders as a README is rendered, a newline a space; gfm is the comment mode, in which
+          # every newline is a hard break, and the README is wrapped at 80 columns.
+          body = subprocess.run(["gh", "api", "-X", "POST", "markdown", "-f", "mode=markdown", "-f", "text=" + md],
                                 capture_output=True, text=True, check=True).stdout
           release = (f'<p class="release">The posters of release <a href="{repo}/releases/tag/{tag}">{tag}</a>, served '
                      f'as SVG: open one and zoom in. The sources they were generated from are in '
