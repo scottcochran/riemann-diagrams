@@ -76,6 +76,8 @@ class Graph:
                     self.proofs[fm["of"]] = fm
                     continue
                 base = f[:-3]
+                # The id rule of the blueprint format, as tools/gen.py in riemann-blueprint states it: a
+                # _section.md is named after its directory unless its front matter sets `id`.
                 oid = fm.get("id") or (os.path.basename(d) if base == "_section" else base)
                 rel = os.path.relpath(path, self.root)
                 fm["_path"] = rel
