@@ -144,8 +144,9 @@ def build():
         if t is not None:
             lean = g.nodes[t].get("lean", [])
             foot.append(f"**Main theorem** `{t}`: {g.nodes[t]['title']}"
-                        + (f" · Lean {code(lean[0])} at {code(g.lean_location(lean[0]))}" if lean else ""))
-        foot.append(f"Blueprint `{n['_path'].rsplit('/', 1)[0]}/`")
+                        + (f" · Lean {bp.linked(bp.lean_url(g, lean[0]), code(lean[0]))} at "
+                           f"{bp.linked(bp.lean_url(g, lean[0]), code(g.lean_location(lean[0])))}" if lean else ""))
+        foot.append(f"Blueprint {bp.linked(bp.bp_dir_url(g, ch), '`' + n['_path'].rsplit('/', 1)[0] + '/`')}")
         acc = ACCENT.get(ch, "green")
         return dict(anchor=ch, href=lib.chapter_poster(stmts), name=f"{n.get('order', '')}. {n['title']}", accent=acc, pill=f"chapter · {len(stmts)} statements",
                     formula=formula, say=say, bullets=bullets, foot=foot)
