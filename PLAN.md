@@ -306,6 +306,41 @@ reading behind `HEAVIEST`), F3's fan-out pattern (behind a majority check), and 
 the mirror's `verification/NOTES.md`; the generator now reads that file and fails if it no longer hashes to
 `NOTES_SHA256`, and CI checks it out with the other three mirror files.
 
+**The rest of the phase, on a branch (`phase6-rest`), from 2026.11.22.** The literature poster is
+`F4-literature-2026.11.22.svg`, `src/d_f4_literature.py`, in both sets. The reference list turned out richer
+than the entry above assumed: every entry carries author, title, journal and year, and 196 statements carry a
+`source` line citing entries, 90 of them more than one, so the timeline is drawn from the entries and the
+citations from the source lines, not from `uses` edges, which never point at a reference. Two findings: 35 of
+the 209 entries are cited by no statement, and the upward cones of 172 of the 174 cited references reach a
+theorem of `Main.lean`, so the Riemann Hypothesis rests, by the blueprint's own edges, on nearly every source
+it names; the two exceptions are Casselman–Shalika 1980 and Shintani 1976. This settles open decision 3: the
+published-results chapter has its poster, as the literature rather than as a grid of 163 leaves. The build
+checks the reference count, the year range, the number of citing statements and the four most-cited references.
+
+The sections poster is `F5-sections-2026.11.22.svg`, `src/d_f5_sections.py`, in both sets: one poster, not one
+per chapter as the entry said, since the nine bands stack to 14k pixels, the height of R5, and a reader wants
+the chapters in one reading order. Each band is laid out by `chapter.layout` from the section-to-section proof
+uses, with the arrows labelled by their counts; two pairs of sections use each other (the Sha chapter's root
+against three of its sections, and the literature's p-adic Hodge against its Galois cohomology), and the
+lighter direction is listed, not drawn, chosen by the same heaviest-first rule. Cross-chapter uses are counted
+on the cards and left to R2. The build checks the section and unit counts, the per-chapter pair and edge
+counts, and the pairs that point upward. On open decision 2: this is the middle level the entry proposed as
+the first cut for the big chapters' height, and it is itself as tall as R5, so the decision stands open.
+
+The wheel is `F6-depth-2026.11.22.svg`, `src/d_f6_depth.py`, in both sets: 409 of the 416 statements on
+eleven rings by breadth-first depth from the three roots, in nine sectors by chapter, each a dot in its
+provenance colour with its id set along the radius, and the chains of T1 and T2 traced through the rings. The
+drawing library had nothing radial, so the module draws the wheel itself: rings, sectors, rotated ids, and a
+placement rule, since an id is longer than the ring spacing and a ring's labels reach into the next ring's
+band. Each ring's dots go into the gaps between the angles of the ring inside, no two closer than the pitch of
+the labels, and a sector is widened until every ring of it fits; the sector widths are therefore the diagram's
+own, not the chapters' sizes, and the poster says so. The rotated ids are outside the overlap check, which
+knows only upright text; the README says so. Seven statements no edge reaches are listed, not drawn. The build
+checks the depth histogram, the unreached statements and that the two chains are chains in the blueprint.
+
+With F4, F5 and F6 the phase's buildable posters are in. The two that remain, change between pins and the
+declarations under a statement, wait on a blueprint move and on Phase 4.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
@@ -346,8 +381,9 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
    decide, and a poster split by section is the natural cut if it comes to that.
 3. **A poster for the published-results chapter.** 163 statements, nearly all of them leaves, so the chapter
    builder would draw a wide, flat grid that says little. R2's literature table already names the results the
-   proof leans on most. A poster of the top twenty, with the chapters that cite each, is the likely form if one
-   is wanted at all.
+   proof leans on most. Taken 2026.11.22: F4 draws the chapter as the literature, the 209 references by decade
+   with their citations and upward cones, and the top twenty-five with the chapters that lean on each; no grid
+   of the 163 statements is drawn.
 4. **This plan** was kept out of the repository until 2026.11.22, when it went in with the decisions above still
    open, so that its history records them being taken. It stays at the root, beside the README, as tla-kit's
    does; a `decisions/` directory is for the records those decisions produce, if they are written up.
