@@ -11,6 +11,12 @@
   "cards": 9,
   "arrows": 11
  },
+ "F3": {
+  "file": "F3-modules-2026.11.22.svg",
+  "title": "The proof as code: the blueprint's nine chapters against the formalisation's modules, and what each statement stands for in Lean",
+  "cards": 10,
+  "arrows": 0
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.22.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",
