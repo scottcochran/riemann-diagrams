@@ -17,6 +17,7 @@ again.
 | R6 | [Heights and the covolume bound, every statement](R6-heights-2026.11.22.svg) | the 32 statements of the Arakelov argument that bounds the lattices' covolumes. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R7 | [The Tate–Shafarevich bound, every statement](R7-sha-2026.11.22.svg) | the 35 statements from Kato's Euler system to the bound, with three results the main proof names as hypotheses. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R8 | [Galois representations, every statement](R8-galois-2026.11.22.svg) | the 38 statements that attach Galois representations to polarized pairs. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
+| F6 | [Depth as geometry](F6-depth-2026.11.22.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. No other edge is drawn. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. The depth histogram, the unreached statements and the two chains are checked. |
 | F5 | [The sections, the middle level](F5-sections-2026.11.22.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section standing above the sections whose proofs use it, with arrows labelled by the number of proof uses between them; a card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. The statements at a chapter's root are a card of their own. The section and unit counts, the per-chapter edge counts and the pairs that would point upward are checked. |
 | F4 | [The proof as literature](F4-literature-2026.11.22.svg) | The 209 references of the blueprint on a timeline by decade, a chip each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; the references no statement cites. The reference count, the year range, the citing count and the most-cited references are checked. |
 | F3 | [The proof as code](F3-modules-2026.11.22.svg) | The blueprint's nine chapters against the formalisation's modules, read from `lean-facts.json`, the blueprint's index of the 1194 Lean declarations its statements name. A matrix of chapters against the 35 second-level modules, so the paper's organisation and the code's can be compared; the formalisation's own tree as one card per namespace; each chapter's footprint in the code (declarations, kinds, modules, files, lines spanned); and the fan-out from one statement to its declarations, with the twelve statements that name the most. The declaration count, the kinds, the module count, the per-chapter counts and the three statements without a declaration are checked, and the build fails if a declaration is named by two statements. |
@@ -25,7 +26,7 @@ again.
 
 ## Map mode
 
-`diagrams/map/` holds the same fifteen posters built with `--map`: nothing of the blueprint's text and nothing of the
+`diagrams/map/` holds the same sixteen posters built with `--map`: nothing of the blueprint's text and nothing of the
 formal proof's source is quoted. Each card keeps the statement's title, id, kind, provenance, Lean name and file
 location, every edge, and a count of the paragraphs the blueprint spends on it; the section and chapter cards
 keep their titles and counts. The map set is the form that can be published while the quoting question in
@@ -51,13 +52,14 @@ chapter and section files, and `lean-facts.json`) and the
   between definitions (F1), the proof uses between the new statements of different chapters and the tops of the
   new work (F2), the declaration, kind, module and per-chapter counts of `lean-facts.json` (F3), the reference
   count, year range and most-cited references (F4), the proof uses between sections of a chapter and the pairs
-  that would point upward (F5), or the chain
+  that would point upward (F5), the depth histogram and the unreached statements (F6), or the chain
   (T1, T2) are not exactly the arrows or the path listed in the diagram's `EXPECTED`; or the results that proofs name in their text without
   listing them as uses (`HYPOTHESES`, R3 to R8) are not the ones recorded;
 - a theorem of `Main.lean` is carried by no drawn node, or `comparator.json` names other theorems;
 - a drawn Lean declaration has no signature in `lean-facts.json`;
 - the theorem drawn for a chapter is not the first result at that chapter's root;
-- a title or a signature does not fit its card, or two texts overlap.
+- a title or a signature does not fit its card, or two texts overlap. The ids on F6's wheel are set along the
+  radius and placed by a spacing rule of their own, not by the overlap check, which knows only upright text.
 
 Signatures, file lines, uses, used-by, statement counts, depths and citation counts are computed. The italic line
 of a node is the blueprint's own statement and the bullets are its proof, abridged where marked with an ellipsis,
@@ -113,6 +115,7 @@ src/d_f2_new.py              F2: the new statements by chapter and section; EXPE
 src/d_f3_modules.py          F3: chapters against Lean modules from lean-facts.json; N_DECLS, KINDS, NO_LEAN, EXPECTED
 src/d_f4_literature.py       F4: the references by decade, citations and upward cones; N_REFS, YEARS, N_CITING, TOP
 src/d_f5_sections.py         F5: the sections chapter by chapter, laid out by their edges; EXPECTED, UPWARD
+src/d_f6_depth.py            F6: the wheel, rings by depth and sectors by chapter; EXPECTED_DEPTHS, UNREACHED
 ```
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same author), with the brand, the date

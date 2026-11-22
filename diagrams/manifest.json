@@ -29,6 +29,12 @@
   "cards": 66,
   "arrows": 78
  },
+ "F6": {
+  "file": "F6-depth-2026.11.22.svg",
+  "title": "Depth as geometry: every statement of the blueprint on one wheel, rings by distance from the main theorems, sectors by chapter",
+  "cards": 0,
+  "arrows": 0
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.22.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

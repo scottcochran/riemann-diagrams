@@ -327,6 +327,20 @@ on the cards and left to R2. The build checks the section and unit counts, the p
 counts, and the pairs that point upward. On open decision 2: this is the middle level the entry proposed as
 the first cut for the big chapters' height, and it is itself as tall as R5, so the decision stands open.
 
+The wheel is `F6-depth-2026.11.22.svg`, `src/d_f6_depth.py`, in both sets: 409 of the 416 statements on
+eleven rings by breadth-first depth from the three roots, in nine sectors by chapter, each a dot in its
+provenance colour with its id set along the radius, and the chains of T1 and T2 traced through the rings. The
+drawing library had nothing radial, so the module draws the wheel itself: rings, sectors, rotated ids, and a
+placement rule, since an id is longer than the ring spacing and a ring's labels reach into the next ring's
+band. Each ring's dots go into the gaps between the angles of the ring inside, no two closer than the pitch of
+the labels, and a sector is widened until every ring of it fits; the sector widths are therefore the diagram's
+own, not the chapters' sizes, and the poster says so. The rotated ids are outside the overlap check, which
+knows only upright text; the README says so. Seven statements no edge reaches are listed, not drawn. The build
+checks the depth histogram, the unreached statements and that the two chains are chains in the blueprint.
+
+With F4, F5 and F6 the phase's buildable posters are in. The two that remain, change between pins and the
+declarations under a statement, wait on a blueprint move and on Phase 4.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and

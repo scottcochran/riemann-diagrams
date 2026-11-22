@@ -58,6 +58,9 @@ and zoom in.
 - [The sections, the middle level](diagrams/F5-sections-2026.11.22.svg): the
   58 sections as cards, chapter by chapter, each above the sections whose
   proofs use it, with the proof uses between them as labelled arrows.
+- [Depth as geometry](diagrams/F6-depth-2026.11.22.svg): every statement on
+  one wheel, rings by distance from the main theorems and sectors by chapter,
+  with the two trace chains drawn through the rings.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 
