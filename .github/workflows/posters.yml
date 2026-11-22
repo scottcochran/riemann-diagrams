@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out riemann-diagrams
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           path: riemann-diagrams
 
@@ -47,14 +47,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Check out the blueprint at its pin
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: chrisflav/riemann-blueprint
           ref: ${{ steps.full.outputs.blueprint }}
           path: riemann-blueprint
 
       - name: Check out the mirror at its pin, only the files the generator reads
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: leanprover-community/riemann-hypothesis
           ref: ${{ steps.full.outputs.mirror }}
@@ -67,7 +67,7 @@ jobs:
           sparse-checkout-cone-mode: false
 
       - name: Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
