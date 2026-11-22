@@ -10,6 +10,11 @@
 #
 # Needs Pages set to "GitHub Actions" in the repository's settings, and the github-pages environment to allow
 # main (for a run by hand) and tags matching v* (for a call from release.yml).
+#
+# Two jobs, as GitHub's own Pages workflow has them: build stages the site and uploads it, deploy publishes it.
+# With both in one job, deploy-pages listed the artifact right after the upload and found none once the
+# artifact had grown to 5 MB with the fonts and the Phase 6 posters (three runs of v0.2.0, 2026.11.22); a job
+# boundary waits for the artifact to be registered.
 name: pages
 
 on:
@@ -34,18 +39,10 @@ defaults:
     shell: bash
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pages: write
-      id-token: write
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: The tag is a release, and the run is the custodian's
         env:
@@ -107,5 +104,19 @@ jobs:
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - id: deploy
         uses: actions/deploy-pages@v4
