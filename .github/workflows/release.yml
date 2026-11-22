@@ -70,7 +70,7 @@ jobs:
           [ "$(git cat-file -t "refs/tags/$tag")" = tag ] || { echo "release: $tag is not annotated after fetch"; exit 1; }
           mkdir -p stage
           cp diagrams/*.svg stage/
-          for f in diagrams/map/*.svg; do cp "$f" "stage/map-$(basename "$f")"; done
+          cp diagrams/map/*.svg stage/
           bp=$(python3 -c "import re; print(re.search(r'^BP_COMMIT = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
           mp=$(python3 -c "import re; print(re.search(r'^MIRROR_PIN = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")
           mc=$(python3 -c "import re; print(re.search(r'^MIRROR_COMMIT = \"([0-9a-f]+)\"', open('diagrams/src/bp.py').read(), re.M).group(1))")

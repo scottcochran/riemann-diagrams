@@ -33,15 +33,14 @@ def main(tag, pins_path, *manifests):
     out.append("")
     for path in manifests:
         m = json.load(open(path, encoding="utf-8"))
-        kind = "The map set (nothing quoted; file names carry the prefix `map-`)" if "/map/" in path else "The reader set"
+        kind = "The map set (nothing quoted)" if "/map/" in path else "The reader set"
         out.append(f"## {kind}")
         out.append("")
         out.append("| Id | Poster | Cards | Arrows | File |")
         out.append("|---|---|---:|---:|---|")
-        prefix = "map-" if "/map/" in path else ""
         for k, v in m.items():
             title = v["title"].replace("|", "\\|")
-            out.append(f"| {k} | {title} | {v['cards']} | {v['arrows']} | `{prefix}{v['file']}` |")
+            out.append(f"| {k} | {title} | {v['cards']} | {v['arrows']} | `{v['file']}` |")
         out.append("")
     out.append("## Checking a citation")
     out.append("")

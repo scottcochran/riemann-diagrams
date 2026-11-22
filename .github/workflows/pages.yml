@@ -70,7 +70,7 @@ jobs:
           # the site must be the release: every SVG at the tag, under its release name, and pins.json, as summed
           mkdir check
           cp diagrams/*.svg check/
-          for f in diagrams/map/*.svg; do cp "$f" "check/map-$(basename "$f")"; done
+          cp diagrams/map/*.svg check/
           cp release/pins.json release/SHA256SUMS check/
           (cd check && sha256sum --strict -c SHA256SUMS)
           [ "$(ls check/*.svg | wc -l)" = "$(grep -c '\.svg$' release/SHA256SUMS)" ] || { echo "pages: the tag has SVGs the release does not"; exit 1; }
