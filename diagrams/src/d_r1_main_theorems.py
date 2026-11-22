@@ -99,7 +99,9 @@ def build():
                "words, how its proof goes, and what it uses and is used by. **Read it from the foot up**: the five "
                "theorems are at the bottom, and everything above is what their proofs use. **No Lean was built** "
                "for the blueprint or for this diagram: the edges were resolved from the source text and some are "
-               "wrong, and whether the formal proof is correct is a question for the kernel checks of band 5.",
+               "wrong, and whether the formal proof is correct is a question for the kernel checks of band 5."
+               + (" **Map mode**: nothing of the blueprint's text or the proof's source is quoted; each card "
+                  "gives the statement's title, kind, provenance, Lean name and location, and its edges." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (the front matter, statement and proof of every drawn node; "
                "`lean-facts.json` for every signature, file and line; the `architecture` chapter's introduction); "
                f"`leanprover-community/riemann-hypothesis` at {mirror['commit']} (`src/Main.lean`, "
@@ -151,11 +153,14 @@ def build():
         "cites; **Used by** what cites it. **An arrow from A to B**: the proof of B uses A, and the arrow takes "
         "A's colour. Statement uses are not drawn.",
     ]
+    if bp.MAP:
+        key_body = bp.MAP_KEY
     stm = mirror["theorems"]
     props = mirror["props"]
-    lean_lines = [t["src"] for t in stm] + [""]
-    for p in props.values():
-        lean_lines += p["lines"] + [""]
+    lean_lines = [t["src"] for t in stm] + [""]          # the five theorem lines: names, not quoted source
+    if not bp.MAP:
+        for p in props.values():
+            lean_lines += p["lines"] + [""]
     stm_bullets = [
         "**The claims.** `Main.lean` states the five theorems the Comparator config names, each as a Prop that "
         "`Statements.lean` defines from Mathlib's `riemannZeta` and `DirichletCharacter.LFunction`; "
@@ -173,6 +178,10 @@ def build():
     stages = [p for p in arch if re.match(r"(Galois|The Tate|Families|Slope|Landau)", p)]
     if len(stages) != 5:
         raise ValueError(f"R1: the architecture chapter's introduction does not list five stages: {len(stages)}")
+    if bp.MAP:
+        stages = [s.split(" ", 1)[0].rstrip(".,") + " … " + bp.NOT_QUOTED for s in stages[:1]] + [
+            "The five stages are: Galois representations, the Tate–Shafarevich bound, families, slope data and "
+            "the core inequality, Landau's theorem; one chapter each, as diagram R2 draws them."]
 
     # ---------------------------------------------------------------------------------- the rows
     y = c.y

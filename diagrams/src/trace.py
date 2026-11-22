@@ -66,7 +66,8 @@ def build(ID, TARGET, EXPECTED, title, why):
                "uses, so every statement on it is as far from the main theorems as it can be. **Read it as a "
                "proof**, left to right and top to bottom: nothing is used before it is proved. Each card is one "
                "blueprint statement, as in the chapter posters; an arrow from A to B says that the proof of B "
-               "uses A. " + why + " **No Lean was built**: see diagram R1, band 5.",
+               "uses A. " + why + (" **Map mode**: nothing of the blueprint's text or the proof's source is "
+               "quoted." if bp.MAP else "") + " **No Lean was built**: see diagram R1, band 5.",
                W, f"`riemann-blueprint` at {g.bp_commit} (the front matter, statement and proof of every statement "
                "on the chain; `lean-facts.json` for the signatures, files and lines); "
                f"`leanprover-community/riemann-hypothesis` at {mirror['commit']} (`src/Main.lean`). The chain is "
@@ -101,6 +102,8 @@ def build(ID, TARGET, EXPECTED, title, why):
         "**Proof uses** and **Used by** list every edge, not only the one the chain takes: the chain is one path "
         "through a tree, and the footers show where the other branches go.",
     ]
+    if bp.MAP:
+        key = bp.MAP_KEY
     route = []
     for i, k in enumerate(order):
         n = g.nodes[k]

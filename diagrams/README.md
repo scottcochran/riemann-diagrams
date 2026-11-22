@@ -16,6 +16,15 @@ opened on their own and zoomed.
 | R7 | [The Tate–Shafarevich bound, every statement](R7-sha-2026.11.22.svg) | the 35 statements from Kato's Euler system to the bound, with three results the main proof names as hypotheses. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R8 | [Galois representations, every statement](R8-galois-2026.11.22.svg) | the 38 statements that attach Galois representations to polarized pairs. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 
+## Map mode
+
+`diagrams/map/` holds the same ten posters built with `--map`: nothing of the blueprint's text and nothing of the
+formal proof's source is quoted. Each card keeps the statement's title, id, kind, provenance, Lean name and file
+location, every edge, and a count of the paragraphs the blueprint spends on it; the section and chapter cards
+keep their titles and counts. The map set is the form that can be published while the quoting question in
+`PLAN.md` is open, and it is a third to a half the height of the reader set. The build and the checks are the
+same; only the quotations are left out, and a map poster says so in its subtitle and its brand line.
+
 ## Where the content comes from
 
 The diagrams are a second reading of the blueprint, and the generator is strict about it. At build time it reads
@@ -47,6 +56,7 @@ source text and some are wrong; this is written on both posters.
 
 ```bash
 uv run python diagrams/gen-diagrams.py        # all; or: uv run python diagrams/gen-diagrams.py R3
+uv run python diagrams/gen-diagrams.py --map  # the map set, into diagrams/map/
 ```
 
 The generator needs only the standard library, on Python 3.12 or later. The output is deterministic: unchanged
@@ -63,7 +73,7 @@ The sources are expected as sibling checkouts, `../riemann-blueprint` and `../le
 ## In CI
 
 `.github/workflows/posters.yml` checks out the blueprint and the mirror at the three pins above, regenerates every
-poster with Python 3.12, and fails if the generator prints a `WARNING` or `ERROR`, if any committed SVG differs
+poster in both forms with Python 3.12, and fails if the generator prints a `WARNING` or `ERROR`, if any committed SVG differs
 from the regenerated one, or if a poster is regenerated that is not committed. So a pull request that moves a pin
 without regenerating fails, and one that regenerates passes. The mirror is checked out sparse, with only the
 three files the generator reads.

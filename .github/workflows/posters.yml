@@ -76,6 +76,7 @@ jobs:
         run: |
           cd riemann-diagrams
           python3 diagrams/gen-diagrams.py
+          python3 diagrams/gen-diagrams.py --map
 
       - name: The committed posters are the regenerated ones
         shell: bash

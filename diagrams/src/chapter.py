@@ -191,8 +191,9 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
                "from A to B says that the proof of B uses A; a dashed arrow says that the proof of B names A "
                "without listing it as a use. The statements that head a section or a group of results have "
                "full cards; the others are drawn shorter. "
-               "The chapter's own introduction: " + abridge(intro, 700) + " **No Lean was built**: see diagram "
-               "R1, band 5.",
+               + ("**Map mode**: nothing of the blueprint's text or the proof's source is quoted. " if bp.MAP
+                  else "The chapter's own introduction: " + abridge(intro, 700) + " ")
+               + "**No Lean was built**: see diagram R1, band 5.",
                W, f"`riemann-blueprint` at {g.bp_commit} (`{ch['_path'].rsplit('/', 1)[0]}/`: the chapter's and "
                "every section's `_section.md`, every statement's front matter, body and proof; `lean-facts.json` "
                "for the signatures, files and lines); `leanprover-community/riemann-hypothesis` at "
@@ -231,6 +232,8 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
         "or higher where that makes room; a card sits under the cards that use it where it can. A short card "
         "shows four lines of the signature and one paragraph of the proof.",
     ]
+    if bp.MAP:
+        key = bp.MAP_KEY
     imp = [f"The chapter's proofs and statements use {sum(imports.values())} results outside it, "
            + ", ".join(f"{n} from `{ch_}`" for ch_, n in by_chapter.most_common()) + "."]
     if imports:
@@ -291,6 +294,8 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
         body_ = bp.body(g, sec)
         paras = paragraphs(body_)
         intro_s = abridge(rich(paras[0]), 900) if paras else "The blueprint gives this section no introduction."
+        if bp.MAP:
+            intro_s = f"{len(paras)} paragraph(s) of introduction. " + bp.NOT_QUOTED
         cards.append((f"{n.get('order')}. {n['title']}", [intro_s, "**Holds** " + names(under(sec), 8)]))
     for i in range(0, len(cards), NCOLS):
         chunk = cards[i:i + NCOLS]

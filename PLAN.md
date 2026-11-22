@@ -2,8 +2,8 @@
 
 Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams the README records, and updated the
 same day as Phase 1, the five chapter posters that follow it, Phase 2 and Phase 3 were done. It is a plan, not
-a record: nothing below is built unless the README says so. Three of its four phases are done; what is left is
-Phase 4, which waits on a machine, and the decisions under "Open" at the end.
+a record: nothing below is built unless the README says so. Three of its first four phases are done; what is left
+is Phase 4, which waits on a machine, Phase 5, releases, and the decisions under "Open" at the end.
 
 ## Goal
 
@@ -128,6 +128,49 @@ built oleans, would replace them with the real reference graph and fill in each 
 **Done when** `lean-facts.json` carries statuses, the posters show them, and R1's "Judged" card reports a
 recorded result rather than its absence.
 
+### Phase 5: releases
+
+A poster is cited the way an image digest is cited in tla-kit: a reader of R3 wants to say which R3, drawn from
+which blueprint, and to fetch that one later after the tree has moved on. The tree cannot keep every drawing,
+because a poster's file name carries its date and a regeneration at a new pin replaces it. A release keeps it.
+
+- **A release is an annotated `vMAJOR.MINOR.PATCH` tag on `main`, pushed by the custodian, never moved or
+  reused.** The tag message is the release's opening: the kind of move, what changed, and one line saying which
+  posters a reader must re-read. The workflow refuses a tag that is unannotated, off `main`, or not the
+  custodian's, as tla-kit's does.
+- **The number says what moved**, adapted from tla-kit's ADR-0014 to what a release can change for a reader:
+
+  | Part | When it changes | What a reader of a cited poster has to do |
+  |---|---|---|
+  | MAJOR | The checks change: what a poster is verified against (the rules above), or Phase 4 replaces text-resolved edges with extracted ones | Re-read every poster: the arrows may mean something else |
+  | MINOR | A source pin moves (`BP_COMMIT`, `MIRROR_PIN`, `MIRROR_COMMIT`), or a poster is added or removed | Re-read the posters the tag message names; the others are the same drawing at a new date |
+  | PATCH | Layout, wording or library changes; no pin moves and every `EXPECTED` and `HYPOTHESES` list is unchanged | Nothing: the same statements and arrows, drawn again |
+
+  Before 1.0, releases stay at `0.x`, and a MAJOR change may take a MINOR. 1.0 waits on Phase 4, and on the
+  first open decision below: the posters must not be published more widely than this repository until the
+  quoting question is settled, and a release of a private repository is not wider.
+- **The workflow builds from the tag as CI does**, then does what CI does not: it renders each SVG to PNG with
+  `rsvg-convert` for readers without an SVG viewer, writes `pins.json` (the three pins, the commits they resolve
+  to, the generator's Python version, the tag) and `SHA256SUMS` over everything, and creates the GitHub release
+  with the SVGs, the PNGs, the two files and notes. The PNGs are a convenience and are not byte-checked:
+  `rsvg-convert` is not deterministic across versions, and the notes say so. The Graphviz outputs stay out of
+  releases for the same reason; they are in the tree as committed.
+- **The notes record what a reader needs to check a citation**: the kind of move; the three pins with links to
+  the blueprint and mirror commits; one row per poster with its statement count and the number of arrows, so a
+  reader can see what moved between releases without opening the SVGs; the CI run on `main` at the tagged
+  commit; and the tag message. A script, `tools/release-notes.py`, writes them from the tag and the tree, as
+  `tools/pins.py` and `tools/ci/release-notes.sh` do in tla-kit.
+- **Attestation waits.** GitHub's artifact attestations need a public repository or an enterprise plan. When the
+  repository is public, the workflow attests the SVG bundle, and the notes carry the `gh attestation verify`
+  line.
+- **Cadence:** a release when a pin moves, when a poster is added or removed, or when the checks change. Not
+  on every push: a wording fix waits for the next move, unless it changes what a poster says.
+- **The first release**, `v0.1.0`, is the ten posters R1 to R8, T1 and T2 at blueprint `137d976` and mirror
+  `2dea990069`, from the commit the plan went in at or the one after it.
+
+**Done when** `v0.1.0` is published from a tag by the workflow, its `SHA256SUMS` matches the committed SVGs at
+the tagged commit, and a tag that is unannotated or off `main` is refused.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
@@ -160,8 +203,9 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
 
 1. **How much of the blueprint and the proof to quote.** See the licensing risk above. The options run from
    asking the blueprint's authors for a licence, to trimming the cards to the Lean name, the title and the
-   blueprint link, which would make the posters maps rather than readers. The posters as drawn assume the
-   first; nothing should be published more widely than this repository until it is settled.
+   blueprint link, which makes the posters maps rather than readers. Both are in hand since 2026.11.22: an
+   issue asking for a licence is drafted, and `--map` builds the trimmed form into `diagrams/map/`, checked in
+   CI beside the readers. Until the answer comes, the map set is what may be published; the readers stay here.
 2. **The height of the big chapter posters.** Theta is 16k pixels, Galois 14k. Decide once, for all six, between
    a second poster per big chapter and a denser row of short cards; the reader who has read them at zoom should
    decide, and a poster split by section is the natural cut if it comes to that.

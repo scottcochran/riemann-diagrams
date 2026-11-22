@@ -104,7 +104,8 @@ def build():
                "and each column above is one strand of the argument. An arrow from A to B says that the proof "
                "of B uses A; a dashed arrow says that B takes A as a hypothesis, which the proof text names and "
                "the uses list does not. The blueprint says of this chapter that the square root in the core "
-               "inequality is the Riemann Hypothesis. **No Lean was built**: see diagram R1, band 5.",
+               "inequality is the Riemann Hypothesis. **No Lean was built**: see diagram R1, band 5."
+               + (" **Map mode**: nothing of the blueprint's text or the proof's source is quoted." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (`{ch['_path'].rsplit('/', 1)[0]}/`: the chapter's and "
                "every section's `_section.md`, every statement's front matter, body and proof; `lean-facts.json` "
                "for the signatures, files and lines); `leanprover-community/riemann-hypothesis` at "
@@ -151,6 +152,8 @@ def build():
                                                  for u in imports[k]))
     imp.append("Everything else the chapter uses is in the chapter. Statements used from outside it: "
                + ", ".join(f"`{k}` by {len(v)}" for k, v in sorted(exported.items())) + ".")
+    if bp.MAP:
+        key = bp.MAP_KEY
     bodies = {"key": key, "hyp": hyp, "imports": imp}
 
     y = c.y
@@ -194,6 +197,8 @@ def build():
     for i, sec in enumerate(sections):
         n = g.nodes[sec]
         intro = abridge(rich(paragraphs(bp.body(g, sec))[0]), 900)
+        if bp.MAP:
+            intro = f"{len(paragraphs(bp.body(g, sec)))} paragraph(s) of introduction. " + bp.NOT_QUOTED
         held = under(sec)
         body = [intro, "**Holds** " + names(held, 8)]
         cards.append((f"{n.get('order')}. {n['title']}", body))

@@ -88,7 +88,8 @@ def build():
                "its sections with the number of statements in each, and the chapters it uses. An arrow from A to B "
                "says that chapter B uses chapter A; **read it from the foot up**, as diagram R1. The table at the "
                "foot counts which published results the proof leans on most. **No Lean was built** for the "
-               "blueprint; see band 5 of diagram R1 for what is known about the formal proof.",
+               "blueprint; see band 5 of diagram R1 for what is known about the formal proof."
+               + (" **Map mode**: nothing of the blueprint's text or the proof's source is quoted." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (every chapter's `_section.md`: its uses, order and "
                "introduction; every section's title and order; every statement's chapter, provenance, source and "
                "uses; `lean-facts.json` for the signatures); `leanprover-community/riemann-hypothesis` at "
@@ -127,8 +128,8 @@ def build():
             fact = g.lean_facts.get(first)
             if not fact or not fact.get("signature"):
                 raise ValueError(f"R2: lean-facts.json has no signature for {first}")
-            formula = bp.lean_block(fact["signature"], cols, 8)
-        say = abridge(rich(paragraphs(bp.body(g, ch))[0]), 900 if w > span(1) + 1 else 620)
+            formula = [] if bp.MAP else bp.lean_block(fact["signature"], cols, 8)
+        say = bp.prose(abridge(rich(paragraphs(bp.body(g, ch))[0]), 900 if w > span(1) + 1 else 620))
         bullets = []
         for sec in sections[ch]:
             bullets.append(f"**{g.nodes[sec]['title']}** (`{sec}`): {len(under(sec))} statements")
@@ -166,6 +167,11 @@ def build():
     checks = [abridge(rich(p), 420) for p in paragraphs(bp.body(g, "rem-points-to-check"))]
     if len(checks) < 3:
         raise ValueError("R2: rem-points-to-check has fewer than three paragraphs to list")
+    if bp.MAP:
+        stages = ["Galois representations (`chap-galois`), the Tate–Shafarevich bound (`chap-sha`), families "
+                  "(`chap-families`), slope data and the core inequality (`chap-zero-free`), Landau's theorem "
+                  "(`chap-zero-free`).", bp.NOT_QUOTED]
+        checks = [f"`rem-points-to-check` lists {len(checks)} points. " + bp.NOT_QUOTED]
 
     y = c.y
     y = band(c, X0, y, "The chapters, from the literature up to the main theorems",

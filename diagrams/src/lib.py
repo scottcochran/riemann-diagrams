@@ -23,7 +23,8 @@ MONO = "'DejaVu Sans Mono', Menlo, Consolas, monospace"
 MONO_EM = 0.602          # DejaVu Sans Mono / Menlo advance
 MONO_SCALE = 0.92        # code runs are set slightly smaller than the surrounding text
 
-BRAND = "RIEMANN"
+import os as _os
+BRAND = "RIEMANN · MAP" if _os.environ.get("RIEMANN_MAP") == "1" else "RIEMANN"
 DATE = "2026.11.22"
 GENERATOR = "diagrams/gen-diagrams.py"
 STATE = "State drawn: see each diagram's state line"

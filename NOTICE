@@ -10,8 +10,9 @@ configuration (pyproject.toml, uv.lock, .gitignore) -- are licensed
 under the Apache License, Version 2.0. See LICENSE.
 
 Documentation -- the Markdown (.md) prose, and the rendered diagrams
-(diagrams/*.svg and the riemann_*.png, .svg and .dot files in
-graphs/), to the extent that they are this repository's own work -- is
+(diagrams/*.svg, diagrams/map/*.svg and the riemann_*.png, .svg and
+.dot files in graphs/), to the extent that they are this repository's
+own work -- is
 licensed under the Creative Commons Attribution 4.0 International
 License (CC BY 4.0). See LICENSE-DOCS.
 
@@ -23,7 +24,9 @@ and its font metrics diagrams/src/metrics.py -- keeps the licence it
 has there (Apache-2.0), as its header says.
 
 What the diagrams quote is not part of this repository's work and is
-not covered by either license:
+not covered by either license. The posters under diagrams/map/ quote
+none of it: they carry only ids, titles, counts, Lean names and file
+locations.
 
   * The statements, proofs, chapter introductions, section titles,
     sources and provenance labels drawn on the posters, and the ids,

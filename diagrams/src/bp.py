@@ -38,6 +38,31 @@ BP_COMMIT = "137d976"
 MIRROR_PIN = "8c90877c"
 MIRROR_COMMIT = "2dea990069"
 
+# Map mode: no text of the blueprint and no Lean source is quoted. Each card keeps the statement's title, id,
+# kind, provenance, Lean name and location, and every edge. Set by gen-diagrams.py --map, before the modules load.
+MAP = os.environ.get("RIEMANN_MAP") == "1"
+NOT_QUOTED = ("Not quoted in map mode: the blueprint's text and the proof's source stay their authors'. The "
+              "blueprint link below has both.")
+
+
+MAP_KEY = [
+    "**Title and pill.** The title is the blueprint's; the pill gives the kind and the provenance: **new** in "
+    "Alpöge's proof, **modified** from a published result, or **published** as it stands. `Main.lean` marks the "
+    "theorems the Comparator config names.",
+    "**The line in italics** gives the statement's id and how many paragraphs the blueprint spends on its "
+    "statement and its proof. The text itself is not quoted: it is the blueprint's authors', and the blueprint "
+    "link in the footer has it. The Lean signature is not quoted either, for the same reason; the footer gives "
+    "the declaration's name, file and line in the mirror.",
+    "**Stated with**, **Proof uses** and **Used by** are the blueprint's edges, in full. **An arrow from A to B**: "
+    "the proof of B uses A, and the arrow takes A's colour.",
+]
+
+
+def prose(s):
+    """A quotation of the blueprint, or None in map mode."""
+    return None if MAP else s
+
+
 PROV_ACCENT = {"new": "green", "modified": "amber", "published": "blue", None: "grey"}
 PROV_LABEL = {"new": "new in Alpöge's proof", "modified": "modified from the literature", "published": "published",
               None: "unlabelled"}
@@ -353,23 +378,29 @@ def statement_card(g, k, w, drawn, rev, depth, main_names, diagram="R1", max_lin
         fact = g.lean_facts.get(first)
         if not fact or not fact.get("signature"):
             raise ValueError(f"{diagram}: lean-facts.json has no signature for {first}")
-        formula = lean_block(fact["signature"], columns(w), 4 if compact else max_lines)
+        formula = [] if MAP else lean_block(fact["signature"], columns(w), 4 if compact else max_lines)
     else:
         formula = [(0, "no Lean declaration: the blueprint's own grouping of results", True)]
     is_main = any(x in main_names for x in lean)
     pill = ("Main.lean · " if is_main else "") + f"{n['kind']} · {PROV_SHORT[prov]}"
-    say = abridge(rich(" ".join(paragraphs(body(g, k))[:2])), 360 if compact else 620)
     pf = proof(g, k)
-    bullets = []
-    if pf is not None:
-        paras = paragraphs(pf)
-        keep = 1 if compact else 4
-        for p in paras[:keep]:
-            bullets.append(abridge(rich(p), 240 if compact else 330))
-        if len(paras) > keep:
-            bullets.append(f"… and {len(paras) - keep} more paragraphs in the blueprint's proof.")
-    elif n["kind"] != "definition":
-        bullets.append("The blueprint gives no proof for this statement.")
+    if MAP:
+        paras = paragraphs(pf) if pf is not None else []
+        say = (f"`{k}`: the blueprint states it in {len(paragraphs(body(g, k)))} paragraph(s)"
+               + (f" and proves it in {len(paras)}." if pf is not None else "; it gives no proof."))
+        bullets = []
+    else:
+        say = abridge(rich(" ".join(paragraphs(body(g, k))[:2])), 360 if compact else 620)
+        bullets = []
+        if pf is not None:
+            paras = paragraphs(pf)
+            keep = 1 if compact else 4
+            for p in paras[:keep]:
+                bullets.append(abridge(rich(p), 240 if compact else 330))
+            if len(paras) > keep:
+                bullets.append(f"… and {len(paras) - keep} more paragraphs in the blueprint's proof.")
+        elif n["kind"] != "definition":
+            bullets.append("The blueprint gives no proof for this statement.")
     su, pu, ub = g.statement_uses(k), g.proof_uses(k), rev[k]
     lim = 4 if compact else 10
     foot = []
