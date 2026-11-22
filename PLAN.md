@@ -2,8 +2,9 @@
 
 Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams the README records, and updated the
 same day as Phase 1, the five chapter posters that follow it, Phases 2, 3 and 5 were done. It is a plan, not a
-record: nothing below is built unless the README says so. Four of its five phases are done; what is left is
-Phase 4, which waits on a machine, two hand steps under Phase 5, and the decisions under "Open" at the end.
+record: nothing below is built unless the README says so. Four of its first five phases are done; what is left
+is Phase 4, which waits on a machine, two hand steps under Phase 5, Phase 6, other frames to draw the same
+sources in, and the decisions under "Open" at the end.
 
 ## Goal
 
@@ -199,6 +200,53 @@ tag ruleset.
 `v0.1.1` was cut the same day from `2a58aff` (run 45019565926, 22 assets, nothing touched after it): the same
 twenty SVGs with the same checksums as `v0.1.0`, matching the committed files; its tag message says why it
 exists. Open decision 5 records the choice.
+
+### Phase 6: other frames
+
+Every poster so far sits in one frame: the blueprint's `uses` graph, laid out as an argument from the main
+theorems down. The sources at the current pins carry other frames, and one deeper level, that none of the ten
+posters touches. Each item below is one poster, built by the existing reader from the blueprint and
+`lean-facts.json`; none needs Lean built except the last, which is Phase 4's.
+
+- **Definitions as the joints between stages.** The blueprint has 24 definitions, and the architecture chapter's
+  interfaces section names three as the contracts between chapters: polarised Galois representations, the Sha
+  bound, local parameters. A dataflow poster: the definitions in the middle, the chapters around them, an arrow
+  for "this chapter produces this object" and one for "this chapter consumes it". It shows what passes between
+  stages, not who proves what.
+- **What is new.** Provenance splits the 416 theorem-like statements into 200 new, 61 modified, 142 published
+  and 13 unmarked. A poster of the new statements alone, published inputs collapsed to ports on the edge, shows
+  where the proof's novelty concentrates and how the new pieces lean on each other. Today provenance is a colour
+  on each card; here it is the organising principle.
+- **The proof as literature.** The published-results chapter has 142 statements in 16 sections (class field
+  theory, L-functions, Galois cohomology, p-adic Hodge theory, ...), and the reference list 209 entries from
+  Riemann 1859 to Bhatt–Scholze 2023. A timeline poster places each cited result by year and links it to the
+  chapters that use it. The upward cone of one result, "if this paper were wrong, what falls", is the same data
+  read in reverse: T1 and T2 descend from the top, this ascends from a leaf. Takes open decision 3 with it.
+- **The proof as code.** `lean-facts.json` gives a module for each of the 1194 declarations: 460 in
+  `Development.AbelianVarietyTheory`, 327 in `Development.AutomorphicArithmetic`, 134 in `Development.WeilBound`,
+  then the formalism, companion, ground, reciprocity and positivity theories. A matrix of blueprint chapter
+  against Lean module shows how the paper's organisation maps onto the formalisation's, which is not the same
+  tree. It also exposes the fan-out: 358 statements name two or more declarations, one names 23, 281 name none.
+- **Depth as geometry.** A radial poster, rings by distance from the main theorem and sectors by chapter, is the
+  Graphviz depth graphs' measure in a frame where all 416 statements fit one page with meaning: it shows how far
+  each chapter reaches down.
+- **Sections as the middle level.** Between 9 chapters and 416 statements sit 58 sections. A poster per chapter
+  with sections as nodes and edges rolled up to section level is R2 one step down, and the first cut to try for
+  the big chapters whose height is open decision 2.
+- **Change between pins.** The blueprint reorganised twice in its first days, and releases are tied to pin
+  moves. A diff poster between two pins (statements added, removed, renamed; edges changed) makes a MINOR
+  release's "re-read these" line visible rather than stated. Needs the reader to load two checkouts.
+- **The deeper level: declarations under a statement.** Below a card lies the Lean declaration graph, which
+  theorem's proof term uses which. `lean-facts.json` gives each declaration's location but not its dependencies,
+  so this waits on Phase 4. When it lands, two posters follow: a blueprint edge drawn against the formal edges
+  beneath it, agreeing or not; and one statement opened to its declarations with the dependencies among them.
+
+Order: the definitions poster and the what-is-new poster first, as new frames cheap to build that answer
+questions the set cannot (what flows between stages; where the original work sits); the chapter-against-module
+matrix third, the only frame that puts the paper and the formalisation side by side. The rest as wanted.
+
+**Done when** the three named posters build under the same checks as R1 to T2, in both sets, and the README
+and `diagrams/README.md` record them. Each poster is a MINOR release when it lands.
 
 ## Risks
 
