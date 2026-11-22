@@ -4,6 +4,9 @@
 # citation. No PNG renders: every browser draws an SVG, and renders of these tall posters ran to 100 MB at a
 # legible width (v0.1.0 shipped one such tarball; it was removed).
 #
+# Once the release exists, the pages job calls pages.yml with the tag, which publishes the release's posters to
+# GitHub Pages (see that file).
+#
 # The tag must be annotated, on main, vMAJOR.MINOR.PATCH, and the custodian's. Its message is the release's
 # opening: the kind of move, what changed, and one line saying which posters a reader must re-read.
 name: release
@@ -96,3 +99,13 @@ jobs:
         run: |
           tag=${GITHUB_REF#refs/tags/}
           gh release create "$tag" --verify-tag --title "$tag" --notes-file notes.md stage/*
+
+  pages:
+    needs: release
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
+    with:
+      tag: ${{ github.ref_name }}
