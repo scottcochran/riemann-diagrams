@@ -85,6 +85,18 @@ jobs:
           # resolves on the site under diagrams/; anything else (a Markdown file, a directory, the NOTICE) goes to
           # GitHub at the tag, so that nothing on the page lands on a 404.
           md = open("diagrams/README.md", encoding="utf-8").read()
+          # The home page says less than the README: the opening paragraph on the posters' form and the page grey
+          # is dropped, and the line on about.md goes to the foot. Both are found by their first words, and the
+          # build fails if either has moved, so that a README edit is seen here rather than silently kept.
+          paras = md.split("\n\n")
+          def take(prefix):
+              hits = [p for p in paras if p.startswith(prefix)]
+              if len(hits) != 1:
+                  sys.exit(f"pages: expected one paragraph of diagrams/README.md starting {prefix!r}, found {len(hits)}")
+              paras.remove(hits[0]); return hits[0]
+          take("Generated SVG posters of the proof")
+          paras.append(take("[about.md]"))
+          md = "\n\n".join(paras)
           def target(m):
               t = m.group(1)
               if re.match(r"(https?:|/|#|mailto:)", t):
@@ -100,10 +112,7 @@ jobs:
           body = subprocess.run(["gh", "api", "-X", "POST", "markdown", "-f", "mode=markdown", "-f", "text=" + md],
                                 capture_output=True, text=True, check=True).stdout
           release = (f'<p class="release">The posters of release <a href="{repo}/releases/tag/{tag}">{tag}</a>, served '
-                     f'as SVG: open one and zoom in. The sources they were generated from are in '
-                     f'<a href="pins.json">pins.json</a>; the repository is <a href="{repo}">riemann-diagrams</a>, and '
-                     f'this page is its <a href="{repo}/blob/{tag}/diagrams/README.md">diagrams/README.md</a> at the '
-                     f'tag, above the list of the release\'s posters.</p>')
+                     f'as SVG: open one and zoom in.</p>')
           body = body.replace("</h1>", "</h1>\n" + release, 1)
           def fmt(t):
               return re.sub(r"`([^`]+)`", r"<code>\1</code>", html.escape(t))
