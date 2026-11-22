@@ -87,5 +87,6 @@ jobs:
           if [ -n "$(git status --porcelain -- diagrams)" ]; then
             echo "::error::a poster differs from its sources, or is not committed; regenerate and commit"
             git diff --stat -- diagrams
+            git diff -- diagrams | grep -E '^[-+][^-+]' | cut -c1-300 | head -40
             exit 1
           fi

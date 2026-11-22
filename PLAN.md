@@ -15,9 +15,10 @@ what the diagram draws.
 
 R1 shows the top of the tree (the five theorems and the chain of reductions), R2 the map of the chapters, R3 to
 R8 the inside of each stage chapter, lemma by lemma, and T1 and T2 one chain each through the whole, read as a
-proof, and F1 the definitions in a frame of their own. What is drawn is now every statement of the blueprint but
-the published-results chapter, and CI rebuilds all eleven posters from the pinned sources on every push. The next
-level is to make the edges true (Phase 4).
+proof, F1 the definitions in a frame of their own, F2 the new work by chapter and section, and F3 the chapters
+against the Lean modules. What is drawn is now every statement of the blueprint but the published-results
+chapter, and CI rebuilds all thirteen posters from the pinned sources on every push. The next level is to make
+the edges true (Phase 4).
 
 ## Rules the design keeps
 
@@ -228,7 +229,9 @@ posters touches. Each item below is one poster, built by the existing reader fro
   `Development.AbelianVarietyTheory`, 327 in `Development.AutomorphicArithmetic`, 134 in `Development.WeilBound`,
   then the formalism, companion, ground, reciprocity and positivity theories. A matrix of blueprint chapter
   against Lean module shows how the paper's organisation maps onto the formalisation's, which is not the same
-  tree. It also exposes the fan-out: 358 statements name two or more declarations, one names 23, 281 name none.
+  tree. It also exposes the fan-out: 358 statements name two or more declarations, one names 23. (The entry
+  first said 281 name none; that counted references and sections. Of the 416 statements, 3 name none, and
+  `lean-facts.json` holds exactly the declarations the statements name, each named by one statement.)
 - **Depth as geometry.** A radial poster, rings by distance from the main theorem and sectors by chapter, is the
   Graphviz depth graphs' measure in a frame where all 416 statements fit one page with meaning: it shows how far
   each chapter reaches down.
@@ -259,8 +262,40 @@ and the same counts stand in each card's footer. And the grid gained a frame of 
 joined by a `uses` edge are laid out by `chapter.layout`, the families chapter's tower from auxiliary field
 data to family data running down seven rows, and the 10 that no edge touches fill the emptiest rows. The
 build checks the 18 definition-to-definition edges (`EXPECTED`), the three interface definitions under
-`architecture/sec-outline-interfaces/` (`INTERFACES`), and the count of definitions. The what-is-new poster
-and the chapter-against-module matrix are next.
+`architecture/sec-outline-interfaces/` (`INTERFACES`), and the count of definitions.
+
+The what-is-new poster is `F2-new-2026.11.22.svg`, `src/d_f2_new.py`, in both sets (9 chapter
+cards, 11 arrows). It is not the poster the entry above describes: 200 new statements with 263
+proof-use edges among them and chains 16 long are three times R5, and a card each would not be legible. So it
+works one level up, the chapters as cards holding only their new work, with the proof uses between the new
+statements of different chapters as labelled arrows and as a 9 × 9 matrix, every section by provenance as the
+map of where the new work sits, the twenty inputs the new work leans on most, and the 24 new lemmas that
+published results' proofs use. Two findings the data forced into the design: proof uses among new statements
+run upward against R2's chapter order in five chapter pairs (the outline's local-parameters theorem, used by
+the Sha and Galois chapters, is most of it), so those are listed and counted rather than drawn; and the
+published-results chapter has two new lemmas of its own. The build checks the provenance counts (`COUNTS`),
+the cross-chapter pair counts (`EXPECTED`), the 16 tops of the new work (`TOPS`), and the provenance of the
+three interface definitions. The arrow router gained per-edge labels for it; the other posters are unchanged
+to the byte.
+
+The chapter-against-module poster is `F3-modules-2026.11.22.svg`, `src/d_f3_modules.py`, in both sets (10
+namespace cards, no arrows). The survey for it corrected the entry above: `lean-facts.json` is the blueprint's
+index of the formal proof, exactly the 1194 declarations the 416 statements name, each named by one statement,
+3 statements naming none; it is not a census of the formalisation. The poster says so. Its matrix is chapters
+against the 35 second-level modules under 10 namespaces, grouped by namespace; the three largest theories hold
+77% of the declarations, and the literature chapter alone names 445 of the 1194. Then the formalisation's tree
+as cards, each chapter's footprint (declarations, kinds, modules, files, lines spanned), and the fan-out, with
+the finding that 200 of the 416 statements name exactly two declarations, 130 of those a definition and a
+theorem, the `Prop`-and-proof pattern R1 shows for `Main.lean`. The build checks the declaration count,
+the kinds, the module count, the per-chapter counts, the three statements without a declaration, and that no
+declaration is named twice. With F3 the three named posters are in, and the phase's done-when is met: `v0.2.0`
+is the next step, from `c042157` or later.
+
+One fault found by CI on F3's first commit, and a rule from it: `Graph.statements` is a Python set, so a
+`Counter` built by iterating it orders equal counts by the process's hash seed, and `most_common()` then differs
+between machines while every local run agrees with itself. Every ranking now sorts by count then name, the
+statements are iterated sorted, and a new poster is regenerated under two `PYTHONHASHSEED` values before it is
+committed. The posters check prints the diff lines it finds, not only the stat.
 
 ## Risks
 
