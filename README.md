@@ -5,7 +5,7 @@ Riemann Hypothesis: two generated teaching posters, and Graphviz diagrams of
 the dependency tree and of single chains of reductions.
 
 Nothing here reads or builds the Lean source. The graph is read from the
-[riemann-blueprint](../riemann-blueprint/): 416 statements, each one a
+[riemann-blueprint](https://github.com/chrisflav/riemann-blueprint): 416 statements, each one a
 Markdown file with TOML front matter naming its Lean declarations and the
 statements it `uses`, plus `lean-facts.json`, which gives a signature, file
 and line for every Lean name. The blueprint was itself reconstructed by a
@@ -100,7 +100,7 @@ draws a chain on request.
 
 Every box is one statement: its title, blueprint id, kind and provenance,
 its first Lean declaration with the file and line in the
-[mirror](../leanprover-community/riemann-hypothesis/), and its chapter.
+[mirror](https://github.com/leanprover-community/riemann-hypothesis), and its chapter.
 The theorems of `Main.lean` are yellow; the other fills are the blueprint
 site's own colours for published, modified and new results. Solid edges are
 proof uses (the reductions), dashed edges are statement uses (the definitions
