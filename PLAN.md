@@ -362,11 +362,22 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   `lean_location` gives (`…/blob/<commit>/<file>#L<line>`). Which blueprint target to use is open decision 6.
 - **Each set links only within itself.** A map poster never links to a reader poster, so that following a link
   from the set that may be published never opens the text that may not.
-- **The links work in a release too.** A release ships the map set flat as `map-*.svg` beside the readers, so a
-  relative link between two map posters would break in a downloaded release. The generator writes relative
-  links for the tree's layout, and the release workflow rewrites the map set's targets to the `map-` names
-  before it sums them; the tree's posters and the site keep the tree's layout. (The alternative, shipping the
-  map set in a `map/` directory of the release, changes the asset names `v0.1.x` cited.)
+- **A release's SVGs stay the tree's SVGs, byte for byte.** That is what a release pins: `SHA256SUMS` is checked
+  against the committed files (Phase 5), and the Pages job refuses a site that differs from the release. So no
+  workflow may rewrite a poster's links on the way out, and the links have to resolve, as committed, in both
+  layouts a poster is read in: the tree's (`diagrams/`, `diagrams/map/`, which the site copies) and the release's
+  (one flat list of assets, the map set renamed `map-*.svg`; a GitHub release has no directories). Today they
+  disagree, and a link written for the tree would do worse than break in a downloaded release: from
+  `map-R1-….svg`, a relative `R3-zero-free-….svg` opens the reader R3 beside it, the quoted text the map set
+  exists to leave out. The fix is to make the two layouts agree: the generator names the map posters
+  `map-*.svg` in the tree too, in `diagrams/map/`. Then a map poster links to `map-R3-….svg` and a reader to
+  `R3-….svg`, and each resolves within its own set in the tree, on the site and in a release alike. The release
+  workflow and the Pages check copy files as they are, without renaming; the asset names `v0.1.x` cited do not
+  change; only the tree's and the site's map paths gain the prefix, which the README and the Pages index follow.
+  This rename lands first, on its own, before any poster carries a link.
+- **Links that leave the set cannot be pinned by a relative path**, so they are absolute: the
+  mirror at `MIRROR_COMMIT`, the blueprint as open decision 6 settles, and never the Pages site, which holds one
+  release at a time and would send a reader of an old release to the current posters.
 - **The library.** `Canvas.card` takes an `href` and an `anchor`, and wraps the card in `<a>`; the id runs in
   footers are `<a>` elements inside the `<text>`, which SVG allows. Plain `href`, not `xlink:href`. Neither
   changes a measured width, so the overlap checks hold unchanged. The embedded `<style>` gains a hover rule (a
@@ -380,7 +391,8 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   the same and links nowhere. The README points to the Pages site for reading.
 
 **Done when** every footer id and Lean line on all thirteen posters is a link, in both sets, the link check
-runs in CI and in the release workflow, a map poster's links resolve in a downloaded release, and the README
+runs in CI and in the release workflow, a map poster's links resolve to map posters in a downloaded release
+and on the site, the release's `SHA256SUMS` still matches the committed files with no step between, and the README
 and `diagrams/README.md` say where links work. A PATCH release, since no pin, `EXPECTED` or `HYPOTHESES` list
 moves and the drawing is the same: the next after `v0.2.0`, or with it if Phase 6's release has not been cut.
 
