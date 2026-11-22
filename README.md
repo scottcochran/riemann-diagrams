@@ -113,3 +113,11 @@ That belongs to the kernel checks described in the mirror's
 The proof, the formal proof and the announcement are the work of Levent
 Alpöge. The blueprint is by the riemann-blueprint authors, built with the
 [blueprint](https://github.com/chrisflav/blueprint) tool.
+
+## License
+
+Code and tooling are Apache-2.0 ([LICENSE](LICENSE)); documentation, including
+the rendered diagrams, is CC BY 4.0 ([LICENSE-DOCS](LICENSE-DOCS)). See
+[NOTICE](NOTICE) for how the split applies, and for what the diagrams quote
+from the blueprint and from the formal proof, which stays its authors' and is
+covered by neither licence.
