@@ -16,6 +16,7 @@ import sys
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "src"))
 
+import lib  # noqa: E402
 from lib import DATE  # noqa: E402
 
 
@@ -27,6 +28,7 @@ def main(argv):
     for name in sorted(p.stem for p in (HERE / "src").glob("d_*.py")):
         if want and name.split("_")[1].upper() not in want:
             continue
+        lib.TEXT_BOXES.clear()          # a diagram that failed must not leave its text in the next one's check
         try:
             m = importlib.import_module(name)
             canvas = m.build()

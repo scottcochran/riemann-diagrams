@@ -259,13 +259,19 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     inner = w - 2 * pad
     lead, flead, fpad = round(size * 1.42, 1), round(fsize * 1.5, 1), 11
     pw = lib.text_width(pill, 11.5, bold=True) + 18 + 12 if pill else 0
-    while True:                                   # a long title is set smaller, down to 14 px, before failing
-        tw = (mono_width(name, tsize) if title_mono else lib.text_width(name, tsize, bold=True)) + pw
-        if tw <= inner + 0.5:
+    while True:                 # a long title is set smaller, down to 15 px, then wrapped to two lines, then fails
+        if title_mono:
+            tlines = [[(name, "b", None)]]
+            tw = mono_width(name, tsize) + pw
+        else:
+            tlines = wrap(name, inner - pw, tsize, bold=True)
+            tw = max(lib.line_width(ln, tsize) for ln in tlines) + pw
+        if tw <= inner + 0.5 and len(tlines) <= 2:
             break
-        if tsize <= 14:
-            raise ValueError(f"node {name}: the title needs {tw:.0f} px, the card has {inner:.0f}")
+        if tsize <= 15:
+            raise ValueError(f"node {name}: the title needs {tw:.0f} px or {len(tlines)} lines, the card has {inner:.0f}")
         tsize -= 1
+    theight = tsize + (tsize + 4) * (len(tlines) - 1)
     need = formula_width(formula, fsize) + 2 * fpad
     if need > inner + 0.5:
         raise ValueError(f"node {name}: formula needs {need:.0f} px, the card has {inner:.0f}")
@@ -273,7 +279,7 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     blines = [wrap(b, inner - lib.width("•  ", size), size) for b in bullets]
     flines = [wrap(f, inner, size - 1) for f in foot]
     panel_h = len(formula) * flead + 2 * fpad - 5 if formula else 0
-    hh = pad + tsize + 12 + (panel_h + 12 if formula else 0)
+    hh = pad + theight + 12 + (panel_h + 12 if formula else 0)
     if say_lines:
         hh += len(say_lines) * lead + 8
     for ls in blines:
@@ -290,10 +296,11 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     if title_mono:
         c.add(mono_line(x + pad, y + pad + tsize - 3, name, tsize, accent, bold=True))
     else:
-        c.add(render_line(x + pad, y + pad + tsize - 3, [(name, "b", None)], tsize, accent, bold=True))
+        for i, ln in enumerate(tlines):
+            c.add(render_line(x + pad, y + pad + tsize - 3 + i * (tsize + 4), ln, tsize, accent, bold=True))
     if pill:
         c.pill(x + w - pad, y + pad - 3, pill, accent, 11.5, anchor="end", solid=True)
-    cy = y + pad + tsize + 12
+    cy = y + pad + theight + 12
     if formula:
         c.add(f'<rect x="{x + pad:.1f}" y="{cy:.1f}" width="{inner:.1f}" height="{panel_h:.1f}" rx="6" '
               f'{fs("bg", "line")} stroke-width="1"/>')
@@ -326,45 +333,58 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     return hh
 
 
-def statement_card(g, k, w, drawn, rev, depth, main_names, diagram="R1", max_lines=9):
+def statement_card(g, k, w, drawn, rev, depth, main_names, diagram="R1", max_lines=9, compact=False):
     """The card for one blueprint statement: the Lean panel, the statement in italics, the proof as bullets, and
     the Stated with / Proof uses / Used by / Lean / Blueprint footer. `drawn` says which proof uses have a card."""
     n = g.nodes[k]
     prov = n.get("provenance")
     lean = n.get("lean", [])
-    if not lean:
+    if not lean and n["kind"] != "remark" and not compact and diagram in ("R1", "R3"):
         raise ValueError(f"{diagram}: {k} has no Lean declaration to draw")
-    first = lean[0]
-    fact = g.lean_facts.get(first)
-    if not fact or not fact.get("signature"):
-        raise ValueError(f"{diagram}: lean-facts.json has no signature for {first}")
+    if lean:
+        first = lean[0]
+        fact = g.lean_facts.get(first)
+        if not fact or not fact.get("signature"):
+            raise ValueError(f"{diagram}: lean-facts.json has no signature for {first}")
+        formula = lean_block(fact["signature"], columns(w), 4 if compact else max_lines)
+    else:
+        formula = [(0, "no Lean declaration: the blueprint's own grouping of results", True)]
     is_main = any(x in main_names for x in lean)
     pill = ("Main.lean · " if is_main else "") + f"{n['kind']} · {PROV_SHORT[prov]}"
-    say = abridge(rich(" ".join(paragraphs(body(g, k))[:2])), 620)
+    say = abridge(rich(" ".join(paragraphs(body(g, k))[:2])), 360 if compact else 620)
     pf = proof(g, k)
     bullets = []
     if pf is not None:
         paras = paragraphs(pf)
-        for p in paras[:4]:
-            bullets.append(abridge(rich(p), 330))
-        if len(paras) > 4:
-            bullets.append(f"… and {len(paras) - 4} more paragraphs in the blueprint's proof.")
+        keep = 1 if compact else 4
+        for p in paras[:keep]:
+            bullets.append(abridge(rich(p), 240 if compact else 330))
+        if len(paras) > keep:
+            bullets.append(f"… and {len(paras) - keep} more paragraphs in the blueprint's proof.")
     elif n["kind"] != "definition":
         bullets.append("The blueprint gives no proof for this statement.")
     su, pu, ub = g.statement_uses(k), g.proof_uses(k), rev[k]
-    foot = ["**Stated with** " + (names(su) if su else "no other statement")]
+    lim = 4 if compact else 10
+    foot = []
+    if su or not compact:
+        foot.append("**Stated with** " + (names(su, lim) if su else "no other statement"))
     if n["kind"] != "definition":
         hidden = [u for u in pu if u not in drawn]
-        foot.append("**Proof uses** " + (names(pu) if pu else "nothing the blueprint names")
+        foot.append("**Proof uses** " + (names(pu, lim) if pu else "nothing the blueprint names")
                     + (f" · {len(hidden)} of these are not drawn here" if hidden else ""))
-    foot.append("**Used by** " + (names(ub) if ub else "no other statement: it is one of the five theorems"))
-    where = g.lean_location(first)
-    more = f" · and {len(lean) - 1} more: " + names(lean[1:4]) + (" …" if len(lean) > 4 else "") if len(lean) > 1 else ""
-    foot.append(f"**Lean** {code(first)} at {code(where)}{more}")
+    foot.append("**Used by** " + (names(ub, lim) if ub else "no other statement: it is one of the five theorems"))
+    if lean:
+        where = g.lean_location(first)
+        more = (f" · and {len(lean) - 1} more: " + names(lean[1:4]) + (" …" if len(lean) > 4 else "")
+                if len(lean) > 1 else "")
+        foot.append(f"**Lean** {code(first)} at {code(where)}{more}")
     chap = g.nodes[n["_chapter"]]["title"]
-    foot.append(f"Blueprint {code(n['_path'], 44)} ({chap}) · depth {depth.get(k, '—')} from the main theorems")
+    if compact:
+        foot.append(f"Blueprint {code(n['_path'], 44)}")
+    else:
+        foot.append(f"Blueprint {code(n['_path'], 44)} ({chap}) · depth {depth.get(k, '—')} from the main theorems")
     return dict(name=n["title"], accent=PROV_ACCENT[prov], pill=pill,
-                formula=lean_block(fact["signature"], columns(w), max_lines), say=say, bullets=bullets, foot=foot,
+                formula=formula, say=say, bullets=bullets, foot=foot,
                 dash="6 4" if n["kind"] == "definition" else None)
 
 
@@ -464,7 +484,7 @@ def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=()):
     def gx_of(gx, a, b):
         es = sorted(gutter_use[gx])
         i, n = es.index((a, b)), len(es)
-        return gx + (i - (n - 1) / 2) * 10
+        return gx + (i - (n - 1) / 2) * min(10, 56 / n)
 
     for kind, a, b, data in plans:
         acc = "amber" if (a, b) in dashed else accent(a)

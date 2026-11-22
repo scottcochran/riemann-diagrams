@@ -27,6 +27,13 @@ and zoom in.
   the analytic half of the proof from the inside, all 24 statements of the
   chapter as cards, with the argument's strands as columns and the chapter's
   theorem at the foot.
+- The other five stage chapters, one poster each, laid out from the chapter's
+  own dependency graph:
+  [families](diagrams/R4-families-2026.11.22.svg),
+  [theta lifts](diagrams/R5-theta-2026.11.22.svg),
+  [heights](diagrams/R6-heights-2026.11.22.svg),
+  [the Tate–Shafarevich bound](diagrams/R7-sha-2026.11.22.svg) and
+  [Galois representations](diagrams/R8-galois-2026.11.22.svg).
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 
