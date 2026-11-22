@@ -110,6 +110,14 @@ def build():
         n = g.nodes[r]
         return rich(n.get("title") or n.get("howpublished") or "")
 
+    def paper(r, limit):
+        """The title, abridged, as a link to the paper (src/papers.toml); the build fails if a reference has none."""
+        return bp.linked(lib.PAPERS[r], abridge(title(r), limit))
+
+    missing = [r for r in refs if r not in lib.PAPERS]
+    if missing:
+        raise ValueError(f"F4: {len(missing)} references have no paper in src/papers.toml: {missing[:5]} …")
+
     c = Canvas(ID, f"The proof as literature: the {len(refs)} references of the blueprint on a timeline, which "
                "statements cite each, and what falls if one is wrong",
                f"The blueprint's reference list runs from Riemann's paper of {YEARS[0]} to Alpöge's announcement of "
@@ -125,8 +133,9 @@ def build():
                + (" **Map mode**: this poster quotes bibliographic data only, in either form." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (`references/`: every entry's author, title, journal and "
                "year; every statement's `source`, chapter and uses); `leanprover-community/riemann-hypothesis` at "
-               f"{mirror['commit']} (`src/Main.lean`). The decades, the citation counts, the cones and the author "
-               "labels are the diagram's own; titles are abridged where marked with ….",
+               f"{mirror['commit']} (`src/Main.lean`); `src/papers.toml` (the paper each title links to). The decades, "
+               "the citation counts, the cones, the author labels and the paper links are the diagram's own; titles "
+               "are abridged where marked with ….",
                state=f"State drawn: riemann-blueprint at {g.bp_commit}, which pins the mirror at {g.mirror_pin}; "
                      f"Main.lean from the mirror at {mirror['commit']}")
     X0, X1 = c.x0, c.x1
@@ -149,6 +158,9 @@ def build():
         "**A chip** is one entry of the blueprint's reference list: the authors' surnames and the year, the "
         "title abridged, and the number of statements whose `source` line cites it. Chips stand in their "
         "decade, in order of year, and a decade's row says how many of its references are cited.",
+        "**A title links to the paper**, by its DOI where it has one, else a stable scan or its zbMATH record; the "
+        "id beneath links to the blueprint's entry. The paper links are the diagram's own, not the blueprint's: "
+        "looked up on Crossref and zbMATH and settled by hand where they disagreed (`src/papers.toml`).",
         "**Cited by** counts statements, not uses: a statement citing a reference is a published or modified "
         f"result the blueprint attributes to it. {multi} statements cite more than one source, and a few cite a "
         "section or lemma of one.",
@@ -205,7 +217,7 @@ def build():
                 lab = wrap(label(r), CHW - 20 - pw, 13, bold=True)[0]
                 c.add(render_line(x + 10, y + 19, lab, 13, acc, bold=True))
                 c.pill(x + CHW - 8, y + 6, pill, acc, 11, anchor="end", solid=bool(cites[r]))
-                tl = wrap(abridge(title(r), 150), CHW - 20, 11.5)[:2]
+                tl = wrap(paper(r, 150), CHW - 20, 11.5)[:2]
                 for i, ln in enumerate(tl):
                     c.add(render_line(x + 10, y + 36 + i * 15.5, ln, 11.5, "muted"))
                 c.add(render_line(x + 10, y + 68, [(r, "m", None)], 10.5, "faint"))
@@ -226,7 +238,7 @@ def build():
         chs = collections.Counter(g.nodes[u]["_chapter"] for u in cn)
         where = ", ".join(f"{SHORT[ch]} {v}" for ch, v in sorted(chs.items(), key=lambda t: (-t[1], t[0]))[:3])
         pub = " ".join(x for x in (n.get("journal"), n.get("volume")) if x)
-        trows.append([r, label(r), abridge(title(r), 90), rich(pub) if pub else "—", str(len(cites[r])),
+        trows.append([r, label(r), paper(r, 90), rich(pub) if pub else "—", str(len(cites[r])),
                       names(cites[r], 3), str(len(cn)), where, "yes" if cn & mains else "no"])
     tcols = [("Reference", 300, {"mono": True}), ("Authors, year", 300), ("Title", 560), ("Where", 360),
              ("Cited by", 100), ("Citing statements", 560), ("Cone", 80), ("Mostly in", 400),

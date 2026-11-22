@@ -1,0 +1,854 @@
+# The papers behind the blueprint's reference list: one entry per reference id, the url a reader is sent to
+# from the title of the reference on diagram F4. This is the diagram's own data, not the blueprint's: the
+# blueprint's reference files carry author, title, journal and year, and one url. Looked up on 2026.11.22:
+# `via = "crossref"`, Crossref's match on title, authors and year, verified against the DOI's own record;
+# `via = "zbmath"`, zbMATH Open's record for the author and year with the same title, which links the DOI
+# where there is one and a stable scan (numdam, EuDML, arXiv) or the zbMATH record itself where there is none;
+# `via = "hand"`, settled by hand, with a note where the choice needs one. A DOI is given as a doi.org url.
+# The build fails if an id here is not a reference of the blueprint (src/d_f4_literature.py).
+
+["abbes-bouche-1995"]
+url = "https://doi.org/10.5802/aif.1458"
+via = "crossref"
+
+["alpoge-2026"]
+url = "https://alpo.ge/remark.pdf"
+via = "blueprint"
+note = "the blueprint's own url field"
+
+["andre-2002"]
+url = "https://doi.org/10.1007/s002220100207"
+via = "crossref"
+
+["angehrn-siu-1995"]
+url = "https://doi.org/10.1007/bf01231446"
+via = "crossref"
+
+["anschutz-le-bras-2023"]
+url = "https://doi.org/10.1017/fmp.2022.22"
+via = "crossref"
+
+["arthur-clozel-1989"]
+url = "https://doi.org/10.1515/9781400882403"
+via = "crossref"
+
+["artin-1927"]
+url = "https://doi.org/10.1007/BF02952531"
+via = "zbmath"
+
+["ash-1975"]
+url = "https://zbmath.org/?q=an:0334.14007"
+via = "zbmath"
+
+["barnet-lamb-2012"]
+url = "https://doi.org/10.5802/afst.1329"
+via = "zbmath"
+
+["barnet-lamb-2014a"]
+url = "https://doi.org/10.24033/asens.2212"
+via = "crossref"
+
+["barnet-lamb-2014b"]
+url = "https://doi.org/10.4007/annals.2014.179.2.3"
+via = "crossref"
+
+["behrend-1946"]
+url = "https://doi.org/10.1073/pnas.32.12.331"
+via = "crossref"
+
+["berger-2002"]
+url = "https://doi.org/10.1007/s002220100202"
+via = "crossref"
+
+["berger-2004"]
+url = "https://doi.org/10.1112/s0010437x04000879"
+via = "crossref"
+
+["bernstein-1974"]
+url = "https://doi.org/10.1007/BF01078592"
+via = "zbmath"
+
+["bernstein-1984"]
+url = "https://doi.org/10.1007/bfb0073145"
+via = "crossref"
+
+["bernstein-lapid-2019"]
+url = "https://doi.org/10.1090/jams/1020"
+via = "hand"
+note = "published 2023; the blueprint's year is the preprint's"
+
+["bernstein-zelevinsky-1976"]
+url = "https://doi.org/10.1070/RM1976v031n03ABEH001532"
+via = "zbmath"
+
+["bernstein-zelevinsky-1977"]
+url = "https://doi.org/10.24033/asens.1333"
+via = "crossref"
+
+["berthelot-1982"]
+url = "https://doi.org/10.1007/bfb0093025"
+via = "crossref"
+
+["beuzart-plessis-2021"]
+url = "https://doi.org/10.1215/00127094-2020-0090"
+via = "crossref"
+
+["bhatt-scholze-2023"]
+url = "https://doi.org/10.4310/cjm.2023.v11.n2.a3"
+via = "crossref"
+
+["bierstone-milman-1997"]
+url = "https://doi.org/10.1007/s002220050141"
+via = "crossref"
+
+["bloch-kato-1990"]
+url = "https://zbmath.org/?q=an:0768.14001"
+via = "zbmath"
+
+["borel-1969"]
+url = "https://zbmath.org/?q=an:0186.33202"
+via = "zbmath"
+
+["borel-1974"]
+url = "https://doi.org/10.24033/asens.1269"
+via = "crossref"
+
+["borel-1976"]
+url = "https://doi.org/10.1007/bf01390139"
+via = "crossref"
+
+["bost-1994"]
+url = "https://doi.org/10.1090/s0894-0347-1994-1260106-x"
+via = "crossref"
+
+["bost-1996"]
+url = "https://www.numdam.org/item/SB_1994-1995__37__115_0/"
+via = "hand"
+
+["bost-2001"]
+url = "https://doi.org/10.1007/s10240-001-8191-3"
+via = "crossref"
+
+["brauer-1947"]
+url = "https://doi.org/10.2307/1969183"
+via = "crossref"
+
+["caraiani-2012"]
+url = "https://doi.org/10.1215/00127094-1723706"
+via = "crossref"
+
+["caraiani-2014"]
+url = "https://doi.org/10.2140/ant.2014.8.1597"
+via = "zbmath"
+
+["casselman-1980"]
+url = "https://www.numdam.org/item/CM_1980__40_3_387_0/"
+via = "zbmath"
+
+["casselman-1989"]
+url = "https://doi.org/10.4153/cjm-1989-019-5"
+via = "crossref"
+
+["casselman-shalika-1980"]
+url = "https://www.numdam.org/item/CM_1980__41_2_207_0/"
+via = "zbmath"
+
+["cassels-frohlich-1967"]
+url = "https://zbmath.org/?q=an:0153.07403"
+via = "zbmath"
+
+["cassou-nogues-1979"]
+url = "https://doi.org/10.1007/bf01389911"
+via = "hand"
+
+["chebotarev-1926"]
+url = "https://doi.org/10.1007/bf01206606"
+via = "crossref"
+
+["cheeger-1982"]
+url = "https://doi.org/10.4310/jdg/1214436699"
+via = "crossref"
+
+["chenevier-harris-2013"]
+url = "https://doi.org/10.4310/cjm.2013.v1.n1.a2"
+via = "crossref"
+
+["chernoff-1973"]
+url = "https://doi.org/10.1016/0022-1236(73)90003-7"
+via = "crossref"
+
+["chevalley-1940"]
+url = "https://doi.org/10.2307/1969013"
+via = "crossref"
+
+["chevalley-1951"]
+url = "https://doi.org/10.2969/jmsj/00310036"
+via = "crossref"
+
+["chow-van-der-waerden-1937"]
+url = "https://doi.org/10.1007/BF01571660"
+via = "zbmath"
+
+["chowla-selberg-1967"]
+url = "https://doi.org/10.1515/crll.1967.227.86"
+via = "zbmath"
+
+["clozel-1990"]
+url = "https://zbmath.org/?q=an:0705.11029"
+via = "hand"
+
+["clozel-delorme-1984"]
+url = "https://doi.org/10.1007/BF01388832"
+via = "hand"
+
+["darmon-1997"]
+url = "https://doi.org/10.4310/cdm.1995.v1995.n1.a1"
+via = "hand"
+note = "the Current Developments in Mathematics 1995 text; the blueprint cites its 1997 reprint"
+
+["davenport-2000"]
+url = "https://doi.org/10.1007/978-1-4757-5927-3"
+via = "hand"
+note = "the third edition; Crossref dates the Springer DOI to the second"
+
+["deligne-ribet-1980"]
+url = "https://doi.org/10.1007/bf01453237"
+via = "crossref"
+
+["deligne-serre-1974"]
+url = "https://doi.org/10.24033/asens.1277"
+via = "crossref"
+
+["demailly-2000"]
+url = "https://doi.org/10.1007/978-3-0348-8436-5_3"
+via = "crossref"
+
+["dixmier-malliavin-1978"]
+url = "https://zbmath.org/?q=an:0392.43013"
+via = "zbmath"
+
+["ega-3-1"]
+url = "https://doi.org/10.1007/bf02684273"
+via = "crossref"
+
+["eichler-1954"]
+url = "https://doi.org/10.1007/bf01898377"
+via = "crossref"
+
+["faltings-1988"]
+url = "https://doi.org/10.1090/s0894-0347-1988-0924705-1"
+via = "crossref"
+
+["faltings-chai-1990"]
+url = "https://doi.org/10.1007/978-3-662-02632-8"
+via = "crossref"
+
+["fargues-2008"]
+url = "https://doi.org/10.1007/978-3-7643-8456-2"
+via = "hand"
+
+["ferrero-washington-1979"]
+url = "https://doi.org/10.2307/1971116"
+via = "crossref"
+
+["flath-1979"]
+url = "https://doi.org/10.1090/pspum/033.1/546596"
+via = "crossref"
+
+["fontaine-1982"]
+url = "https://doi.org/10.2307/2007012"
+via = "crossref"
+
+["fontaine-1994a"]
+url = "https://www.numdam.org/item/AST_1994__223__59_0/"
+via = "hand"
+
+["fontaine-1994b"]
+url = "https://www.numdam.org/item/AST_1994__223__113_0/"
+via = "hand"
+
+["gallagher-1970"]
+url = "https://doi.org/10.1007/bf01403187"
+via = "crossref"
+
+["gan-2012"]
+url = "https://arxiv.org/abs/0909.2999"
+via = "zbmath"
+
+["gelfand-1969"]
+url = "https://zbmath.org/?q=an:0177.18003"
+via = "hand"
+
+["gelfand-1970"]
+url = "https://doi.org/10.1070/SM1970v012n01ABEH000907"
+via = "zbmath"
+
+["gelfand-kazhdan-1975"]
+url = "https://zbmath.org/?q=an:0348.22011"
+via = "zbmath"
+
+["gillet-soule-1990"]
+url = "https://doi.org/10.1007/bf02699132"
+via = "crossref"
+
+["gillet-soule-1992"]
+url = "https://doi.org/10.1007/bf01231343"
+via = "crossref"
+
+["godement-1947"]
+url = "https://zbmath.org/?q=an:0029.19906"
+via = "hand"
+note = "note I; note II is zbMATH an:0029.19907"
+
+["godement-1963"]
+url = "https://www.numdam.org/item/SB_1962-1964__8__201_0/"
+via = "zbmath"
+
+["goodman-wallach-2009"]
+url = "https://doi.org/10.1007/978-0-387-79852-3"
+via = "crossref"
+
+["green-1955"]
+url = "https://doi.org/10.1090/s0002-9947-1955-0072878-2"
+via = "crossref"
+
+["gross-1980"]
+url = "https://doi.org/10.1007/bfb0096754"
+via = "crossref"
+
+["guinand-1948"]
+url = "https://doi.org/10.1112/plms/s2-50.2.107"
+via = "crossref"
+
+["harish-chandra-1953"]
+url = "https://doi.org/10.2307/1990730"
+via = "zbmath"
+
+["harish-chandra-1954"]
+url = "https://doi.org/10.1090/s0002-9947-1954-0058604-0"
+via = "hand"
+note = "Trans. Amer. Math. Soc. 76, as the blueprint cites; zbMATH offered the PNAS note of the same title"
+
+["harish-chandra-1955"]
+url = "https://doi.org/10.2307/2372596"
+via = "zbmath"
+
+["harish-chandra-1956"]
+url = "https://doi.org/10.2307/2372674"
+via = "crossref"
+
+["harish-chandra-1965"]
+url = "https://doi.org/10.1007/bf02391779"
+via = "crossref"
+
+["harish-chandra-1966"]
+url = "https://doi.org/10.1007/bf02392813"
+via = "crossref"
+
+["harish-chandra-1968"]
+url = "https://doi.org/10.1007/BFb0098434"
+via = "hand"
+
+["harris-1996"]
+url = "https://doi.org/10.1090/s0894-0347-96-00198-1"
+via = "crossref"
+
+["harris-taylor-2001"]
+url = "https://doi.org/10.1515/9781400837205"
+via = "crossref"
+
+["hasse-1927"]
+url = "https://doi.org/10.1515/crll.1927.157.115"
+via = "hand"
+
+["hasse-1931"]
+url = "https://eudml.org/doc/59337"
+via = "zbmath"
+
+["hecht-schmid-1975"]
+url = "https://doi.org/10.1007/bf01404112"
+via = "crossref"
+
+["hecke-1917"]
+url = "https://eudml.org/doc/58974"
+via = "zbmath"
+
+["hecke-1918"]
+url = "https://doi.org/10.1007/BF01465095"
+via = "zbmath"
+
+["hecke-1920"]
+url = "https://doi.org/10.1007/bf01202991"
+via = "crossref"
+
+["henniart-1993"]
+url = "https://doi.org/10.1007/bf01244309"
+via = "crossref"
+
+["herr-1998"]
+url = "https://doi.org/10.24033/bsmf.2337"
+via = "crossref"
+
+["hida-1988"]
+url = "https://doi.org/10.2307/1971444"
+via = "crossref"
+
+["hironaka-1964"]
+url = "https://doi.org/10.2307/1970547"
+via = "crossref"
+
+["howe-1979"]
+url = "https://doi.org/10.1090/pspum/033.1/546602"
+via = "crossref"
+
+["howe-1989a"]
+url = "https://doi.org/10.1090/s0002-9947-1989-0986027-x"
+via = "crossref"
+
+["howe-1989b"]
+url = "https://doi.org/10.1090/s0894-0347-1989-0985172-6"
+via = "crossref"
+
+["ichino-2004"]
+url = "https://doi.org/10.1007/s00209-003-0580-5"
+via = "crossref"
+
+["jacobowitz-1962"]
+url = "https://doi.org/10.2307/2372982"
+via = "crossref"
+
+["jacquet-1977"]
+url = "https://doi.org/10.1007/bfb0087916"
+via = "crossref"
+
+["jacquet-rallis-2011"]
+url = "https://zbmath.org/?q=an:1222.22018"
+via = "zbmath"
+
+["jacquet-shalika-1981a"]
+url = "https://doi.org/10.2307/2374103"
+via = "crossref"
+
+["jacquet-shalika-1981b"]
+url = "https://doi.org/10.2307/2374050"
+via = "crossref"
+
+["jantzen-2003"]
+url = "https://zbmath.org/?q=an:1034.20041"
+via = "zbmath"
+
+["kaletha-2014"]
+url = "https://arxiv.org/abs/1409.3731"
+via = "zbmath"
+
+["kato-2004"]
+url = "https://www.numdam.org/item/AST_2004__295__117_0/"
+via = "hand"
+
+["katz-1978"]
+url = "https://doi.org/10.1007/bf01390187"
+via = "crossref"
+
+["katz-messing-1974"]
+url = "https://doi.org/10.1007/bf01405203"
+via = "crossref"
+
+["kawamata-1982"]
+url = "https://doi.org/10.1007/bf01456407"
+via = "crossref"
+
+["kedlaya-2004"]
+url = "https://doi.org/10.4007/annals.2004.160.93"
+via = "crossref"
+
+["kisin-2006"]
+url = "https://doi.org/10.1007/978-0-8176-4532-8_7"
+via = "crossref"
+
+["klingen-1962"]
+url = "https://doi.org/10.1007/bf01451369"
+via = "crossref"
+
+["kneser-1966"]
+url = "https://doi.org/10.1090/pspum/009/0213361"
+via = "crossref"
+
+["kollar-2007"]
+url = "https://doi.org/10.1515/9781400827800"
+via = "zbmath"
+
+["kolyvagin-1990"]
+url = "https://zbmath.org/?q=an:0742.14017"
+via = "zbmath"
+
+["kottwitz-1992"]
+url = "https://doi.org/10.1090/s0894-0347-1992-1124982-1"
+via = "crossref"
+
+["kudla-1994"]
+url = "https://doi.org/10.1007/bf02773003"
+via = "crossref"
+
+["kudla-rallis-1988"]
+url = "https://doi.org/10.1515/crll.1988.387.1"
+via = "hand"
+
+["kudla-rallis-1994"]
+url = "https://doi.org/10.2307/2118540"
+via = "crossref"
+
+["labesse-2011"]
+url = "https://zbmath.org/?q=an:1255.11027"
+via = "hand"
+note = "the volume, On the stabilization of the trace formula; zbMATH has no record of the chapter"
+
+["lan-2013"]
+url = "https://doi.org/10.23943/princeton/9780691156545.001.0001"
+via = "crossref"
+
+["landau-1905"]
+url = "https://doi.org/10.1007/bf01449495"
+via = "crossref"
+
+["landau-1918"]
+url = "https://doi.org/10.1007/bf01212899"
+via = "crossref"
+
+["landherr-1936"]
+url = "https://doi.org/10.1007/bf02940728"
+via = "crossref"
+
+["langlands-1976"]
+url = "https://doi.org/10.1007/bfb0079929"
+via = "crossref"
+
+["lazarsfeld-2004"]
+url = "https://doi.org/10.1007/978-3-642-18808-4"
+via = "crossref"
+
+["li-1992"]
+url = "https://doi.org/10.1515/crll.1992.428.177"
+via = "zbmath"
+
+["linnik-1944"]
+url = "https://eudml.org/doc/65260"
+via = "hand"
+note = "part I; the blueprint cites I and II together, and II is https://eudml.org/doc/65266"
+
+["mackey-1949"]
+url = "https://doi.org/10.1215/s0012-7094-49-01631-2"
+via = "crossref"
+
+["mazur-messing-1974"]
+url = "https://doi.org/10.1007/bfb0061628"
+via = "crossref"
+
+["mebkhout-2002"]
+url = "https://doi.org/10.1007/s002220100208"
+via = "crossref"
+
+["messing-1972"]
+url = "https://doi.org/10.1007/bfb0058301"
+via = "crossref"
+
+["milne-1986"]
+url = "https://zbmath.org/?q=an:0613.14019"
+via = "hand"
+
+["moeglin-1987"]
+url = "https://doi.org/10.1007/bfb0082712"
+via = "crossref"
+
+["moeglin-waldspurger-1995"]
+url = "https://doi.org/10.1017/cbo9780511470905"
+via = "crossref"
+
+["mok-2015"]
+url = "https://doi.org/10.1090/memo/1108"
+via = "crossref"
+
+["molev-2007"]
+url = "https://doi.org/10.1090/surv/143"
+via = "crossref"
+
+["moret-bailly-1985"]
+url = "https://zbmath.org/?q=an:0595.14032"
+via = "hand"
+
+["moriwaki-2000"]
+url = "https://doi.org/10.1007/s002220050358"
+via = "crossref"
+
+["moriwaki-2009"]
+url = "https://doi.org/10.1090/s1056-3911-08-00500-6"
+via = "crossref"
+
+["moy-prasad-1994"]
+url = "https://doi.org/10.1007/bf01231566"
+via = "crossref"
+
+["moy-prasad-1996"]
+url = "https://doi.org/10.1007/bf02566411"
+via = "crossref"
+
+["mumford-1970"]
+url = "https://zbmath.org/?q=an:0223.14022"
+via = "zbmath"
+
+["mumford-1972"]
+url = "https://www.numdam.org/item/CM_1972__24_3_239_0/"
+via = "zbmath"
+
+["mumford-1977"]
+url = "https://doi.org/10.1007/978-1-4757-4265-7_20"
+via = "crossref"
+
+["mumford-1994"]
+url = "https://doi.org/10.1007/978-3-642-57916-5"
+via = "crossref"
+
+["nadel-1990"]
+url = "https://doi.org/10.2307/1971429"
+via = "crossref"
+
+["neukirch-1999"]
+url = "https://doi.org/10.1007/978-3-662-03983-0"
+via = "crossref"
+
+["neukirch-2008"]
+url = "https://doi.org/10.1007/978-3-540-37889-1"
+via = "crossref"
+
+["oda-1969"]
+url = "https://doi.org/10.24033/asens.1175"
+via = "crossref"
+
+["ohsawa-takegoshi-1987"]
+url = "https://doi.org/10.1007/bf01166457"
+via = "crossref"
+
+["piatetski-shapiro-1979"]
+url = "https://doi.org/10.1090/pspum/033.1/546599"
+via = "crossref"
+
+["piatetski-shapiro-rallis-1987"]
+url = "https://doi.org/10.1007/bfb0078126"
+via = "crossref"
+
+["platonov-1969"]
+url = "https://doi.org/10.1070/im1969v003n06abeh000838"
+via = "crossref"
+
+["platonov-rapinchuk-1994"]
+url = "https://zbmath.org/?q=an:0841.20046"
+via = "hand"
+
+["poitou-1967"]
+url = "https://zbmath.org/?q=an:0161.04203"
+via = "hand"
+
+["radford-1979"]
+url = "https://doi.org/10.1016/0021-8693(79)90171-6"
+via = "crossref"
+
+["rallis-1984"]
+url = "https://www.numdam.org/item/CM_1984__51_3_333_0/"
+via = "zbmath"
+
+["ribet-1976"]
+url = "https://doi.org/10.1007/bf01403065"
+via = "crossref"
+
+["riemann-1859"]
+url = "https://www.claymath.org/collections/riemanns-1859-manuscript/"
+via = "hand"
+note = "no DOI; the Clay Mathematics Institute's page with the manuscript and its transcriptions"
+
+["roy-thunder-1996"]
+url = "https://doi.org/10.1515/crll.1996.476.1"
+via = "hand"
+
+["rubin-2000"]
+url = "https://doi.org/10.1515/9781400865208"
+via = "crossref"
+
+["schmid-1975"]
+url = "https://doi.org/10.2307/1971043"
+via = "crossref"
+
+["scholze-weinstein-2013"]
+url = "https://doi.org/10.4310/cjm.2013.v1.n2.a1"
+via = "crossref"
+
+["serre-1956"]
+url = "https://doi.org/10.5802/aif.59"
+via = "hand"
+
+["serre-1968"]
+url = "https://zbmath.org/?q=an:0186.25701"
+via = "hand"
+
+["serre-1994"]
+url = "https://doi.org/10.1007/BFb0108758"
+via = "hand"
+
+["sga-4-3"]
+url = "https://doi.org/10.1007/BFb0070714"
+via = "hand"
+
+["sga-5"]
+url = "https://doi.org/10.1007/BFb0096802"
+via = "hand"
+
+["sga-7-1"]
+url = "https://doi.org/10.1007/bfb0068688"
+via = "crossref"
+
+["shale-1962"]
+url = "https://doi.org/10.1090/s0002-9947-1962-0137504-6"
+via = "crossref"
+
+["shalika-1974"]
+url = "https://doi.org/10.2307/1971071"
+via = "crossref"
+
+["shimura-1958"]
+url = "https://doi.org/10.2969/jmsj/01010001"
+via = "crossref"
+
+["shimura-1971"]
+url = "https://doi.org/10.2307/2005900"
+via = "crossref"
+
+["shin-2011"]
+url = "https://doi.org/10.4007/annals.2011.173.3.9"
+via = "crossref"
+
+["shintani-1976"]
+url = "https://doi.org/10.3792/pja/1195518347"
+via = "crossref"
+
+["siegel-1935"]
+url = "https://doi.org/10.2307/1968644"
+via = "zbmath"
+
+["siegel-1970"]
+url = "https://zbmath.org/?q=an:0225.10031"
+via = "hand"
+
+["silverman-1994"]
+url = "https://doi.org/10.1007/978-1-4612-0851-8"
+via = "crossref"
+
+["tadic-1986"]
+url = "https://doi.org/10.24033/asens.1510"
+via = "crossref"
+
+["takagi-1920"]
+url = "https://zbmath.org/?q=an:47.0147.03"
+via = "zbmath"
+
+["tan-1999"]
+url = "https://doi.org/10.4153/CJM-1999-010-4"
+via = "zbmath"
+
+["tate-1963"]
+url = "https://zbmath.org/?q=an:0126.07002"
+via = "zbmath"
+
+["tate-1967"]
+url = "https://zbmath.org/?q=an:1492.11154"
+via = "zbmath"
+
+["taylor-wiles-1995"]
+url = "https://doi.org/10.2307/2118560"
+via = "crossref"
+
+["viehweg-1982"]
+url = "https://doi.org/10.1515/crll.1982.335.1"
+via = "zbmath"
+
+["villamayor-1989"]
+url = "https://doi.org/10.24033/asens.1573"
+via = "crossref"
+
+["vogan-1981"]
+url = "https://zbmath.org/?q=an:0469.22012"
+via = "zbmath"
+
+["von-neumann-1931"]
+url = "https://doi.org/10.1007/bf01457956"
+via = "crossref"
+
+["wach-1996"]
+url = "https://doi.org/10.24033/bsmf.2285"
+via = "crossref"
+
+["wallach-1992"]
+url = "https://zbmath.org/?q=an:0785.22001"
+via = "zbmath"
+
+["weber-1908"]
+url = "https://archive.org/details/lehrbuchderalgeb03webeuoft"
+via = "hand"
+note = "no DOI; the Internet Archive's scan of the 1908 edition"
+
+["weil-1948"]
+url = "https://zbmath.org/?q=an:0037.16202"
+via = "zbmath"
+
+["weil-1952"]
+url = "https://zbmath.org/?q=an:0049.03205"
+via = "zbmath"
+
+["weil-1956"]
+url = "https://zbmath.org/?q=an:0073.26303"
+via = "zbmath"
+
+["weil-1964"]
+url = "https://doi.org/10.1007/BF02391012"
+via = "zbmath"
+
+["weil-1965"]
+url = "https://doi.org/10.1007/BF02391774"
+via = "zbmath"
+
+["weyl-1939"]
+url = "https://zbmath.org/?q=an:0020.20601"
+via = "zbmath"
+
+["wiles-1988"]
+url = "https://doi.org/10.1007/bf01394275"
+via = "crossref"
+
+["wiles-1995"]
+url = "https://doi.org/10.2307/2118559"
+via = "crossref"
+
+["wlodarczyk-2005"]
+url = "https://doi.org/10.1090/s0894-0347-05-00493-5"
+via = "crossref"
+
+["yun-2011"]
+url = "https://doi.org/10.1215/00127094-2010-210"
+via = "crossref"
+
+["zarhin-1975"]
+url = "https://doi.org/10.1070/im1975v009n02abeh001476"
+via = "crossref"
+
+["zelevinsky-1980"]
+url = "https://doi.org/10.24033/asens.1379"
+via = "crossref"
+
+["zhang-1992"]
+url = "https://doi.org/10.2307/2946601"
+via = "crossref"
+
+["zhang-1995"]
+url = "https://doi.org/10.1090/s0894-0347-1995-1254133-7"
+via = "crossref"
+
+["zuckerman-1977"]
+url = "https://doi.org/10.2307/1971097"
+via = "crossref"

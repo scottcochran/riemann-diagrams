@@ -442,6 +442,15 @@ moves and the drawing is the same: the next after `v0.2.0`, or with it if Phase 
 Done 2026.11.22, in five pull requests, the map rename first: the READMEs say where links work and where they
 do not, and `v0.2.1` is the release.
 
+Added 2026.11.22, after the release: on F4 every reference's title links to the paper, by its DOI where it has
+one, else a stable scan (numdam, EuDML, arXiv, the Internet Archive, the Clay Institute for Riemann 1859) or
+its zbMATH record, and the id beneath keeps linking to the blueprint's entry. The links are the diagram's own,
+in `diagrams/src/papers.toml`: 130 from Crossref, each verified against the DOI's own record; 46 from zbMATH
+Open, which Crossref misses for the older literature; 32 settled by hand, with a note where the choice needs
+one; the blueprint's one `url`. The build fails on a reference without a paper, an entry that is not a
+reference, or a link out that is neither pinned nor a paper. The proper home for the links is a `doi` field
+in the blueprint's reference files; until the blueprint carries one, the table here stands in.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and

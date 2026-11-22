@@ -277,6 +277,9 @@ POSTERS, ANCHORS_OF, REGISTRY = {}, {}, {}
 # The links out, set by bp.load: EXTERNAL, every blueprint id to its file in the blueprint repository at BP_COMMIT;
 # PINNED, the prefixes an absolute href may have, the blueprint and the mirror at their pinned commits.
 EXTERNAL, PINNED = {}, []
+# PAPERS, set by bp.load from src/papers.toml: a reference id to the paper itself, the diagram's own data; F4 links
+# each reference's title to it. An absolute href must be under a PINNED prefix or be one of these.
+PAPERS = {}
 
 
 def load_registry(manifest):
@@ -676,8 +679,8 @@ class Canvas:
         for h in sorted(set(re.findall(r' href="([^"]*)"', "\n".join(self.out)))):
             f, _, frag = h.partition("#")
             if f.startswith("http"):
-                if not any(f.startswith(p) for p in PINNED):
-                    warn.append(f"link out not at a pinned commit: {h}")
+                if not any(f.startswith(p) for p in PINNED) and h not in PAPERS.values():
+                    warn.append(f"link out neither at a pinned commit nor a paper of src/papers.toml: {h}")
             elif not f and frag not in self.anchors:
                 warn.append(f"link to no card on this poster: #{frag}")
             elif f and f not in files:
