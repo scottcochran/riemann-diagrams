@@ -303,9 +303,11 @@ def formula_width(formula, size):
 
 
 def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foot=(), h=None, draw=True,
-         size=13.5, fsize=13.5, tsize=17, pad=16, dash=None, title_mono=False, anchor=None):
+         size=13.5, fsize=13.5, tsize=17, pad=16, dash=None, title_mono=False, anchor=None, href=None):
     """A card. formula: lean_block() output. say: a rich string set in italics. bullets and foot: rich strings.
     anchor: a blueprint id, set as the id of a group around the card, so that poster.svg#id lands on it.
+    href: a poster of the set; the card's frame, title and pill become a link to it (not the body, whose id
+    runs are links of their own: SVG does not nest <a>).
     Returns the height; draw=False measures only."""
     inner = w - 2 * pad
     lead, flead, fpad = round(size * 1.42, 1), round(fsize * 1.5, 1), 11
@@ -346,6 +348,8 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
         c.add(f'<g id="{anchor}">')
         c.anchors.append(anchor)
     c.blocks.append((x, y, x + w, y + hh, "node " + name))
+    if href:
+        c.add(f'<a href="{href}">')
     c.rect(x, y, w, hh, accent, dash=dash)
     if title_mono:
         c.add(mono_line(x + pad, y + pad + tsize - 3, name, tsize, accent, bold=True))
@@ -354,6 +358,8 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
             c.add(render_line(x + pad, y + pad + tsize - 3 + i * (tsize + 4), ln, tsize, accent, bold=True))
     if pill:
         c.pill(x + w - pad, y + pad - 3, pill, accent, 11.5, anchor="end", solid=True)
+    if href:
+        c.add("</a>")
     cy = y + pad + theight + 12
     if formula:
         c.add(f'<rect x="{x + pad:.1f}" y="{cy:.1f}" width="{inner:.1f}" height="{panel_h:.1f}" rx="6" '

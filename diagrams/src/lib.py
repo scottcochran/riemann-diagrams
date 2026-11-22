@@ -119,7 +119,7 @@ def _css():
     lines.append("svg{" + block(0, 0, 1) + "}")
     lines.append("@media (prefers-color-scheme: dark){svg:not([data-theme=light]){" + block(1, 2, 3) + "}}")
     lines.append("svg[data-theme=dark]{" + block(1, 2, 3) + "}")
-    lines.append("a:hover tspan,a:focus tspan{text-decoration:underline}")
+    lines.append("a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect{stroke-width:3.4}")
     for k in BASE:
         lines.append(f".f-{k}{{fill:var(--{k})}} .s-{k}{{stroke:var(--{k})}}")
     for k in ACCENTS:
@@ -264,6 +264,33 @@ def line_width(line, size):
 
 TEXT_BOXES = []   # (x0, y0, x1, y1, text) of every line drawn, for the overlap check
 
+# The registry of the links between posters: the set's manifest.json, loaded by the generator before any poster is
+# built. POSTERS: id -> file; ANCHORS_OF: file -> the blueprint ids it anchors; REGISTRY: blueprint id -> the file
+# of the poster that draws it in full, the first in HOME_ORDER that anchors it. A map poster's manifest names map
+# posters, so each set links only within itself.
+HOME_ORDER = ["R3", "R4", "R5", "R6", "R7", "R8", "F1", "R1", "T1", "T2", "F5", "R2", "F2"]
+POSTERS, ANCHORS_OF, REGISTRY = {}, {}, {}
+
+
+def load_registry(manifest):
+    POSTERS.clear(); ANCHORS_OF.clear(); REGISTRY.clear()
+    for pid, m in manifest.items():
+        POSTERS[pid] = m["file"]
+        ANCHORS_OF[m["file"]] = set(m.get("anchors", ()))
+    order = [p for p in HOME_ORDER if p in POSTERS] + sorted(p for p in POSTERS if p not in HOME_ORDER)
+    for pid in reversed(order):
+        for a in ANCHORS_OF[POSTERS[pid]]:
+            REGISTRY[a] = POSTERS[pid]
+
+
+def chapter_poster(stmts):
+    """The file of the chapter poster (R3 to R8) that anchors every one of `stmts`, else None."""
+    for pid in HOME_ORDER[:6]:
+        f = POSTERS.get(pid)
+        if f and all(k in ANCHORS_OF[f] for k in stmts):
+            return f
+    return None
+
 
 def render_line(x, y, line, size, color="ink", anchor="start", bold=False, italic=False):
     """One line of wrap() output. bold and italic must be what the line was wrapped with."""
@@ -303,6 +330,7 @@ class Canvas:
         self.n_arrows = 0  # for the manifest
         self.anchors = []  # blueprint ids set as the id of a card's group, for the manifest and the link check
         self.links = 0     # code runs that name a card on this poster, made links to it by link()
+        self.links_out = 0 # and those that name a card on another poster of the set, linked there
         self.y = self._header()
 
     def stats(self):
@@ -595,13 +623,19 @@ class Canvas:
 
     def link(self):
         """A code run whose text is exactly one of the poster's anchors becomes a link to that card: in a Stated
-        with, Proof uses or Used by footer, in a card's text, in a key. Plain href, SVG's own <a> inside <text>;
-        no glyph is added, so the measured widths and the overlap check are unchanged."""
+        with, Proof uses or Used by footer, in a card's text, in a key. One that names a card on another poster of
+        the set links there, by a relative href that resolves in the tree, on the Pages site and among a release's
+        assets alike. Plain href, SVG's own <a> inside <text>; no glyph is added, so the measured widths and the
+        overlap check are unchanged."""
         anchors = set(self.anchors)
         def repl(m):
-            if m.group(2) in anchors:
+            t = m.group(2)
+            if t in anchors:
                 self.links += 1
-                return f'<a href="#{m.group(2)}">{m.group(0)}</a>'
+                return f'<a href="#{t}">{m.group(0)}</a>'
+            if t in REGISTRY:
+                self.links_out += 1
+                return f'<a href="{REGISTRY[t]}#{t}">{m.group(0)}</a>'
             return m.group(0)
         self.out = [self._MONO_TSPAN.sub(repl, s) if "<tspan" in s else s for s in self.out]
 
@@ -614,8 +648,15 @@ class Canvas:
         ids = re.findall(r' id="([^"]*)"', "\n".join(self.out))
         for i in sorted(i for i, n in collections.Counter(ids).items() if n > 1):
             warn.append(f"id drawn twice: {i!r}")
-        for h in sorted(set(re.findall(r' href="#([^"]*)"', "\n".join(self.out))) - set(self.anchors)):
-            warn.append(f"link to no card on this poster: #{h}")
+        files = set(POSTERS.values())
+        for h in sorted(set(re.findall(r' href="([^"]*)"', "\n".join(self.out)))):
+            f, _, frag = h.partition("#")
+            if not f and frag not in self.anchors:
+                warn.append(f"link to no card on this poster: #{frag}")
+            elif f and f not in files:
+                warn.append(f"link to a poster the manifest does not list: {f}")
+            elif f and frag and frag not in ANCHORS_OF[f]:
+                warn.append(f"link to a card {f} does not draw: #{frag}")
         for a in self.anchors:
             if not re.fullmatch(r"[A-Za-z_][\w.-]*", a) or a in ("t", "d") or a.startswith("arw-"):
                 warn.append(f"not usable as an anchor: {a!r}")

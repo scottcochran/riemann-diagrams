@@ -380,8 +380,12 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   time, not written by hand.
   Done in part 2026.11.22, the links within a poster: `Canvas.link` runs over the finished poster, and a code
   run whose text is exactly one of the poster's anchors becomes `<a href="#id">` around its `<tspan>`, so
-  footers, card text and keys link alike; a build fails on a link to no card. The links to other posters and
-  out are still to do.
+  footers, card text and keys link alike; a build fails on a link to no card. The links to other posters done
+  2026.11.22: the set's `manifest.json`, which lists every poster's anchors, is the registry; an id with no card
+  on the poster links to the first poster in `lib.HOME_ORDER` (R3 to R8, F1, R1, T1, T2, F5, R2, F2) that
+  anchors it, by a relative href; a chapter card on R2 or F2 links to the chapter poster that anchors all its
+  statements; a build fails on a link to a card no poster of the set draws. When a run moves a poster's
+  anchors it updates the manifest and asks for a second run. The links out are still to do.
 - **The rest link out, at the pins.** An id with no card on any poster links to the blueprint; the Lean line to
   the declaration in `leanprover-community/riemann-hypothesis` at `MIRROR_COMMIT`, at the file and line
   `lean_location` gives (`…/blob/<commit>/<file>#L<line>`). Which blueprint target to use is open decision 6.
@@ -412,7 +416,10 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   `<svg>` loses `role="img"`, which hides its links from a screen reader and the keyboard; its `<title>` and
   `<desc>` stay.
   Done in part 2026.11.22: the id runs are `<a>` inside `<text>` with a plain `href`, the style has the hover
-  rule for them, and the root `<svg>` has lost `role="img"`; `Canvas.card` does not yet take an `href`.
+  rule for them, and the root `<svg>` has lost `role="img"`. `bp.node` takes an `href`, which wraps the card's
+  frame, title and pill in `<a>` (not the body: its id runs are links of their own, and SVG does not nest
+  `<a>`), with a heavier border and an underlined title on hover; R2's and F2's chapter cards use it.
+  `Canvas.card`, the plain card, takes none.
 - **The build checks the links**, as it checks the arrows: every relative `href` names a file in the set's
   manifest, every fragment is an `id` in that file, every id is a blueprint id, and every external link is at a
   pinned commit. A poster with a broken link fails the build.

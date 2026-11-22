@@ -11,6 +11,7 @@ if the counts, the pairs or the tops differ from what is recorded here."""
 import collections
 
 import bp
+import lib
 from bp import code, names
 from chapter import band
 from lib import Canvas
@@ -258,7 +259,7 @@ def build():
             f"**Within the chapter** {matrix[(ch, ch)]} proof uses between its new statements",
         ]
         acc = {"chap-literature": "blue", "main-theorems": "amber", "architecture": "grey"}.get(ch, "green")
-        return dict(anchor=ch, name=f"{n.get('order', '')}. {n['title']}", accent=acc,
+        return dict(anchor=ch, href=lib.chapter_poster(st), name=f"{n.get('order', '')}. {n['title']}", accent=acc,
                     pill=f"{len(mine)} new of {len(st)} statements", formula=[], bullets=bullets, foot=foot)
 
     up_body = ["The chapters stand as on diagram R2, so a proof use from a lower chapter's new statement to a "
