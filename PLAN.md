@@ -385,10 +385,16 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   on the poster links to the first poster in `lib.HOME_ORDER` (R3 to R8, F1, R1, T1, T2, F5, R2, F2) that
   anchors it, by a relative href; a chapter card on R2 or F2 links to the chapter poster that anchors all its
   statements; a build fails on a link to a card no poster of the set draws. When a run moves a poster's
-  anchors it updates the manifest and asks for a second run. The links out are still to do.
+  anchors it updates the manifest and asks for a second run. The links out done 2026.11.22, below.
 - **The rest link out, at the pins.** An id with no card on any poster links to the blueprint; the Lean line to
   the declaration in `leanprover-community/riemann-hypothesis` at `MIRROR_COMMIT`, at the file and line
   `lean_location` gives (`…/blob/<commit>/<file>#L<line>`). Which blueprint target to use is open decision 6.
+  Done 2026.11.22, decision 6 taken for the pinned file: `bp.load` sets `lib.EXTERNAL`, every blueprint id to
+  its file at `BP_COMMIT` (`…/blob/<full sha>/blueprint/<path>`), and `lib.PINNED`, the three prefixes a link
+  out may have; a code run naming an id no poster draws links there. The Lean name and location at the foot of
+  a card link to `…/blob/<full sha>/<file>#L<line>` in the mirror at `MIRROR_COMMIT`, the one declaration under
+  `.lake/` excepted; a card's blueprint path links to its file, a chapter card's to its directory. The rich text
+  gained a link run, `[[@url|text]]`, for a run the code splitter breaks into pieces.
 - **Each set links only within itself.** A map poster never links to a reader poster, so that following a link
   from the set that may be published never opens the text that may not.
 - **A release's SVGs stay the tree's SVGs, byte for byte.** That is what a release pins: `SHA256SUMS` is checked
@@ -408,7 +414,7 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   name from the manifest. The map SVGs are byte for byte what they were; only their names moved.
 - **Links that leave the set cannot be pinned by a relative path**, so they are absolute: the
   mirror at `MIRROR_COMMIT`, the blueprint as open decision 6 settles, and never the Pages site, which holds one
-  release at a time and would send a reader of an old release to the current posters.
+  release at a time and would send a reader of an old release to the current posters. Done 2026.11.22, as above: the full shas, not the pins.
 - **The library.** `Canvas.card` takes an `href` and an `anchor`, and wraps the card in `<a>`; the id runs in
   footers are `<a>` elements inside the `<text>`, which SVG allows. Plain `href`, not `xlink:href`. Neither
   changes a measured width, so the overlap checks hold unchanged. The embedded `<style>` gains a hover rule (a
@@ -423,6 +429,8 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
 - **The build checks the links**, as it checks the arrows: every relative `href` names a file in the set's
   manifest, every fragment is an `id` in that file, every id is a blueprint id, and every external link is at a
   pinned commit. A poster with a broken link fails the build.
+  Done 2026.11.22: `Canvas.check` holds every `href`: a fragment to an anchor of the poster, a relative path to a
+  poster of the set and to its anchor, an absolute one to a `lib.PINNED` prefix.
 - **What it does not do.** A poster inside an `<img>`, as the README embeds R1, or in GitHub's file viewer, draws
   the same and links nowhere. The README points to the Pages site for reading.
 
@@ -486,4 +494,6 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
    full Graphviz graph already links to) renders the statement for reading, but follows the blueprint's head,
    not `BP_COMMIT`, so a link from an old release can land on a statement that has moved or gone. The
    statement's file in `chrisflav/riemann-blueprint` at `BP_COMMIT` is what the poster was drawn from, and stays
-   true, but is raw Markdown and TOML. Rule 3 argues for the pinned file; a reader argues for the site.
+   true, but is raw Markdown and TOML. Rule 3 argues for the pinned file; a reader argues for the site. Taken 2026.11.22: the pinned file, with the
+   full sha, for rule 3; a link from an old release stays true, and a reader who wants the rendered statement
+   is one click from the site.

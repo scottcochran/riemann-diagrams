@@ -57,7 +57,7 @@ def main(argv):
         out.write_text(svg, encoding="utf-8")
         print(out.relative_to(HERE.parent))
         manifest[m.ID] = {"file": out.name, "title": canvas.title, **canvas.stats(), "anchors": sorted(canvas.anchors),
-                          "links": canvas.links, "links_out": canvas.links_out}
+                          "links": canvas.links, "links_out": canvas.links_out, "links_ext": canvas.links_ext}
         if sorted(canvas.anchors) != before.get(m.ID):
             moved.append(m.ID)
         for w in canvas.warnings:

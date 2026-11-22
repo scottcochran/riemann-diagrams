@@ -42,8 +42,14 @@ its frame and title, to that chapter's poster. The targets are read from the
 set's `manifest.json`, which lists every poster's anchors, so a map poster
 links only to map posters and a reader to readers, and the relative links
 resolve in the tree, on the Pages site and among a release's assets alike.
-Links to the sources, the blueprint and the Lean, are to come (`PLAN.md`,
-Phase 7).
+An id with no card on any poster links to the statement's file in the
+blueprint repository at `BP_COMMIT`, the commit the posters were drawn from,
+so that a link from an old release stays true; the blueprint path at the
+foot of a card links there too, and a chapter card's to its directory. The
+Lean name and location at the foot of a card link to the declaration's file
+and line in the mirror at `MIRROR_COMMIT`. These links leave the set, so
+they are absolute, and never to the Pages site, which holds one release at
+a time.
 
 | Id | Poster | What it shows |
 |---|---|---|
@@ -134,6 +140,7 @@ The build also fails if:
   collides with the poster's own ids;
 - a link names a card no poster of the set draws, or a poster the manifest
   does not list;
+- a link out is not under the blueprint or the mirror at its pinned commit;
 - the theorem drawn for a chapter is not the first result at that chapter's
   root;
 - a title or a signature does not fit its card, or two texts overlap. The ids
@@ -182,7 +189,7 @@ four files the generator reads.
 | File | What it is |
 |---|---|
 | `gen-diagrams.py` | the generator; writes the posters and `manifest.json` |
-| `manifest.json` | one entry per poster: its file, title, card and arrow counts, the blueprint ids of its anchors and its counts of links within it and out of it; the registry the links between posters are resolved against; the Pages index is written from it and from `map/manifest.json` |
+| `manifest.json` | one entry per poster: its file, title, card and arrow counts, the blueprint ids of its anchors and its counts of links within it, to other posters and out to the sources; the registry the links between posters are resolved against; the Pages index is written from it and from `map/manifest.json` |
 | `src/lib.py` | the drawing library: measured and wrapped text, cards, tables, arrows, two themes |
 | `src/fonts/`, `src/metrics.py` | the Noto faces every poster embeds, and their advance widths (see Fonts, below) |
 | `src/bp.py` | reads the blueprint, the Lean facts and the mirror; Markdown and LaTeX to rich text; the Lean card; the arrow router; the three pins |

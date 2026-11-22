@@ -75,17 +75,46 @@ RESULTS = ("theorem", "proposition", "lemma", "corollary")
 
 
 # ------------------------------------------------------------------------------------------------ reading
-def git_at(path, pin, what):
-    """The commit of a checkout, ten characters, checked against `pin`; a dirty tree gets a trailing +. A fixed
-    length, not git's --short, so that two checkouts with different object counts print the same."""
+def git_rev(path, pin, what):
+    """The full commit of a checkout, checked against `pin`."""
     out = subprocess.run(["git", "-C", str(path), "rev-parse", "HEAD"], capture_output=True, text=True)
     if out.returncode:
         raise ValueError(f"{path}: not a git checkout")
     full = out.stdout.strip()
     if not full.startswith(pin):
         raise ValueError(f"{what} is at {full[:10]}, the diagrams were written against {pin}")
+    return full
+
+
+def git_at(path, pin, what):
+    """The commit of a checkout, ten characters, checked against `pin`; a dirty tree gets a trailing +. A fixed
+    length, not git's --short, so that two checkouts with different object counts print the same."""
+    full = git_rev(path, pin, what)
     dirty = subprocess.run(["git", "-C", str(path), "status", "--porcelain"], capture_output=True, text=True).stdout
     return full[:10] + ("+" if dirty.strip() else "")
+
+
+BP_URL = "https://github.com/chrisflav/riemann-blueprint"
+MIRROR_URL = "https://github.com/leanprover-community/riemann-hypothesis"
+
+
+def linked(url, text):
+    """A link run, or the text alone when there is no target."""
+    return f"[[@{url}|{text}]]" if url else text
+
+
+def lean_url(g, name):
+    """The declaration's file and line in the mirror at MIRROR_COMMIT, or None for one under .lake/, a dependency."""
+    where = g.lean_location(name)
+    if not where or where.startswith(".lake/"):
+        return None
+    file, line = where.rsplit(":", 1)
+    return f"{MIRROR_URL}/blob/{g.mirror_full}/{file}#L{line}"
+
+
+def bp_dir_url(g, k):
+    """The directory of k's file in the blueprint repository at BP_COMMIT."""
+    return f"{BP_URL}/tree/{g.bp_full}/{g.bp_sub}/{g.nodes[k]['_path'].rsplit('/', 1)[0]}"
 
 
 def load():
@@ -100,6 +129,13 @@ def load():
     if not g.lean_facts:
         raise ValueError("no lean-facts.json beside the blueprint: no Lean signatures to draw")
     g.bp_commit, g.mirror_pin = rev, MIRROR_PIN
+    # The links out (PLAN, Phase 7): every blueprint id to its file at BP_COMMIT, and the prefixes a link may have.
+    g.bp_full = git_rev(BLUEPRINT.parent, BP_COMMIT, "the blueprint")
+    g.mirror_full = git_rev(MIRROR, MIRROR_COMMIT, "the mirror")
+    g.bp_sub = BLUEPRINT.relative_to(BLUEPRINT.parent).as_posix()
+    lib.PINNED[:] = [f"{BP_URL}/blob/{g.bp_full}/", f"{BP_URL}/tree/{g.bp_full}/", f"{MIRROR_URL}/blob/{g.mirror_full}/"]
+    lib.EXTERNAL.clear()
+    lib.EXTERNAL.update({k: f"{BP_URL}/blob/{g.bp_full}/{g.bp_sub}/{n['_path']}" for k, n in g.nodes.items()})
     return g
 
 
@@ -444,12 +480,14 @@ def statement_card(g, k, w, drawn, rev, depth, main_names, diagram="R1", max_lin
         where = g.lean_location(first)
         more = (f" · and {len(lean) - 1} more: " + names(lean[1:4]) + (" …" if len(lean) > 4 else "")
                 if len(lean) > 1 else "")
-        foot.append(f"**Lean** {code(first)} at {code(where)}{more}")
+        url = lean_url(g, first)
+        foot.append(f"**Lean** {linked(url, code(first))} at {linked(url, code(where))}{more}")
     chap = g.nodes[n["_chapter"]]["title"]
     if compact:
-        foot.append(f"Blueprint {code(n['_path'], 44)}")
+        foot.append(f"Blueprint {linked(lib.EXTERNAL[k], code(n['_path'], 44))}")
     else:
-        foot.append(f"Blueprint {code(n['_path'], 44)} ({chap}) · depth {depth.get(k, '—')} from the main theorems")
+        foot.append(f"Blueprint {linked(lib.EXTERNAL[k], code(n['_path'], 44))} ({chap}) · depth {depth.get(k, '—')} "
+                    "from the main theorems")
     return dict(anchor=k, name=n["title"], accent=PROV_ACCENT[prov], pill=pill,
                 formula=formula, say=say, bullets=bullets, foot=foot,
                 dash="6 4" if n["kind"] == "definition" else None)

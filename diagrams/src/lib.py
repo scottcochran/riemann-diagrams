@@ -159,11 +159,12 @@ def sonly(stroke_name):
 # ---------------------------------------------------------------------------------------------
 # Text measurement and rich-text wrapping
 
-_RUN = re.compile(r"(\*\*.+?\*\*|`.+?`|\[\[[a-z]+\|.+?\]\])")
+_RUN = re.compile(r"(\*\*.+?\*\*|`.+?`|\[\[[a-z]+\|.+?\]\]|\[\[@[^|\]]+\|.+?\]\])")
 
 
 def parse(s):
-    """-> list of (text, style, accent) runs. style in r/b/m (regular, bold, mono)."""
+    """-> list of (text, style, accent) runs. style in r/b/m (regular, bold, mono). The accent of a run inside
+    [[@url|text]] is the url with its @, and render_line makes the run a link; text may hold code runs."""
     runs = []
     for part in _RUN.split(s):
         if not part:
@@ -177,6 +178,9 @@ def parse(s):
                     runs.append((sub, "b", None))
         elif part.startswith("`") and part.endswith("`") and len(part) > 2:
             runs.append((part[1:-1], "m", None))
+        elif part.startswith("[[@") and part.endswith("]]"):
+            url, txt = part[2:-2].split("|", 1)
+            runs.extend((t, st, url) for t, st, _ in parse(txt))
         elif part.startswith("[[") and part.endswith("]]"):
             acc, txt = part[2:-2].split("|", 1)
             runs.append((txt, "b", acc))
@@ -270,6 +274,9 @@ TEXT_BOXES = []   # (x0, y0, x1, y1, text) of every line drawn, for the overlap 
 # posters, so each set links only within itself.
 HOME_ORDER = ["R3", "R4", "R5", "R6", "R7", "R8", "F1", "R1", "T1", "T2", "F5", "R2", "F2"]
 POSTERS, ANCHORS_OF, REGISTRY = {}, {}, {}
+# The links out, set by bp.load: EXTERNAL, every blueprint id to its file in the blueprint repository at BP_COMMIT;
+# PINNED, the prefixes an absolute href may have, the blueprint and the mirror at their pinned commits.
+EXTERNAL, PINNED = {}, []
 
 
 def load_registry(manifest):
@@ -298,16 +305,26 @@ def render_line(x, y, line, size, color="ink", anchor="start", bold=False, itali
     lw = line_width(line, size)
     bx = x if anchor == "start" else (x - lw / 2 if anchor == "middle" else x - lw)
     TEXT_BOXES.append((bx, y - size * 0.75, bx + lw, y + size * 0.2, "".join(t for t, _, _ in line)))
-    spans = []
+    spans, link, linked = [], None, []
+    def flush():
+        if linked:
+            spans.append(f'<a href="{escape(link[1:])}">{"".join(linked)}</a>')
+            linked.clear()
     for t, st, acc in _merge(line):
         attrs = []
         if st in ("b", "bi", "mb"):
             attrs.append('font-weight="bold"')
         if st in ("m", "mb"):
             attrs.append(f'font-family="{MONO}" font-size="{size * MONO_SCALE:.1f}"')
-        if acc:
+        url = acc if acc and acc.startswith("@") else None
+        if acc and not url:
             attrs.append(fill(acc))
-        spans.append(f'<tspan {" ".join(attrs)}>{escape(t)}</tspan>' if attrs else escape(t))
+        span = f'<tspan {" ".join(attrs)}>{escape(t)}</tspan>' if attrs else escape(t)
+        if url != link:
+            flush()
+            link = url
+        (linked if url else spans).append(span)
+    flush()
     it = ' font-style="italic"' if italic else ""
     return (f'<text x="{x:.1f}" y="{y:.1f}" font-family="{SANS}" font-size="{size}"{it} '
             f'{fill(color)} text-anchor="{anchor}">{"".join(spans)}</text>')
@@ -331,6 +348,7 @@ class Canvas:
         self.anchors = []  # blueprint ids set as the id of a card's group, for the manifest and the link check
         self.links = 0     # code runs that name a card on this poster, made links to it by link()
         self.links_out = 0 # and those that name a card on another poster of the set, linked there
+        self.links_ext = 0 # and those that name a blueprint id no poster draws, linked to its file at the pin
         self.y = self._header()
 
     def stats(self):
@@ -636,8 +654,14 @@ class Canvas:
             if t in REGISTRY:
                 self.links_out += 1
                 return f'<a href="{REGISTRY[t]}#{t}">{m.group(0)}</a>'
+            if t in EXTERNAL:
+                self.links_ext += 1
+                return f'<a href="{escape(EXTERNAL[t])}">{m.group(0)}</a>'
             return m.group(0)
-        self.out = [self._MONO_TSPAN.sub(repl, s) if "<tspan" in s else s for s in self.out]
+        def line(s):   # the runs render_line has already made links are left alone: SVG does not nest <a>
+            parts = re.split(r'(<a href="[^"]*">.*?</a>)', s)
+            return "".join(p if i % 2 else self._MONO_TSPAN.sub(repl, p) for i, p in enumerate(parts))
+        self.out = [line(s) if "<tspan" in s else s for s in self.out]
 
     def check(self):
         """Warn about text lines whose boxes intersect, or that leave the canvas, and about characters the
@@ -651,7 +675,10 @@ class Canvas:
         files = set(POSTERS.values())
         for h in sorted(set(re.findall(r' href="([^"]*)"', "\n".join(self.out)))):
             f, _, frag = h.partition("#")
-            if not f and frag not in self.anchors:
+            if f.startswith("http"):
+                if not any(f.startswith(p) for p in PINNED):
+                    warn.append(f"link out not at a pinned commit: {h}")
+            elif not f and frag not in self.anchors:
                 warn.append(f"link to no card on this poster: #{frag}")
             elif f and f not in files:
                 warn.append(f"link to a poster the manifest does not list: {f}")
