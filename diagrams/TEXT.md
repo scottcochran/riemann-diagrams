@@ -124,6 +124,12 @@ The rule for these is that a reader should be able to tell them from quotations.
 in a Lean panel and its card links to the file it came from; an interpretation is in the posters' own voice in
 a grey or amber card, and the build knows the fact it rests on.
 
+**Links to the papers** (F4). The url each reference's title links to is this repository's data, not its
+text: `src/papers.toml`, one entry per reference, looked up on Crossref and zbMATH on 2026.11.22 and settled
+by hand where they disagreed, each entry saying how. The blueprint records the citation (author, title,
+journal, year); it does not carry the link. The id beneath a title links to the blueprint's entry, so a
+reader can tell the citation from the paper this repository found for it.
+
 ## 5. Derived relations the blueprint does not state
 
 Two things on the posters are neither quoted nor written: they are inferred from the sources by the generator,

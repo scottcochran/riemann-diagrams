@@ -66,7 +66,7 @@ a time.
 | F1 | [What the stages pass to each other](F1-definitions-2026.11.22.svg) | The 24 definitions of the blueprint rather than its theorems. Each is a card with its Lean declaration, the definition in words and the chapter that makes it, standing above the definitions stated in terms of it; the 18 arrows are those `uses` edges. A table counts, for each definition, the statements of each chapter that use it, so the flow of objects between the stages can be read off. The three definitions the outline names as the interfaces between stages are set out in its own words. |
 | F2 | [What is new](F2-new-2026.11.22.svg) | The 200 statements the blueprint marks new in Alpöge's proof, one level up: each chapter a card holding only its new work, arrows between chapters labelled with the number of proof uses between their new statements, a matrix of those counts, every section by provenance, the twenty published and modified results the new statements lean on most, and the new lemmas that published results' proofs use. |
 | F3 | [The proof as code](F3-modules-2026.11.22.svg) | The blueprint's nine chapters against the formalisation's modules, read from `lean-facts.json`, the index of the 1194 Lean declarations the statements name: a matrix of chapters against the 35 second-level modules, the formalisation's tree as one card per namespace, each chapter's footprint in the code, and the fan-out from one statement to its declarations, with the twelve statements that name the most. |
-| F4 | [The proof as literature](F4-literature-2026.11.22.svg) | The 209 references of the blueprint on a timeline by decade, each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; and the references no statement cites. |
+| F4 | [The proof as literature](F4-literature-2026.11.22.svg) | The 209 references of the blueprint on a timeline by decade, each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; and the references no statement cites. Each title links to the paper, by DOI where it has one; each id to the blueprint's entry. |
 | F5 | [The sections, the middle level](F5-sections-2026.11.22.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section above the sections whose proofs use it, with arrows labelled by the number of proof uses between them. A card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. |
 | F6 | [Depth as geometry](F6-depth-2026.11.22.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. |
 
@@ -98,7 +98,9 @@ Signatures, file lines, uses, used-by, statement counts, depths and citation
 counts are computed. The italic line of a node is the blueprint's own
 statement and the bullets are its proof, abridged where marked with an
 ellipsis, with links shown as ids and LaTeX rewritten in plain Unicode.
-Anything no file states is marked on the diagram as the diagram's own.
+Anything no file states is marked on the diagram as the diagram's own. The
+paper each reference's title links to on F4 is the diagram's own as well,
+from `src/papers.toml`: the blueprint records the citation, not the link.
 
 No Lean was built, for the blueprint or for the diagrams. The blueprint's
 `uses` edges were resolved from the source text and some are wrong; this is
@@ -140,7 +142,10 @@ The build also fails if:
   collides with the poster's own ids;
 - a link names a card no poster of the set draws, or a poster the manifest
   does not list;
-- a link out is not under the blueprint or the mirror at its pinned commit;
+- a link out is not under the blueprint or the mirror at its pinned commit,
+  and is not a paper of `src/papers.toml`;
+- a reference of the blueprint has no paper in `src/papers.toml`, or an entry
+  there names an id that is not a reference;
 - the theorem drawn for a chapter is not the first result at that chapter's
   root;
 - a title or a signature does not fit its card, or two texts overlap. The ids
@@ -203,6 +208,7 @@ four files the generator reads.
 | `src/d_f2_new.py` | F2: the new statements by chapter and section; `EXPECTED` pair counts, `TOPS`, `COUNTS` |
 | `src/d_f3_modules.py` | F3: chapters against Lean modules from `lean-facts.json`; `N_DECLS`, `KINDS`, `NO_LEAN`, `EXPECTED` |
 | `src/d_f4_literature.py` | F4: the references by decade, citations and upward cones; `N_REFS`, `YEARS`, `N_CITING`, `TOP` |
+| `src/papers.toml` | the paper behind each of the blueprint's references, the url F4 links its title to: looked up on Crossref and zbMATH, settled by hand where they disagreed; the diagram's own data |
 | `src/d_f5_sections.py` | F5: the sections chapter by chapter, laid out by their edges; `EXPECTED`, `UPWARD` |
 | `src/d_f6_depth.py` | F6: the wheel, rings by depth and sectors by chapter; `EXPECTED_DEPTHS`, `UNREACHED` |
 | `map/` | the map set, as `map-*.svg`, and its own `manifest.json` |

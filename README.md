@@ -54,7 +54,7 @@ and zoom in.
 - [The proof as literature](diagrams/F4-literature-2026.11.22.svg): the 209
   references on a timeline by decade, which statements cite each, the
   references the proof leans on most, and the upward cone of each, what
-  would fall if the result were wrong.
+  would fall if the result were wrong; every title links to the paper.
 - [The sections, the middle level](diagrams/F5-sections-2026.11.22.svg): the
   58 sections as cards, chapter by chapter, each above the sections whose
   proofs use it, with the proof uses between them as labelled arrows.

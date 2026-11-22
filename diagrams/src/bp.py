@@ -20,6 +20,7 @@ import pathlib
 import re
 import subprocess
 import sys
+import tomllib
 from xml.sax.saxutils import escape
 
 import lib
@@ -136,6 +137,13 @@ def load():
     lib.PINNED[:] = [f"{BP_URL}/blob/{g.bp_full}/", f"{BP_URL}/tree/{g.bp_full}/", f"{MIRROR_URL}/blob/{g.mirror_full}/"]
     lib.EXTERNAL.clear()
     lib.EXTERNAL.update({k: f"{BP_URL}/blob/{g.bp_full}/{g.bp_sub}/{n['_path']}" for k, n in g.nodes.items()})
+    # The papers behind the reference list, the diagram's own data (src/papers.toml): every id must be a reference.
+    papers = tomllib.loads((pathlib.Path(__file__).parent / "papers.toml").read_text(encoding="utf-8"))
+    bad = sorted(k for k in papers if g.nodes.get(k, {}).get("kind") != "reference")
+    if bad:
+        raise ValueError(f"src/papers.toml names ids that are not references of the blueprint: {bad}")
+    lib.PAPERS.clear()
+    lib.PAPERS.update({k: v["url"] for k, v in papers.items()})
     return g
 
 
