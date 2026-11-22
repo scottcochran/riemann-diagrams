@@ -241,7 +241,7 @@ Decisions the work so far has raised and not taken. Each is a choice the author 
 4. **This plan** was kept out of the repository until 2026.11.22, when it went in with the decisions above still
    open, so that its history records them being taken. It stays at the root, beside the README, as tla-kit's
    does; a `decisions/` directory is for the records those decisions produce, if they are written up.
-5. **Whether to cut `v0.1.1`.** `v0.1.0`'s notes and `SHA256SUMS` were edited after its run (Phase 5's done
-   note). A `v0.1.1` from `e2ff184` would be the first release untouched after its run, with the same twenty
-   SVGs. Against it: a release that changes nothing a reader sees, when the cadence rule says a wording fix
-   waits for the next move. The next pin move settles it either way.
+5. **Whether to cut `v0.1.1`.** Taken 2026.11.22: cut, from the commit this entry goes in at, as the first
+   release untouched after its run. It ships the same twenty SVGs as `v0.1.0` with the same checksums; its tag
+   message says so, and that a reader of `v0.1.0` has nothing to re-read. The reason it exists is the previous
+   release's hand edits (Phase 5's done note), not anything a reader sees.
