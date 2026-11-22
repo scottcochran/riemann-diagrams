@@ -30,7 +30,8 @@
    "def-zero-free-primitive",
    "def-zeros-on-line"
   ],
-  "links": 94
+  "links": 94,
+  "links_out": 64
  },
  "F2": {
   "file": "map-F2-new-2026.11.22.svg",
@@ -48,7 +49,8 @@
    "chap-zero-free",
    "main-theorems"
   ],
-  "links": 0
+  "links": 0,
+  "links_out": 165
  },
  "F3": {
   "file": "map-F3-modules-2026.11.22.svg",
@@ -56,7 +58,8 @@
   "cards": 10,
   "arrows": 0,
   "anchors": [],
-  "links": 0
+  "links": 0,
+  "links_out": 9
  },
  "F4": {
   "file": "map-F4-literature-2026.11.22.svg",
@@ -64,7 +67,8 @@
   "cards": 0,
   "arrows": 0,
   "anchors": [],
-  "links": 0
+  "links": 0,
+  "links_out": 24
  },
  "F5": {
   "file": "map-F5-sections-2026.11.22.svg",
@@ -131,7 +135,8 @@
    "sec-zf-slope-data",
    "sec-zf-windows"
   ],
-  "links": 75
+  "links": 75,
+  "links_out": 115
  },
  "F6": {
   "file": "map-F6-depth-2026.11.22.svg",
@@ -139,7 +144,8 @@
   "cards": 0,
   "arrows": 0,
   "anchors": [],
-  "links": 0
+  "links": 0,
+  "links_out": 3
  },
  "R1": {
   "file": "map-R1-main-theorems-2026.11.22.svg",
@@ -171,7 +177,8 @@
    "thm-zero-free-from-connected",
    "thm-zero-free-from-families"
   ],
-  "links": 113
+  "links": 113,
+  "links_out": 58
  },
  "R2": {
   "file": "map-R2-chapters-2026.11.22.svg",
@@ -189,7 +196,8 @@
    "chap-zero-free",
    "main-theorems"
   ],
-  "links": 90
+  "links": 90,
+  "links_out": 66
  },
  "R3": {
   "file": "map-R3-zero-free-2026.11.22.svg",
@@ -222,7 +230,8 @@
    "thm-zero-free-from-connected",
    "thm-zero-free-from-windows"
   ],
-  "links": 131
+  "links": 131,
+  "links_out": 19
  },
  "R4": {
   "file": "map-R4-families-2026.11.22.svg",
@@ -275,7 +284,8 @@
    "thm-pseudo-coefficients-unitary",
    "thm-twisting-index-and-archimedean-bounds"
   ],
-  "links": 179
+  "links": 179,
+  "links_out": 60
  },
  "R5": {
   "file": "map-R5-theta-2026.11.22.svg",
@@ -345,7 +355,8 @@
    "thm-weighted-bessel-sum-bound",
    "thm-witt-tower-square-ratios"
   ],
-  "links": 282
+  "links": 282,
+  "links_out": 36
  },
  "R6": {
   "file": "map-R6-heights-2026.11.22.svg",
@@ -386,7 +397,8 @@
    "thm-unitary-integral-models",
    "thm-unitary-rigid-boundary-charts"
   ],
-  "links": 163
+  "links": 163,
+  "links_out": 12
  },
  "R7": {
   "file": "map-R7-sha-2026.11.22.svg",
@@ -430,7 +442,8 @@
    "thm-siegel-units-mackey",
    "thm-wach-lifting-theorem"
   ],
-  "links": 145
+  "links": 145,
+  "links_out": 24
  },
  "R8": {
   "file": "map-R8-galois-2026.11.22.svg",
@@ -477,7 +490,8 @@
    "thm-universal-first-order-deformation",
    "thm-wave-kernels-gln-c"
   ],
-  "links": 207
+  "links": 207,
+  "links_out": 43
  },
  "T1": {
   "file": "map-T1-trace-deepest-2026.11.22.svg",
@@ -497,7 +511,8 @@
    "thm-offdiagonal-bound",
    "thm-riemann-hypothesis"
   ],
-  "links": 45
+  "links": 45,
+  "links_out": 44
  },
  "T2": {
   "file": "map-T2-trace-landau-2026.11.22.svg",
@@ -512,6 +527,7 @@
    "thm-zero-free-from-connected",
    "thm-zero-free-from-windows"
   ],
-  "links": 25
+  "links": 25,
+  "links_out": 26
  }
 }

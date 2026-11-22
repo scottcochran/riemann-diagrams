@@ -34,7 +34,16 @@ card, in a Stated with, Proof uses or Used by footer, in a card's text or in
 a key; it underlines on hover. Links work when the SVG is opened on its own,
 as the Pages site serves it. Inside an `<img>`, as the root README embeds
 R1, or in GitHub's file viewer, a poster draws the same and links nowhere.
-Links to other posters and to the sources are to come (`PLAN.md`, Phase 7).
+
+An id with no card on the poster links to its card on the poster that draws
+it in full: a statement's chapter poster, R3 to R8, first, then F1, R1, the
+traces, F5, R2 and F2, in that order. A chapter card on R2 or F2 links, by
+its frame and title, to that chapter's poster. The targets are read from the
+set's `manifest.json`, which lists every poster's anchors, so a map poster
+links only to map posters and a reader to readers, and the relative links
+resolve in the tree, on the Pages site and among a release's assets alike.
+Links to the sources, the blueprint and the Lean, are to come (`PLAN.md`,
+Phase 7).
 
 | Id | Poster | What it shows |
 |---|---|---|
@@ -123,7 +132,8 @@ The build also fails if:
 - a drawn Lean declaration has no signature in `lean-facts.json`;
 - an `id` is drawn twice on one poster, or an anchor is not an XML name or
   collides with the poster's own ids;
-- a link names a card the poster does not draw;
+- a link names a card no poster of the set draws, or a poster the manifest
+  does not list;
 - the theorem drawn for a chapter is not the first result at that chapter's
   root;
 - a title or a signature does not fit its card, or two texts overlap. The ids
@@ -142,6 +152,11 @@ output is deterministic: unchanged inputs give unchanged bytes, so a diff in
 an SVG after regenerating means the blueprint or the mirror has moved under a
 diagram. Any `WARNING` or `ERROR` line is a failure. After a change, look at
 the result in both themes.
+
+The links between posters are resolved against the set's committed
+`manifest.json`. When a run moves a poster's anchors it updates the manifest,
+says so, and exits 1: run it again, so that the links of every poster follow.
+A run whose anchors did not move needs no second run.
 
 To move the diagrams to a newer blueprint, bump `BP_COMMIT` (and `MIRROR_PIN`
 if the blueprint re-pinned the mirror, and `MIRROR_COMMIT` if `Main.lean` is
@@ -167,7 +182,7 @@ four files the generator reads.
 | File | What it is |
 |---|---|
 | `gen-diagrams.py` | the generator; writes the posters and `manifest.json` |
-| `manifest.json` | one entry per poster: its file, title, card and arrow counts, the blueprint ids of its anchors and its count of links; the Pages index is written from it and from `map/manifest.json` |
+| `manifest.json` | one entry per poster: its file, title, card and arrow counts, the blueprint ids of its anchors and its counts of links within it and out of it; the registry the links between posters are resolved against; the Pages index is written from it and from `map/manifest.json` |
 | `src/lib.py` | the drawing library: measured and wrapped text, cards, tables, arrows, two themes |
 | `src/fonts/`, `src/metrics.py` | the Noto faces every poster embeds, and their advance widths (see Fonts, below) |
 | `src/bp.py` | reads the blueprint, the Lean facts and the mirror; Markdown and LaTeX to rich text; the Lean card; the arrow router; the three pins |

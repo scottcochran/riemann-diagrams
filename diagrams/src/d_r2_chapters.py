@@ -8,6 +8,7 @@ the proof cites most, counted from the blueprint's edges."""
 import re
 
 import bp
+import lib
 from bp import abridge, code, names, node, paragraphs, rich
 from lib import Canvas
 
@@ -146,7 +147,7 @@ def build():
                         + (f" · Lean {code(lean[0])} at {code(g.lean_location(lean[0]))}" if lean else ""))
         foot.append(f"Blueprint `{n['_path'].rsplit('/', 1)[0]}/`")
         acc = ACCENT.get(ch, "green")
-        return dict(anchor=ch, name=f"{n.get('order', '')}. {n['title']}", accent=acc, pill=f"chapter · {len(stmts)} statements",
+        return dict(anchor=ch, href=lib.chapter_poster(stmts), name=f"{n.get('order', '')}. {n['title']}", accent=acc, pill=f"chapter · {len(stmts)} statements",
                     formula=formula, say=say, bullets=bullets, foot=foot)
 
     key = [
