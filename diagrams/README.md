@@ -27,8 +27,14 @@ F5, carries its blueprint id as the `id` of the group around it, so that
 `R3-zero-free-2026.11.22.svg#thm-landau-windows` opens the poster at that
 card when the SVG is opened on its own, as the Pages site serves it (tested
 in Chromium). A statement drawn on more than one poster has the same id on
-each; the manifest lists each poster's anchors. Nothing on a poster is yet a
-link (`PLAN.md`, Phase 7).
+each; the manifest lists each poster's anchors.
+
+An id set in code that names a card on the same poster is a link to that
+card, in a Stated with, Proof uses or Used by footer, in a card's text or in
+a key; it underlines on hover. Links work when the SVG is opened on its own,
+as the Pages site serves it. Inside an `<img>`, as the root README embeds
+R1, or in GitHub's file viewer, a poster draws the same and links nowhere.
+Links to other posters and to the sources are to come (`PLAN.md`, Phase 7).
 
 | Id | Poster | What it shows |
 |---|---|---|
@@ -117,6 +123,7 @@ The build also fails if:
 - a drawn Lean declaration has no signature in `lean-facts.json`;
 - an `id` is drawn twice on one poster, or an anchor is not an XML name or
   collides with the poster's own ids;
+- a link names a card the poster does not draw;
 - the theorem drawn for a chapter is not the first result at that chapter's
   root;
 - a title or a signature does not fit its card, or two texts overlap. The ids
@@ -160,7 +167,7 @@ four files the generator reads.
 | File | What it is |
 |---|---|
 | `gen-diagrams.py` | the generator; writes the posters and `manifest.json` |
-| `manifest.json` | one entry per poster: its file, title, card and arrow counts, and the blueprint ids of its anchors; the Pages index is written from it and from `map/manifest.json` |
+| `manifest.json` | one entry per poster: its file, title, card and arrow counts, the blueprint ids of its anchors and its count of links; the Pages index is written from it and from `map/manifest.json` |
 | `src/lib.py` | the drawing library: measured and wrapped text, cards, tables, arrows, two themes |
 | `src/fonts/`, `src/metrics.py` | the Noto faces every poster embeds, and their advance widths (see Fonts, below) |
 | `src/bp.py` | reads the blueprint, the Lean facts and the mirror; Markdown and LaTeX to rich text; the Lean card; the arrow router; the three pins |

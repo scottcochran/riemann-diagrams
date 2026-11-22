@@ -77,6 +77,9 @@ and `PLAN.md`, Phase 5.
 Each poster also exists in a map form under [diagrams/map/](diagrams/map/) that
 quotes nothing of the blueprint's text or the proof's source, for use while
 the licensing of that text is open.
+On a poster opened on its own, as the Pages site serves it, an id that names
+a card on the same poster is a link to it; inside this README's embed the
+poster draws the same and links nowhere.
 
 ## Graphviz diagrams
 

@@ -119,6 +119,7 @@ def _css():
     lines.append("svg{" + block(0, 0, 1) + "}")
     lines.append("@media (prefers-color-scheme: dark){svg:not([data-theme=light]){" + block(1, 2, 3) + "}}")
     lines.append("svg[data-theme=dark]{" + block(1, 2, 3) + "}")
+    lines.append("a:hover tspan,a:focus tspan{text-decoration:underline}")
     for k in BASE:
         lines.append(f".f-{k}{{fill:var(--{k})}} .s-{k}{{stroke:var(--{k})}}")
     for k in ACCENTS:
@@ -301,6 +302,7 @@ class Canvas:
         self.blocks = []   # (x0, y0, x1, y1, name) of cards and tables, for the overlap check
         self.n_arrows = 0  # for the manifest
         self.anchors = []  # blueprint ids set as the id of a card's group, for the manifest and the link check
+        self.links = 0     # code runs that name a card on this poster, made links to it by link()
         self.y = self._header()
 
     def stats(self):
@@ -589,6 +591,20 @@ class Canvas:
         return cy + size + 6 - y
 
     # -- output
+    _MONO_TSPAN = re.compile(r'<tspan ((?:[^<>]*? )?font-family="' + re.escape(MONO) + r'"[^<>]*)>([^<>]+)</tspan>')
+
+    def link(self):
+        """A code run whose text is exactly one of the poster's anchors becomes a link to that card: in a Stated
+        with, Proof uses or Used by footer, in a card's text, in a key. Plain href, SVG's own <a> inside <text>;
+        no glyph is added, so the measured widths and the overlap check are unchanged."""
+        anchors = set(self.anchors)
+        def repl(m):
+            if m.group(2) in anchors:
+                self.links += 1
+                return f'<a href="#{m.group(2)}">{m.group(0)}</a>'
+            return m.group(0)
+        self.out = [self._MONO_TSPAN.sub(repl, s) if "<tspan" in s else s for s in self.out]
+
     def check(self):
         """Warn about text lines whose boxes intersect, or that leave the canvas, and about characters the
         embedded fonts do not have, which a browser would draw from a system font at an unmeasured width.
@@ -598,6 +614,8 @@ class Canvas:
         ids = re.findall(r' id="([^"]*)"', "\n".join(self.out))
         for i in sorted(i for i, n in collections.Counter(ids).items() if n > 1):
             warn.append(f"id drawn twice: {i!r}")
+        for h in sorted(set(re.findall(r' href="#([^"]*)"', "\n".join(self.out))) - set(self.anchors)):
+            warn.append(f"link to no card on this poster: #{h}")
         for a in self.anchors:
             if not re.fullmatch(r"[A-Za-z_][\w.-]*", a) or a in ("t", "d") or a.startswith("arw-"):
                 warn.append(f"not usable as an anchor: {a!r}")
@@ -651,11 +669,12 @@ class Canvas:
             f'<path d="M 0 0 L 10 5 L 0 10 z" {fill(k)}/></marker>'
             for k in list(ACCENTS) + ["ink", "muted", "faint"])
         head = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.W}" height="{H}" '
-                f'viewBox="0 0 {self.W} {H}" role="img" aria-labelledby="t d">\n'
+                f'viewBox="0 0 {self.W} {H}" aria-labelledby="t d">\n'
                 f'<title id="t">{BRAND} {escape(self.ident)} — {escape(re.sub(r"[*`]", "", self.title))}</title>\n'
                 f'<desc id="d">{escape(re.sub(r"[*`]", "", self.subtitle))}</desc>\n'
                 f'<style>\n{_css()}\n</style>\n<defs>{markers}</defs>\n'
                 f'<rect width="{self.W}" height="{H}" {fill("page")}/>\n')
+        self.link()
         self.warnings = self.check()
         TEXT_BOXES.clear()
         return head + "\n".join(self.out) + "\n</svg>\n"
