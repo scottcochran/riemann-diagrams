@@ -63,6 +63,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag=${GITHUB_REF#refs/tags/}
+          # the checkout action fetches the tag peeled to its commit; the notes need the annotated tag's message
+          git fetch -q --force origin "refs/tags/$tag:refs/tags/$tag"
+          [ "$(git cat-file -t "refs/tags/$tag")" = tag ] || { echo "release: $tag is not annotated after fetch"; exit 1; }
           mkdir -p stage png
           cp diagrams/*.svg stage/
           for f in diagrams/map/*.svg; do cp "$f" "stage/map-$(basename "$f")"; done

@@ -171,6 +171,16 @@ because a poster's file name carries its date and a regeneration at a new pin re
 **Done when** `v0.1.0` is published from a tag by the workflow, its `SHA256SUMS` matches the committed SVGs at
 the tagged commit, and a tag that is unannotated or off `main` is refused.
 
+**Done 2026.11.22.** `v0.1.0` was cut from `c6a6c6c` by `.github/workflows/release.yml`: the tag checks, the
+posters check reused from `posters.yml` as a called workflow, then PNG renders, `pins.json`, `SHA256SUMS` and the
+release with 23 assets, both sets as files and the PNGs in one tarball. All twenty SVG checksums in the published
+`SHA256SUMS` match the committed files. The generator now writes `manifest.json` beside each set, with every
+poster's card and arrow counts, and `tools/release-notes.py` writes the notes from the tag message, the pins and
+the manifests. One fault found on the first run: the checkout action fetches a tag peeled to its commit, so the
+notes opened with the commit message; the workflow now re-fetches the annotated tag, and `v0.1.0`'s notes were
+regenerated and replaced in place, the tag untouched. The refusal of a bad tag was not tested on this run, since
+the plan's test of a moved pin without regeneration already exercised the called check.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
