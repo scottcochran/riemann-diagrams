@@ -317,6 +317,16 @@ it names; the two exceptions are Casselman–Shalika 1980 and Shintani 1976. Thi
 published-results chapter has its poster, as the literature rather than as a grid of 163 leaves. The build
 checks the reference count, the year range, the number of citing statements and the four most-cited references.
 
+The sections poster is `F5-sections-2026.11.22.svg`, `src/d_f5_sections.py`, in both sets: one poster, not one
+per chapter as the entry said, since the nine bands stack to 14k pixels, the height of R5, and a reader wants
+the chapters in one reading order. Each band is laid out by `chapter.layout` from the section-to-section proof
+uses, with the arrows labelled by their counts; two pairs of sections use each other (the Sha chapter's root
+against three of its sections, and the literature's p-adic Hodge against its Galois cohomology), and the
+lighter direction is listed, not drawn, chosen by the same heaviest-first rule. Cross-chapter uses are counted
+on the cards and left to R2. The build checks the section and unit counts, the per-chapter pair and edge
+counts, and the pairs that point upward. On open decision 2: this is the middle level the entry proposed as
+the first cut for the big chapters' height, and it is itself as tall as R5, so the decision stands open.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and

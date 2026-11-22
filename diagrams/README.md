@@ -17,6 +17,7 @@ again.
 | R6 | [Heights and the covolume bound, every statement](R6-heights-2026.11.22.svg) | the 32 statements of the Arakelov argument that bounds the lattices' covolumes. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R7 | [The Tate–Shafarevich bound, every statement](R7-sha-2026.11.22.svg) | the 35 statements from Kato's Euler system to the bound, with three results the main proof names as hypotheses. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
 | R8 | [Galois representations, every statement](R8-galois-2026.11.22.svg) | the 38 statements that attach Galois representations to polarized pairs. Laid out by `src/chapter.py` from the chapter's own edges: a card sits above the cards whose proofs use it, section heads and the chapter theorem get full cards, the rest short ones. |
+| F5 | [The sections, the middle level](F5-sections-2026.11.22.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section standing above the sections whose proofs use it, with arrows labelled by the number of proof uses between them; a card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. The statements at a chapter's root are a card of their own. The section and unit counts, the per-chapter edge counts and the pairs that would point upward are checked. |
 | F4 | [The proof as literature](F4-literature-2026.11.22.svg) | The 209 references of the blueprint on a timeline by decade, a chip each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; the references no statement cites. The reference count, the year range, the citing count and the most-cited references are checked. |
 | F3 | [The proof as code](F3-modules-2026.11.22.svg) | The blueprint's nine chapters against the formalisation's modules, read from `lean-facts.json`, the blueprint's index of the 1194 Lean declarations its statements name. A matrix of chapters against the 35 second-level modules, so the paper's organisation and the code's can be compared; the formalisation's own tree as one card per namespace; each chapter's footprint in the code (declarations, kinds, modules, files, lines spanned); and the fan-out from one statement to its declarations, with the twelve statements that name the most. The declaration count, the kinds, the module count, the per-chapter counts and the three statements without a declaration are checked, and the build fails if a declaration is named by two statements. |
 | F2 | [What is new](F2-new-2026.11.22.svg) | The proof organised by provenance: the 200 statements the blueprint marks new in Alpöge's proof. Too many for a card each, so the poster works one level up: each chapter is a card holding only its new work (its sections by provenance, the new statements nothing new builds on, what its new work takes and gives), with arrows between chapters labelled with the number of proof uses between their new statements; a chapter-by-chapter matrix of those counts; every section by provenance, which is where the new work concentrates; the twenty published and modified results the new statements lean on most; and the new lemmas that published results' proofs use. The counts, the chapter pairs and the tops are checked. |
@@ -24,7 +25,7 @@ again.
 
 ## Map mode
 
-`diagrams/map/` holds the same fourteen posters built with `--map`: nothing of the blueprint's text and nothing of the
+`diagrams/map/` holds the same fifteen posters built with `--map`: nothing of the blueprint's text and nothing of the
 formal proof's source is quoted. Each card keeps the statement's title, id, kind, provenance, Lean name and file
 location, every edge, and a count of the paragraphs the blueprint spends on it; the section and chapter cards
 keep their titles and counts. The map set is the form that can be published while the quoting question in
@@ -49,7 +50,8 @@ chapter and section files, and `lean-facts.json`) and the
 - the proof uses between the drawn statements (R1, R3 to R8), the `uses` between chapters (R2), the `uses`
   between definitions (F1), the proof uses between the new statements of different chapters and the tops of the
   new work (F2), the declaration, kind, module and per-chapter counts of `lean-facts.json` (F3), the reference
-  count, year range and most-cited references (F4), or the chain
+  count, year range and most-cited references (F4), the proof uses between sections of a chapter and the pairs
+  that would point upward (F5), or the chain
   (T1, T2) are not exactly the arrows or the path listed in the diagram's `EXPECTED`; or the results that proofs name in their text without
   listing them as uses (`HYPOTHESES`, R3 to R8) are not the ones recorded;
 - a theorem of `Main.lean` is carried by no drawn node, or `comparator.json` names other theorems;
@@ -110,6 +112,7 @@ src/d_f1_definitions.py      F1: the definitions, their EXPECTED uses, the INTER
 src/d_f2_new.py              F2: the new statements by chapter and section; EXPECTED pair counts, TOPS, COUNTS
 src/d_f3_modules.py          F3: chapters against Lean modules from lean-facts.json; N_DECLS, KINDS, NO_LEAN, EXPECTED
 src/d_f4_literature.py       F4: the references by decade, citations and upward cones; N_REFS, YEARS, N_CITING, TOP
+src/d_f5_sections.py         F5: the sections chapter by chapter, laid out by their edges; EXPECTED, UPWARD
 ```
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same author), with the brand, the date

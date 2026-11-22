@@ -23,6 +23,12 @@
   "cards": 0,
   "arrows": 0
  },
+ "F5": {
+  "file": "F5-sections-2026.11.22.svg",
+  "title": "The sections, the middle level: the 58 sections of the blueprint as cards, chapter by chapter, and the proof uses between them",
+  "cards": 66,
+  "arrows": 78
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.22.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

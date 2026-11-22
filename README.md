@@ -55,6 +55,9 @@ and zoom in.
   references on a timeline by decade, which statements cite each, the
   references the proof leans on most, and the upward cone of each, what
   would fall if the result were wrong.
+- [The sections, the middle level](diagrams/F5-sections-2026.11.22.svg): the
+  58 sections as cards, chapter by chapter, each above the sections whose
+  proofs use it, with the proof uses between them as labelled arrows.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
 
