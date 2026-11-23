@@ -4,8 +4,9 @@ Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams th
 same day as Phase 1, the five chapter posters that follow it, Phases 2, 3, 5, 6 and 7 were done. It is a plan,
 not a record: nothing below is built unless the README says so. Phases 1, 2, 3, 5, 6 and 7 are done, Phase 6
 with two of its eight posters waiting on things outside this repository, Phase 7 released as `v0.2.1`, the
-first release whose posters link; what is left is Phase 4, which waits on a machine, two hand steps under
-Phase 5, and the decisions under "Open" at the end, of which 1 and 6 are taken.
+first release whose posters link; what is left is Phase 4, two hand steps under Phase 5, and the decisions under
+"Open" at the end, of which 1 and 6 are taken. Phase 4 began on 2026.11.23: its edge data is done and R3 shows
+it; the other posters follow, and the statuses wait on the mirror's Comparator run.
 
 ## Goal
 
@@ -34,7 +35,9 @@ the edges true (Phase 4).
 4. **The output is deterministic, and CI holds it to that.** Unchanged inputs give unchanged bytes, so a diff in
    an SVG means a source moved under a diagram, and the workflow fails on the first such byte.
 5. **No Lean is built.** The blueprint's edges come from static analysis of the source text and some are wrong;
-   every proof status reads absent. Every poster says so, and no diagram claims that a statement is proved.
+   every proof status reads absent. Every poster says so, and no diagram claims that a statement is proved. The
+   edges are checked against the formal proof's references, read from published files rather than a build
+   (`src/lean-edges.json`, Phase 4), and a poster that shows a verdict says where it came from.
 6. **Standard library only** for the posters, so that anyone with Python 3.12 can regenerate them.
 7. **The page matches the content.** In the light theme the page behind the cards is the mean relative
    luminance of the content, measured once on R2 and applied to every poster (`diagrams/PAGE.md`,
@@ -124,15 +127,26 @@ trace poster is a six-line module. The three Graphviz trace images are retired f
 
 ### Phase 4: real edges and statuses
 
-Everything here rests on edges resolved from source text. The blueprint tool's `extract` command, run against
-built oleans, would replace them with the real reference graph and fill in each statement's proof status.
+Everything here rested on edges resolved from source text. Phase 4 checks each of them against the references
+of the formal proof, and shows the proof's status once one is recorded. The plan was to run the blueprint tool's
+`extract` command against built oleans, on a machine with a lot of memory; that turned out not to be needed.
 
-- Needs the mirror built: the community build cache (about 5 GB) or a clean build (hours, about 100 GB of
-  disk), and a machine with a lot of memory for the extraction. Not a laptop job.
-- When the mirror's Comparator run finishes and its notes record a result, R1's band 5 is the first thing to
-  update, and a status pill on every card the second.
+- **The edge data: done 2026.11.23.** The references are read from Sutherland's export of the published proof at
+  `MIRROR_PIN`, which holds exactly what the five main theorems depend on. They are cross-checked against every
+  compiled module of the mirror at `MIRROR_COMMIT`, from its public build cache. Both runs need only a laptop
+  and an external disk, and no Lean is built; `tools/lean-edges/` has the scripts and the steps.
+  `src/lean-edges.json` gives a verdict on every blueprint arrow. Its hash is pinned (`LEAN_EDGES_SHA256`), and
+  the build checks that it was read from `BP_COMMIT` and `MIRROR_PIN`. `diagrams/EDGES.md` writes up the method
+  and the findings.
+- **The posters: R3 done.** R3 holds all 17 of its arrows to the verdict `direct`, which every one has. A card,
+  "Against the formal proof", reads the chapter against the file: the dashed hypotheses, the uses no arrow
+  draws, and the statement uses the cards list. R4 to R8 and the traces follow, each with the verdicts it
+  expects. An arrow the proof does not bear out gets a style of its own when the first poster has one; R3 has
+  none.
+- **The statuses.** When the mirror's Comparator run finishes and its notes record a result, R1's band 5 is the
+  first thing to update, and a status pill on every card the second.
 
-**Done when** `lean-facts.json` carries statuses, the posters show them, and R1's "Judged" card reports a
+**Done when** every chapter and trace poster shows the verdicts on its arrows, and R1's "Judged" card reports a
 recorded result rather than its absence.
 
 ### Phase 5: releases
@@ -470,7 +484,9 @@ in the blueprint's reference files; until the blueprint carries one, the table h
   than it was. Settled 2026.11.22 for the blueprint's prose, by its author's
   CC BY 4.0 grant (Open, 1); the Lean signatures remain unlicensed.
 - **The edges are wrong in places.** A chapter poster laid out around a wrong edge draws a wrong argument with
-  confidence. Phase 4 is the fix. Until then, the dashed arrows are the symptom to watch: in three chapters a
+  confidence. Phase 4 is the fix: `diagrams/EDGES.md` has what the check found, and R3 is the first poster to
+  show it (of its two dashed arrows, the Lean bears out one). Until every poster does, the dashed arrows are the
+  symptom to watch: in three chapters a
   proof's text names a result its `uses` list leaves out, and the diagram cannot tell a hypothesis the Lean
   theorem takes from an edge the blueprint's resolution missed. The three in the Tate–Shafarevich chapter and the
   two in Galois representations are the first edges to check against the Lean when Phase 4 runs.
