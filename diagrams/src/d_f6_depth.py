@@ -187,14 +187,16 @@ def build():
         out.append(f'<line x1="{cx + R0 * 0.55 * math.cos(th):.1f}" y1="{cy + R0 * 0.55 * math.sin(th):.1f}" '
                    f'x2="{cx + (RMAX - 60) * math.cos(th):.1f}" y2="{cy + (RMAX - 60) * math.sin(th):.1f}" '
                    f'{sonly("line")} stroke-width="1" stroke-dasharray="4 4"/>')
+        # The label is set level, centred on the sector's middle angle and pulled in until the edge of its box
+        # nearest the rim touches the circle of radius RMAX - 64, inside the canvas's margin at either side.
         mid = start[ch] + sector[ch] / 2
-        lx, ly = cx + (RMAX - 24) * math.cos(mid), cy + (RMAX - 24) * math.sin(mid)
-        deg = math.degrees(mid) + (90 if math.cos(mid) >= 0 else -90)
         n_ch = sum(len(at[(ch, d)]) for d in range(D + 1))
         label = f"{g.nodes[ch].get('order')}. {SHORT[ch]} · {n_ch}"
-        out.append(f'<text x="{lx:.1f}" y="{ly:.1f}" transform="rotate({deg:.1f} {lx:.1f} {ly:.1f})" '
-                   f'font-family="{lib.SANS}" font-size="15" font-weight="bold" text-anchor="middle" '
-                   f'{fill("muted")}>{escape(label)}</text>')
+        lw, lh = lib.text_width(label, 15, True), 15
+        inset = abs(math.cos(mid)) * lw / 2 + abs(math.sin(mid)) * lh / 2
+        lx, ly = cx + (RMAX - 64 - inset) * math.cos(mid), cy + (RMAX - 64 - inset) * math.sin(mid)
+        out.append(f'<text x="{lx:.1f}" y="{ly + lh * 0.35:.1f}" font-family="{lib.SANS}" font-size="15" '
+                   f'font-weight="bold" text-anchor="middle" {fill("muted")}>{escape(label)}</text>')
     for chain, acc in ((CHAIN_T1, "red"), (CHAIN_T2, "violet")):
         pts = " L ".join(f"{cx + pos[k][0]:.1f} {cy + pos[k][1]:.1f}" for k in chain if k in pos)
         out.append(f'<path d="M {pts}" {sonly(acc)} stroke-width="3" stroke-opacity="0.75" '
