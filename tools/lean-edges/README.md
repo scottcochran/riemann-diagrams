@@ -75,3 +75,17 @@ py tools/lean-edges/verdicts.py $BP $D/export-run/edges $D/edges --meta tools/le
 
 `meta.json` records the commits and checksums the file was read from. Moving a pin means rebuilding both runs
 and the file, and updating `meta.json`.
+
+## The assumptions file
+
+`diagrams/src/lean-hypotheses.json`, which F8 reads, is written from the export and from `lean-edges.json`
+(its `hypothesis` arrows), so it is rebuilt after it:
+
+```sh
+py tools/lean-edges/hypotheses.py $BP $D/export-index $D/export-run/edges.graph.pkl diagrams/src/lean-edges.json \
+  --meta tools/lean-edges/meta-hypotheses.json > diagrams/src/lean-hypotheses.json                 # 2 min
+```
+
+It holds the structures behind the hypothesis arrows, with their fields, takers and builders; for every
+statement's `Prop` definition, the theorems that conclude it and their premises; and the export's axioms.
+`hypotheses.py`'s docstring defines each part, and what its test does not see.

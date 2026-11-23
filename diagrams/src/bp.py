@@ -9,6 +9,7 @@ ERROR instead of drawing something stale.
   read_mirror()              the five theorems of Main.lean and the Prop definitions of Statements.lean
   read_checks()              the pages R1's band 5 rests on, from src/checks.toml, checked against CHECKS_SHA256
   read_edges(g)              the verdicts on the blueprint's arrows, from src/lean-edges.json (LEAN_EDGES_SHA256)
+  read_hypotheses(g)         the proof's assumptions and what discharges them, from src/lean-hypotheses.json
   body(g, id) / proof(g, id) the Markdown of a statement and of its proof
   rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
   lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
@@ -59,6 +60,10 @@ CHECKS_SHA256 = {
 # EDGES.md and the cards that quote it are brought up to date, before it is drawn.
 LEAN_EDGES_SHA256 = "7b040dedf54b19027c8b0eea2dfc38ed14f9b878c138d080551e8bd620b516b3"
 VERDICTS = ("direct", "hypothesis", "through", "beside", "apart", "no-lean-source", "no-lean-target")
+# src/lean-hypotheses.json, where the formal proof's assumptions enter and where they are discharged
+# (tools/lean-edges/hypotheses.py, diagrams/EDGES.md). Pinned the same way as lean-edges.json.
+LEAN_HYPOTHESES_SHA256 = "d67aac5a954934429bfb37ccf6717fd208e6f104a623681b29ff2489490fe8d9"
+PROP_CLASSES = ("outright", "conditional", "never", "absent")
 # How an arrow is drawn by its verdict: (accent, or None for the arrow's own; dash; stroke width). An arrow the
 # formal proof bears out, directly or as a hypothesis, is drawn as before.
 VERDICT_STYLE = {
@@ -330,6 +335,24 @@ class Edges:
 
 def read_edges(g):
     return Edges(g)
+
+
+def read_hypotheses(g):
+    """src/lean-hypotheses.json, checked: its hash against LEAN_HYPOTHESES_SHA256, its commits against the
+    blueprint's and the mirror pin's, and its classes against PROP_CLASSES."""
+    raw = (pathlib.Path(__file__).parent / "lean-hypotheses.json").read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != LEAN_HYPOTHESES_SHA256:
+        raise ValueError(f"src/lean-hypotheses.json hashes to {digest[:12]}…, not {LEAN_HYPOTHESES_SHA256[:12]}…: read "
+                         "what changed, bring diagrams/EDGES.md and F8 up to date, and update LEAN_HYPOTHESES_SHA256")
+    h = json.loads(raw)
+    if h["blueprint"] != g.bp_full or h["proof"]["mirror"] != g.mirror_pin_full:
+        raise ValueError("src/lean-hypotheses.json was read from other commits than the diagrams are drawn from: "
+                         "rebuild it (tools/lean-edges/README.md)")
+    bad = sorted({v["class"] for v in h["props"].values()} - set(PROP_CLASSES))
+    if bad:
+        raise ValueError(f"src/lean-hypotheses.json has classes the diagrams do not know: {bad}")
+    return h
 
 
 def _text_after_front_matter(path):

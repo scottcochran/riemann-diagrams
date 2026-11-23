@@ -163,6 +163,16 @@
   "links_out": 39,
   "links_ext": 6
  },
+ "F8": {
+  "file": "F8-assumptions-2026.11.23.svg",
+  "title": "Where the proof's assumptions enter, and where they are discharged",
+  "cards": 8,
+  "arrows": 0,
+  "anchors": [],
+  "links": 0,
+  "links_out": 81,
+  "links_ext": 49
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.23.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",
