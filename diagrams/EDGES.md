@@ -158,7 +158,27 @@ follows two kinds, and F8 draws them.
   the ones the mirror's `comparator.json` permits, and no `sorryAx`. This is read from the export, not checked
   by a kernel; it is not a verification of the proof.
 
-## 9. What a verdict does not say
+## 9. Where the formal work is (F9)
+
+`diagrams/src/lean-weight.json`, written by `tools/lean-edges/weight.py`, counts the declarations under each
+statement's Lean. Of the export's 1,484,733 declarations, 1,269,850 are the project's rather
+than the library's, by a name rule its docstring gives. 1,229 are named by statements and
+1,268,621 are helpers. 502,612 helpers are reached by one statement's Lean only, 179,332
+by two, 581,749 by three or more, and 4,928 by none. Sized by distinct expression nodes, the
+project's declarations hold 2,503,334,210 nodes, 1,160,103,587 of them in helpers a single statement
+reaches.
+
+- **New work carries most of it.** Statements marked new hold 81% of the helpers' size that any single
+  statement owns.
+- **The heaviest** are `thm-family-membership-admissible-data`, `thm-sha-bound` and `thm-good-towers-from-arakelov-inputs`. The first has 12,225 helpers of its own,
+  78,568,819 nodes, across 452 namespaces.
+- **Glue.** 73 statements have no helpers of their own. R3's chapter theorem, `thm-zero-free-from-connected`,
+  has 2, and shares 48 with other statements: its Lean assembles results proved under
+  other statements.
+
+Size measures the terms the compiler wrote, not difficulty. Shared subterms are counted in each declaration.
+
+## 10. What a verdict does not say
 
 - **Not that anything is proved.** A verdict reads references, which is what the compiler wrote, and checks
   nothing. The proof's status is the mirror's Comparator run, and its notes do not yet record a result.

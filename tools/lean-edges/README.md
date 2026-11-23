@@ -89,3 +89,18 @@ py tools/lean-edges/hypotheses.py $BP $D/export-index $D/export-run/edges.graph.
 It holds the structures behind the hypothesis arrows, with their fields, takers and builders; for every
 statement's `Prop` definition, the theorems that conclude it and their premises; and the export's axioms.
 `hypotheses.py`'s docstring defines each part, and what its test does not see.
+
+## The weight file
+
+`diagrams/src/lean-weight.json`, which F9 reads, needs the export and the cache run's graph (for which
+declarations are the project's):
+
+```sh
+py tools/lean-edges/weight.py $BP $D/export-index $D/export-run/edges.graph.pkl $D/edges.graph.pkl \
+  --meta tools/lean-edges/meta-weight.json \
+  --open thm-zero-free-from-connected thm-family-membership-admissible-data > diagrams/src/lean-weight.json  # 6 min
+```
+
+It holds, per statement, its own declarations and the helpers only its Lean reaches, counted and sized; the
+helpers it shares; and, for each statement given to `--open`, its own helpers by namespace and its largest.
+`weight.py`'s docstring gives the rule that tells the project's declarations from the library's.

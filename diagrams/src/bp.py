@@ -10,6 +10,7 @@ ERROR instead of drawing something stale.
   read_checks()              the pages R1's band 5 rests on, from src/checks.toml, checked against CHECKS_SHA256
   read_edges(g)              the verdicts on the blueprint's arrows, from src/lean-edges.json (LEAN_EDGES_SHA256)
   read_hypotheses(g)         the proof's assumptions and what discharges them, from src/lean-hypotheses.json
+  read_weight(g)             the declarations under each statement's Lean and their size, from src/lean-weight.json
   body(g, id) / proof(g, id) the Markdown of a statement and of its proof
   rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
   lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
@@ -64,6 +65,8 @@ VERDICTS = ("direct", "hypothesis", "through", "beside", "apart", "no-lean-sourc
 # (tools/lean-edges/hypotheses.py, diagrams/EDGES.md). Pinned the same way as lean-edges.json.
 LEAN_HYPOTHESES_SHA256 = "d67aac5a954934429bfb37ccf6717fd208e6f104a623681b29ff2489490fe8d9"
 PROP_CLASSES = ("outright", "conditional", "never", "absent")
+# src/lean-weight.json, the declarations under each statement's Lean and their size (tools/lean-edges/weight.py).
+LEAN_WEIGHT_SHA256 = "7ec0f3c130e12446aa1b6b1729d4945e64b6ec07c5921392017159a874f46245"
 # How an arrow is drawn by its verdict: (accent, or None for the arrow's own; dash; stroke width). An arrow the
 # formal proof bears out, directly or as a hypothesis, is drawn as before.
 VERDICT_STYLE = {
@@ -335,6 +338,21 @@ class Edges:
 
 def read_edges(g):
     return Edges(g)
+
+
+def read_weight(g):
+    """src/lean-weight.json, checked: its hash against LEAN_WEIGHT_SHA256, and its commits against the
+    blueprint's and the mirror pin's."""
+    raw = (pathlib.Path(__file__).parent / "lean-weight.json").read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != LEAN_WEIGHT_SHA256:
+        raise ValueError(f"src/lean-weight.json hashes to {digest[:12]}…, not {str(LEAN_WEIGHT_SHA256)[:12]}…: read "
+                         "what changed, bring diagrams/EDGES.md and F9 up to date, and update LEAN_WEIGHT_SHA256")
+    w = json.loads(raw)
+    if w["blueprint"] != g.bp_full or w["proof"]["mirror"] != g.mirror_pin_full:
+        raise ValueError("src/lean-weight.json was read from other commits than the diagrams are drawn from: "
+                         "rebuild it (tools/lean-edges/README.md)")
+    return w
 
 
 def read_hypotheses(g):
