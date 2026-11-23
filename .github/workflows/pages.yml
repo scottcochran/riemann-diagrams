@@ -16,6 +16,12 @@
 # With both in one job, deploy-pages listed the artifact right after the upload and found none once the
 # artifact had grown to 5 MB with the fonts and the Phase 6 posters (three runs of v0.2.0, 2026.11.22); a job
 # boundary waits for the artifact to be registered.
+#
+# A deployment is named by the commit the run is at (deploy-pages takes GITHUB_SHA, and has no input for it), and a
+# second deployment at a commit that already has one does not replace the site, though it reports success. v0.3.0
+# met this: its release ran at the commit a by-hand republish of v0.2.3 had just deployed, and the site kept
+# v0.2.3. So the deploy job ends by reading pins.json from the site and fails unless it names the tag. When it
+# fails for this reason, push a commit to main and run this by hand from main with the tag.
 name: pages
 
 on:
@@ -157,3 +163,21 @@ jobs:
       - uses: actions/configure-pages@v6     # needs the pages permission, which only this job has
       - id: deploy
         uses: actions/deploy-pages@v5
+      - name: The site serves the tag just published
+        env:
+          TAG: ${{ inputs.tag }}
+          URL: ${{ steps.deploy.outputs.page_url }}
+        run: |
+          served=""
+          for i in $(seq 1 12); do
+            # a query string of its own each time, so that no cached copy answers
+            served=$(curl -fsS "${URL%/}/pins.json?run=$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT-$i" \
+              | python3 -c 'import json, sys; print(json.load(sys.stdin)["tag"])' || true)
+            if [ "$served" = "$TAG" ]; then echo "pages: the site serves $TAG"; exit 0; fi
+            echo "pages: the site serves ${served:-nothing readable}, not $TAG; checking again in 10 s"
+            sleep 10
+          done
+          echo "::error::pages: the deployment reported success, but the site still serves ${served:-nothing readable}," \
+               "not $TAG. If this commit ($GITHUB_SHA) already had a Pages deployment, push a commit to main and" \
+               "run pages by hand from main with $TAG (see the head of pages.yml)."
+          exit 1
