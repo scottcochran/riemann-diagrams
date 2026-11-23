@@ -152,11 +152,13 @@ and the posters say so where they appear.
   rest. Each chapter module records the ones it expects, and the build fails if the blueprint now gives
   others. Whether such a result is a hypothesis of the Lean theorem or a missed edge, the generator cannot
   tell, and the card beside the grid says so.
-- **Verdicts against the formal proof** (R3). The card "Against the formal proof" is computed from
+- **Verdicts against the formal proof** (R3 to R8, T1, T2). The card "Against the formal proof", and the
+  last bullet of a trace's chain card, are computed from
   `src/lean-edges.json`, the verdict on every blueprint arrow from the published proof's references
   (`diagrams/EDGES.md`). Its counts and lists are read from the file. Its sentences are written in the module,
-  and each fact they state is checked: the arrows' verdicts, and what the chapter theorem's Lean does with each
-  hypothesis. The file's hash is pinned in `src/bp.py`, so a rebuilt file fails the build until it is read.
+  and each fact they state is checked: the arrows' verdicts (each module's `VERDICTS`), and what the Lean does
+  with each dashed arrow's source (`HYPOTHESES_LEAN`). An arrow's style follows its verdict (`bp.VERDICT_STYLE`).
+  The file's hash is pinned in `src/bp.py`, so a rebuilt file fails the build until it is read.
 - **Layouts.** Which card stands where is computed from the edges (R4 to R8, F1), the chapter order (R2, F2),
   or a shortest path (T1, T2); R3 is laid out by hand in its module. A layout is a reading of the argument, and
   the plan's risks section notes that a computed one can mislead.

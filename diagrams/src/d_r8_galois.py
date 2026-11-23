@@ -2,7 +2,8 @@
 
 The layout is computed by chapter.py from the chapter's own edges. EXPECTED records the proof-use edges within
 the chapter at the blueprint commit the diagrams were written against, and HYPOTHESES the results that proofs name
-without listing as uses; the build fails if the blueprint now differs."""
+without listing as uses; the build fails if the blueprint now differs. VERDICTS and HYPOTHESES_LEAN record
+the same against the formal proof (src/lean-edges.json)."""
 import chapter
 
 ID, SLUG, CH = "R8", "galois", "chap-galois"
@@ -77,6 +78,26 @@ HYPOTHESES = [
     ("thm-galois-reps-polarized", "thm-galois-reps-polarized-cuspidal"),
 ]
 
+# (used, user): the verdict on each arrow against the formal proof (src/lean-edges.json), where it is not
+# `direct`; the build fails if one has another
+VERDICTS = {
+    ("thm-base-change-unitary", "thm-galois-reps-polarized"): "apart",
+    ("thm-base-change-unitary", "thm-galois-reps-unramified-compatible"): "apart",
+    ("thm-base-change-unitary", "thm-labesse-base-change"): "apart",
+    ("thm-galois-reps-hecke-eigenspaces", "thm-galois-reps-polarized"): "through",
+    ("thm-kuga-sato-unitary-shimura", "thm-galois-reps-polarized"): "through",
+    ("thm-local-global-ramified", "thm-galois-reps-polarized"): "through",
+    ("thm-twisted-trace-lowest-type", "thm-base-change-unitary"): "apart",
+    ("thm-unitary-shimura-integral-models", "thm-galois-reps-polarized"): "through",
+}
+
+# (named, in the proof of): what the Lean of the second does with the first: "direct" (uses it),
+# "through" (reaches it by way of other statements), or None (does not reach it)
+HYPOTHESES_LEAN = {
+    ("thm-galois-reps-polarized", "thm-galois-reps-csd-above-l"): None,
+    ("thm-galois-reps-polarized", "thm-galois-reps-polarized-cuspidal"): None,
+}
+
 
 def build():
-    return chapter.build(ID, CH, EXPECTED, HYPOTHESES)
+    return chapter.build(ID, CH, EXPECTED, HYPOTHESES, VERDICTS, HYPOTHESES_LEAN)
