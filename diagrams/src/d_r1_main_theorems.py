@@ -303,7 +303,7 @@ def build():
         "second build on another machine, in a sandbox with no network and the source read-only, gives an export "
         "of the proof identical byte for byte (the report). The mirror's notes list independent complete builds, "
         "with `Main.olean` identical to the author's checksum. The mirror has since deleted files the proof does "
-        "not use and moved to Lean v4.36.0; the checks here are of the archive as published.",
+        f"not use and moved to Lean {mirror['lean']}; the checks here are of the archive as published.",
     ], "teal", size=S) + 20
     ry += c.card(rx, ry, rw, "3 · The code proves that statement", [
         "A challenge file states the five theorems importing only Mathlib. con-leche `--compare` and its Rust port "
