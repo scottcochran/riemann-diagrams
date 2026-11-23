@@ -183,6 +183,16 @@
   "links_out": 16,
   "links_ext": 0
  },
+ "F10": {
+  "file": "map-F10-drift-2026.11.23.svg",
+  "title": "Between the pins: what changed in the formal proof from the blueprint's commit to the mirror's head",
+  "cards": 0,
+  "arrows": 0,
+  "anchors": [],
+  "links": 0,
+  "links_out": 35,
+  "links_ext": 3
+ },
  "R1": {
   "file": "map-R1-main-theorems-2026.11.23.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

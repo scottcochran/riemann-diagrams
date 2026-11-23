@@ -1,0 +1,19 @@
+{
+ "about": "What changed in the formal proof between the mirror commit the blueprint pins and the one Main.lean is read from: the two proof closures compared by name, per statement, and per blueprint Lean name. Written by tools/lean-edges/drift.py from Sutherland's export (the earlier pin) and the mirror's build cache (the later); the README beside it says how to rebuild it. No Lean was built.",
+ "blueprint": "137d97602647e450901981a7decfb86ab3024a48",
+ "proof": {
+  "mirror": "8c90877ceaa694974526e0aab9aaaf6ea0f5099e",
+  "export": "https://math.mit.edu/~drew/grh/solution.ndjson.zst",
+  "export_sha256": "61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381",
+  "export_unpacked_sha256": "5ea74b912147c5c93cc2b6d70cc727cf908df2f62ac6a20480a3fa02f6be244e",
+  "exporter": "lean4export 3.1.0",
+  "lean": "4.33.1",
+  "note": "The export holds the dependency closure of the five main theorems, so a declaration missing from it is not used by the proof."
+ },
+ "later": {
+  "mirror": "c900e67c2fcd1fdb041685820bbd2b867fbc5a4b",
+  "cache": "https://rh-cache.taucetiproject.org",
+  "receipt_sha256": "ebbb530e36a188409812186155e319d2afed6f41a44417135b0d9defcd9b3c14",
+  "lean": "4.37.0-rc1"
+ }
+}

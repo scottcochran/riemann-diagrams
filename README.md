@@ -77,6 +77,10 @@ and zoom in.
   declarations under each statement, by chapter and provenance, the
   statements with the most formal work of their own against the length of
   their proofs in the blueprint, and two statements opened to their helpers.
+- [Between the pins](diagrams/F10-drift-2026.11.23.svg): what changed in the
+  formal proof from the commit the blueprint pins to the mirror's head, by
+  kind of name, for each of the blueprint's Lean names, by namespace, and
+  for the statements whose Lean lost the most.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg)](diagrams/R1-main-theorems-2026.11.23.svg)
 

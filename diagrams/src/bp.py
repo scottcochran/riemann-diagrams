@@ -11,6 +11,7 @@ ERROR instead of drawing something stale.
   read_edges(g)              the verdicts on the blueprint's arrows, from src/lean-edges.json (LEAN_EDGES_SHA256)
   read_hypotheses(g)         the proof's assumptions and what discharges them, from src/lean-hypotheses.json
   read_weight(g)             the declarations under each statement's Lean and their size, from src/lean-weight.json
+  read_drift(g)              what changed in the formal proof between the pins, from src/lean-drift.json
   body(g, id) / proof(g, id) the Markdown of a statement and of its proof
   rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
   lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
@@ -66,6 +67,8 @@ VERDICTS = ("direct", "hypothesis", "through", "beside", "apart", "no-lean-sourc
 LEAN_HYPOTHESES_SHA256 = "d67aac5a954934429bfb37ccf6717fd208e6f104a623681b29ff2489490fe8d9"
 PROP_CLASSES = ("outright", "conditional", "never", "absent")
 # src/lean-weight.json, the declarations under each statement's Lean and their size (tools/lean-edges/weight.py).
+# src/lean-drift.json, what changed in the formal proof between MIRROR_PIN and MIRROR_COMMIT (tools/lean-edges/drift.py).
+LEAN_DRIFT_SHA256 = "07b7eb53e59f7ccf0f2d8e93c4babba212e9ef6ac539d157274f320de83d1688"
 LEAN_WEIGHT_SHA256 = "7ec0f3c130e12446aa1b6b1729d4945e64b6ec07c5921392017159a874f46245"
 # How an arrow is drawn by its verdict: (accent, or None for the arrow's own; dash; stroke width). An arrow the
 # formal proof bears out, directly or as a hypothesis, is drawn as before.
@@ -338,6 +341,22 @@ class Edges:
 
 def read_edges(g):
     return Edges(g)
+
+
+def read_drift(g):
+    """src/lean-drift.json, checked: its hash against LEAN_DRIFT_SHA256, and its commits against the blueprint's,
+    the mirror pin's and MIRROR_COMMIT."""
+    raw = (pathlib.Path(__file__).parent / "lean-drift.json").read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != LEAN_DRIFT_SHA256:
+        raise ValueError(f"src/lean-drift.json hashes to {digest[:12]}…, not {LEAN_DRIFT_SHA256[:12]}…: read what "
+                         "changed, bring diagrams/EDGES.md and F10 up to date, and update LEAN_DRIFT_SHA256")
+    d = json.loads(raw)
+    if (d["blueprint"] != g.bp_full or d["proof"]["mirror"] != g.mirror_pin_full
+            or d["later"]["mirror"] != g.mirror_full):
+        raise ValueError("src/lean-drift.json was read from other commits than the diagrams are drawn from: "
+                         "rebuild it (tools/lean-edges/README.md)")
+    return d
 
 
 def read_weight(g):

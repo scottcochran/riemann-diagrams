@@ -104,3 +104,16 @@ py tools/lean-edges/weight.py $BP $D/export-index $D/export-run/edges.graph.pkl 
 It holds, per statement, its own declarations and the helpers only its Lean reaches, counted and sized; the
 helpers it shares; and, for each statement given to `--open`, its own helpers by namespace and its largest.
 `weight.py`'s docstring gives the rule that tells the project's declarations from the library's.
+
+## The drift file
+
+`diagrams/src/lean-drift.json`, which F10 reads, compares the export (at `MIRROR_PIN`) with the cache run (at
+`MIRROR_COMMIT`), each closed from the five theorems of `Main.lean`, and needs the mirror's checkout for its git
+history between the two:
+
+```sh
+py tools/lean-edges/drift.py $BP $D/export-run/edges.graph.pkl $D/edges.graph.pkl <mirror checkout> \
+  --meta tools/lean-edges/meta-drift.json > diagrams/src/lean-drift.json                           # 1 min
+```
+
+`drift.py`'s docstring says how names are sorted into user-written, auxiliary and private, and why.

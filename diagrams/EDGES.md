@@ -178,7 +178,27 @@ reaches.
 
 Size measures the terms the compiler wrote, not difficulty. Shared subterms are counted in each declaration.
 
-## 10. What a verdict does not say
+## 10. What changed between the pins (F10)
+
+`diagrams/src/lean-drift.json`, written by `tools/lean-edges/drift.py`, compares the proof at `MIRROR_PIN`, from
+the export, with the proof at `MIRROR_COMMIT`, from the cache closed from the same five theorems, by name, over
+the project's declarations. There are 314 commits between them. The closures hold
+1,269,850 declarations then and 1,274,580 now.
+
+- **Most of the movement is the compiler's.** 199,833 auxiliary names left and
+  193,811 private names joined. Auxiliary and private names change with the Lean version
+  (4.33 then, 4.37 now) and with a file's place, so they are counted apart and not compared one to one.
+- **User-written names.** 795,187 stayed and 8,324 left. Of those that left,
+  7,693 are still compiled at the later commit but no longer used, and 631 are
+  gone. 659 joined.
+- **The blueprint's 1,194 Lean names.** 1,170 are in both closures,
+  8 are still compiled but no longer used, 5
+  are gone from the later tree, and 9 are in neither. One, `RiemannHypothesis`, is
+  Mathlib's, which the cache does not hold, so it is not compared. The names that are gone: `Formalism.VW.critLine`, `Formalism.VW.gammaFactor_ne_zero`, `Formalism.VW.rh_of_every`, `Formalism.VW.rh_of_right`, `GlobalTheory.T.volume_theorem_of_inputs`.
+
+A renamed declaration counts as one that left and one that joined: names are all the comparison sees.
+
+## 11. What a verdict does not say
 
 - **Not that anything is proved.** A verdict reads references, which is what the compiler wrote, and checks
   nothing. The proof's status is the mirror's Comparator run, and its notes do not yet record a result.
