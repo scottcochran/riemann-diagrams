@@ -75,6 +75,7 @@ def band(c, x, y, title, sub=None):
 def build():
     g = bp.load()
     mirror = bp.read_mirror()
+    checks = bp.read_checks()
     drawn = set(PLACE)
     for k in drawn:
         if k not in g.statements:
@@ -91,7 +92,7 @@ def build():
 
     c = Canvas(ID, "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the "
                "chain of reductions that proves them",
-               "The formal proof is 164,464 Lean files with no comments; the blueprint reads it as 416 statements "
+               "The formal proof was published as 175,187 Lean files with no comments; the blueprint reads it as 416 statements "
                "and the edges between them. This diagram draws the five theorems of `Main.lean`, the definitions "
                "they are stated with, and the chain of reductions by which the hard one, `GRH, half-plane form`, "
                "reaches the theorems that the chapters prove. Each node is one blueprint statement: the Lean "
@@ -99,14 +100,15 @@ def build():
                "words, how its proof goes, and what it uses and is used by. **Read it from the foot up**: the five "
                "theorems are at the bottom, and everything above is what their proofs use. **No Lean was built** "
                "for the blueprint or for this diagram: the edges were resolved from the source text and some are "
-               "wrong, and whether the formal proof is correct is a question for the kernel checks of band 5."
+               "wrong. Whether the formal proof is correct is a question for the kernel checks; band 5 says what they found."
                + (" **Map mode**: nothing of the blueprint's text or the proof's source is quoted; each card "
                   "gives the statement's title, kind, provenance, Lean name and location, and its edges." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (the front matter, statement and proof of every drawn node; "
                "`lean-facts.json` for every signature, file and line; the `architecture` chapter's introduction); "
                f"`leanprover-community/riemann-hypothesis` at {mirror['commit']} (`src/Main.lean`, "
-               "`src/Statements.lean`, `comparator.json`, `verification/NOTES.md`). The depth table and the "
-               "abridgements are the diagram's own, computed or cut as marked.",
+               "`src/Statements.lean`, `comparator.json`, `verification/NOTES.md`); for band 5, the three pages of "
+               "`diagrams/src/checks.toml`, as read on " + min(e["read"] for e in checks.values()).replace("-", ".") + ". The depth "
+               "table and the abridgements are the diagram's own, computed or cut as marked.",
                state=f"State drawn: riemann-blueprint at {g.bp_commit}, which pins the mirror at {g.mirror_pin}; "
                      f"Main.lean, Statements.lean and the verification notes from the mirror at {mirror['commit']}")
     X0, X1 = c.x0, c.x1
@@ -157,16 +159,29 @@ def build():
         key_body = bp.MAP_KEY
     stm = mirror["theorems"]
     props = mirror["props"]
-    lean_lines = [t["src"] for t in stm] + [""]          # the five theorem lines: names, not quoted source
+    # The five theorems as Main.lean writes them; the map set keeps each one's first line, its name, Prop and the
+    # start of its proof, and leaves the rest of the proof out.
+    lean_lines = [l for t in stm for l in (t["lines"] if not bp.MAP else t["lines"][:1])] + [""]
     if not bp.MAP:
         for p in props.values():
             lean_lines += p["lines"] + [""]
+    # The one theorem whose proof names no other theorem of Main.lean: where the proof enters. Computed, so that a
+    # change to Main.lean changes the sentence or fails the build.
+    names_re = re.compile(r"\b(" + "|".join(re.escape(t["name"]) for t in stm) + r")\b")
+    entries = [t for t in stm if not names_re.search(t["proof"])]
+    if len(entries) != 1 or not re.fullmatch(r"[\w.]+", entries[0]["proof"]):
+        raise ValueError(f"R1: Main.lean has {len(entries)} theorems whose proof uses no other, not one proof term")
+    entry = entries[0]
+    helpers = sorted({h for t in stm if t is not entry for h in re.findall(r"\b([A-Z]\w*\.\w+)\b", t["proof"])})
     stm_bullets = [
         "**The claims.** `Main.lean` states the five theorems the Comparator config names, each as a Prop that "
         "`Statements.lean` defines from Mathlib's `riemannZeta` and `DirichletCharacter.LFunction`; "
         "`riemannHypothesis` is Mathlib's own `RiemannHypothesis`.",
-        "**The proof terms** `rhOfAll`, `allChi`, `claimAll` and `critAll` are where the five theorems enter the "
-        "164,464 files of the proof. Everything above them in this diagram is what those terms unfold to.",
+        f"**The proof terms.** `{entry['name']}` is `{entry['proof']}`, where the five theorems enter the proof; "
+        f"the other four follow from it in `Main.lean` itself" + (", by " + " and ".join(f"`{h}`" for h in helpers)
+                                                                   if helpers else "") + ". "
+        "Everything above them in this diagram is what the proof terms unfold to, as the blueprint read them in "
+        f"the mirror at {g.mirror_pin}, before it moved to Lean v4.36.0 and rewrote `Main.lean`.",
         "**The permitted axioms** are " + ", ".join(f"`{a}`" for a in mirror["axioms"]) + ": a proof using any "
         "other is rejected before a kernel runs.",
     ]
@@ -223,12 +238,13 @@ def build():
     # ---------------------------------------------------------------------------------- band 5: reference
     y += 60
     y = band(c, X0, y, "5 · Reference: the five theorems, the depth of the proof, and what has been checked")
-    tw = [330, 330, 300, 230, 330]
+    tw = [330, 330, 330, 230, 300]
     c.text(X0, y + 15, "The theorems of Main.lean, and the blueprint node that carries each", 15, "muted", bold=True)
     trows = []
     for t in stm:
         oid = bp.MAIN_LEAN_THEOREMS[t["name"]]
-        trows.append([t["name"], t["prop"], t["proof"], oid, g.nodes[oid]["title"]])
+        term = t["proof"] if not t["proof"].startswith("by ") else f"by (a tactic proof of {len(t['lines']) - 1} lines)"
+        trows.append([t["name"], t["prop"], term, oid, g.nodes[oid]["title"]])
     ht = c.table(X0, y + 30, [("Theorem", tw[0], {"mono": True}), ("Stated as", tw[1], {"mono": True}),
                               ("Proof term", tw[2], {"mono": True}), ("Blueprint node", tw[3], {"mono": True}),
                               ("Title", tw[4])], trows, size=S)
@@ -260,22 +276,57 @@ def build():
     ], "grey", size=S, tint=False)
     rx = dx + sum(dw) + 70
     rw = X1 - rx
-    c.text(rx, y + 15, "Checked and proved: what is known about the formal proof", 15, "muted", bold=True)
+    src = {k: (lambda text, k=k: bp.linked(checks[k]["url"], text)) for k in checks}
+    c.text(rx, y + 15, "What has been checked of the formal proof, by the four questions of the Xena post", 15,
+           "muted", bold=True)
     ry = y + 30
-    ry += c.card(rx, ry, rw, "Built: Lean's own kernel", [
-        "`lake build Main` compiles every file of the submission; a successful build is a check by the kernel of "
-        "Lean v4.33.1, the version the project pins. The mirror's notes list independent complete builds, and "
-        "compare their compiled files with the checksums the author published: in the complete one, "
-        "`Main.olean` is identical.",
+    ry += c.card(rx, ry, rw, "Certified: the Lean and Mathlib communities", [
+        "A joint statement of 21 November 2026, endorsed by the Lean FRO and the Mathlib Initiative: “We hereby "
+        "certify that both the statement and the proof of the Riemann Hypothesis are correct.” It finds the four "
+        "questions below answered, and points to Sutherland's report for the checks. It certifies the Riemann "
+        "Hypothesis; for the four Dirichlet theorems, the report is the source.",
+        f"{src['community']('The joint statement')} · {src['xena']('the Xena post, 12 November')} · "
+        f"{src['sutherland']('Sutherland’s report, updated 22 November 16:20 UTC')}",
     ], "teal", size=S) + 20
-    ry += c.card(rx, ry, rw, "Judged: Comparator, not yet", [
-        "`lake comparator` exports the five theorems and replays them in kernels independent of Lean's own, "
-        "Lean paranoid and nanoda, allowing only the three axioms of `comparator.json`. The notes say its output "
-        "will be added when the run finishes. **At the state drawn, no result is recorded.**",
+    ry += c.card(rx, ry, rw, "1 · The Lean statement says what is claimed", [
+        "`riemannHypothesis` is stated with Mathlib's own `RiemannHypothesis`, which the joint statement says "
+        "experts in Lean and number theory have vetted. The other four use Mathlib's `riemannZeta`, "
+        "`DirichletCharacter.LFunction` and `IsPrimitive`, and cover every modulus and every Dirichlet character. "
+        "No Dedekind zeta, Hecke or automorphic L-function is among the statements checked (the report). The "
+        "mirror's notes add a second judgement, against RH and GRH as `google-deepmind/formal-conjectures` stated "
+        "them before the announcement: a bridge proves its GRH equivalent to the primitive-character theorem, and "
+        "on a build of the published archive, Lean v4.33.1, con-leche `--compare` found both justified (a contributor's run; "
+        "`lake comparator` has not judged it).",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "2 · The code compiles", [
+        "All 175,187 modules of the archive as published compile with no errors on Lean and Mathlib v4.33.1. A "
+        "second build on another machine, in a sandbox with no network and the source read-only, gives an export "
+        "of the proof identical byte for byte (the report). The mirror's notes list independent complete builds, "
+        "with `Main.olean` identical to the author's checksum. The mirror has since deleted files the proof does "
+        "not use and moved to Lean v4.36.0; the checks here are of the archive as published.",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "3 · The code proves that statement", [
+        "A challenge file states the five theorems importing only Mathlib. con-leche `--compare` and its Rust port "
+        "con-ron `--compare` each find all five justified by the proof, and `#print axioms` gives only "
+        + ", ".join(f"`{a}`" for a in mirror["axioms"]) + ", the axioms `comparator.json` permits (the report).",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "4 · No bug in Lean's kernel is used", [
+        "Lean's kernel replays all 175,187 compiled modules, and so does lean4lean. Two independently written "
+        "kernels, nanoda and con-leche, accept the whole exported proof, 1,468,418 declarations (the report). "
+        "con-leche and con-ron come with a formal proof, relative to set theory, that they accept no false proof, "
+        "and the checks ran on an inert export, out of reach of the source (the joint statement).",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "Still running at the state drawn", [
+        "`lake comparator` end to end: its statement comparison and axiom check have passed, its kernel stage has "
+        "not finished. Lean's own kernel, default and paranoid, on the whole export: no verdict yet, though it has "
+        "accepted every module as compiled (the report, 22 November 16:20 UTC). The mirror's notes say "
+        "Comparator's output will be added when the run finishes.",
     ], "amber", size=S) + 20
     c.card(rx, ry, rw, "Read: this blueprint and diagram", [
-        "No Lean was built for the blueprint. Its `uses` edges were resolved from identifiers in the source text, "
-        "and its README says some are wrong and that every proof status reads *absent*. This diagram inherits "
-        "both limits. A node here says what a statement is, not that it is proved.",
+        "The checks are of the formal proof, not of the blueprint or this diagram. No Lean was built for the "
+        "blueprint: its `uses` edges were resolved from identifiers in the source text, and its README says some "
+        "are wrong and that every proof status reads “absent”. The archive as published compiled in full, so "
+        "Lean's kernel checked each of its declarations; whether the blueprint's words say what a declaration "
+        "says, and whether an arrow is right, no check covers.",
     ], "red", size=S)
     return c

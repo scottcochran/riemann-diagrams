@@ -73,8 +73,8 @@ both sets was regenerated.
 ## Measuring again
 
 ```bash
-uv run --with pillow tools/measure-page.py diagrams/R2-chapters-2026.11.22.svg
-uv run --with pillow tools/measure-page.py diagrams/R5-theta-2026.11.22.svg --width 1200
+uv run --with pillow tools/measure-page.py diagrams/R2-chapters-2026.11.23.svg
+uv run --with pillow tools/measure-page.py diagrams/R5-theta-2026.11.23.svg --width 1200
 ```
 
 The script needs `rsvg-convert` on the path and reads the poster's own SVG, so it measures the content against
@@ -88,5 +88,5 @@ Browsers draw the SVG as it is. To make a PNG in the light theme, `rsvg-convert`
 `prefers-color-scheme`, renders the light presentation attributes:
 
 ```bash
-rsvg-convert -w 2400 diagrams/R2-chapters-2026.11.22.svg -o R2.png
+rsvg-convert -w 2400 diagrams/R2-chapters-2026.11.23.svg -o R2.png
 ```

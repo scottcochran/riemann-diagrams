@@ -1,6 +1,6 @@
 {
  "F1": {
-  "file": "map-F1-definitions-2026.11.22.svg",
+  "file": "map-F1-definitions-2026.11.23.svg",
   "title": "What the stages pass to each other: the 24 definitions of the blueprint, how they are built from one another, and which chapters use each",
   "cards": 24,
   "arrows": 18,
@@ -35,7 +35,7 @@
   "links_ext": 1
  },
  "F2": {
-  "file": "map-F2-new-2026.11.22.svg",
+  "file": "map-F2-new-2026.11.23.svg",
   "title": "What is new: the 200 statements new in Alpöge's proof, where they sit, how they lean on each other, and what they take from the literature",
   "cards": 9,
   "arrows": 11,
@@ -55,7 +55,7 @@
   "links_ext": 46
  },
  "F3": {
-  "file": "map-F3-modules-2026.11.22.svg",
+  "file": "map-F3-modules-2026.11.23.svg",
   "title": "The proof as code: the blueprint's nine chapters against the formalisation's modules, and what each statement stands for in Lean",
   "cards": 10,
   "arrows": 0,
@@ -65,7 +65,7 @@
   "links_ext": 6
  },
  "F4": {
-  "file": "map-F4-literature-2026.11.22.svg",
+  "file": "map-F4-literature-2026.11.23.svg",
   "title": "The proof as literature: the 209 references of the blueprint on a timeline, which statements cite each, and what falls if one is wrong",
   "cards": 0,
   "arrows": 0,
@@ -75,7 +75,7 @@
   "links_ext": 329
  },
  "F5": {
-  "file": "map-F5-sections-2026.11.22.svg",
+  "file": "map-F5-sections-2026.11.23.svg",
   "title": "The sections, the middle level: the 58 sections of the blueprint as cards, chapter by chapter, and the proof uses between them",
   "cards": 66,
   "arrows": 78,
@@ -144,7 +144,7 @@
   "links_ext": 69
  },
  "F6": {
-  "file": "map-F6-depth-2026.11.22.svg",
+  "file": "map-F6-depth-2026.11.23.svg",
   "title": "Depth as geometry: every statement of the blueprint on one wheel, rings by distance from the main theorems, sectors by chapter",
   "cards": 0,
   "arrows": 0,
@@ -154,7 +154,7 @@
   "links_ext": 6
  },
  "R1": {
-  "file": "map-R1-main-theorems-2026.11.22.svg",
+  "file": "map-R1-main-theorems-2026.11.23.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",
   "cards": 24,
   "arrows": 24,
@@ -188,7 +188,7 @@
   "links_ext": 7
  },
  "R2": {
-  "file": "map-R2-chapters-2026.11.22.svg",
+  "file": "map-R2-chapters-2026.11.23.svg",
   "title": "The proof, chapter by chapter: what each chapter of the blueprint proves, and which chapters use which",
   "cards": 9,
   "arrows": 17,
@@ -208,7 +208,7 @@
   "links_ext": 34
  },
  "R3": {
-  "file": "map-R3-zero-free-2026.11.22.svg",
+  "file": "map-R3-zero-free-2026.11.23.svg",
   "title": "From prime sums to the zero-free half-plane: the analytic half of the proof, lemma by lemma",
   "cards": 24,
   "arrows": 19,
@@ -243,7 +243,7 @@
   "links_ext": 8
  },
  "R4": {
-  "file": "map-R4-families-2026.11.22.svg",
+  "file": "map-R4-families-2026.11.23.svg",
   "title": "Families of definite unitary groups: every statement of the chapter, and what each one rests on",
   "cards": 44,
   "arrows": 44,
@@ -298,7 +298,7 @@
   "links_ext": 116
  },
  "R5": {
-  "file": "map-R5-theta-2026.11.22.svg",
+  "file": "map-R5-theta-2026.11.23.svg",
   "title": "Theta lifts, periods and the Siegel-Weil formula: every statement of the chapter, and what each one rests on",
   "cards": 61,
   "arrows": 90,
@@ -370,7 +370,7 @@
   "links_ext": 131
  },
  "R6": {
-  "file": "map-R6-heights-2026.11.22.svg",
+  "file": "map-R6-heights-2026.11.23.svg",
   "title": "Heights and the covolume bound: every statement of the chapter, and what each one rests on",
   "cards": 32,
   "arrows": 55,
@@ -413,7 +413,7 @@
   "links_ext": 86
  },
  "R7": {
-  "file": "map-R7-sha-2026.11.22.svg",
+  "file": "map-R7-sha-2026.11.23.svg",
   "title": "The Tate-Shafarevich bound: every statement of the chapter, and what each one rests on",
   "cards": 35,
   "arrows": 45,
@@ -459,7 +459,7 @@
   "links_ext": 119
  },
  "R8": {
-  "file": "map-R8-galois-2026.11.22.svg",
+  "file": "map-R8-galois-2026.11.23.svg",
   "title": "Galois representations: every statement of the chapter, and what each one rests on",
   "cards": 38,
   "arrows": 62,
@@ -508,7 +508,7 @@
   "links_ext": 109
  },
  "T1": {
-  "file": "map-T1-trace-deepest-2026.11.22.svg",
+  "file": "map-T1-trace-deepest-2026.11.23.svg",
   "title": "The deepest chain: from a count of lattices by isometries up to the Riemann Hypothesis",
   "cards": 11,
   "arrows": 10,
@@ -530,7 +530,7 @@
   "links_ext": 10
  },
  "T2": {
-  "file": "map-T2-trace-landau-2026.11.22.svg",
+  "file": "map-T2-trace-landau-2026.11.23.svg",
   "title": "The chain to Landau's theorem: from a theorem of 1905 up to the Riemann Hypothesis",
   "cards": 6,
   "arrows": 5,

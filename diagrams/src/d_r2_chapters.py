@@ -227,7 +227,7 @@ def build():
         by_ch = ", ".join(f"{v} in `{c_}`" for c_, v in sorted(chs.items(), key=lambda x: -x[1]))
         trows.append([k, n["title"], rich(n.get("source") or "—"), bp.PROV_LABEL[n.get("provenance")],
                       f"{len(rev[k])}: {by_ch}"])
-    tw = [330, 520, 620, 200]
+    tw = [350, 520, 600, 200]
     ht = c.table(X0, y, [("Statement", tw[0], {"mono": True}), ("Title", tw[1]), ("Source", tw[2]),
                          ("Provenance", tw[3]), ("Citing statements", WW - sum(tw) - 760)], trows, size=S)
     kx = X1 - 700
