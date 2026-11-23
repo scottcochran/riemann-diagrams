@@ -1,9 +1,9 @@
 # Diagrams of the theorem dependency graph of Levent Alpöge's Lean proof of the Riemann Hypothesis
 
-Sixteen generated SVG posters of the proof, drawn for teaching. They have clickable links, adapt to
+Nineteen generated SVG posters of the proof, drawn for teaching. They have clickable links, adapt to
 light and dark, and are meant to be opened on their own and zoomed.
 
-Nothing here reads or builds the Lean source. The graph is read from the
+Nothing here builds the Lean source. The graph is read from the
 [riemann-blueprint](https://github.com/chrisflav/riemann-blueprint): 416 statements, each one a
 Markdown file with TOML front matter naming its Lean declarations and the
 statements it `uses`, plus `lean-facts.json`, which gives a signature, file
@@ -61,11 +61,15 @@ Three families; the table below names each poster.
 
 R4 to R8 are laid out by `src/chapter.py` from the chapter's own edges: a card
 sits above the cards whose proofs use it, section heads and the chapter
-theorem get full cards, the rest short ones.
+theorem get full cards, the rest short ones. An arrow the formal proof bears
+out only by way of other statements is drawn thin, one it meets only beside
+its target grey and dotted, one it does not bear out red and dotted, and one
+with no Lean at an end faint and dotted; a card on each chapter poster reads
+the chapter against the formal proof.
 
 ## Map mode
 
-[map/](map/) holds the same sixteen posters built with `--map`, named
+[map/](map/) holds the same nineteen posters built with `--map`, named
 `map-<id>-<slug>-<date>.svg`: nothing of the blueprint's text and nothing of
 the formal proof's source is quoted. Each card
 keeps the statement's title, id, kind, provenance, Lean name and file location,
@@ -93,7 +97,11 @@ from `src/papers.toml`: the blueprint records the citation, not the link.
 
 No Lean was built, for the blueprint or for the diagrams. The blueprint's
 `uses` edges were resolved from the source text and some are wrong; this is
-written on both posters. What others have checked of the formal proof is on
+written on both posters. Each edge is checked against the references of the
+published formal proof, read from Sutherland's export of it rather than from a
+build (`src/lean-edges.json`, [EDGES.md](EDGES.md)). The chapter and trace
+posters draw each arrow by its verdict, and F7 to F9 are drawn from that
+export. What others have checked of the formal proof is on
 R1's band 5, from the mirror's verification notes and the three pages
 recorded in `src/checks.toml`: Sutherland's verification files, the Lean and
 Mathlib communities' joint statement and the Xena post whose four questions
@@ -114,9 +122,9 @@ say otherwise.
 
 | Poster | What must match the module's `EXPECTED` |
 |---|---|
-| R1, R3 to R8 | the proof uses between the drawn statements are exactly the arrows listed; on R3 to R8, also that the results proofs name in their text without listing them as uses are the ones in `HYPOTHESES` |
+| R1, R3 to R8 | the proof uses between the drawn statements are exactly the arrows listed; on R3 to R8, also that the results proofs name in their text without listing them as uses are the ones in `HYPOTHESES`, that each arrow's verdict against the formal proof is the one in `VERDICTS` (R3: `VERDICT`), and that what the Lean does with each dashed arrow's source is the one in `HYPOTHESES_LEAN` |
 | R2 | the `uses` between chapters |
-| T1, T2 | the chain is exactly the path listed |
+| T1, T2 | the chain is exactly the path listed, and each link's verdict against the formal proof is the one in `VERDICTS` |
 | F1 | the `uses` between definitions |
 | F2 | the proof uses between the new statements of different chapters, and the tops of the new work |
 | F3 | the declaration, kind, module and per-chapter counts of `lean-facts.json`; and no declaration is named by two statements |
@@ -142,6 +150,11 @@ The build also fails if:
   does not list;
 - a link out is not under the blueprint or the mirror at its pinned commit,
   and is not a paper of `src/papers.toml` or a page of `src/checks.toml`;
+- `src/lean-edges.json`, `src/lean-hypotheses.json` or `src/lean-weight.json`
+  no longer hashes to `LEAN_EDGES_SHA256`, `LEAN_HYPOTHESES_SHA256` or
+  `LEAN_WEIGHT_SHA256` (in `src/bp.py`), or was read from other commits than
+  `BP_COMMIT` and `MIRROR_PIN`, so that a rebuilt file is read before it is
+  drawn;
 - the mirror's `verification/NOTES.md` no longer hashes to `NOTES_SHA256`, or
   a page of `src/checks.toml` records another reading than `CHECKS_SHA256`
   (both in `src/bp.py`), so that R1's band 5 is re-read against the new text;

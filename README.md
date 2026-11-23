@@ -4,12 +4,15 @@ Diagrams of the theorem dependency graph of Levent Alpöge's Lean proof of the
 Riemann Hypothesis: two generated teaching posters, and Graphviz diagrams of
 the dependency tree and of single chains of reductions.
 
-Nothing here reads or builds the Lean source. The graph is read from the
+Nothing here builds the Lean source. The graph is read from the
 [riemann-blueprint](https://github.com/chrisflav/riemann-blueprint): 416 statements, each one a
 Markdown file with TOML front matter naming its Lean declarations and the
 statements it `uses`, plus `lean-facts.json`, which gives a signature, file
 and line for every Lean name. The blueprint was itself reconstructed by a
 static analysis of the formal proof (see its README for the limits of that).
+Its edges are then checked against the references of the published formal
+proof, read from Sutherland's export of it
+([diagrams/EDGES.md](diagrams/EDGES.md)).
 
 ## Posters
 
@@ -173,7 +176,10 @@ Depth | Statements | Published | Modified | New
 
 The edges come from the blueprint's `uses` lists, which were resolved from
 identifiers in the Lean source text without building it, so some edges are
-wrong and the blueprint records no proof status. A box here says which Lean
+wrong and the blueprint records no proof status. The chapter and trace posters
+draw each edge by its verdict against the formal proof's references, and F7
+lays the verdicts out chapter by chapter; a verdict says whether one
+statement's Lean reaches another's, not whether either is proved. A box here says which Lean
 declarations a statement stands for. Whether they are proved is a question for
 the kernel checks, which R1's band 5 reports from the mirror's
 `verification/NOTES.md` and the pages of `diagrams/src/checks.toml`: the
