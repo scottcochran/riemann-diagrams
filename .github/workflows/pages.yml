@@ -85,17 +85,14 @@ jobs:
           # resolves on the site under diagrams/; anything else (a Markdown file, a directory, the NOTICE) goes to
           # GitHub at the tag, so that nothing on the page lands on a 404.
           md = open("diagrams/README.md", encoding="utf-8").read()
-          # The home page says less than the README: the opening paragraph on the posters' form and the page grey
-          # is dropped, and the line on about.md goes to the foot. Both are found by their first words, and the
-          # build fails if either has moved, so that a README edit is seen here rather than silently kept.
+          # The home page is the README as it is, but for one move: the line on about.md, if the README has one,
+          # goes to the foot. It is found by its first words; two such paragraphs fail the build.
           paras = md.split("\n\n")
-          def take(prefix):
-              hits = [p for p in paras if p.startswith(prefix)]
-              if len(hits) != 1:
-                  sys.exit(f"pages: expected one paragraph of diagrams/README.md starting {prefix!r}, found {len(hits)}")
-              paras.remove(hits[0]); return hits[0]
-          take("Generated SVG posters of the proof")
-          paras.append(take("[about.md]"))
+          about = [p for p in paras if p.startswith("[about.md]")]
+          if len(about) > 1:
+              sys.exit("pages: more than one paragraph of diagrams/README.md starts with [about.md]")
+          if about:
+              paras.remove(about[0]); paras.append(about[0])
           md = "\n\n".join(paras)
           def target(m):
               t = m.group(1)
@@ -121,6 +118,7 @@ jobs:
                  f'<title>Riemann Hypothesis proof diagrams, {tag}</title>',
                  '<style>body{font:16px/1.5 -apple-system,Helvetica,Arial,sans-serif;max-width:56rem;margin:2rem auto;'
                  'padding:0 1rem;color:#1f2328;background:#fff} li{margin:.4rem 0} h1,h2,h3{line-height:1.25}'
+                 'img{max-width:100%;height:auto}'
                  'code{font-size:.9em;background:#f3f4f6;padding:.1em .3em;border-radius:4px}'
                  'pre{background:#f3f4f6;padding:.8rem;overflow:auto} pre code{background:none;padding:0}'
                  'table{border-collapse:collapse;display:block;overflow:auto}'

@@ -1,55 +1,40 @@
-# Diagrams of the Lean proof of the Riemann Hypothesis
+# Diagrams of the theorem dependency graph of Levent Alpöge's Lean proof of the Riemann Hypothesis
 
-Generated SVG posters of the proof, drawn for teaching. They adapt to light
-and dark, and are meant to be opened on their own and zoomed. In the light
-theme the page behind the cards is a grey matched to the mean luminance of the
-content, 93% white; [PAGE.md](PAGE.md) records how that was measured and how
-to measure it again.
+Sixteen generated SVG posters of the proof, drawn for teaching. They have clickable links, adapt to
+light and dark, and are meant to be opened on their own and zoomed.
 
-[about.md](../narrative/about.md) is a short note on what these diagrams are
-and who stands behind them.
+Nothing here reads or builds the Lean source. The graph is read from the
+[riemann-blueprint](https://github.com/chrisflav/riemann-blueprint): 416 statements, each one a
+Markdown file with TOML front matter naming its Lean declarations and the
+statements it `uses`, plus `lean-facts.json`, which gives a signature, file
+and line for every Lean name. The blueprint was itself reconstructed by a
+static analysis of the formal proof (see its README for the limits of that).
 
 ## The posters
 
-Sixteen posters in three families. The R posters read the proof at one level:
-its theorems, its chapters, one chapter's lemmas. The T posters follow one
-chain of reductions as cards. The F posters put the proof in another frame:
-its definitions, its provenance, its code, its literature, its sections, its
-depth.
+**Start here.**
+- [R2](R2-chapters-2026.11.22.svg) for orientation
+- [T2](T2-trace-landau-2026.11.22.svg) for the analytic reduction
+- [R3](R3-zero-free-2026.11.22.svg) for that chapter in detail
+- [F6](F6-depth-2026.11.22.svg) for every statement on one page
+- [F2](F2-new-2026.11.22.svg) for what is new
+- [F4](F4-literature-2026.11.22.svg) for a reference and what rests on it
 
-On R1, R3 to R8, T1 and T2 each node is one blueprint statement: the Lean
-signature from `lean-facts.json`, the statement in words, its proof as
-bullets, and what it uses and is used by. Arrows are the proof uses between
-the drawn statements.
+Three families; the table below names each poster.
 
-Every statement card, and every chapter card on R2 and F2 and section card on
-F5, carries its blueprint id as the `id` of the group around it, so that
-`R3-zero-free-2026.11.22.svg#thm-landau-windows` opens the poster at that
-card when the SVG is opened on its own, as the Pages site serves it (tested
-in Chromium). A statement drawn on more than one poster has the same id on
-each; the manifest lists each poster's anchors.
+- Read the proof at one level each: [R1](R1-main-theorems-2026.11.22.svg),
+  [R2](R2-chapters-2026.11.22.svg), [R3](R3-zero-free-2026.11.22.svg),
+  [R4](R4-families-2026.11.22.svg), [R5](R5-theta-2026.11.22.svg),
+  [R6](R6-heights-2026.11.22.svg), [R7](R7-sha-2026.11.22.svg),
+  [R8](R8-galois-2026.11.22.svg)
+- Follow one chain as a proof: [T1](T1-trace-deepest-2026.11.22.svg) the
+  deepest, [T2](T2-trace-landau-2026.11.22.svg) to Landau's theorem
+- View from different frames of reference: [F1](F1-definitions-2026.11.22.svg),
+  [F2](F2-new-2026.11.22.svg), [F3](F3-modules-2026.11.22.svg),
+  [F4](F4-literature-2026.11.22.svg), [F5](F5-sections-2026.11.22.svg),
+  [F6](F6-depth-2026.11.22.svg)
 
-An id set in code that names a card on the same poster is a link to that
-card, in a Stated with, Proof uses or Used by footer, in a card's text or in
-a key; it underlines on hover. Links work when the SVG is opened on its own,
-as the Pages site serves it. Inside an `<img>`, as the root README embeds
-R1, or in GitHub's file viewer, a poster draws the same and links nowhere.
-
-An id with no card on the poster links to its card on the poster that draws
-it in full: a statement's chapter poster, R3 to R8, first, then F1, R1, the
-traces, F5, R2 and F2, in that order. A chapter card on R2 or F2 links, by
-its frame and title, to that chapter's poster. The targets are read from the
-set's `manifest.json`, which lists every poster's anchors, so a map poster
-links only to map posters and a reader to readers, and the relative links
-resolve in the tree, on the Pages site and among a release's assets alike.
-An id with no card on any poster links to the statement's file in the
-blueprint repository at `BP_COMMIT`, the commit the posters were drawn from,
-so that a link from an old release stays true; the blueprint path at the
-foot of a card links there too, and a chapter card's to its directory. The
-Lean name and location at the foot of a card link to the declaration's file
-and line in the mirror at `MIRROR_COMMIT`. These links leave the set, so
-they are absolute, and never to the Pages site, which holds one release at
-a time.
+[![The proof, chapter by chapter](R2-chapters-2026.11.22.svg)](R2-chapters-2026.11.22.svg)
 
 | Id | Poster | What it shows |
 |---|---|---|
@@ -151,6 +136,46 @@ The build also fails if:
 - a title or a signature does not fit its card, or two texts overlap. The ids
   on F6's wheel are set along the radius and placed by a spacing rule of their
   own, not by the overlap check, which knows only upright text.
+
+## The posters in detail
+
+On R1, R3 to R8, T1 and T2 each node is one blueprint statement: the Lean
+signature from `lean-facts.json`, the statement in words, its proof as
+bullets, and what it uses and is used by. Arrows are the proof uses between
+the drawn statements.
+
+In the light theme the page behind the cards is a grey matched to the mean
+luminance of the content, 93% white; [PAGE.md](PAGE.md) records how that was
+measured and how to measure it again.
+
+Every statement card, and every chapter card on R2 and F2 and section card on
+F5, carries its blueprint id as the `id` of the group around it, so that
+`R3-zero-free-2026.11.22.svg#thm-landau-windows` opens the poster at that
+card when the SVG is opened on its own, as the Pages site serves it (tested
+in Chromium). A statement drawn on more than one poster has the same id on
+each; the manifest lists each poster's anchors.
+
+An id set in code that names a card on the same poster is a link to that
+card, in a Stated with, Proof uses or Used by footer, in a card's text or in
+a key; it underlines on hover. Links work when the SVG is opened on its own,
+as the Pages site serves it. Inside an `<img>`, as the root README embeds
+R1, or in GitHub's file viewer, a poster draws the same and links nowhere.
+
+An id with no card on the poster links to its card on the poster that draws
+it in full: a statement's chapter poster, R3 to R8, first, then F1, R1, the
+traces, F5, R2 and F2, in that order. A chapter card on R2 or F2 links, by
+its frame and title, to that chapter's poster. The targets are read from the
+set's `manifest.json`, which lists every poster's anchors, so a map poster
+links only to map posters and a reader to readers, and the relative links
+resolve in the tree, on the Pages site and among a release's assets alike.
+An id with no card on any poster links to the statement's file in the
+blueprint repository at `BP_COMMIT`, the commit the posters were drawn from,
+so that a link from an old release stays true; the blueprint path at the
+foot of a card links there too, and a chapter card's to its directory. The
+Lean name and location at the foot of a card link to the declaration's file
+and line in the mirror at `MIRROR_COMMIT`. These links leave the set, so
+they are absolute, and never to the Pages site, which holds one release at
+a time.
 
 ## Regenerating
 
