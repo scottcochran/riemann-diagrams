@@ -5,9 +5,9 @@ same day as Phase 1, the five chapter posters that follow it, Phases 2, 3, 5, 6 
 not a record: nothing below is built unless the README says so. Phases 1, 2, 3, 5, 6 and 7 are done, Phase 6
 with two of its eight posters waiting on things outside this repository, Phase 7 released as `v0.2.1`, the
 first release whose posters link; what is left is Phase 4, two hand steps under Phase 5, and the decisions under
-"Open" at the end, of which 1 and 6 are taken. Phase 4 began on 2026.11.23: its edge data is done and R3 shows
-it; the other posters follow, and the statuses wait on the mirror's Comparator run. Phase 8, the frames the
-formal proof's references make possible, was planned the same day.
+"Open" at the end, of which 1 and 6 are taken. Phase 4 began on 2026.11.23: its edge data is done and every
+chapter and trace poster shows it; the statuses wait on the mirror's Comparator run. Phase 8, the frames the
+formal proof's references make possible, was planned and done the same day: F7 to F10.
 
 ## Goal
 
@@ -533,6 +533,14 @@ statements, not the declaration graph, and stays well under a megabyte.
   230,000 declarations apart, and ten of the blueprint's Lean names are not in the published proof. A poster
   per chapter of what the later tree dropped, and of which blueprint names point at nothing. It is Phase 6's
   "Change between pins" for the Lean. Needs `lean-drift.json`.
+  Done 2026.11.23 as one poster, F10 (`d_f10_drift.py`), rather than one per chapter; `tools/lean-edges/drift.py`
+  writes the file. Comparing like with like meant closing the cache graph from the same five theorems as the
+  export. Names had to be sorted by kind, because the compiler's auxiliaries and private names change with
+  the Lean version: 199,833 auxiliaries left and 193,811 private names joined.
+  Of the user-written names, 8,324 left the closure, 7,693 of them still compiled
+  but unused, and 659 joined. Of the blueprint's Lean names, 5 are gone
+  from the later tree. The build checks the counts by kind, the user-written names that left and the names'
+  statuses. With 8e, Phase 8 is done.
 
 Order: 8a, then 8b, which need nothing new; then 8c, which has the most to say about the mathematics; 8d and 8e
 as wanted. Releases follow Phase 5's table: a batch of 8a's posters changes what they are verified against, a
