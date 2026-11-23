@@ -41,10 +41,10 @@ MIRROR = pathlib.Path(os.environ.get("RIEMANN_MIRROR") or ROOT.parent / "leanpro
 # at MIRROR_COMMIT, where the mirror has since deleted files and moved lines.
 BP_COMMIT = "137d976"
 MIRROR_PIN = "8c90877c"
-MIRROR_COMMIT = "c592e91eb8"
+MIRROR_COMMIT = "c900e67c2f"
 # verification/NOTES.md in the mirror, which band 5 of R1 paraphrases. The build fails if the file no longer
 # hashes to this, so that the three cards are re-read against the new text rather than left standing.
-NOTES_SHA256 = "356af9964cd6b989987fac73a23799e6ac0b5ae2b10e9715ea79a41f4b06a789"
+NOTES_SHA256 = "26bbad4a892d241b19aa9ec05f56c45334a7e73d8650b4b4e18f61e627bf685e"
 # The pages band 5 of R1 rests on besides the notes (src/checks.toml): the hash of each passage as it was read when
 # the cards were written. The build fails if checks.toml records another, which tools/check-sources.py --update
 # writes when a page has changed, so that the cards are re-read against the new text and these bumped.
@@ -212,8 +212,12 @@ def read_mirror():
             raise ValueError(f"Main.lean: {t['name']} is stated with {t['prop']}, which Statements.lean does not define")
     if set(theorems[i]["name"] for i in range(len(theorems))) != set(MAIN_LEAN_THEOREMS):
         raise ValueError("Main.lean's theorems are not the ones blueprint_graph.MAIN_LEAN_THEOREMS maps to nodes")
+    toolchain = (MIRROR / "lean-toolchain").read_text(encoding="utf-8").strip()
+    m = re.fullmatch(r"leanprover/lean4:(v[\w.-]+)", toolchain)
+    if not m:
+        raise ValueError(f"lean-toolchain: cannot parse {toolchain!r}")
     return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"], "notes_sha256": digest,
-            "commit": git_at(MIRROR, MIRROR_COMMIT, "the mirror")}
+            "lean": m.group(1), "commit": git_at(MIRROR, MIRROR_COMMIT, "the mirror")}
 
 
 def read_checks():
