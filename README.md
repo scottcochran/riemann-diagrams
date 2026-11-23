@@ -153,6 +153,7 @@ Depth | Statements | Published | Modified | New
 | `graphs/trace_proof.py` | prints a single chain of reductions, and draws it with Graphviz on request |
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
+| `derived/` | dated, frozen write-ups; [its README](derived/README.md) lists them |
 
 ## What the graph is not
 

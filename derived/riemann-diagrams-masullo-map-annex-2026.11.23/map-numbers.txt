@@ -1,0 +1,86 @@
+page sha256  6b97f3629f5ee20422d33f661e340249de1732ea46156dc8c0efd94f4915934d
+generated    2026-11-23T19:06:04Z
+commit       d37dfd732efaeb5d4fcf7de902179d88fe448830
+totals       {"defs": 1756, "thms": 11015, "proved": 10704, "solid": 9882, "open": 311, "claimed": 112, "unfiled": 12, "paper": 3801, "paperProved": 3497, "sections": 107, "stated": 86, "digesting": 1, "ready": 0, "blocked": 20, "issuesOpen": 300, "issuesClosed": 3529}
+sections     {'stated': 86, 'blocked': 20, 'digesting': 1, 'extra': 3}
+needs edges  144
+paper items  1617
+declarations 17204 {'t:proved': 14773, 'd:def': 1843, 'a:def': 120, 's:def': 22, 'n:def': 134, 't:open': 187, 'i:def': 1, 't:claimed': 112, 't:unfiled': 12}
+edges        64878 in statements, 57799 in proofs only
+Printed.*    887 declarations, 545 of them theorems
+history      97 runs, 2026-11-20T22:47:09Z to 2026-11-23T19:06:04Z
+merged       1488 pull requests by 78 accounts other than the owner
+
+errata       748 {'F': 272, 'I': 401, 'M': 50, 'R': 25}
+by check     {'F:Lean': 84, 'F:reviewed': 187, 'F:integrator': 1, 'I:reviewed': 401, 'M:reviewed': 50, 'R:reviewed': 25}
+no repair    28 rows naming 45 entries
+linked       259 entries name a Printed.* declaration the map found
+
+chapter      sections  defs  thms proved  solid |   F    I    M    R | no repair
+App. A              6   142   581    573    573 |   13   17    0    0 |    0
+App. B              9   105   707    681    666 |   24   33    8    1 |    0
+App. C              8   210   971    971    971 |   11   22    4    0 |    0
+App. D              6   227  1313   1311   1305 |    4   16    3    0 |    0
+App. E             18    10    29      0      0 |    0    0    3    3 |    0
+Ch. 1               1    17   125    121    111 |    9    8    1    1 |    2
+Ch. 2               5    61   562    562    562 |    3   17    1    0 |    0
+Ch. 3               5   151   811    811    811 |    3    3    0    1 |    0
+Ch. 4               6    92   642    636    614 |    8    8    2    0 |    0
+Ch. 5               6   141  1182   1130    921 |   28   54    5    0 |    3
+Ch. 6               3    45   346    332    286 |   16   25    1    0 |    2
+Ch. 7               7   166   975    915    725 |   59   61    3    0 |    8
+Ch. 8               4    31    65      0      0 |    0    1    0    5 |    0
+Ch. 9               3    52   373    373    373 |   11   12    5    2 |    0
+Ch. 10              5   125   851    835    711 |   43   40    2    0 |    4
+Ch. 11              5    84   532    516    363 |   25   41    4    1 |    3
+Ch. 12              5    42   315    310    276 |   12   39    3    2 |    6
+Ch. 13              2     5    46     45     32 |    2    4    1    0 |    0
+Ch. 14              3     3     7      0      0 |    0    0    3    9 |    0
+support             3   411  4651   4651   4651 |    0    0    0    0 |    0
+unplaced            0     0     0      0      0 |    1    0    1    0 |    0
+
+support groups:
+  ForMathlib: General lemmas missing from Mathlib, 578 theorems
+  External: Vendored third-party Lean, 4069 theorems
+  Other files: Files that belong to no section issue, 4 theorems
+
+where no repair is known:
+  ch05  I123                                          Theorem 5.2.1.1(1), p. 230: the S-local θ-quotients are strict LF-spaces
+  ch05  I138 I139                                     Lemma 5.3.1.5, p. 242: closed embeddings on the θ-quotients
+  ch05  I168                                          Theorem 5.4.1.1, (5.4.1.19)–(5.4.1.20), pp. 272–273: from finite principal parts to the full θ-quotient
+  ch06  I198                                          Theorem 6.3.2.1(1), (6.3.2.11)–(6.3.2.13), pp. 305–306: gluing the two half-plane pieces, and the closed global Mellin image
+  ch06  I200                                          Theorem 6.3.2.1(1), p. 308: division by the outside Euler product
+  ch07  I210                                          Theorem 7.1.2.3, pp. 318, 322–323: convergence of the separately indexed series
+  ch07  I226                                          Theorem 7.3.1.2(1), p. 341: the range of the S-local principal value equals the pole bound
+  ch07  I230                                          Theorem 7.3.1.6(2)–(3), pp. 345, 349–350: arbitrary enumerations of the polar system are Schauder bases
+  ch07  F127 I242                                     Theorem 7.3.3.4, pp. 360–363: the Paley–Wiener orbital bases and their lifts
+  ch07  I246                                          Theorem 7.4.1.1(2), (7.4.1.2), pp. 366–367: strong nuclearity on the spectral quotient
+  ch07  I247                                          Theorem 7.4.2.1(2), p. 367: nuclearity on the prime-orbital quotient
+  ch07  I252                                          Theorem 7.4.3.1(2)–(5), (7.4.3.11), pp. 371–372: the archimedean jets as a basis
+  ch07  I258                                          Theorem 7.5.0.1, pp. 376–378: transfer of the basis, and surjectivity
+  ch10  F155 I274 I275                                Theorems 10.2.1.1 and 10.2.2.1, pp. 441–443, 446: the spectral Markushevich bases
+  ch10  F158 I277                                     Remark 10.2.1.5, p. 444, and Proposition 10.2.2.2, pp. 446–447: normalized bases and the uniform bound on strips
+  ch10  I314                                          Theorems 10.3.1.1(1) and 10.3.2.1(1), (10.3.1.23), (10.3.2.1), pp. 448, 452–455: trace-norm convergence of the rectangular partial sums
+  ch10  I328 F191 I332 I334 M26                       Theorems 10.4.2.1, 10.4.2.2 and 10.4.2.8, pp. 459–464, and Theorem 10.4.3.5, pp. 471–473: nuclearity on the quotient, and the trace of convolution after projection
+  ch11  I344 I350                                     Theorem 11.1.2.1(2)–(3), pp. 481–483: strictness and density for the S-local carvings
+  ch11  I288 I290                                     Proposition 11.2.0.1, p. 484, and Theorem 11.2.0.2, pp. 485–486: the orbital Markushevich bases
+  ch11  M50                                           (11.3.1.3)–(11.3.1.4), p. 494: the Paley–Wiener subquotients of the global stage and the lifts of their bases
+  ch12  I292                                          Proposition 12.2.2.2(2), p. 508, as used in Theorem 11.3.2.1, p. 495: the individual shell weights
+  ch12  M25                                           §12.3, p. 514: comparison of the global trace with the S-local trace
+  ch12  I395                                          Theorem 12.4.1.1, p. 515: nuclearity, and the reduction of the trace to $E$
+  ch12  I398                                          Theorem 12.4.1.1, pp. 515–517: the kernel on the quotient and its diagonal
+  ch12  I341 I351                                     Theorem 12.5.1.1, (12.5.1.4), p. 520, with Definition 10.4.3.7, p. 473: the diagonal of the smoothened strip kernel
+  ch12  M25 I292 I341 I351 I353 I354 I368 I369        Theorem 12.5.1.1, pp. 519–520: the zeros outside the strip
+  ch01  F255 R2                                       §1.4.3, p. 29: the separate limit of the spectral terms
+  ch01  F256 I376                                     §1.4.5, pp. 29–30: holomorphic continuation of the combined terms
+
+notes the generator printed:
+  - RiemannMasullo/AppB_AnalyticNT/Sec4b_RealHaar_Printed.lean is filed under #2199 by its name, but most of its page references fall in #4507.
+  - RiemannMasullo/AppC_LCTVS/Sec2b_Printed.lean is filed under #7 by its name, but most of its page references fall in #5.
+  - RiemannMasullo/Ch03_IdelicZeta/RatEmptyFourier.lean belongs to no section issue; shown under Other files.
+  - RiemannMasullo/Ch04_PeriodicSchauderBases/Sec4b.lean is filed under #34 by its name, but most of its page references fall in #33.
+  - RiemannMasullo/Ch10_TraceSpectral/Sec2_SpectralProof_Printed.lean is filed under #4496 by its name, but most of its page references fall in #4498.
+  - #5224 is still open although `spectralStripConvolution_traceCauchy` has no sorry at this commit; `scripts/issues.py --apply` will close it.
+  - 12 theorems have a sorry but no open proof issue yet (`scripts/issues.py --apply` opens them): `finiteConnesWeilPrincipalValue_eq_finitePart`, `summable_bruhatMellin_of_polynomialCount`, `archimedeanWeightedSchwartz_exists_zero_extension`, `sAdelePolarFree_quasiCharacter_mul_clm`, `globalThetaPrincipalValue_extension`, `spectralStripConvolution_traceCauchy_compressed_diagonal`, `sLocalPolarOrbital_bases_of_laurent_bounds_primal_summable`, `sLocalFourierOrbital_bases`, `sLocalGamma_all_coeff_surjective`, `archNuclearityJet_basis_schauder`, `archNuclearityQuotient_jetEquiv_inverse_continuous`, `introTraceApprox_exists_bruhat`.
+  - #6753 (§B.7.2) is closed but no declarations were found for it.
+  - #6762 (§E.1.2) is labelled blocked, but everything it needs is closed; `scripts/issues.py --apply` will unblock it.
