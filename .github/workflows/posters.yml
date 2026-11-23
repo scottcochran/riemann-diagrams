@@ -65,6 +65,7 @@ jobs:
             src/Main.lean
             src/Statements.lean
             comparator.json
+            lean-toolchain
             verification/NOTES.md
           sparse-checkout-cone-mode: false
 
