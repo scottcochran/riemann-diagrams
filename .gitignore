@@ -21,3 +21,6 @@ graphs/riemann_full
 .DS_Store
 .vscode/
 .idea/
+
+# Lean build output of tools/lean-edges (the deps reader)
+tools/lean-edges/.lake/

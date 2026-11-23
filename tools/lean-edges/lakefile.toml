@@ -1,0 +1,5 @@
+name = "grhdeps"
+
+[[lean_exe]]
+name = "deps"
+root = "Deps"
