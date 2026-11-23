@@ -32,7 +32,7 @@ Three families; the table below names each poster.
 - View from different frames of reference: [F1](F1-definitions-2026.11.23.svg),
   [F2](F2-new-2026.11.23.svg), [F3](F3-modules-2026.11.23.svg),
   [F4](F4-literature-2026.11.23.svg), [F5](F5-sections-2026.11.23.svg),
-  [F6](F6-depth-2026.11.23.svg)
+  [F6](F6-depth-2026.11.23.svg), [F7](F7-verdicts-2026.11.23.svg)
 
 [![The proof, chapter by chapter](R2-chapters-2026.11.23.svg)](R2-chapters-2026.11.23.svg)
 
@@ -54,6 +54,7 @@ Three families; the table below names each poster.
 | F4 | [The proof as literature](F4-literature-2026.11.23.svg) | The 209 references of the blueprint on a timeline by decade, each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; and the references no statement cites. Each title links to the paper, by DOI where it has one; each id to the blueprint's entry. |
 | F5 | [The sections, the middle level](F5-sections-2026.11.23.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section above the sections whose proofs use it, with arrows labelled by the number of proof uses between them. A card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. |
 | F6 | [Depth as geometry](F6-depth-2026.11.23.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. |
+| F7 | [The blueprint against the Lean](F7-verdicts-2026.11.23.svg) | Every arrow of the blueprint checked against the references of the published formal proof (`src/lean-edges.json`, `EDGES.md`): a matrix of chapter against chapter with the arrows borne out over those that can be judged, a matrix of the uses the Lean makes that no arrow records, the statements the arrows not borne out concentrate in and those whose Lean uses most beyond their arrows, and each statement's depth from the main theorems in the blueprint against its depth in the Lean. |
 
 R4 to R8 are laid out by `src/chapter.py` from the chapter's own edges: a card
 sits above the cards whose proofs use it, section heads and the chapter
@@ -119,6 +120,7 @@ say otherwise.
 | F4 | the reference count, year range and most-cited references |
 | F5 | the proof uses between sections of a chapter, and the pairs that would point upward |
 | F6 | the depth histogram and the unreached statements |
+| F7 | the arrows by verdict, the statements the arrows not borne out concentrate in, and the depth moves between the two graphs |
 
 The build also fails if:
 

@@ -61,6 +61,11 @@ and zoom in.
 - [Depth as geometry](diagrams/F6-depth-2026.11.23.svg): every statement on
   one wheel, rings by distance from the main theorems and sectors by chapter,
   with the two trace chains drawn through the rings.
+- [The blueprint against the Lean](diagrams/F7-verdicts-2026.11.23.svg):
+  every arrow of the blueprint checked against the formal proof's
+  references, chapter against chapter, with the statements the disagreements
+  concentrate in, the uses the Lean makes that no arrow draws, and each
+  statement's depth in the two graphs.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg)](diagrams/R1-main-theorems-2026.11.23.svg)
 
