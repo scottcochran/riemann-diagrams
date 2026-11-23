@@ -9,7 +9,7 @@ back to an sRGB grey, and also reports the plain mean of the sRGB values for com
 
 Needs rsvg-convert on the path and Pillow in the interpreter:
 
-    uv run --with pillow tools/measure-page.py diagrams/R2-chapters-2026.11.22.svg [--width 1700]
+    uv run --with pillow tools/measure-page.py diagrams/R2-chapters-2026.11.23.svg [--width 1700]
 """
 import argparse
 import pathlib

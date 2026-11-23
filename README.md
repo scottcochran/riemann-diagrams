@@ -16,53 +16,53 @@ static analysis of the formal proof (see its README for the limits of that).
 Two generated SVG posters draw the proof for teaching. Open them on their own
 and zoom in.
 
-- [`Main.lean`, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg):
+- [`Main.lean`, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg):
   the five theorems, the definitions they are stated with, the chain of
   reductions that proves them, and the theorems the chapters deliver, each with
   its Lean signature, statement, proof and uses.
-- [The proof, chapter by chapter](diagrams/R2-chapters-2026.11.22.svg): the
+- [The proof, chapter by chapter](diagrams/R2-chapters-2026.11.23.svg): the
   nine chapters of the blueprint, what each proves, which chapters use which,
   and the published results the proof cites most.
-- [The zero-free chapter, lemma by lemma](diagrams/R3-zero-free-2026.11.22.svg):
+- [The zero-free chapter, lemma by lemma](diagrams/R3-zero-free-2026.11.23.svg):
   the analytic half of the proof from the inside, all 24 statements of the
   chapter as cards, with the argument's strands as columns and the chapter's
   theorem at the foot.
 - The other five stage chapters, one poster each, laid out from the chapter's
   own dependency graph:
-  [families](diagrams/R4-families-2026.11.22.svg),
-  [theta lifts](diagrams/R5-theta-2026.11.22.svg),
-  [heights](diagrams/R6-heights-2026.11.22.svg),
-  [the Tate–Shafarevich bound](diagrams/R7-sha-2026.11.22.svg) and
-  [Galois representations](diagrams/R8-galois-2026.11.22.svg).
+  [families](diagrams/R4-families-2026.11.23.svg),
+  [theta lifts](diagrams/R5-theta-2026.11.23.svg),
+  [heights](diagrams/R6-heights-2026.11.23.svg),
+  [the Tate–Shafarevich bound](diagrams/R7-sha-2026.11.23.svg) and
+  [Galois representations](diagrams/R8-galois-2026.11.23.svg).
 - Two traces, one chain of reductions each as cards in reading order:
-  [the deepest chain](diagrams/T1-trace-deepest-2026.11.22.svg), eleven
+  [the deepest chain](diagrams/T1-trace-deepest-2026.11.23.svg), eleven
   statements from a local lattice count up to the Riemann Hypothesis, and
-  [the chain to Landau's theorem](diagrams/T2-trace-landau-2026.11.22.svg),
+  [the chain to Landau's theorem](diagrams/T2-trace-landau-2026.11.23.svg),
   the analytic end of the proof in six steps.
-- [What the stages pass to each other](diagrams/F1-definitions-2026.11.22.svg):
+- [What the stages pass to each other](diagrams/F1-definitions-2026.11.23.svg):
   the proof in a second frame, its 24 definitions rather than its theorems,
   each above the definitions stated in terms of it, with a table of which
   chapter makes each one and which chapters consume it.
-- [What is new](diagrams/F2-new-2026.11.22.svg): the proof organised by
+- [What is new](diagrams/F2-new-2026.11.23.svg): the proof organised by
   provenance, its 200 new statements by chapter and section, how the new
   work of one chapter leans on another's, what it takes from the literature
   and where it reaches back into it.
-- [The proof as code](diagrams/F3-modules-2026.11.22.svg): the blueprint's
+- [The proof as code](diagrams/F3-modules-2026.11.23.svg): the blueprint's
   chapters against the formalisation's modules, the only frame that puts the
   paper and the Lean side by side, with each chapter's footprint in the code
   and the fan-out from a statement to the declarations it stands for.
-- [The proof as literature](diagrams/F4-literature-2026.11.22.svg): the 209
+- [The proof as literature](diagrams/F4-literature-2026.11.23.svg): the 209
   references on a timeline by decade, which statements cite each, the
   references the proof leans on most, and the upward cone of each, what
   would fall if the result were wrong; every title links to the paper.
-- [The sections, the middle level](diagrams/F5-sections-2026.11.22.svg): the
+- [The sections, the middle level](diagrams/F5-sections-2026.11.23.svg): the
   58 sections as cards, chapter by chapter, each above the sections whose
   proofs use it, with the proof uses between them as labelled arrows.
-- [Depth as geometry](diagrams/F6-depth-2026.11.22.svg): every statement on
+- [Depth as geometry](diagrams/F6-depth-2026.11.23.svg): every statement on
   one wheel, rings by distance from the main theorems and sectors by chapter,
   with the two trace chains drawn through the rings.
 
-[![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.22.svg)](diagrams/R1-main-theorems-2026.11.22.svg)
+[![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg)](diagrams/R1-main-theorems-2026.11.23.svg)
 
 They are generated from the blueprint and the mirror, and the build fails if
 the two disagree with what is drawn: see [diagrams/README.md](diagrams/README.md).

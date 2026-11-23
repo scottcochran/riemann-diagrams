@@ -77,10 +77,13 @@ Two files beside the blueprint and three in the mirror are read:
   cut at nine lines (four on a short card, eight on R2's chapter cards), with a last line counting what was cut
   (`lean_block`). Both sets draw the declaration's **name**, **kind**, **module**, **file** and **line**; F3 is
   built from nothing else. One declaration in the index carries a docstring; it is not drawn.
-- **`src/Main.lean`** and **`src/Statements.lean`** in the mirror: R1 draws the five theorem lines of
-  `Main.lean` as written, in both sets, since each is one line naming a theorem, its `Prop` and its proof
-  term; the reader set adds the `Prop` definitions of `Statements.lean` those lines are stated against. The
-  reader parses both files and fails if `Main.lean` has a line it cannot read.
+- **`src/Main.lean`** and **`src/Statements.lean`** in the mirror: R1 draws the five theorems of `Main.lean`
+  as written in the reader set, and in the map set only the first line of each, which names the theorem, its
+  `Prop` and the start of its proof; the reader set adds the `Prop` definitions of `Statements.lean` those
+  theorems are stated against. The reader parses both files and fails if `Main.lean` has a line it cannot read
+  (the module system's header lines are listed in `MAIN_HEADER`). R1's sentence on the proof terms is
+  computed: the one theorem whose proof names no other is where the proof enters, and the build fails if
+  there is not exactly one.
 - **`comparator.json`** in the mirror: the theorem names, checked against `Main.lean`, and the permitted
   axioms, which R1 lists.
 
@@ -116,7 +119,8 @@ standing:
   is the majority of the statements naming two declarations.
 - R1, band 5, the seven cards on what has been checked of the formal proof, arranged by the four questions of
   the Xena post. They paraphrase the mirror's `verification/NOTES.md` (independent complete builds, compared
-  with the author's checksums; Comparator's output still to be added) and three pages recorded in
+  with the author's checksums; Comparator's output still to be added; the second judgement, against the
+  statements of `google-deepmind/formal-conjectures`) and three pages recorded in
   `src/checks.toml`: Sutherland's verification files, for the builds, the axiom audit, the kernels and the
   comparisons, and for what is still running; the Lean and Mathlib communities' joint statement, for its
   certificate and for the vetting of the statement; and the Xena post, for the four questions. The

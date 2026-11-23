@@ -92,7 +92,7 @@ def build():
 
     c = Canvas(ID, "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the "
                "chain of reductions that proves them",
-               "The formal proof is 164,464 Lean files with no comments; the blueprint reads it as 416 statements "
+               "The formal proof was published as 175,187 Lean files with no comments; the blueprint reads it as 416 statements "
                "and the edges between them. This diagram draws the five theorems of `Main.lean`, the definitions "
                "they are stated with, and the chain of reductions by which the hard one, `GRH, half-plane form`, "
                "reaches the theorems that the chapters prove. Each node is one blueprint statement: the Lean "
@@ -159,16 +159,29 @@ def build():
         key_body = bp.MAP_KEY
     stm = mirror["theorems"]
     props = mirror["props"]
-    lean_lines = [t["src"] for t in stm] + [""]          # the five theorem lines: names, not quoted source
+    # The five theorems as Main.lean writes them; the map set keeps each one's first line, its name, Prop and the
+    # start of its proof, and leaves the rest of the proof out.
+    lean_lines = [l for t in stm for l in (t["lines"] if not bp.MAP else t["lines"][:1])] + [""]
     if not bp.MAP:
         for p in props.values():
             lean_lines += p["lines"] + [""]
+    # The one theorem whose proof names no other theorem of Main.lean: where the proof enters. Computed, so that a
+    # change to Main.lean changes the sentence or fails the build.
+    names_re = re.compile(r"\b(" + "|".join(re.escape(t["name"]) for t in stm) + r")\b")
+    entries = [t for t in stm if not names_re.search(t["proof"])]
+    if len(entries) != 1 or not re.fullmatch(r"[\w.]+", entries[0]["proof"]):
+        raise ValueError(f"R1: Main.lean has {len(entries)} theorems whose proof uses no other, not one proof term")
+    entry = entries[0]
+    helpers = sorted({h for t in stm if t is not entry for h in re.findall(r"\b([A-Z]\w*\.\w+)\b", t["proof"])})
     stm_bullets = [
         "**The claims.** `Main.lean` states the five theorems the Comparator config names, each as a Prop that "
         "`Statements.lean` defines from Mathlib's `riemannZeta` and `DirichletCharacter.LFunction`; "
         "`riemannHypothesis` is Mathlib's own `RiemannHypothesis`.",
-        "**The proof terms** `rhOfAll`, `allChi`, `claimAll` and `critAll` are where the five theorems enter the "
-        "164,464 files of the proof. Everything above them in this diagram is what those terms unfold to.",
+        f"**The proof terms.** `{entry['name']}` is `{entry['proof']}`, where the five theorems enter the proof; "
+        f"the other four follow from it in `Main.lean` itself" + (", by " + " and ".join(f"`{h}`" for h in helpers)
+                                                                   if helpers else "") + ". "
+        "Everything above them in this diagram is what the proof terms unfold to, as the blueprint read them in "
+        f"the mirror at {g.mirror_pin}, before it moved to Lean v4.36.0 and rewrote `Main.lean`.",
         "**The permitted axioms** are " + ", ".join(f"`{a}`" for a in mirror["axioms"]) + ": a proof using any "
         "other is rejected before a kernel runs.",
     ]
@@ -225,12 +238,13 @@ def build():
     # ---------------------------------------------------------------------------------- band 5: reference
     y += 60
     y = band(c, X0, y, "5 · Reference: the five theorems, the depth of the proof, and what has been checked")
-    tw = [330, 330, 300, 230, 330]
+    tw = [330, 330, 330, 230, 300]
     c.text(X0, y + 15, "The theorems of Main.lean, and the blueprint node that carries each", 15, "muted", bold=True)
     trows = []
     for t in stm:
         oid = bp.MAIN_LEAN_THEOREMS[t["name"]]
-        trows.append([t["name"], t["prop"], t["proof"], oid, g.nodes[oid]["title"]])
+        term = t["proof"] if not t["proof"].startswith("by ") else f"by (a tactic proof of {len(t['lines']) - 1} lines)"
+        trows.append([t["name"], t["prop"], term, oid, g.nodes[oid]["title"]])
     ht = c.table(X0, y + 30, [("Theorem", tw[0], {"mono": True}), ("Stated as", tw[1], {"mono": True}),
                               ("Proof term", tw[2], {"mono": True}), ("Blueprint node", tw[3], {"mono": True}),
                               ("Title", tw[4])], trows, size=S)
@@ -278,14 +292,18 @@ def build():
         "`riemannHypothesis` is stated with Mathlib's own `RiemannHypothesis`, which the joint statement says "
         "experts in Lean and number theory have vetted. The other four use Mathlib's `riemannZeta`, "
         "`DirichletCharacter.LFunction` and `IsPrimitive`, and cover every modulus and every Dirichlet character. "
-        "No Dedekind zeta, Hecke or automorphic L-function is among the statements checked (the report).",
+        "No Dedekind zeta, Hecke or automorphic L-function is among the statements checked (the report). The "
+        "mirror's notes add a second judgement, against RH and GRH as `google-deepmind/formal-conjectures` stated "
+        "them before the announcement: a bridge proves its GRH equivalent to the primitive-character theorem, and "
+        "on a build of the published archive, Lean v4.33.1, con-leche `--compare` found both justified (a contributor's run; "
+        "`lake comparator` has not judged it).",
     ], "teal", size=S) + 20
     ry += c.card(rx, ry, rw, "2 · The code compiles", [
         "All 175,187 modules of the archive as published compile with no errors on Lean and Mathlib v4.33.1. A "
         "second build on another machine, in a sandbox with no network and the source read-only, gives an export "
         "of the proof identical byte for byte (the report). The mirror's notes list independent complete builds, "
-        "with `Main.olean` identical to the author's checksum; the mirror has since deleted files the proof does "
-        "not use.",
+        "with `Main.olean` identical to the author's checksum. The mirror has since deleted files the proof does "
+        "not use and moved to Lean v4.36.0; the checks here are of the archive as published.",
     ], "teal", size=S) + 20
     ry += c.card(rx, ry, rw, "3 · The code proves that statement", [
         "A challenge file states the five theorems importing only Mathlib. con-leche `--compare` and its Rust port "

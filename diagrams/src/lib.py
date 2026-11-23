@@ -49,7 +49,7 @@ _FALLBACK_EM = 0.62      # the width of a character in no table; the generator w
 
 import os as _os
 BRAND = "RIEMANN · MAP" if _os.environ.get("RIEMANN_MAP") == "1" else "RIEMANN"
-DATE = "2026.11.22"
+DATE = "2026.11.23"
 GENERATOR = "diagrams/gen-diagrams.py"
 STATE = "State drawn: see each diagram's state line"
 
@@ -353,6 +353,7 @@ class Canvas:
         self.links = 0     # code runs that name a card on this poster, made links to it by link()
         self.links_out = 0 # and those that name a card on another poster of the set, linked there
         self.links_ext = 0 # and those that name a blueprint id no poster draws, linked to its file at the pin
+        self.overflow = [] # table cells whose text is wider than the cell, which Canvas.check warns about
         self.y = self._header()
 
     def stats(self):
@@ -553,7 +554,10 @@ class Canvas:
             s = s if s is not None else ""
             if opt.get("mono") and s:
                 s = f"`{s}`"
-            return wrap(s, cw - 2 * pad, size, bold=opt.get("bold", False))
+            out = wrap(s, cw - 2 * pad, size, bold=opt.get("bold", False))
+            if draw:     # a word wider than its cell is not broken: it runs into the next cell, so Canvas.check warns
+                self.overflow += [ln for ln in out if line_width(ln, size) > cw - 2 * pad + 0.5]
+            return out
 
         if header:
             hl = [wrap(c[0], c[1] - 2 * pad, hsize, bold=True) for c in cols]
@@ -672,7 +676,7 @@ class Canvas:
         embedded fonts do not have, which a browser would draw from a system font at an unmeasured width.
         Returns the warnings."""
         boxes = [b for b in TEXT_BOXES if b[4].strip()]
-        warn = []
+        warn = [f"wider than its table cell: {''.join(t for t, _, _ in ln)!r}" for ln in self.overflow]
         ids = re.findall(r' id="([^"]*)"', "\n".join(self.out))
         for i in sorted(i for i, n in collections.Counter(ids).items() if n > 1):
             warn.append(f"id drawn twice: {i!r}")

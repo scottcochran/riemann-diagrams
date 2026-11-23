@@ -13,47 +13,47 @@ static analysis of the formal proof (see its README for the limits of that).
 ## The posters
 
 **Start here.**
-- [R2](R2-chapters-2026.11.22.svg) for orientation
-- [T2](T2-trace-landau-2026.11.22.svg) for the analytic reduction
-- [R3](R3-zero-free-2026.11.22.svg) for that chapter in detail
-- [F6](F6-depth-2026.11.22.svg) for every statement on one page
-- [F2](F2-new-2026.11.22.svg) for what is new
-- [F4](F4-literature-2026.11.22.svg) for a reference and what rests on it
+- [R2](R2-chapters-2026.11.23.svg) for orientation
+- [T2](T2-trace-landau-2026.11.23.svg) for the analytic reduction
+- [R3](R3-zero-free-2026.11.23.svg) for that chapter in detail
+- [F6](F6-depth-2026.11.23.svg) for every statement on one page
+- [F2](F2-new-2026.11.23.svg) for what is new
+- [F4](F4-literature-2026.11.23.svg) for a reference and what rests on it
 
 Three families; the table below names each poster.
 
-- Read the proof at one level each: [R1](R1-main-theorems-2026.11.22.svg),
-  [R2](R2-chapters-2026.11.22.svg), [R3](R3-zero-free-2026.11.22.svg),
-  [R4](R4-families-2026.11.22.svg), [R5](R5-theta-2026.11.22.svg),
-  [R6](R6-heights-2026.11.22.svg), [R7](R7-sha-2026.11.22.svg),
-  [R8](R8-galois-2026.11.22.svg)
-- Follow one chain as a proof: [T1](T1-trace-deepest-2026.11.22.svg) the
-  deepest, [T2](T2-trace-landau-2026.11.22.svg) to Landau's theorem
-- View from different frames of reference: [F1](F1-definitions-2026.11.22.svg),
-  [F2](F2-new-2026.11.22.svg), [F3](F3-modules-2026.11.22.svg),
-  [F4](F4-literature-2026.11.22.svg), [F5](F5-sections-2026.11.22.svg),
-  [F6](F6-depth-2026.11.22.svg)
+- Read the proof at one level each: [R1](R1-main-theorems-2026.11.23.svg),
+  [R2](R2-chapters-2026.11.23.svg), [R3](R3-zero-free-2026.11.23.svg),
+  [R4](R4-families-2026.11.23.svg), [R5](R5-theta-2026.11.23.svg),
+  [R6](R6-heights-2026.11.23.svg), [R7](R7-sha-2026.11.23.svg),
+  [R8](R8-galois-2026.11.23.svg)
+- Follow one chain as a proof: [T1](T1-trace-deepest-2026.11.23.svg) the
+  deepest, [T2](T2-trace-landau-2026.11.23.svg) to Landau's theorem
+- View from different frames of reference: [F1](F1-definitions-2026.11.23.svg),
+  [F2](F2-new-2026.11.23.svg), [F3](F3-modules-2026.11.23.svg),
+  [F4](F4-literature-2026.11.23.svg), [F5](F5-sections-2026.11.23.svg),
+  [F6](F6-depth-2026.11.23.svg)
 
-[![The proof, chapter by chapter](R2-chapters-2026.11.22.svg)](R2-chapters-2026.11.22.svg)
+[![The proof, chapter by chapter](R2-chapters-2026.11.23.svg)](R2-chapters-2026.11.23.svg)
 
 | Id | Poster | What it shows |
 |---|---|---|
-| R1 | [`Main.lean`, theorem by theorem](R1-main-theorems-2026.11.22.svg) | The five theorems of `Main.lean`, the definitions they are stated with, the chain of reductions from `GRH, half-plane form` down to the theorems the chapters prove, and those theorems. Also `Main.lean` and `Statements.lean` as the mirror states them, the five stages of the proof, a table of statements by depth, and what has been checked of the formal proof. |
-| R2 | [The proof, chapter by chapter](R2-chapters-2026.11.22.svg) | The nine chapters of the blueprint as cards: the Lean signature of the theorem each one proves, its introduction, its sections with statement counts, and which chapters it uses. Arrows are the chapter `uses` edges. Also the blueprint's own list of points to check first, and the twelve published results the proof cites most. |
-| R3 | [The zero-free chapter, lemma by lemma](R3-zero-free-2026.11.22.svg) | All 24 statements of the chapter "From prime sums to the zero-free half-plane", the analytic half of the proof. Two dashed arrows are the hypotheses the chapter theorem takes rather than proves. Also what the chapter uses from outside, and the five section introductions in the chapter's own words. |
-| R4 | [Families of definite unitary groups](R4-families-2026.11.22.svg) | The 44 statements that build the families the zero-free argument runs over. |
-| R5 | [Theta lifts, periods and the Siegel–Weil formula](R5-theta-2026.11.22.svg) | The 61 statements about the theta lifts that join a family's members, the chapter's largest. |
-| R6 | [Heights and the covolume bound](R6-heights-2026.11.22.svg) | The 32 statements of the Arakelov argument that bounds the lattices' covolumes. |
-| R7 | [The Tate–Shafarevich bound](R7-sha-2026.11.22.svg) | The 35 statements from Kato's Euler system to the bound, with three results the main proof names as hypotheses. |
-| R8 | [Galois representations](R8-galois-2026.11.22.svg) | The 38 statements that attach Galois representations to polarized pairs. |
-| T1 | [The deepest chain](T1-trace-deepest-2026.11.22.svg) | Eleven statements from a local lattice count, the statement farthest from the main theorems, up to the Riemann Hypothesis, as full cards in reading order: a proof, left to right. |
-| T2 | [The chain to Landau's theorem](T2-trace-landau-2026.11.22.svg) | The analytic end of the proof in six steps, from Landau's theorem of 1905 up to the Riemann Hypothesis. |
-| F1 | [What the stages pass to each other](F1-definitions-2026.11.22.svg) | The 24 definitions of the blueprint rather than its theorems. Each is a card with its Lean declaration, the definition in words and the chapter that makes it, standing above the definitions stated in terms of it; the 18 arrows are those `uses` edges. A table counts, for each definition, the statements of each chapter that use it, so the flow of objects between the stages can be read off. The three definitions the outline names as the interfaces between stages are set out in its own words. |
-| F2 | [What is new](F2-new-2026.11.22.svg) | The 200 statements the blueprint marks new in Alpöge's proof, one level up: each chapter a card holding only its new work, arrows between chapters labelled with the number of proof uses between their new statements, a matrix of those counts, every section by provenance, the twenty published and modified results the new statements lean on most, and the new lemmas that published results' proofs use. |
-| F3 | [The proof as code](F3-modules-2026.11.22.svg) | The blueprint's nine chapters against the formalisation's modules, read from `lean-facts.json`, the index of the 1194 Lean declarations the statements name: a matrix of chapters against the 35 second-level modules, the formalisation's tree as one card per namespace, each chapter's footprint in the code, and the fan-out from one statement to its declarations, with the twelve statements that name the most. |
-| F4 | [The proof as literature](F4-literature-2026.11.22.svg) | The 209 references of the blueprint on a timeline by decade, each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; and the references no statement cites. Each title links to the paper, by DOI where it has one; each id to the blueprint's entry. |
-| F5 | [The sections, the middle level](F5-sections-2026.11.22.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section above the sections whose proofs use it, with arrows labelled by the number of proof uses between them. A card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. |
-| F6 | [Depth as geometry](F6-depth-2026.11.22.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. |
+| R1 | [`Main.lean`, theorem by theorem](R1-main-theorems-2026.11.23.svg) | The five theorems of `Main.lean`, the definitions they are stated with, the chain of reductions from `GRH, half-plane form` down to the theorems the chapters prove, and those theorems. Also `Main.lean` and `Statements.lean` as the mirror states them, the five stages of the proof, a table of statements by depth, and what has been checked of the formal proof. |
+| R2 | [The proof, chapter by chapter](R2-chapters-2026.11.23.svg) | The nine chapters of the blueprint as cards: the Lean signature of the theorem each one proves, its introduction, its sections with statement counts, and which chapters it uses. Arrows are the chapter `uses` edges. Also the blueprint's own list of points to check first, and the twelve published results the proof cites most. |
+| R3 | [The zero-free chapter, lemma by lemma](R3-zero-free-2026.11.23.svg) | All 24 statements of the chapter "From prime sums to the zero-free half-plane", the analytic half of the proof. Two dashed arrows are the hypotheses the chapter theorem takes rather than proves. Also what the chapter uses from outside, and the five section introductions in the chapter's own words. |
+| R4 | [Families of definite unitary groups](R4-families-2026.11.23.svg) | The 44 statements that build the families the zero-free argument runs over. |
+| R5 | [Theta lifts, periods and the Siegel–Weil formula](R5-theta-2026.11.23.svg) | The 61 statements about the theta lifts that join a family's members, the chapter's largest. |
+| R6 | [Heights and the covolume bound](R6-heights-2026.11.23.svg) | The 32 statements of the Arakelov argument that bounds the lattices' covolumes. |
+| R7 | [The Tate–Shafarevich bound](R7-sha-2026.11.23.svg) | The 35 statements from Kato's Euler system to the bound, with three results the main proof names as hypotheses. |
+| R8 | [Galois representations](R8-galois-2026.11.23.svg) | The 38 statements that attach Galois representations to polarized pairs. |
+| T1 | [The deepest chain](T1-trace-deepest-2026.11.23.svg) | Eleven statements from a local lattice count, the statement farthest from the main theorems, up to the Riemann Hypothesis, as full cards in reading order: a proof, left to right. |
+| T2 | [The chain to Landau's theorem](T2-trace-landau-2026.11.23.svg) | The analytic end of the proof in six steps, from Landau's theorem of 1905 up to the Riemann Hypothesis. |
+| F1 | [What the stages pass to each other](F1-definitions-2026.11.23.svg) | The 24 definitions of the blueprint rather than its theorems. Each is a card with its Lean declaration, the definition in words and the chapter that makes it, standing above the definitions stated in terms of it; the 18 arrows are those `uses` edges. A table counts, for each definition, the statements of each chapter that use it, so the flow of objects between the stages can be read off. The three definitions the outline names as the interfaces between stages are set out in its own words. |
+| F2 | [What is new](F2-new-2026.11.23.svg) | The 200 statements the blueprint marks new in Alpöge's proof, one level up: each chapter a card holding only its new work, arrows between chapters labelled with the number of proof uses between their new statements, a matrix of those counts, every section by provenance, the twenty published and modified results the new statements lean on most, and the new lemmas that published results' proofs use. |
+| F3 | [The proof as code](F3-modules-2026.11.23.svg) | The blueprint's nine chapters against the formalisation's modules, read from `lean-facts.json`, the index of the 1194 Lean declarations the statements name: a matrix of chapters against the 35 second-level modules, the formalisation's tree as one card per namespace, each chapter's footprint in the code, and the fan-out from one statement to its declarations, with the twelve statements that name the most. |
+| F4 | [The proof as literature](F4-literature-2026.11.23.svg) | The 209 references of the blueprint on a timeline by decade, each with the number of statements whose `source` line cites it; the 25 references the proof leans on most, each with its upward cone, every statement that rests on a statement citing it, and whether a theorem of `Main.lean` is in the cone; and the references no statement cites. Each title links to the paper, by DOI where it has one; each id to the blueprint's entry. |
+| F5 | [The sections, the middle level](F5-sections-2026.11.23.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section above the sections whose proofs use it, with arrows labelled by the number of proof uses between them. A card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. |
+| F6 | [Depth as geometry](F6-depth-2026.11.23.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. |
 
 R4 to R8 are laid out by `src/chapter.py` from the chapter's own edges: a card
 sits above the cards whose proofs use it, section heads and the chapter
@@ -93,8 +93,9 @@ written on both posters. What others have checked of the formal proof is on
 R1's band 5, from the mirror's verification notes and the three pages
 recorded in `src/checks.toml`: Sutherland's verification files, the Lean and
 Mathlib communities' joint statement and the Xena post whose four questions
-the band follows. Run `python3 tools/check-sources.py` to see whether a page
-has changed since it was read.
+the band follows. `python3 tools/check-sources.py` says whether a page has
+changed since it was read; `.github/workflows/sources.yml` runs it daily and
+fails when one has, so that band 5 is re-read.
 
 ## What is checked
 
@@ -141,7 +142,8 @@ The build also fails if:
   there names an id that is not a reference;
 - the theorem drawn for a chapter is not the first result at that chapter's
   root;
-- a title or a signature does not fit its card, or two texts overlap. The ids
+- a title or a signature does not fit its card, a word is wider than its
+  table cell, or two texts overlap. The ids
   on F6's wheel are set along the radius and placed by a spacing rule of their
   own, not by the overlap check, which knows only upright text.
 
@@ -158,7 +160,7 @@ measured and how to measure it again.
 
 Every statement card, and every chapter card on R2 and F2 and section card on
 F5, carries its blueprint id as the `id` of the group around it, so that
-`R3-zero-free-2026.11.22.svg#thm-landau-windows` opens the poster at that
+`R3-zero-free-2026.11.23.svg#thm-landau-windows` opens the poster at that
 card when the SVG is opened on its own, as the Pages site serves it (tested
 in Chromium). A statement drawn on more than one poster has the same id on
 each; the manifest lists each poster's anchors.
@@ -181,7 +183,10 @@ blueprint repository at `BP_COMMIT`, the commit the posters were drawn from,
 so that a link from an old release stays true; the blueprint path at the
 foot of a card links there too, and a chapter card's to its directory. The
 Lean name and location at the foot of a card link to the declaration's file
-and line in the mirror at `MIRROR_COMMIT`. These links leave the set, so
+and line in the mirror at `MIRROR_PIN`, the commit the blueprint pins and
+`lean-facts.json` was read from, not at `MIRROR_COMMIT`: the mirror has since
+deleted files and, moving to the Lean module system, shifted every line.
+These links leave the set, so
 they are absolute, and never to the Pages site, which holds one release at
 a time.
 
@@ -206,7 +211,8 @@ A run whose anchors did not move needs no second run.
 To move the diagrams to a newer blueprint, bump `BP_COMMIT` (and `MIRROR_PIN`
 if the blueprint re-pinned the mirror, and `MIRROR_COMMIT` if `Main.lean` is
 read from a newer mirror) in `src/bp.py`, regenerate, and fix whatever the
-checks report.
+checks report. A newer mirror usually brings new verification notes: the
+build stops on `NOTES_SHA256` until R1's band 5 is re-read against them.
 
 The sources are expected as sibling checkouts, `../riemann-blueprint` and
 `../leanprover-community/riemann-hypothesis`; `RIEMANN_BLUEPRINT` (the

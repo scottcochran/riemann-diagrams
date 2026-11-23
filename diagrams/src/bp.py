@@ -37,12 +37,14 @@ MIRROR = pathlib.Path(os.environ.get("RIEMANN_MIRROR") or ROOT.parent / "leanpro
 # The state the diagrams were written against: the blueprint's commit, the mirror commit it pins in its lakefile,
 # and the mirror commit Main.lean and Statements.lean are read from. The build fails if a checkout is at another
 # commit; bump these after reading what changed. CI checks the sources out at exactly these (.github/workflows).
+# The Lean file and line of a card link to the mirror at MIRROR_PIN, the tree lean-facts.json was read from, not
+# at MIRROR_COMMIT, where the mirror has since deleted files and moved lines.
 BP_COMMIT = "137d976"
 MIRROR_PIN = "8c90877c"
-MIRROR_COMMIT = "2dea990069"
+MIRROR_COMMIT = "c592e91eb8"
 # verification/NOTES.md in the mirror, which band 5 of R1 paraphrases. The build fails if the file no longer
 # hashes to this, so that the three cards are re-read against the new text rather than left standing.
-NOTES_SHA256 = "e6aef7986005c0a8959a117302f0adacce37c6ea0b49663ea6435eb3348ade45"
+NOTES_SHA256 = "356af9964cd6b989987fac73a23799e6ac0b5ae2b10e9715ea79a41f4b06a789"
 # The pages band 5 of R1 rests on besides the notes (src/checks.toml): the hash of each passage as it was read when
 # the cards were written. The build fails if checks.toml records another, which tools/check-sources.py --update
 # writes when a page has changed, so that the cards are re-read against the new text and these bumped.
@@ -114,12 +116,13 @@ def linked(url, text):
 
 
 def lean_url(g, name):
-    """The declaration's file and line in the mirror at MIRROR_COMMIT, or None for one under .lake/, a dependency."""
+    """The declaration's file and line in the mirror at MIRROR_PIN, the tree lean-facts.json describes, or None for
+    one under .lake/, a dependency."""
     where = g.lean_location(name)
     if not where or where.startswith(".lake/"):
         return None
     file, line = where.rsplit(":", 1)
-    return f"{MIRROR_URL}/blob/{g.mirror_full}/{file}#L{line}"
+    return f"{MIRROR_URL}/blob/{g.mirror_pin_full}/{file}#L{line}"
 
 
 def bp_dir_url(g, k):
@@ -138,12 +141,15 @@ def load():
     g = Graph(str(BLUEPRINT))
     if not g.lean_facts:
         raise ValueError("no lean-facts.json beside the blueprint: no Lean signatures to draw")
-    g.bp_commit, g.mirror_pin = rev, MIRROR_PIN
+    g.bp_commit, g.mirror_pin, g.mirror_pin_full = rev, MIRROR_PIN, pin.group(1)
+    if not re.fullmatch(r"[0-9a-f]{40}", g.mirror_pin_full):
+        raise ValueError(f"the blueprint's lakefile pins the mirror at {g.mirror_pin_full}, not a full commit")
     # The links out (PLAN, Phase 7): every blueprint id to its file at BP_COMMIT, and the prefixes a link may have.
     g.bp_full = git_rev(BLUEPRINT.parent, BP_COMMIT, "the blueprint")
     g.mirror_full = git_rev(MIRROR, MIRROR_COMMIT, "the mirror")
     g.bp_sub = BLUEPRINT.relative_to(BLUEPRINT.parent).as_posix()
-    lib.PINNED[:] = [f"{BP_URL}/blob/{g.bp_full}/", f"{BP_URL}/tree/{g.bp_full}/", f"{MIRROR_URL}/blob/{g.mirror_full}/"]
+    lib.PINNED[:] = [f"{BP_URL}/blob/{g.bp_full}/", f"{BP_URL}/tree/{g.bp_full}/", f"{MIRROR_URL}/blob/{g.mirror_full}/",
+                     f"{MIRROR_URL}/blob/{g.mirror_pin_full}/"]
     lib.EXTERNAL.clear()
     lib.EXTERNAL.update({k: f"{BP_URL}/blob/{g.bp_full}/{g.bp_sub}/{n['_path']}" for k, n in g.nodes.items()})
     # The papers behind the reference list, the diagram's own data (src/papers.toml): every id must be a reference.
@@ -154,6 +160,11 @@ def load():
     lib.PAPERS.clear()
     lib.PAPERS.update({k: v["url"] for k, v in papers.items()})
     return g
+
+
+# The lines of Main.lean that are neither an import nor a theorem: the module system's header since the mirror moved
+# to Lean v4.36.0. Any other line fails the build, so a change to the file is read before it is drawn.
+MAIN_HEADER = ("module", "@[expose] public section")
 
 
 def read_mirror():
@@ -167,13 +178,21 @@ def read_mirror():
         raise ValueError(f"the mirror's verification/NOTES.md hashes to {digest[:12]}…, not {NOTES_SHA256[:12]}…: "
                          "re-read the three cards of R1's band 5 against it and update NOTES_SHA256")
     main = (MIRROR / "src" / "Main.lean").read_text(encoding="utf-8").splitlines()
-    theorems = []
+    theorems, cur = [], None
     for i, l in enumerate(main):
-        m = re.match(r"theorem (\w+) : ([\w.]+) := (.+)$", l)
+        m = re.match(r"theorem (\w+) : ([\w.]+) :=\s*(.*)$", l)
         if m:
-            theorems.append({"name": m.group(1), "prop": m.group(2), "proof": m.group(3), "line": i + 1, "src": l})
-        elif l.strip() and not l.startswith("import"):
+            cur = {"name": m.group(1), "prop": m.group(2), "proof": m.group(3), "line": i + 1, "lines": [l]}
+            theorems.append(cur)
+        elif cur and l.startswith("  ") and l.strip():          # the proof, continued on indented lines
+            cur["lines"].append(l)
+            cur["proof"] = (cur["proof"] + " " + l.strip()).strip()
+        elif not l.strip() or l.startswith(("import ", "public import ")) or l in MAIN_HEADER:
+            cur = None
+        else:
             raise ValueError(f"Main.lean:{i + 1}: cannot parse {l!r}")
+    for t in theorems:
+        t["src"] = "\n".join(t["lines"])
     stmts = (MIRROR / "src" / "Statements.lean").read_text(encoding="utf-8").splitlines()
     props, cur = {}, None
     for i, l in enumerate(stmts):
@@ -186,8 +205,8 @@ def read_mirror():
         else:
             cur = None
     cfg = json.loads((MIRROR / "comparator.json").read_text(encoding="utf-8"))
-    if cfg["theorem_names"] != [t["name"] for t in theorems]:
-        raise ValueError("comparator.json does not name the theorems of Main.lean in order")
+    if sorted(cfg["theorem_names"]) != sorted(t["name"] for t in theorems):
+        raise ValueError("comparator.json does not name the theorems of Main.lean")
     for t in theorems:
         if t["prop"] not in props and t["prop"] != "RiemannHypothesis":
             raise ValueError(f"Main.lean: {t['name']} is stated with {t['prop']}, which Statements.lean does not define")
