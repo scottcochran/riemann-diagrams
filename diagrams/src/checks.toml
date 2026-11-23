@@ -1,0 +1,40 @@
+# The sources of R1's band 5, "What has been checked of the formal proof": the announcements and reports of the
+# checks run on the formal proof, one entry each. This is the diagram's own data, like papers.toml: the blueprint
+# and the mirror carry none of it. A card of band 5 paraphrases these pages, and the build cannot fetch them, so
+# each entry records what was read: `read`, the day; `from` and `to`, the first and last words of the passage the
+# cards rest on; and `sha256`, the hash of that passage as tools/check-sources.py extracts it (the page's text with
+# its markup removed and its whitespace collapsed, from `from` to `to` inclusive). The build fails if an entry's
+# sha256 is not the one src/bp.py records in CHECKS_SHA256, so that a new reading of a page, recorded here by
+#     python3 tools/check-sources.py --update
+# stops the build until the cards are re-read against it. Without --update the tool only reports what changed.
+# Each url is a link out of R1, allowed by the build's link check alongside the pinned commits and the papers.
+
+[sutherland]
+title = "RH Lean proof: verification files"
+author = "Andrew Sutherland (MIT), checks run with Claude Code"
+url = "https://math.mit.edu/~drew/grh/"
+date = "2026-11-22 16:20 UTC, the page's own 'last updated'"
+read = "2026-11-23"
+from = "Verification files for the Lean proof of the Riemann Hypothesis"
+to = "on Mathlib's definitions being what they are intended to be."
+sha256 = "93cf254dd7a825b4fa74d24d502479fc5d0a449282d5d29b84579c8782891f21"
+
+[community]
+title = "Lean verification of the Riemann Hypothesis"
+author = "The Lean and Mathlib communities, endorsed by the Lean FRO and the Mathlib Initiative"
+url = "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/"
+date = "2026-11-21 13:55"
+read = "2026-11-23"
+from = "Joint statement by the Lean and Mathlib communities"
+to = "help explain the new ideas in this proof."
+sha256 = "eca667dfe1751846fb4d459f3546c9a202a871757066eb78a97b5437cd483b6b"
+
+[xena]
+title = "“…and the proof is checked in Lean”"
+author = "The Xena Project, posted as xenaproject"
+url = "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/"
+date = "2026-11-12"
+read = "2026-11-23"
+from = "This post is an attempt to explain in simple terms"
+to = "it may be computationally costly."
+sha256 = "797a85a3b3bf28b4f819d4a7c369476a97d8ce6c452c15df6c0a3475eaef88e1"

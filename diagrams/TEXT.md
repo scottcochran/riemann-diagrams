@@ -114,11 +114,18 @@ standing:
   the two heaviest pairs are still theta to families and heights to families (`HEAVIEST`).
 - F3, "a statement that names two usually names a definition and a theorem": guarded by a check that that pair
   is the majority of the statements naming two declarations.
-- R1, band 5, the three cards on what is known about the formal proof. These paraphrase the mirror's
-  `verification/NOTES.md`: that independent complete builds exist and compare with the author's checksums, that
-  the Comparator run's result is not yet recorded, and that the blueprint's README says some edges are wrong.
-  The generator reads the file and fails if it no longer hashes to `NOTES_SHA256` in `src/bp.py`, so a mirror
-  bump that changes the notes stops the build until the cards are re-read against the new text.
+- R1, band 5, the seven cards on what has been checked of the formal proof, arranged by the four questions of
+  the Xena post. They paraphrase the mirror's `verification/NOTES.md` (independent complete builds, compared
+  with the author's checksums; Comparator's output still to be added) and three pages recorded in
+  `src/checks.toml`: Sutherland's verification files, for the builds, the axiom audit, the kernels and the
+  comparisons, and for what is still running; the Lean and Mathlib communities' joint statement, for its
+  certificate and for the vetting of the statement; and the Xena post, for the four questions. The
+  certificate card quotes one sentence of the joint statement, in quotation marks, with the three pages linked
+  beneath it. The generator reads the notes and fails if they no longer hash to `NOTES_SHA256`, and reads
+  `checks.toml` and fails if a page's recorded hash is not the one in `CHECKS_SHA256` (both in `src/bp.py`).
+  The build cannot fetch the pages: `tools/check-sources.py` does, and with `--update` records a changed page,
+  which stops the build until the cards are re-read against it. The last card, that no check covers the
+  blueprint's edges or its words, is the posters' own reading.
 
 The rule for these is that a reader should be able to tell them from quotations. A quotation is in italics or
 in a Lean panel and its card links to the file it came from; an interpretation is in the posters' own voice in

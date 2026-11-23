@@ -75,6 +75,7 @@ def band(c, x, y, title, sub=None):
 def build():
     g = bp.load()
     mirror = bp.read_mirror()
+    checks = bp.read_checks()
     drawn = set(PLACE)
     for k in drawn:
         if k not in g.statements:
@@ -99,14 +100,15 @@ def build():
                "words, how its proof goes, and what it uses and is used by. **Read it from the foot up**: the five "
                "theorems are at the bottom, and everything above is what their proofs use. **No Lean was built** "
                "for the blueprint or for this diagram: the edges were resolved from the source text and some are "
-               "wrong, and whether the formal proof is correct is a question for the kernel checks of band 5."
+               "wrong. Whether the formal proof is correct is a question for the kernel checks; band 5 says what they found."
                + (" **Map mode**: nothing of the blueprint's text or the proof's source is quoted; each card "
                   "gives the statement's title, kind, provenance, Lean name and location, and its edges." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (the front matter, statement and proof of every drawn node; "
                "`lean-facts.json` for every signature, file and line; the `architecture` chapter's introduction); "
                f"`leanprover-community/riemann-hypothesis` at {mirror['commit']} (`src/Main.lean`, "
-               "`src/Statements.lean`, `comparator.json`, `verification/NOTES.md`). The depth table and the "
-               "abridgements are the diagram's own, computed or cut as marked.",
+               "`src/Statements.lean`, `comparator.json`, `verification/NOTES.md`); for band 5, the three pages of "
+               "`diagrams/src/checks.toml`, as read on " + min(e["read"] for e in checks.values()).replace("-", ".") + ". The depth "
+               "table and the abridgements are the diagram's own, computed or cut as marked.",
                state=f"State drawn: riemann-blueprint at {g.bp_commit}, which pins the mirror at {g.mirror_pin}; "
                      f"Main.lean, Statements.lean and the verification notes from the mirror at {mirror['commit']}")
     X0, X1 = c.x0, c.x1
@@ -260,22 +262,53 @@ def build():
     ], "grey", size=S, tint=False)
     rx = dx + sum(dw) + 70
     rw = X1 - rx
-    c.text(rx, y + 15, "Checked and proved: what is known about the formal proof", 15, "muted", bold=True)
+    src = {k: (lambda text, k=k: bp.linked(checks[k]["url"], text)) for k in checks}
+    c.text(rx, y + 15, "What has been checked of the formal proof, by the four questions of the Xena post", 15,
+           "muted", bold=True)
     ry = y + 30
-    ry += c.card(rx, ry, rw, "Built: Lean's own kernel", [
-        "`lake build Main` compiles every file of the submission; a successful build is a check by the kernel of "
-        "Lean v4.33.1, the version the project pins. The mirror's notes list independent complete builds, and "
-        "compare their compiled files with the checksums the author published: in the complete one, "
-        "`Main.olean` is identical.",
+    ry += c.card(rx, ry, rw, "Certified: the Lean and Mathlib communities", [
+        "A joint statement of 21 November 2026, endorsed by the Lean FRO and the Mathlib Initiative: “We hereby "
+        "certify that both the statement and the proof of the Riemann Hypothesis are correct.” It finds the four "
+        "questions below answered, and points to Sutherland's report for the checks. It certifies the Riemann "
+        "Hypothesis; for the four Dirichlet theorems, the report is the source.",
+        f"{src['community']('The joint statement')} · {src['xena']('the Xena post, 12 November')} · "
+        f"{src['sutherland']('Sutherland’s report, updated 22 November 16:20 UTC')}",
     ], "teal", size=S) + 20
-    ry += c.card(rx, ry, rw, "Judged: Comparator, not yet", [
-        "`lake comparator` exports the five theorems and replays them in kernels independent of Lean's own, "
-        "Lean paranoid and nanoda, allowing only the three axioms of `comparator.json`. The notes say its output "
-        "will be added when the run finishes. **At the state drawn, no result is recorded.**",
+    ry += c.card(rx, ry, rw, "1 · The Lean statement says what is claimed", [
+        "`riemannHypothesis` is stated with Mathlib's own `RiemannHypothesis`, which the joint statement says "
+        "experts in Lean and number theory have vetted. The other four use Mathlib's `riemannZeta`, "
+        "`DirichletCharacter.LFunction` and `IsPrimitive`, and cover every modulus and every Dirichlet character. "
+        "No Dedekind zeta, Hecke or automorphic L-function is among the statements checked (the report).",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "2 · The code compiles", [
+        "All 175,187 modules of the archive as published compile with no errors on Lean and Mathlib v4.33.1. A "
+        "second build on another machine, in a sandbox with no network and the source read-only, gives an export "
+        "of the proof identical byte for byte (the report). The mirror's notes list independent complete builds, "
+        "with `Main.olean` identical to the author's checksum; the mirror has since deleted files the proof does "
+        "not use.",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "3 · The code proves that statement", [
+        "A challenge file states the five theorems importing only Mathlib. con-leche `--compare` and its Rust port "
+        "con-ron `--compare` each find all five justified by the proof, and `#print axioms` gives only "
+        + ", ".join(f"`{a}`" for a in mirror["axioms"]) + ", the axioms `comparator.json` permits (the report).",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "4 · No bug in Lean's kernel is used", [
+        "Lean's kernel replays all 175,187 compiled modules, and so does lean4lean. Two independently written "
+        "kernels, nanoda and con-leche, accept the whole exported proof, 1,468,418 declarations (the report). "
+        "con-leche and con-ron come with a formal proof, relative to set theory, that they accept no false proof, "
+        "and the checks ran on an inert export, out of reach of the source (the joint statement).",
+    ], "teal", size=S) + 20
+    ry += c.card(rx, ry, rw, "Still running at the state drawn", [
+        "`lake comparator` end to end: its statement comparison and axiom check have passed, its kernel stage has "
+        "not finished. Lean's own kernel, default and paranoid, on the whole export: no verdict yet, though it has "
+        "accepted every module as compiled (the report, 22 November 16:20 UTC). The mirror's notes say "
+        "Comparator's output will be added when the run finishes.",
     ], "amber", size=S) + 20
     c.card(rx, ry, rw, "Read: this blueprint and diagram", [
-        "No Lean was built for the blueprint. Its `uses` edges were resolved from identifiers in the source text, "
-        "and its README says some are wrong and that every proof status reads *absent*. This diagram inherits "
-        "both limits. A node here says what a statement is, not that it is proved.",
+        "The checks are of the formal proof, not of the blueprint or this diagram. No Lean was built for the "
+        "blueprint: its `uses` edges were resolved from identifiers in the source text, and its README says some "
+        "are wrong and that every proof status reads “absent”. The archive as published compiled in full, so "
+        "Lean's kernel checked each of its declarations; whether the blueprint's words say what a declaration "
+        "says, and whether an arrow is right, no check covers.",
     ], "red", size=S)
     return c

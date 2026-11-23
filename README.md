@@ -158,10 +158,14 @@ Depth | Statements | Published | Modified | New
 
 The edges come from the blueprint's `uses` lists, which were resolved from
 identifiers in the Lean source text without building it, so some edges are
-wrong and the statuses of the formal proofs are unknown. A box here says
-which Lean declarations a statement stands for, not that they are proved.
-That belongs to the kernel checks described in the mirror's
-`verification/NOTES.md`.
+wrong and the blueprint records no proof status. A box here says which Lean
+declarations a statement stands for. Whether they are proved is a question for
+the kernel checks, which R1's band 5 reports from the mirror's
+`verification/NOTES.md` and the pages of `diagrams/src/checks.toml`: the
+archive as published compiled in full, so Lean's kernel checked each of its
+declarations, and the proof of the five theorems of `Main.lean` has been accepted by independent
+kernels and certified by the Lean and Mathlib communities. No check covers the
+edges, or whether the blueprint's words say what a declaration says.
 
 ## Attribution
 
@@ -183,6 +187,16 @@ That belongs to the kernel checks described in the mirror's
   `comparator.json`, which R1 states the theorems from, and the verification
   notes (`verification/NOTES.md`), which R1's band on what has been checked
   paraphrases.
+* **The checks of the formal proof** that R1's band 5 reports are those
+  described in three pages, recorded with the day each was read and a hash of
+  the passage read in [`diagrams/src/checks.toml`](diagrams/src/checks.toml): Andrew Sutherland's
+  [verification files](https://math.mit.edu/~drew/grh/) (MIT, checks run with
+  Claude Code), the Lean and Mathlib communities'
+  [joint statement](https://leanprover-community.github.io/blog/posts/riemann-hypothesis/),
+  and the Xena Project's post
+  [“…and the proof is checked in Lean”](https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/),
+  whose four questions band 5 is arranged by. R1 paraphrases them and quotes
+  one sentence of the joint statement.
 * **The blueprint tool** [chrisflav/blueprint](https://github.com/chrisflav/blueprint)
   defines the format the blueprint is written in and builds its website, which
   the full Graphviz graph links each statement to.

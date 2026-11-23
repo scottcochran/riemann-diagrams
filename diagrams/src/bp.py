@@ -7,6 +7,7 @@ ERROR instead of drawing something stale.
 
   load()                     the blueprint as a graph (blueprint_graph.Graph), after the commit checks
   read_mirror()              the five theorems of Main.lean and the Prop definitions of Statements.lean
+  read_checks()              the pages R1's band 5 rests on, from src/checks.toml, checked against CHECKS_SHA256
   body(g, id) / proof(g, id) the Markdown of a statement and of its proof
   rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
   lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
@@ -42,6 +43,14 @@ MIRROR_COMMIT = "2dea990069"
 # verification/NOTES.md in the mirror, which band 5 of R1 paraphrases. The build fails if the file no longer
 # hashes to this, so that the three cards are re-read against the new text rather than left standing.
 NOTES_SHA256 = "e6aef7986005c0a8959a117302f0adacce37c6ea0b49663ea6435eb3348ade45"
+# The pages band 5 of R1 rests on besides the notes (src/checks.toml): the hash of each passage as it was read when
+# the cards were written. The build fails if checks.toml records another, which tools/check-sources.py --update
+# writes when a page has changed, so that the cards are re-read against the new text and these bumped.
+CHECKS_SHA256 = {
+    "sutherland": "93cf254dd7a825b4fa74d24d502479fc5d0a449282d5d29b84579c8782891f21",
+    "community": "eca667dfe1751846fb4d459f3546c9a202a871757066eb78a97b5437cd483b6b",
+    "xena": "797a85a3b3bf28b4f819d4a7c369476a97d8ce6c452c15df6c0a3475eaef88e1",
+}
 
 # Map mode: no text of the blueprint and no Lean source is quoted. Each card keeps the statement's title, id,
 # kind, provenance, Lean name and location, and every edge. Set by gen-diagrams.py --map, before the modules load.
@@ -186,6 +195,21 @@ def read_mirror():
         raise ValueError("Main.lean's theorems are not the ones blueprint_graph.MAIN_LEAN_THEOREMS maps to nodes")
     return {"theorems": theorems, "props": props, "axioms": cfg["permitted_axioms"], "notes_sha256": digest,
             "commit": git_at(MIRROR, MIRROR_COMMIT, "the mirror")}
+
+
+def read_checks():
+    """The pages of src/checks.toml, each checked against CHECKS_SHA256; their urls become links R1 may make."""
+    checks = tomllib.loads((pathlib.Path(__file__).parent / "checks.toml").read_text(encoding="utf-8"))
+    if set(checks) != set(CHECKS_SHA256):
+        raise ValueError(f"src/checks.toml has the sources {sorted(checks)}, R1's band 5 was written against "
+                         f"{sorted(CHECKS_SHA256)}")
+    for k, e in checks.items():
+        if e["sha256"] != CHECKS_SHA256[k]:
+            raise ValueError(f"src/checks.toml records a new reading of {k} ({e['url']}): re-read the cards of R1's "
+                             "band 5 against it and update CHECKS_SHA256")
+    lib.SOURCES.clear()
+    lib.SOURCES.update({k: e["url"] for k, e in checks.items()})
+    return checks
 
 
 def _text_after_front_matter(path):

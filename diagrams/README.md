@@ -89,7 +89,12 @@ from `src/papers.toml`: the blueprint records the citation, not the link.
 
 No Lean was built, for the blueprint or for the diagrams. The blueprint's
 `uses` edges were resolved from the source text and some are wrong; this is
-written on both posters.
+written on both posters. What others have checked of the formal proof is on
+R1's band 5, from the mirror's verification notes and the three pages
+recorded in `src/checks.toml`: Sutherland's verification files, the Lean and
+Mathlib communities' joint statement and the Xena post whose four questions
+the band follows. Run `python3 tools/check-sources.py` to see whether a page
+has changed since it was read.
 
 ## What is checked
 
@@ -128,7 +133,10 @@ The build also fails if:
 - a link names a card no poster of the set draws, or a poster the manifest
   does not list;
 - a link out is not under the blueprint or the mirror at its pinned commit,
-  and is not a paper of `src/papers.toml`;
+  and is not a paper of `src/papers.toml` or a page of `src/checks.toml`;
+- the mirror's `verification/NOTES.md` no longer hashes to `NOTES_SHA256`, or
+  a page of `src/checks.toml` records another reading than `CHECKS_SHA256`
+  (both in `src/bp.py`), so that R1's band 5 is re-read against the new text;
 - a reference of the blueprint has no paper in `src/papers.toml`, or an entry
   there names an id that is not a reference;
 - the theorem drawn for a chapter is not the first result at that chapter's
@@ -234,6 +242,7 @@ four files the generator reads.
 | `src/d_f3_modules.py` | F3: chapters against Lean modules from `lean-facts.json`; `N_DECLS`, `KINDS`, `NO_LEAN`, `EXPECTED` |
 | `src/d_f4_literature.py` | F4: the references by decade, citations and upward cones; `N_REFS`, `YEARS`, `N_CITING`, `TOP` |
 | `src/papers.toml` | the paper behind each of the blueprint's references, the url F4 links its title to: looked up on Crossref and zbMATH, settled by hand where they disagreed; the diagram's own data |
+| `src/checks.toml` | the pages R1's band 5 rests on, each with the day it was read and the hash of the passage read; `tools/check-sources.py` fetches them again and says what changed; the diagram's own data |
 | `src/d_f5_sections.py` | F5: the sections chapter by chapter, laid out by their edges; `EXPECTED`, `UPWARD` |
 | `src/d_f6_depth.py` | F6: the wheel, rings by depth and sectors by chapter; `EXPECTED_DEPTHS`, `UNREACHED` |
 | `map/` | the map set, as `map-*.svg`, and its own `manifest.json` |
@@ -295,6 +304,16 @@ its name table.
   `comparator.json`, which R1 states the theorems from, and the verification
   notes (`verification/NOTES.md`), which R1's band on what has been checked
   paraphrases.
+* **The checks of the formal proof** that R1's band 5 reports are those
+  described in three pages, recorded with the day each was read and a hash of
+  the passage read in [`diagrams/src/checks.toml`](src/checks.toml): Andrew Sutherland's
+  [verification files](https://math.mit.edu/~drew/grh/) (MIT, checks run with
+  Claude Code), the Lean and Mathlib communities'
+  [joint statement](https://leanprover-community.github.io/blog/posts/riemann-hypothesis/),
+  and the Xena Project's post
+  [“…and the proof is checked in Lean”](https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/),
+  whose four questions band 5 is arranged by. R1 paraphrases them and quotes
+  one sentence of the joint statement.
 * **The blueprint tool** [chrisflav/blueprint](https://github.com/chrisflav/blueprint)
   defines the format the blueprint is written in and builds its website, which
   the full Graphviz graph links each statement to.
@@ -307,6 +326,6 @@ its name table.
 * **The classical results** the proof cites are attributed to their authors in
   the blueprint's text of each statement, and by the `source` lines F4 draws.
 
-A diagram here says nothing about whether the formal proof is correct. That
-question belongs to the independent kernel checks described in the mirror's
-verification notes.
+A diagram here says nothing of its own about whether the formal proof is
+correct. R1's band 5 reports what the kernel checks have found, from the
+mirror's verification notes and the pages of `src/checks.toml`.
