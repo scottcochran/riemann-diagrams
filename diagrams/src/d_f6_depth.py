@@ -199,7 +199,10 @@ def build():
         pts = " L ".join(f"{cx + pos[k][0]:.1f} {cy + pos[k][1]:.1f}" for k in chain if k in pos)
         out.append(f'<path d="M {pts}" {sonly(acc)} stroke-width="3" stroke-opacity="0.75" '
                    f'stroke-linejoin="round"/>')
-    for k, (px, py) in pos.items():                     # the dots and the ids
+    # The dots and the ids. Each id is a mono <tspan> inside its <text>, so that Canvas.link makes it a link as it
+    # does every code run: to the statement's card on the poster that draws it in full, else to its file in the
+    # blueprint at BP_COMMIT.
+    for k, (px, py) in pos.items():
         acc = PROV_ACCENT[g.nodes[k].get("provenance")]
         x, yy = cx + px, cy + py
         out.append(f'<circle cx="{x:.1f}" cy="{yy:.1f}" r="4.2" {fs(acc, "bg")} stroke-width="1.2"/>')
@@ -209,8 +212,8 @@ def build():
         tx, ty = x + 8 * math.cos(th), yy + 8 * math.sin(th)
         out.append(f'<text x="{tx:.1f}" y="{ty + LABEL * 0.35:.1f}" '
                    f'transform="rotate({deg + (180 if flip else 0):.1f} {tx:.1f} {ty:.1f})" '
-                   f'font-family="{lib.MONO}" font-size="{LABEL}" text-anchor="{"end" if flip else "start"}" '
-                   f'{fill(acc)}>{escape(k)}</text>')
+                   f'font-size="{LABEL}" text-anchor="{"end" if flip else "start"}" '
+                   f'{fill(acc)}><tspan font-family="{lib.MONO}">{escape(k)}</tspan></text>')
     c.add("\n".join(out), cy + RMAX)
     c.blocks.append((cx - RMAX, cy - RMAX, cx + RMAX, cy + RMAX, "wheel"))
     y = cy + RMAX + 50

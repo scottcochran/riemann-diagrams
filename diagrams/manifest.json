@@ -150,8 +150,8 @@
   "arrows": 0,
   "anchors": [],
   "links": 0,
-  "links_out": 3,
-  "links_ext": 6
+  "links_out": 254,
+  "links_ext": 164
  },
  "R1": {
   "file": "R1-main-theorems-2026.11.23.svg",
