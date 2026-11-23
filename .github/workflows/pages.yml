@@ -154,6 +154,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/configure-pages@v5     # needs the pages permission, which only this job has
+      - uses: actions/configure-pages@v6     # needs the pages permission, which only this job has
       - id: deploy
         uses: actions/deploy-pages@v5
