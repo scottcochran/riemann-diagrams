@@ -1,0 +1,57 @@
+# Re-read, every day, the pages R1's band 5 rests on, and fail if one has changed since diagrams/src/checks.toml
+# recorded it. Sutherland's verification files say they will be updated as the remaining checks finish, so a
+# change is expected: it means band 5 may be out of date, not that anything is broken.
+#
+# The job only reports. A failed scheduled run is what notifies the repository (GitHub mails whoever last changed
+# this schedule); the run's summary names the pages that changed, and the artifact `pages` holds each page as
+# fetched, to read or to diff. To take a change in: run `python3 tools/check-sources.py --update` locally, re-read
+# the cards of R1's band 5 against the page, set CHECKS_SHA256 in diagrams/src/bp.py, regenerate and commit. The
+# posters workflow needs no network and is not affected until then.
+#
+# GitHub turns a schedule off after 60 days without activity in the repository; run it by hand (Actions,
+# sources, Run workflow) to check at any time, or to turn it back on.
+name: sources
+
+on:
+  schedule:
+    - cron: "37 5 * * *"        # 05:37 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out riemann-diagrams
+        uses: actions/checkout@v5
+
+      - name: Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Re-read the pages of checks.toml
+        shell: bash
+        run: |
+          set -o pipefail
+          status=0
+          python3 tools/check-sources.py --save pages | tee report.txt || status=$?
+          {
+            echo "### The pages R1's band 5 rests on"
+            echo
+            echo '```'
+            cat report.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $status
+
+      - name: Keep the pages as fetched
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages
+          path: pages/
+          if-no-files-found: ignore
+          retention-days: 30
