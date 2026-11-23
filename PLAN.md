@@ -522,6 +522,13 @@ statements, not the declaration graph, and stays well under a megabyte.
   reaches first, with their count and size. Drawn first as a measure on F2 (new, modified, published) and on
   F6's wheel, then as the deeper frame of Phase 6: one statement opened to its declarations, R3's chapter
   theorem first. Needs `lean-weight.json`, and a file per opened statement.
+  Done 2026.11.23 as a poster of its own, F9 (`d_f9_weight.py`), rather than marks on F2 and F6, which keeps
+  those two and their checks as they were. `tools/lean-edges/weight.py` writes one file that holds the opened
+  statements too. R3's chapter theorem turned out to be glue: 2 helpers of its own and
+  48 shared. So F9 opens the statement with the most formal work of its own as well,
+  `thm-family-membership-admissible-data`, with 12,225 helpers across 452 namespaces. Statements marked new hold 81% of the
+  formal work any single statement owns. The build checks the file's totals, the three heaviest statements and
+  the statements opened.
 - **8e: drift between the pins.** The export (at `MIRROR_PIN`) and the cache (at `MIRROR_COMMIT`) are about
   230,000 declarations apart, and ten of the blueprint's Lean names are not in the published proof. A poster
   per chapter of what the later tree dropped, and of which blueprint names point at nothing. It is Phase 6's

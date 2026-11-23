@@ -70,6 +70,10 @@ and zoom in.
   structures of assumptions the proof's theorems take, with what their fields
   state, who takes them and who builds them, and every claim the blueprint
   states as a `Prop`, by whether the proof concludes it.
+- [Where the formal work is](diagrams/F9-weight-2026.11.23.svg): the Lean
+  declarations under each statement, by chapter and provenance, the
+  statements with the most formal work of their own against the length of
+  their proofs in the blueprint, and two statements opened to their helpers.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg)](diagrams/R1-main-theorems-2026.11.23.svg)
 

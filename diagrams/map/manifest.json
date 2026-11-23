@@ -173,6 +173,16 @@
   "links_out": 81,
   "links_ext": 49
  },
+ "F9": {
+  "file": "map-F9-weight-2026.11.23.svg",
+  "title": "Where the formal work is: the declarations under each statement's Lean, and their size",
+  "cards": 0,
+  "arrows": 0,
+  "anchors": [],
+  "links": 0,
+  "links_out": 16,
+  "links_ext": 0
+ },
  "R1": {
   "file": "map-R1-main-theorems-2026.11.23.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

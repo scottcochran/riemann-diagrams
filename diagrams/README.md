@@ -33,7 +33,7 @@ Three families; the table below names each poster.
   [F2](F2-new-2026.11.23.svg), [F3](F3-modules-2026.11.23.svg),
   [F4](F4-literature-2026.11.23.svg), [F5](F5-sections-2026.11.23.svg),
   [F6](F6-depth-2026.11.23.svg), [F7](F7-verdicts-2026.11.23.svg),
-  [F8](F8-assumptions-2026.11.23.svg)
+  [F8](F8-assumptions-2026.11.23.svg), [F9](F9-weight-2026.11.23.svg)
 
 [![The proof, chapter by chapter](R2-chapters-2026.11.23.svg)](R2-chapters-2026.11.23.svg)
 
@@ -57,6 +57,7 @@ Three families; the table below names each poster.
 | F6 | [Depth as geometry](F6-depth-2026.11.23.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. |
 | F7 | [The blueprint against the Lean](F7-verdicts-2026.11.23.svg) | Every arrow of the blueprint checked against the references of the published formal proof (`src/lean-edges.json`, `EDGES.md`): a matrix of chapter against chapter with the arrows borne out over those that can be judged, a matrix of the uses the Lean makes that no arrow records, the statements the arrows not borne out concentrate in and those whose Lean uses most beyond their arrows, and each statement's depth from the main theorems in the blueprint against its depth in the Lean. |
 | F8 | [Where the assumptions enter](F8-assumptions-2026.11.23.svg) | Where the formal proof's assumptions enter and where they are discharged, from `src/lean-hypotheses.json`: one card for each structure of assumptions behind the arrows borne out only as hypotheses, with the claims its fields state, the statements that take it and the declarations that build it; each chapter's stated claims by whether a theorem of the proof concludes them; every claim not concluded outright; and the axioms the export holds, against those `comparator.json` permits. |
+| F9 | [Where the formal work is](F9-weight-2026.11.23.svg) | The Lean declarations under each statement, from `src/lean-weight.json`: each statement's own declarations and the helpers only its Lean reaches, counted and sized by expression nodes; by chapter and by provenance; the statements with the most formal work of their own against the length of their proofs in the blueprint; and R3's chapter theorem and the heaviest statement opened to their helpers by namespace. |
 
 R4 to R8 are laid out by `src/chapter.py` from the chapter's own edges: a card
 sits above the cards whose proofs use it, section heads and the chapter
@@ -124,6 +125,7 @@ say otherwise.
 | F6 | the depth histogram and the unreached statements |
 | F7 | the arrows by verdict, the statements the arrows not borne out concentrate in, and the depth moves between the two graphs |
 | F8 | the structures of assumptions, the stated claims by class, and the export's axioms, which must be those `comparator.json` permits |
+| F9 | the totals of `lean-weight.json`, the three heaviest statements, and the statements opened |
 
 The build also fails if:
 
@@ -259,6 +261,7 @@ four files the generator reads.
 | `map/` | the map set, as `map-*.svg`, and its own `manifest.json` |
 | `src/lean-edges.json` | a verdict on every blueprint arrow from the formal proof's references, with its provenance; written by `tools/lean-edges/`, pinned by `LEAN_EDGES_SHA256` in `bp.py`; R3 to R8, T1, T2 and F7 read it |
 | `src/lean-hypotheses.json` | the structures of assumptions behind the hypothesis arrows, the theorems that conclude each statement's `Prop`, and the export's axioms; written by `tools/lean-edges/hypotheses.py`, pinned by `LEAN_HYPOTHESES_SHA256` in `bp.py`; F8 reads it |
+| `src/lean-weight.json` | the declarations under each statement's Lean, counted and sized, and two statements opened to their helpers; written by `tools/lean-edges/weight.py`, pinned by `LEAN_WEIGHT_SHA256` in `bp.py`; F9 reads it |
 | `TEXT.md`, `PAGE.md`, `EDGES.md` | where each kind of text on a poster comes from; how the light page's grey was chosen; how the blueprint's arrows compare with the formal proof |
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same
