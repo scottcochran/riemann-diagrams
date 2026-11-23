@@ -143,7 +143,7 @@ reader can tell the citation from the paper this repository found for it.
 
 ## 5. Derived relations the blueprint does not state
 
-Two things on the posters are neither quoted nor written: they are inferred from the sources by the generator,
+Three things on the posters are neither quoted nor written: they are inferred from the sources by the generator,
 and the posters say so where they appear.
 
 - **Dashed arrows** (R3 to R8). The proof text of a statement sometimes names a result of the same chapter,
@@ -152,6 +152,11 @@ and the posters say so where they appear.
   rest. Each chapter module records the ones it expects, and the build fails if the blueprint now gives
   others. Whether such a result is a hypothesis of the Lean theorem or a missed edge, the generator cannot
   tell, and the card beside the grid says so.
+- **Verdicts against the formal proof** (R3). The card "Against the formal proof" is computed from
+  `src/lean-edges.json`, the verdict on every blueprint arrow from the published proof's references
+  (`diagrams/EDGES.md`). Its counts and lists are read from the file. Its sentences are written in the module,
+  and each fact they state is checked: the arrows' verdicts, and what the chapter theorem's Lean does with each
+  hypothesis. The file's hash is pinned in `src/bp.py`, so a rebuilt file fails the build until it is read.
 - **Layouts.** Which card stands where is computed from the edges (R4 to R8, F1), the chapter order (R2, F2),
   or a shortest path (T1, T2); R3 is laid out by hand in its module. A layout is a reading of the argument, and
   the plan's risks section notes that a computed one can mislead.

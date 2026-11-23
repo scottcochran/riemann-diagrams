@@ -8,6 +8,7 @@ ERROR instead of drawing something stale.
   load()                     the blueprint as a graph (blueprint_graph.Graph), after the commit checks
   read_mirror()              the five theorems of Main.lean and the Prop definitions of Statements.lean
   read_checks()              the pages R1's band 5 rests on, from src/checks.toml, checked against CHECKS_SHA256
+  read_edges(g)              the verdicts on the blueprint's arrows, from src/lean-edges.json (LEAN_EDGES_SHA256)
   body(g, id) / proof(g, id) the Markdown of a statement and of its proof
   rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
   lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
@@ -53,6 +54,11 @@ CHECKS_SHA256 = {
     "community": "eca667dfe1751846fb4d459f3546c9a202a871757066eb78a97b5437cd483b6b",
     "xena": "797a85a3b3bf28b4f819d4a7c369476a97d8ce6c452c15df6c0a3475eaef88e1",
 }
+# src/lean-edges.json, the verdict on every blueprint arrow from the formal proof's references (tools/lean-edges/,
+# diagrams/EDGES.md). The build fails if the file no longer hashes to this, so that a rebuilt file is read, and
+# EDGES.md and the cards that quote it are brought up to date, before it is drawn.
+LEAN_EDGES_SHA256 = "7b040dedf54b19027c8b0eea2dfc38ed14f9b878c138d080551e8bd620b516b3"
+VERDICTS = ("direct", "hypothesis", "through", "beside", "apart", "no-lean-source", "no-lean-target")
 
 # Map mode: no text of the blueprint and no Lean source is quoted. Each card keeps the statement's title, id,
 # kind, provenance, Lean name and location, and every edge. Set by gen-diagrams.py --map, before the modules load.
@@ -233,6 +239,71 @@ def read_checks():
     lib.SOURCES.clear()
     lib.SOURCES.update({k: e["url"] for k, e in checks.items()})
     return checks
+
+
+class Edges:
+    """src/lean-edges.json, checked: its hash against LEAN_EDGES_SHA256, its commits against the blueprint's and the
+    mirror pin's, and its verdicts against VERDICTS.
+
+      verdict(user, used)   the verdict on the blueprint arrow user -> used (user's statement or proof uses used)
+      formal(a)             the statements a's Lean uses directly (with helpers followed, and structure fields)
+      reaches(a, b)         whether a's Lean reaches b's, directly or by way of other statements
+      undrawn(a)            what a's Lean uses directly that the blueprint draws no arrow for
+    """
+
+    def __init__(self, g):
+        path = pathlib.Path(__file__).parent / "lean-edges.json"
+        raw = path.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest != LEAN_EDGES_SHA256:
+            raise ValueError(f"src/lean-edges.json hashes to {digest[:12]}…, not {LEAN_EDGES_SHA256[:12]}…: read what "
+                             "changed, bring diagrams/EDGES.md and the cards that quote it up to date, and update "
+                             "LEAN_EDGES_SHA256")
+        e = json.loads(raw)
+        if e["blueprint"] != g.bp_full:
+            raise ValueError(f"src/lean-edges.json was read from the blueprint at {e['blueprint'][:10]}, the diagrams "
+                             f"are drawn from {g.bp_full[:10]}: rebuild it (tools/lean-edges/README.md)")
+        if e["proof"]["mirror"] != g.mirror_pin_full:
+            raise ValueError(f"src/lean-edges.json judges the proof at {e['proof']['mirror'][:10]}, the blueprint "
+                             f"pins {g.mirror_pin_full[:10]}: rebuild it (tools/lean-edges/README.md)")
+        bad = sorted({v for us in e["arrows"].values() for v in us.values()} - set(VERDICTS))
+        if bad:
+            raise ValueError(f"src/lean-edges.json has verdicts the diagrams do not know: {bad}")
+        self.raw, self.sha256 = e, digest
+        self.export_sha256 = e["proof"]["export_sha256"]
+        self._formal = {}
+        for a in set(e["arrows"]) | set(e["undrawn"]):
+            f = set(e["undrawn"].get(a, ()))
+            f |= {b for b, v in e["arrows"].get(a, {}).items() if v in ("direct", "hypothesis")}
+            self._formal[a] = f
+        self._reach = {}
+
+    def verdict(self, user, used):
+        v = self.raw["arrows"].get(user, {}).get(used)
+        if v is None:
+            raise ValueError(f"src/lean-edges.json has no verdict on {user} -> {used}: not a blueprint arrow")
+        return v
+
+    def formal(self, a):
+        return self._formal.get(a, set())
+
+    def undrawn(self, a):
+        return set(self.raw["undrawn"].get(a, ()))
+
+    def reaches(self, a, b):
+        if a not in self._reach:
+            seen, todo = set(), list(self.formal(a))
+            while todo:
+                x = todo.pop()
+                if x not in seen:
+                    seen.add(x)
+                    todo.extend(self.formal(x))
+            self._reach[a] = seen
+        return b in self._reach[a]
+
+
+def read_edges(g):
+    return Edges(g)
 
 
 def _text_after_front_matter(path):
