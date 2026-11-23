@@ -32,7 +32,8 @@ Three families; the table below names each poster.
 - View from different frames of reference: [F1](F1-definitions-2026.11.23.svg),
   [F2](F2-new-2026.11.23.svg), [F3](F3-modules-2026.11.23.svg),
   [F4](F4-literature-2026.11.23.svg), [F5](F5-sections-2026.11.23.svg),
-  [F6](F6-depth-2026.11.23.svg), [F7](F7-verdicts-2026.11.23.svg)
+  [F6](F6-depth-2026.11.23.svg), [F7](F7-verdicts-2026.11.23.svg),
+  [F8](F8-assumptions-2026.11.23.svg)
 
 [![The proof, chapter by chapter](R2-chapters-2026.11.23.svg)](R2-chapters-2026.11.23.svg)
 
@@ -55,6 +56,7 @@ Three families; the table below names each poster.
 | F5 | [The sections, the middle level](F5-sections-2026.11.23.svg) | R2 one step down: the 58 sections of the blueprint as cards, one band per chapter in R2's order, each section above the sections whose proofs use it, with arrows labelled by the number of proof uses between them. A card gives the section's statements by provenance, its introduction, the statements of it that other sections use, and what it takes from and gives to other chapters. |
 | F6 | [Depth as geometry](F6-depth-2026.11.23.svg) | Every statement on one wheel: rings by breadth-first distance from the three theorems nothing uses, sectors by chapter, each statement a dot in its provenance colour with its id along the radius, and the chains of T1 and T2 traced through the rings. The one poster on which all 416 statements fit one page; a table gives how far each chapter reaches. |
 | F7 | [The blueprint against the Lean](F7-verdicts-2026.11.23.svg) | Every arrow of the blueprint checked against the references of the published formal proof (`src/lean-edges.json`, `EDGES.md`): a matrix of chapter against chapter with the arrows borne out over those that can be judged, a matrix of the uses the Lean makes that no arrow records, the statements the arrows not borne out concentrate in and those whose Lean uses most beyond their arrows, and each statement's depth from the main theorems in the blueprint against its depth in the Lean. |
+| F8 | [Where the assumptions enter](F8-assumptions-2026.11.23.svg) | Where the formal proof's assumptions enter and where they are discharged, from `src/lean-hypotheses.json`: one card for each structure of assumptions behind the arrows borne out only as hypotheses, with the claims its fields state, the statements that take it and the declarations that build it; each chapter's stated claims by whether a theorem of the proof concludes them; every claim not concluded outright; and the axioms the export holds, against those `comparator.json` permits. |
 
 R4 to R8 are laid out by `src/chapter.py` from the chapter's own edges: a card
 sits above the cards whose proofs use it, section heads and the chapter
@@ -121,6 +123,7 @@ say otherwise.
 | F5 | the proof uses between sections of a chapter, and the pairs that would point upward |
 | F6 | the depth histogram and the unreached statements |
 | F7 | the arrows by verdict, the statements the arrows not borne out concentrate in, and the depth moves between the two graphs |
+| F8 | the structures of assumptions, the stated claims by class, and the export's axioms, which must be those `comparator.json` permits |
 
 The build also fails if:
 
@@ -254,7 +257,8 @@ four files the generator reads.
 | `src/d_f5_sections.py` | F5: the sections chapter by chapter, laid out by their edges; `EXPECTED`, `UPWARD` |
 | `src/d_f6_depth.py` | F6: the wheel, rings by depth and sectors by chapter; `EXPECTED_DEPTHS`, `UNREACHED` |
 | `map/` | the map set, as `map-*.svg`, and its own `manifest.json` |
-| `src/lean-edges.json` | a verdict on every blueprint arrow from the formal proof's references, with its provenance; written by `tools/lean-edges/`, pinned by `LEAN_EDGES_SHA256` in `bp.py`; R3 to R8, T1 and T2 read it |
+| `src/lean-edges.json` | a verdict on every blueprint arrow from the formal proof's references, with its provenance; written by `tools/lean-edges/`, pinned by `LEAN_EDGES_SHA256` in `bp.py`; R3 to R8, T1, T2 and F7 read it |
+| `src/lean-hypotheses.json` | the structures of assumptions behind the hypothesis arrows, the theorems that conclude each statement's `Prop`, and the export's axioms; written by `tools/lean-edges/hypotheses.py`, pinned by `LEAN_HYPOTHESES_SHA256` in `bp.py`; F8 reads it |
 | `TEXT.md`, `PAGE.md`, `EDGES.md` | where each kind of text on a poster comes from; how the light page's grey was chosen; how the blueprint's arrows compare with the formal proof |
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same

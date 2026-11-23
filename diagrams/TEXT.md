@@ -152,7 +152,8 @@ and the posters say so where they appear.
   rest. Each chapter module records the ones it expects, and the build fails if the blueprint now gives
   others. Whether such a result is a hypothesis of the Lean theorem or a missed edge, the generator cannot
   tell, and the card beside the grid says so.
-- **Verdicts against the formal proof** (R3 to R8, T1, T2, F7). F7's tables are counts from the file. The card "Against the formal proof", and the
+- **Verdicts against the formal proof** (R3 to R8, T1, T2, F7, F8). F7's tables are counts from the file, and
+  F8's cards and tables are read from `src/lean-hypotheses.json`, pinned the same way. The card "Against the formal proof", and the
   last bullet of a trace's chain card, are computed from
   `src/lean-edges.json`, the verdict on every blueprint arrow from the published proof's references
   (`diagrams/EDGES.md`). Its counts and lists are read from the file. Its sentences are written in the module,

@@ -139,7 +139,26 @@ statement under `undrawn`. They are concentrated in the theorems that assemble t
 `thm-grh-from-sha-bound` (128), `thm-grh-from-theta-integrals` (98), `prop-member-hypotheses-from-literature`
 (96), `thm-family-data-exists` (84) and `thm-non-endoscopic-hypotheses-hold` (62).
 
-## 8. What a verdict does not say
+## 8. Where the assumptions enter, and where they are discharged (F8)
+
+The five theorems of `Main.lean` are closed propositions, so every assumption the proof takes is discharged
+inside it. `diagrams/src/lean-hypotheses.json`, written by `tools/lean-edges/hypotheses.py` from the export,
+follows two kinds, and F8 draws them.
+
+- **Structures of assumptions.** The 157 `hypothesis` arrows pass through 8 structures, each counted where its
+  own fields state the arrow's target. They run from 10 statements to 48, 44 of them in the literature chapter.
+  17 declarations build these structures, so supply every field. None is a declaration the blueprint names,
+  and each is reached by the Lean of some statement, which is where the assumptions are discharged.
+- **Stated claims.** 225 statements give a `Prop` definition among their Lean, 289 in all. For 275 some theorem
+  of the proof concludes it with no premise typed by a blueprint `Prop` or one of the structures. 6 are
+  concluded only under such premises, 7 are never concluded under their own name, and 1 is not in the proof.
+  All 184 of the literature chapter's are concluded outright. The test reads types, not proofs, and sees only
+  those premises. A theorem concluding a `Prop` of another name that unfolds to the same is not seen either.
+- **Axioms.** The export holds three axioms, `Classical.choice`, `Quot.sound` and `propext`, which are exactly
+  the ones the mirror's `comparator.json` permits, and no `sorryAx`. This is read from the export, not checked
+  by a kernel; it is not a verification of the proof.
+
+## 9. What a verdict does not say
 
 - **Not that anything is proved.** A verdict reads references, which is what the compiler wrote, and checks
   nothing. The proof's status is the mirror's Comparator run, and its notes do not yet record a result.

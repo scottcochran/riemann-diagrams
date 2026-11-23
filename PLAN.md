@@ -510,6 +510,14 @@ statements, not the declaration graph, and stays well under a megabyte.
   literature chapter, it says which published results are hypotheses of the final theorem and which the proof
   applies as lemmas. Needs `lean-hypotheses.json`: per package, its Lean name, the statements its fields
   state, and who takes it.
+  Done 2026.11.23 as `d_f8_assumptions.py`, with `tools/lean-edges/hypotheses.py` writing the file. The framing
+  changed with the data. The theorems of `Main.lean` are closed, so no published result is a hypothesis of the
+  final theorem; every assumption is discharged inside the proof. F8 shows where each enters and where it is
+  discharged. There are 8 structures behind the 157 hypothesis arrows, each with its builders and the
+  statements that reach them. For every statement's `Prop`, it gives whether a theorem of the proof concludes
+  it: outright for 275 of 289, and for all 184 of the literature chapter's. It also gives the export's axioms:
+  the three `comparator.json` permits, and no `sorryAx`. The build checks the structures, the counts by class
+  and the axioms.
 - **8d: where the formal work is.** Per statement, the declarations under its Lean that no other statement
   reaches first, with their count and size. Drawn first as a measure on F2 (new, modified, published) and on
   F6's wheel, then as the deeper frame of Phase 6: one statement opened to its declarations, R3's chapter

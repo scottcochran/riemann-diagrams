@@ -66,6 +66,10 @@ and zoom in.
   references, chapter against chapter, with the statements the disagreements
   concentrate in, the uses the Lean makes that no arrow draws, and each
   statement's depth in the two graphs.
+- [Where the assumptions enter](diagrams/F8-assumptions-2026.11.23.svg): the
+  structures of assumptions the proof's theorems take, with what their fields
+  state, who takes them and who builds them, and every claim the blueprint
+  states as a `Prop`, by whether the proof concludes it.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg)](diagrams/R1-main-theorems-2026.11.23.svg)
 
