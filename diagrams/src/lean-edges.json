@@ -1,0 +1,5196 @@
+{
+ "about": "A verdict on every arrow of the riemann-blueprint, from the references of the published formal proof. Written by tools/lean-edges/verdicts.py; the README beside it says how to rebuild it. No Lean was built: the references are read from a published export of the proof, and cross-checked against the mirror's public build cache.",
+ "blueprint": "137d97602647e450901981a7decfb86ab3024a48",
+ "proof": {
+  "mirror": "8c90877ceaa694974526e0aab9aaaf6ea0f5099e",
+  "export": "https://math.mit.edu/~drew/grh/solution.ndjson.zst",
+  "export_sha256": "61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381",
+  "export_unpacked_sha256": "5ea74b912147c5c93cc2b6d70cc727cf908df2f62ac6a20480a3fa02f6be244e",
+  "exporter": "lean4export 3.1.0",
+  "lean": "4.33.1",
+  "note": "The export holds the dependency closure of the five main theorems, so a declaration missing from it is not used by the proof."
+ },
+ "cross_check": {
+  "mirror": "c900e67c2fcd1fdb041685820bbd2b867fbc5a4b",
+  "cache": "https://rh-cache.taucetiproject.org",
+  "receipt": "ci/revisions/c900e67c2fcd1fdb041685820bbd2b867fbc5a4b.json",
+  "receipt_sha256": "ebbb530e36a188409812186155e319d2afed6f41a44417135b0d9defcd9b3c14",
+  "lean": "4.37.0-rc1",
+  "note": "Every compiled module of the mirror at this commit, read from its build cache. A later tree than the export's: where the two disagree, the arrow is listed under differs with the cache's verdict.",
+  "differs": {
+   "thm-critical-line-primitive": {
+    "thm-half-plane": "through"
+   },
+   "thm-family-data-exists": {
+    "thm-local-parameters-exist": "through"
+   },
+   "thm-primitive-suffice": {
+    "def-nonvanishing-half-plane": "through"
+   }
+  },
+  "moves": {
+   "apart -> through": 2,
+   "direct -> through": 1
+  },
+  "counts": {
+   "direct": 1548,
+   "hypothesis": 157,
+   "through": 57,
+   "beside": 19,
+   "apart": 146,
+   "no-lean-source": 74,
+   "no-lean-target": 3
+  }
+ },
+ "verdicts": {
+  "direct": "A's Lean reaches B's, through helper declarations that no statement names",
+  "hypothesis": "A's Lean reaches B's only through the fields of a structure it takes: B is a hypothesis A carries",
+  "through": "A's Lean reaches B's only by way of other statements' Lean (A -> C -> ... -> B)",
+  "beside": "A's Lean never reaches B's, but some declaration's proof mentions both: B is used next to A",
+  "apart": "the formal proof does not bear the arrow out",
+  "no-lean-source": "none of A's Lean names is in the formal proof",
+  "no-lean-target": "none of B's Lean names is in the formal proof"
+ },
+ "counts": {
+  "direct": 1549,
+  "hypothesis": 157,
+  "through": 54,
+  "beside": 19,
+  "apart": 148,
+  "no-lean-source": 74,
+  "no-lean-target": 3
+ },
+ "arrows": {
+  "def-congruence-data": {
+   "def-auxiliary-field-data": "direct",
+   "def-family-member": "direct"
+  },
+  "def-connected-families": {
+   "def-slope-data": "direct"
+  },
+  "def-family": {
+   "def-family-member": "direct",
+   "def-family-scale": "direct"
+  },
+  "def-family-data": {
+   "def-family": "direct",
+   "def-sha-error-term": "beside"
+  },
+  "def-family-hermitian-spaces": {
+   "def-auxiliary-field-data": "through",
+   "def-family-ranks": "direct"
+  },
+  "def-family-member": {
+   "def-auxiliary-field-data": "direct",
+   "def-family-hermitian-spaces": "direct",
+   "def-family-ranks": "direct",
+   "def-harish-chandra-parameters": "direct"
+  },
+  "def-family-ranks": {
+   "def-auxiliary-field-data": "direct"
+  },
+  "def-family-scale": {
+   "def-family-member": "direct",
+   "def-harish-chandra-parameters": "direct"
+  },
+  "def-galois-reps-polarized": {
+   "def-local-parameters": "direct"
+  },
+  "def-harish-chandra-parameters": {
+   "def-family-ranks": "direct"
+  },
+  "lem-absolute-siegel-lemma": {
+   "lem-flag-cover-pullback": "apart",
+   "thm-arithmetic-hilbert-samuel-inequalities": "apart",
+   "thm-arithmetic-intersection-theory": "direct"
+  },
+  "lem-admissibility-each-place": {
+   "lem-inert-theta-admissibility-cm": "no-lean-source",
+   "thm-hasse-norm-quadratic": "no-lean-source"
+  },
+  "lem-complete-family-from-constants": {
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct"
+  },
+  "lem-constructed-points-from-depth-four": {
+   "thm-siegel-main-theorem-hermitian": "apart"
+  },
+  "lem-counting-constants-siegel-weil": {
+   "thm-counting-automorphic-forms-unitary": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct"
+  },
+  "lem-de-rham-eigenpart-rank": {
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-charpoly-de-rham-abelian": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct"
+  },
+  "lem-de-rham-hodge-tate-flag-comparison": {
+   "lem-de-rham-hodge-tate-relations-dvr": "direct"
+  },
+  "lem-depth-three-to-four": {
+   "def-local-parameters": "direct",
+   "lem-integrable-spectral-setting": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-frame-independent": "direct",
+   "thm-discrete-series-parametrisation": "apart",
+   "thm-formal-degree-upq": "apart",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-discrete-series-classification": "apart",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct"
+  },
+  "lem-finite-classes-twists-from-wach": {
+   "thm-bloch-kato-local": "beside",
+   "thm-fontaine-bcris": "apart",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "lem-first-order-deformation-count": {
+   "lem-de-rham-eigenpart-rank": "direct",
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-abelian-scheme-lifting-divided-powers": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-grothendieck-messing": "direct"
+  },
+  "lem-five-laws-chain-kernels": {
+   "lem-integral-moments-kernel-jets": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-jantzen-lowest-alcove": "direct"
+  },
+  "lem-flag-cover-pullback": {
+   "thm-arithmetic-intersection-theory": "beside"
+  },
+  "lem-good-auxiliary-primes": {
+   "def-chebyshev-weighted": "through",
+   "thm-pnt-progressions-exceptional-zero": "direct"
+  },
+  "lem-good-frames-exist": {
+   "lem-standard-frames-good": "direct"
+  },
+  "lem-grid-steps-preserve-cusp-forms": {
+   "lem-theta-lift-smooth-cusp-forms": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct"
+  },
+  "lem-h2-tate-twists-bound": {
+   "def-galois-cohomology-inputs": "direct",
+   "thm-artin-reciprocity": "hypothesis",
+   "thm-base-change-unitary": "apart",
+   "thm-bernstein-unitary-product": "hypothesis",
+   "thm-borel-type-rank-bound": "direct",
+   "thm-brauer-induction-degree-zero": "hypothesis",
+   "thm-bz-finiteness": "hypothesis",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "hypothesis",
+   "thm-clozel-cohomological": "hypothesis",
+   "thm-clozel-purity": "hypothesis",
+   "thm-cusp-rapid-decay": "hypothesis",
+   "thm-cuspidal-spectrum-gl": "hypothesis",
+   "thm-de-rham-abelian-schemes": "hypothesis",
+   "thm-depth-zero-from-support": "hypothesis",
+   "thm-dual-abelian-scheme": "hypothesis",
+   "thm-gelfand-kazhdan": "hypothesis",
+   "thm-geometric-lemma": "hypothesis",
+   "thm-green-regular-characters": "hypothesis",
+   "thm-grothendieck-messing": "hypothesis",
+   "thm-hc-finiteness-gl": "hypothesis",
+   "thm-hc-finiteness-unitary": "hypothesis",
+   "thm-hecke-character-wd-above-l": "hypothesis",
+   "thm-hecke-functional-equation-cm": "hypothesis",
+   "thm-hecke-l-adic-character-above-l": "hypothesis",
+   "thm-henniart-local-converse": "hypothesis",
+   "thm-hilbert-modular-inputs": "apart",
+   "thm-jacquet-shalika": "hypothesis",
+   "thm-moy-prasad-jacquet": "hypothesis",
+   "thm-p-adic-monodromy": "hypothesis",
+   "thm-partial-zeta-functional-equation": "hypothesis",
+   "thm-poitou-tate": "direct",
+   "thm-ray-class-field": "hypothesis",
+   "thm-shimura-main-theorem-cm": "hypothesis",
+   "thm-siegel-klingen-rationality": "hypothesis",
+   "thm-singular-moduli-class-number": "hypothesis",
+   "thm-square-integrable-segment": "hypothesis",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-tempered-products": "hypothesis",
+   "thm-zelevinsky-segments": "hypothesis"
+  },
+  "lem-height-lower-bound-deep-covers": {
+   "def-hodge-bundle-inputs": "direct",
+   "lem-reference-weights-deep-covers": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-angehrn-siu-point-separation": "direct",
+   "thm-arithmetic-hilbert-samuel": "direct",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-arithmetic-volume-bound": "direct",
+   "thm-arithmetic-volume-nef": "direct",
+   "thm-chow-form": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-gaga-sections": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-grothendieck-existence": "direct",
+   "thm-grothendieck-messing": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hodge-bundle-semipositive": "direct",
+   "thm-jantzen-lowest-alcove": "direct",
+   "thm-kawamata-viehweg": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-mean-arithmetic-volume-lower-bound": "through",
+   "thm-mumford-good-metrics": "direct",
+   "thm-ohsawa-takegoshi-points": "direct",
+   "thm-principal-polarisation-one-section": "direct",
+   "thm-principalisation-projective": "direct",
+   "thm-ray-class-field": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-strong-approximation-su": "direct",
+   "thm-toroidal-compactification-siegel": "direct",
+   "thm-toroidal-compactification-unitary": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "lem-hilbert-samuel-block": {
+   "lem-flag-cover-pullback": "apart",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-hironaka-resolution": "apart"
+  },
+  "lem-inert-theta-admissibility-cm": {
+   "thm-cm-j-integral-good-reduction": "direct"
+  },
+  "lem-integrable-spectral-setting": {
+   "lem-measured-setting-standard-character": "direct",
+   "thm-hc-finiteness-unitary": "beside",
+   "thm-siegel-main-theorem-hermitian": "direct"
+  },
+  "lem-integral-moments-kernel-jets": {
+   "thm-katz-measures-cm-theta": "direct"
+  },
+  "lem-kernel-conditions-standard-data": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "lem-kodaira-spencer-from-rigid-charts": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-unitary-rigid-boundary-charts": "direct"
+  },
+  "lem-lifting-crystalline-lattices": {
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-fontaine-bcris": "direct"
+  },
+  "lem-local-models-constructed-points": {
+   "lem-admissibility-each-place": "no-lean-target",
+   "lem-inert-theta-admissibility-cm": "apart",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "lem-local-models-weight-range": {
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-chebotarev-degree-one": "direct"
+  },
+  "lem-local-partner-counts": {
+   "lem-local-lattice-counts-isometries": "direct"
+  },
+  "lem-local-point-data-heights": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "lem-measured-setting-standard-character": {
+   "thm-siegel-main-theorem-hermitian": "direct"
+  },
+  "lem-membership-two-passes": {
+   "lem-constructed-points-from-depth-four": "direct",
+   "thm-gross-cm-curves": "direct",
+   "thm-siegel-main-theorem-hermitian": "beside",
+   "thm-weber-ray-class-field": "apart"
+  },
+  "lem-pair-count-siegel-mass-ratio": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-siegel-main-theorem-hermitian": "apart"
+  },
+  "lem-reference-weights-deep-covers": {
+   "def-hodge-bundle-inputs": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-grothendieck-existence": "direct",
+   "thm-grothendieck-messing": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "lem-second-coordinates-integral-laws": {
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-strong-approximation-su": "direct"
+  },
+  "lem-siegel-minimal-blowup-smooth": {
+   "lem-siegel-tautological-charts": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct"
+  },
+  "lem-siegel-tautological-charts": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-grothendieck-existence": "direct",
+   "thm-mumford-degeneration": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct"
+  },
+  "lem-siegel-weil-singular-coefficients": {
+   "lem-siegel-weil-represented-coefficients": "direct",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "lem-theta-constant-term-big-cone": {
+   "thm-bernstein-unitary-product": "no-lean-source",
+   "thm-borel-casselman": "no-lean-source",
+   "thm-bz-finiteness": "no-lean-source",
+   "thm-casselman-wallach": "no-lean-source",
+   "thm-cm-j-hilbert-class-field": "no-lean-source",
+   "thm-cusp-bounded-unitary": "no-lean-source",
+   "thm-cusp-decay-sobolev": "no-lean-source",
+   "thm-cusp-rapid-decay": "no-lean-source",
+   "thm-cusp-trace-class": "no-lean-source",
+   "thm-cusp-uniform-decay": "no-lean-source",
+   "thm-cuspidal-spectrum-gl": "no-lean-source",
+   "thm-discrete-series-exist-cover": "no-lean-source",
+   "thm-discrete-series-exist-upq": "no-lean-source",
+   "thm-discrete-series-frame-independent": "no-lean-source",
+   "thm-discrete-series-lowest-k-type": "no-lean-source",
+   "thm-discrete-series-parametrisation": "no-lean-source",
+   "thm-dixmier-malliavin": "no-lean-source",
+   "thm-flath-unramified": "no-lean-source",
+   "thm-formal-degree-upq": "no-lean-source",
+   "thm-gelfand-cuspidal-mirabolic": "no-lean-source",
+   "thm-geometric-lemma-filtration": "no-lean-source",
+   "thm-godement-schur-orthogonality": "no-lean-source",
+   "thm-green-parametrisation": "no-lean-source",
+   "thm-hasse-norm-quadratic": "no-lean-source",
+   "thm-hc-finiteness-unitary": "no-lean-source",
+   "thm-hc-infinitesimal-equivalence": "no-lean-source",
+   "thm-hc-k-finite-vectors": "no-lean-source",
+   "thm-hc-modules-unitary": "no-lean-source",
+   "thm-hecke-functional-equation-cm": "no-lean-source",
+   "thm-hecke-l-entire": "no-lean-source",
+   "thm-hecke-l-nonvanishing-line-one": "no-lean-source",
+   "thm-hermitian-hasse-principle": "no-lean-source",
+   "thm-holomorphic-discrete-series": "no-lean-source",
+   "thm-howe-duality-archimedean-trivial": "no-lean-source",
+   "thm-howe-duality-gl-gl": "no-lean-source",
+   "thm-jacquet-shalika": "no-lean-source",
+   "thm-kudla-splitting": "no-lean-source",
+   "thm-landherr-hermitian-forms": "no-lean-source",
+   "thm-linnik": "no-lean-source",
+   "thm-log-derivative-at-one": "no-lean-source",
+   "thm-oscillator-lie-action": "no-lean-source",
+   "thm-quadratic-class-field-theory": "no-lean-source",
+   "thm-radford-shuffle": "no-lean-source",
+   "thm-rallis-inner-product": "no-lean-source",
+   "thm-reduction-theory-unitary": "no-lean-source",
+   "thm-siegel-weil-weil-range": "no-lean-source",
+   "thm-singular-moduli-class-number": "no-lean-source",
+   "thm-stone-von-neumann": "no-lean-source",
+   "thm-strong-approximation-su": "no-lean-source",
+   "thm-theta-rational-invariance": "no-lean-source",
+   "thm-unramified-doubling-gl": "no-lean-source",
+   "thm-weil-representation-unitary-exists": "no-lean-source",
+   "thm-weyl-branching": "no-lean-source"
+  },
+  "lem-theta-lift-smooth-cusp-forms": {
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-bounded-unitary": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-frame-independent": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-k-finite-vectors": "direct",
+   "thm-hc-modules-unitary": "direct"
+  },
+  "lem-twisted-jets-assemble": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-howe-duality-gl-gl": "direct"
+  },
+  "lem-twisted-theta-unfolding": {
+   "lem-grid-steps-preserve-cusp-forms": "direct",
+   "lem-twisted-vacua-real-points": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "lem-twisted-vacua-base-comparison": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "lem-twisted-vacua-real-points": {
+   "lem-twisted-vacua-base-comparison": "direct",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "lem-uniformisation-labelled-cover": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-semi-abelian-hom-extension": "direct"
+  },
+  "lem-unitary-boundary-prechart": {
+   "lem-unitary-tautological-charts": "direct"
+  },
+  "lem-unitary-boundary-separation": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "lem-unitary-tautological-charts": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-mumford-degeneration": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "lem-valuations-level-primes": {
+   "lem-five-laws-chain-kernels": "direct"
+  },
+  "lem-weyl-antisymmetry-intersection": {
+   "lem-flag-cover-pullback": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-semi-abelian-hom-extension": "direct"
+  },
+  "lem-zeta-nonvanishing": {
+   "def-nonvanishing-half-plane": "no-lean-source"
+  },
+  "prop-admissible-data-exist": {
+   "def-local-parameters": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-inner-form-multiplicities-equal": "apart",
+   "thm-weber-ray-class-field": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "prop-archimedean-model-data": {
+   "lem-cutoff-energy-limit": "direct",
+   "thm-archimedean-models": "direct",
+   "thm-bessel-transform-radial-space": "direct"
+  },
+  "prop-block-bounds-from-four": {
+   "prop-block-sums-ranges": "direct"
+  },
+  "prop-block-sums-ranges": {
+   "thm-mean-value-bad-shares": "direct"
+  },
+  "prop-chosen-data-serve-families": {
+   "def-local-parameters": "direct",
+   "lem-inert-theta-admissibility-cm": "direct",
+   "lem-kernel-conditions-standard-data": "direct",
+   "lem-local-models-constructed-points": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-chebotarev-degree-one": "direct"
+  },
+  "prop-congruence-bound-auxiliary-pair": {
+   "thm-artin-reciprocity": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-congruence-module-selmer-bound": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-lifting-deep-weights": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct"
+  },
+  "prop-congruence-bound-auxiliary-primes": {
+   "prop-paired-character-bound": "direct",
+   "thm-artin-reciprocity": "direct"
+  },
+  "prop-congruence-bound-intermediate-primes": {
+   "prop-lifting-ramified-coefficients": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-congruence-module-selmer-bound": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-lifting-clustered-weights": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct"
+  },
+  "prop-congruence-bound-large-primes": {
+   "prop-finite-classes-cyclotomic-twists": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-bhatt-scholze-crystalline-lattices": "direct",
+   "thm-fontaine-bcris": "direct"
+  },
+  "prop-congruence-bounds-all-primes": {
+   "prop-congruence-bound-auxiliary-pair": "direct",
+   "prop-congruence-bound-intermediate-primes": "direct",
+   "prop-congruence-bound-large-primes": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-bhatt-scholze-crystalline-lattices": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-congruence-module-selmer-bound": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-wach-lifting-theorem": "direct"
+  },
+  "prop-counting-constants-constituents": {
+   "lem-counting-constants-siegel-weil": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct"
+  },
+  "prop-defect-condition": {
+   "def-local-parameters": "direct",
+   "prop-definite-side-norm-bounds": "direct"
+  },
+  "prop-definite-side-norm-bounds": {
+   "thm-chowla-selberg": "direct",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "prop-exponent-bounds-twisting-places": {
+   "def-local-parameters": "direct",
+   "lem-local-models-weight-range": "direct",
+   "lem-prime-power-lattice-inclusion-exponent": "direct",
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-clozel-cohomological": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-galois-reps-csd-above-l": "through",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "prop-family-characters-with-links": {
+   "lem-complete-family-from-constants": "direct",
+   "lem-second-coordinates-integral-laws": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-strong-approximation-su": "direct"
+  },
+  "prop-finite-classes-cyclotomic-twists": {
+   "lem-finite-classes-twists-from-wach": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "prop-good-twists-from-theta-series": {
+   "prop-hecke-integrality-transformation": "apart",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-good-twists-all-coprime-powers": "direct",
+   "thm-greenberg-wiles": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hecke-l-entire": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-ray-class-characters-galois": "direct",
+   "thm-ray-class-field": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-global-finiteness": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-unramified-annihilators": "direct"
+  },
+  "prop-hecke-integrality-transformation": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "prop-height-inequalities-at-points": {
+   "lem-local-point-data-heights": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-complex-theta-uniformisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "prop-intermediate-constructions-exist": {
+   "def-local-parameters": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bernstein-unitary-product": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-derivative-leibniz": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-clozel-regular-algebraic": "hypothesis",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-decay-sobolev": "apart",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-depth-zero-jacquet-injective": "hypothesis",
+   "thm-depth-zero-support": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-disjoint-support-product-irreducible": "hypothesis",
+   "thm-doubling-method": "hypothesis",
+   "thm-galois-reps-csd-above-l": "hypothesis",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-godement-schur-orthogonality": "hypothesis",
+   "thm-green-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-hecke-character-local-parameter-above-l": "hypothesis",
+   "thm-hecke-l-adic-character-above-l": "hypothesis",
+   "thm-hecke-l-nonvanishing-line-one": "hypothesis",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-ray-class-characters-galois": "hypothesis",
+   "thm-ray-class-field": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-siegel-weil-convergent-doubling": "hypothesis",
+   "thm-siegel-weil-weil-range": "hypothesis",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-unramified-doubling-gl": "hypothesis",
+   "thm-weil-representation-unitary-exists": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "prop-isometric-period-identity": {
+   "def-local-parameters": "direct",
+   "prop-period-identity-real-package": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-counting-constant-mass-constant": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-bessel-pointwise-bound": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-doubling-method": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-lattice-term-pair-bound": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-strong-approximation-su": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weighted-bessel-sum-bound": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "prop-lattice-and-depth-estimates": {
+   "prop-height-inequalities-at-points": "direct",
+   "prop-local-data-unitary-shimura-points": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct"
+  },
+  "prop-lifting-ramified-coefficients": {
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "prop-local-data-unitary-shimura-points": {
+   "lem-orbit-data-inert-primes": "direct"
+  },
+  "prop-offdiagonal-hypotheses-hold": {
+   "lem-local-decomposition-inputs": "direct",
+   "prop-archimedean-model-data": "direct",
+   "prop-pair-coefficient-local-decomposition": "direct",
+   "thm-counting-constant-mass-constant": "direct",
+   "thm-hc-finiteness-unitary": "apart",
+   "thm-siegel-main-theorem-hermitian": "apart"
+  },
+  "prop-pair-coefficient-local-decomposition": {
+   "lem-local-partner-counts": "direct"
+  },
+  "prop-paired-character-bound": {
+   "thm-artin-reciprocity": "direct",
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-bhatt-scholze-crystalline-lattices": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-lifting-potentially-crystalline": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "prop-period-identity-real-package": {
+   "prop-family-characters-with-links": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-frame-independent": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-doubling-method": "direct",
+   "thm-harish-chandra-discrete-series": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-strong-approximation-su": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "prop-periods-valuations-good-data": {
+   "lem-valuations-level-primes": "direct"
+  },
+  "prop-small-terms-offdiag-level": {
+   "thm-counting-constant-mass-constant": "direct",
+   "thm-discrete-series-bessel-pointwise-bound": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-offdiagonal-bound": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct",
+   "thm-weighted-bessel-sum-bound": "direct"
+  },
+  "prop-theta-integrals-along-towers": {
+   "lem-theta-constant-term-big-cone": "no-lean-target",
+   "thm-bernstein-unitary-product": "apart",
+   "thm-borel-casselman": "apart",
+   "thm-bz-finiteness": "apart",
+   "thm-casselman-wallach": "apart",
+   "thm-cm-j-hilbert-class-field": "apart",
+   "thm-cusp-bounded-unitary": "apart",
+   "thm-cusp-decay-sobolev": "apart",
+   "thm-cusp-rapid-decay": "apart",
+   "thm-cusp-trace-class": "apart",
+   "thm-cusp-uniform-decay": "apart",
+   "thm-cuspidal-spectrum-gl": "apart",
+   "thm-discrete-series-exist-cover": "apart",
+   "thm-discrete-series-exist-upq": "apart",
+   "thm-discrete-series-frame-independent": "apart",
+   "thm-discrete-series-lowest-k-type": "apart",
+   "thm-discrete-series-parametrisation": "apart",
+   "thm-dixmier-malliavin": "apart",
+   "thm-flath-unramified": "apart",
+   "thm-formal-degree-upq": "apart",
+   "thm-gelfand-cuspidal-mirabolic": "apart",
+   "thm-geometric-lemma-filtration": "apart",
+   "thm-godement-schur-orthogonality": "apart",
+   "thm-green-parametrisation": "apart",
+   "thm-hasse-norm-quadratic": "apart",
+   "thm-hc-finiteness-unitary": "apart",
+   "thm-hc-infinitesimal-equivalence": "apart",
+   "thm-hc-k-finite-vectors": "apart",
+   "thm-hc-modules-unitary": "apart",
+   "thm-hecke-functional-equation-cm": "apart",
+   "thm-hecke-l-entire": "apart",
+   "thm-hecke-l-nonvanishing-line-one": "apart",
+   "thm-hermitian-hasse-principle": "apart",
+   "thm-holomorphic-discrete-series": "apart",
+   "thm-howe-duality-archimedean-trivial": "apart",
+   "thm-howe-duality-gl-gl": "apart",
+   "thm-jacquet-shalika": "apart",
+   "thm-kudla-splitting": "apart",
+   "thm-landherr-hermitian-forms": "apart",
+   "thm-linnik": "apart",
+   "thm-log-derivative-at-one": "apart",
+   "thm-oscillator-lie-action": "apart",
+   "thm-quadratic-class-field-theory": "apart",
+   "thm-radford-shuffle": "apart",
+   "thm-rallis-inner-product": "apart",
+   "thm-reduction-theory-unitary": "beside",
+   "thm-siegel-weil-weil-range": "apart",
+   "thm-singular-moduli-class-number": "apart",
+   "thm-stone-von-neumann": "apart",
+   "thm-strong-approximation-su": "apart",
+   "thm-theta-rational-invariance": "apart",
+   "thm-unramified-doubling-gl": "apart",
+   "thm-weil-representation-unitary-exists": "apart",
+   "thm-weyl-branching": "apart"
+  },
+  "prop-twisting-property-constructed-points": {
+   "def-local-parameters": "direct",
+   "prop-good-twists-from-theta-series": "direct",
+   "prop-hecke-integrality-transformation": "apart",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bernstein-unitary-product": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-derivative-leibniz": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-clozel-regular-algebraic": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-depth-zero-jacquet-injective": "hypothesis",
+   "thm-disjoint-support-product-irreducible": "hypothesis",
+   "thm-galois-reps-csd-above-l": "direct",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-green-regular-characters": "direct",
+   "thm-greenberg-wiles": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hecke-character-local-parameter-above-l": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-poitou-tate": "through",
+   "thm-ray-class-characters-galois": "direct",
+   "thm-ray-class-field": "hypothesis",
+   "thm-semistable-reduction": "direct",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-global-finiteness": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-unramified-annihilators": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-abelian-scheme-lifting-divided-powers": {
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct"
+  },
+  "thm-additive-characteristic-classes": {
+   "thm-projective-bundle-formula": "direct"
+  },
+  "thm-angehrn-siu-point-separation": {
+   "thm-kawamata-viehweg": "direct",
+   "thm-principalisation-projective": "direct"
+  },
+  "thm-archimedean-models": {
+   "lem-radial-operator-transfer": "direct"
+  },
+  "thm-arithmetic-hilbert-samuel": {
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-kawamata-viehweg": "direct",
+   "thm-principalisation-projective": "direct"
+  },
+  "thm-arithmetic-hilbert-samuel-inequalities": {
+   "lem-flag-cover-pullback": "apart",
+   "lem-hilbert-samuel-block": "direct",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-hironaka-resolution": "apart"
+  },
+  "thm-arithmetic-intersection-theory": {
+   "lem-flag-cover-pullback": "beside",
+   "thm-functorial-resolution": "direct",
+   "thm-principalisation-reduces-dimension": "direct"
+  },
+  "thm-arithmetic-volume-bound": {
+   "thm-arithmetic-hilbert-samuel": "direct",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-kawamata-viehweg": "direct"
+  },
+  "thm-arithmetic-volume-nef": {
+   "thm-arithmetic-hilbert-samuel": "direct"
+  },
+  "thm-automorphic-induction-quadratic": {
+   "thm-artin-reciprocity": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-hasse-norm-cyclic": "direct",
+   "thm-hasse-norm-quadratic": "through",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-multiplicity-one-gl": "direct"
+  },
+  "thm-auxiliary-fields": {
+   "def-sha-bound": "direct",
+   "def-slope-data": "direct",
+   "lem-good-auxiliary-primes": "direct",
+   "thm-pnt-progressions-exceptional-zero": "through"
+  },
+  "thm-base-change-unitary": {
+   "thm-hecke-bound-base-change": "direct",
+   "thm-twisted-trace-lowest-type": "apart"
+  },
+  "thm-basic-conditions-from-local-parameters": {
+   "def-local-parameters": "direct",
+   "prop-defect-condition": "direct",
+   "prop-isometric-period-identity": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cusp-trace-class": "direct",
+   "thm-depth-zero-support": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-dixmier-malliavin": "direct",
+   "thm-flath-unramified": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-green-regular-characters": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-analyticity-density": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-inner-form-multiplicities-equal": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-weil-representation-unitary-exists": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-bernstein-unitary-product": {
+   "thm-bz-derivative-leibniz": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-jacquet-irreducible-admissible": "direct"
+  },
+  "thm-bessel-period-ascent": {
+   "lem-good-frames-exist": "direct",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-bessel-transform-radial-space": {
+   "def-archimedean-bessel-data": "direct"
+  },
+  "thm-bhatt-scholze-coefficients": {
+   "thm-bhatt-scholze-crystalline-lattices": "direct"
+  },
+  "thm-bhatt-scholze-crystalline-lattices": {
+   "thm-fontaine-bcris": "direct"
+  },
+  "thm-bloch-kato-local": {
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-bz-finiteness": {
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-casselman-wallach": {
+   "thm-hc-modules-unitary": "direct"
+  },
+  "thm-chain-averaging": {
+   "def-auxiliary-field-data": "beside",
+   "def-chebyshev-weighted": "direct",
+   "def-family-scale": "beside",
+   "def-slope-data": "beside"
+  },
+  "thm-charpoly-de-rham-abelian": {
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-gaga-sections": "direct"
+  },
+  "thm-chevalley-congruence-units": {
+   "thm-chebotarev-degree-one": "direct"
+  },
+  "thm-clozel-cohomological": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-galois-reps-csd-above-l": "beside"
+  },
+  "thm-clozel-purity": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-galois-reps-csd-above-l": "beside"
+  },
+  "thm-clozel-regular-algebraic": {
+   "thm-clozel-cohomological": "direct",
+   "thm-clozel-purity": "direct"
+  },
+  "thm-coincidence-points-cm": {
+   "thm-gaga-sections": "direct",
+   "thm-unitary-shimura-integral-models": "direct"
+  },
+  "thm-compatibility-depth-zero": {
+   "def-local-parameters": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-depth-zero-base-change-principal-series": "direct",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-local-parameters-exist": "direct",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-congruence-module-selmer-bound": {
+   "def-congruence-data": "direct",
+   "def-family-member": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-core-inequality": {
+   "def-chebyshev-weighted": "direct",
+   "def-slope-data": "direct",
+   "thm-chain-averaging": "direct",
+   "thm-member-gap-bound": "direct"
+  },
+  "thm-counting-automorphic-forms-unitary": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-counting-constant-mass-constant": {
+   "lem-archimedean-volume-identity": "direct",
+   "thm-siegel-main-theorem-hermitian": "apart"
+  },
+  "thm-covolume-bound": {
+   "def-family-data": "through",
+   "def-hodge-bundle-inputs": "direct",
+   "lem-height-lower-bound-deep-covers": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-angehrn-siu-point-separation": "direct",
+   "thm-arithmetic-hilbert-samuel-inequalities": "through",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-arithmetic-volume-bound": "direct",
+   "thm-arithmetic-volume-nef": "direct",
+   "thm-chow-form": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dieudonne-theory-oc": "direct",
+   "thm-fargues-hodge-tate-sequence": "direct",
+   "thm-functorial-resolution": "through",
+   "thm-gaga-sections": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-green-regular-characters": "direct",
+   "thm-grothendieck-existence": "direct",
+   "thm-grothendieck-messing": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hilbert-samuel-nef": "direct",
+   "thm-hironaka-resolution": "direct",
+   "thm-hodge-bundle-semipositive": "direct",
+   "thm-jantzen-lowest-alcove": "direct",
+   "thm-kawamata-viehweg": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-mean-arithmetic-volume-lower-bound": "direct",
+   "thm-mumford-degeneration": "through",
+   "thm-mumford-good-metrics": "direct",
+   "thm-ohsawa-takegoshi-points": "direct",
+   "thm-poincare-lelong-integrated": "direct",
+   "thm-principal-polarisation-one-section": "direct",
+   "thm-principalisation-projective": "direct",
+   "thm-principalisation-relative": "direct",
+   "thm-ray-class-field": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-strong-approximation-su": "direct",
+   "thm-toroidal-compactification-siegel": "direct",
+   "thm-toroidal-compactification-unitary": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-zarhin-trick": "direct"
+  },
+  "thm-critical-line": {
+   "def-zeros-on-line": "direct",
+   "thm-half-plane": "direct"
+  },
+  "thm-critical-line-primitive": {
+   "def-zeros-on-line": "direct",
+   "thm-half-plane": "direct"
+  },
+  "thm-cusp-bounded-gl": {
+   "thm-cuspidal-spectrum-gl": "direct"
+  },
+  "thm-cusp-bounded-unitary": {
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cusp-uniform-decay": "direct"
+  },
+  "thm-cusp-decay-sobolev": {
+   "thm-cusp-uniform-decay": "direct"
+  },
+  "thm-cusp-rapid-decay": {
+   "thm-cusp-uniform-decay": "direct"
+  },
+  "thm-cusp-trace-class": {
+   "thm-cusp-uniform-decay": "direct",
+   "thm-dixmier-malliavin": "direct"
+  },
+  "thm-cuspidal-spectrum-gl": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-galois-reps-csd-above-l": "apart"
+  },
+  "thm-de-rham-abelian-schemes": {
+   "lem-hodge-filtration-abelian-scheme": "direct"
+  },
+  "thm-deligne-ribet": {
+   "thm-artin-reciprocity": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-ray-class-field": "direct"
+  },
+  "thm-depth-zero-base-change-principal-series": {
+   "thm-artin-reciprocity": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-depth-zero-from-support": "direct",
+   "thm-depth-zero-jacquet-injective": "direct",
+   "thm-depth-zero-support": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "through",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-moy-prasad-jacquet": "direct",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-depth-zero-from-support": {
+   "thm-bz-finiteness": "direct",
+   "thm-geometric-lemma": "direct"
+  },
+  "thm-dieudonne-theory-oc": {
+   "lem-p-divisible-period-matrices": "direct"
+  },
+  "thm-discrete-series-bessel-pointwise-bound": {
+   "def-archimedean-bessel-data": "direct",
+   "def-quantum-determinant": "direct",
+   "thm-bessel-transform-radial-space": "direct"
+  },
+  "thm-discrete-series-branching-coefficients": {
+   "thm-formal-degree-well-spaced": "direct",
+   "thm-zuckerman-tensor-discrete-series": "direct"
+  },
+  "thm-discrete-series-exist-cover": {
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-hc-modules-unitary": "direct"
+  },
+  "thm-discrete-series-parametrisation": {
+   "thm-discrete-series-exist-cover": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-harish-chandra-discrete-series": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-k-finite-vectors": "direct",
+   "thm-hc-modules-unitary": "direct"
+  },
+  "thm-disjoint-support-product-irreducible": {
+   "thm-bz-finiteness": "direct"
+  },
+  "thm-doubling-method": {
+   "thm-cusp-rapid-decay": "direct",
+   "thm-eisenstein-continuation-growth": "direct"
+  },
+  "thm-downward-theta-lift-nonvanishing": {
+   "thm-cusp-rapid-decay": "direct",
+   "thm-doubling-method": "direct",
+   "thm-eisenstein-continuation-growth": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hecke-l-nonvanishing-line-one": "direct",
+   "thm-siegel-eisenstein-residue-theta": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-eigenspaces-crystalline": {
+   "thm-etale-finiteness": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-projective-bundle-formula": "direct",
+   "thm-proper-base-change": "direct"
+  },
+  "thm-etale-finiteness": {
+   "thm-additive-characteristic-classes": "direct",
+   "thm-projective-bundle-formula": "direct",
+   "thm-proper-base-change": "direct"
+  },
+  "thm-families-connected": {
+   "def-connected-families": "direct",
+   "def-family-data": "beside",
+   "lem-behrend-sets": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-prime-sums-lattice-gains": "direct",
+   "thm-twisted-admissibility": "direct"
+  },
+  "thm-family-conditions-from-basic": {
+   "def-local-parameters": "direct",
+   "prop-chosen-data-serve-families": "direct",
+   "prop-counting-constants-constituents": "direct",
+   "prop-periods-valuations-good-data": "direct",
+   "prop-small-terms-offdiag-level": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-decay-sobolev": "apart",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-frame-independent": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-harish-chandra-discrete-series": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct",
+   "thm-twisting-index-and-archimedean-bounds": "beside",
+   "thm-unitary-integral-models": "direct"
+  },
+  "thm-family-data-exists": {
+   "def-family-data": "direct",
+   "thm-basic-conditions-from-local-parameters": "direct",
+   "thm-clozel-purity": "through",
+   "thm-covolume-bound": "through",
+   "thm-doubling-method": "direct",
+   "thm-downward-theta-lift-nonvanishing": "through",
+   "thm-family-conditions-from-basic": "direct",
+   "thm-family-membership-admissible-data": "direct",
+   "thm-family-sha-error-bound": "direct",
+   "thm-indefinite-slope-bound": "direct",
+   "thm-inner-form-multiplicities-equal": "through",
+   "thm-labesse-base-change": "hypothesis",
+   "thm-local-parameters-exist": "apart",
+   "thm-non-endoscopic-hypotheses-hold": "direct",
+   "thm-rallis-inner-product": "through",
+   "thm-rational-test-vectors-theta": "direct",
+   "thm-siegel-weil-definite": "through",
+   "thm-square-term-estimates": "through",
+   "thm-theta-functionals-separate": "direct",
+   "thm-theta-tower-step-identities": "through",
+   "thm-twisting-index-and-archimedean-bounds": "direct",
+   "thm-witt-tower-square-ratios": "direct"
+  },
+  "thm-family-membership-admissible-data": {
+   "def-local-parameters": "direct",
+   "def-trivial-statement": "direct",
+   "lem-depth-three-to-four": "direct",
+   "lem-membership-two-passes": "direct",
+   "prop-admissible-data-exist": "direct",
+   "prop-intermediate-constructions-exist": "direct",
+   "prop-member-hypotheses-from-literature": "direct",
+   "prop-twisting-property-constructed-points": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bernstein-unitary-product": "hypothesis",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-clozel-regular-algebraic": "hypothesis",
+   "thm-cusp-decay-sobolev": "through",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cusp-trace-class": "direct",
+   "thm-depth-zero-jacquet-injective": "hypothesis",
+   "thm-depth-zero-support": "direct",
+   "thm-discrete-series-exist-cover": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-disjoint-support-product-irreducible": "hypothesis",
+   "thm-dixmier-malliavin": "direct",
+   "thm-doubling-method": "direct",
+   "thm-downward-theta-lift-nonvanishing": "direct",
+   "thm-eisenstein-continuation-growth": "direct",
+   "thm-flath-unramified": "direct",
+   "thm-formal-degree-upq": "direct",
+   "thm-galois-reps-csd-above-l": "direct",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-godement-schur-orthogonality": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-greenberg-wiles": "direct",
+   "thm-gross-cm-curves": "direct",
+   "thm-harish-chandra-discrete-series": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-analyticity-density": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-hecke-character-local-parameter-above-l": "hypothesis",
+   "thm-hecke-l-adic-character-above-l": "hypothesis",
+   "thm-hecke-l-entire": "direct",
+   "thm-hecke-l-nonvanishing-line-one": "direct",
+   "thm-inner-form-multiplicities-equal": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "hypothesis",
+   "thm-labesse-base-change": "hypothesis",
+   "thm-landherr-cm": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-rational-test-vectors-theta": "through",
+   "thm-ray-class-characters-galois": "direct",
+   "thm-ray-class-field": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-siegel-main-theorem-hermitian": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-outside-weil-range": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-tadic-generic-unitary-dual": "hypothesis",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-global-finiteness": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-unramified-annihilators": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weber-ray-class-field": "direct",
+   "thm-weil-representation-unitary-exists": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-family-sha-error-bound": {
+   "def-local-parameters": "direct",
+   "def-padic-hodge-package": "direct",
+   "def-theta-analytic-inputs": "direct",
+   "prop-congruence-bound-auxiliary-primes": "direct",
+   "prop-congruence-bounds-all-primes": "direct",
+   "prop-hecke-integrality-transformation": "apart",
+   "thm-artin-reciprocity": "direct",
+   "thm-bernstein-unitary-product": "direct",
+   "thm-bhatt-scholze-crystalline-lattices": "through",
+   "thm-bloch-kato-local": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-derivative-leibniz": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-clozel-regular-algebraic": "direct",
+   "thm-congruence-module-selmer-bound": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-depth-zero-jacquet-injective": "direct",
+   "thm-depth-zero-support": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-disjoint-support-product-irreducible": "direct",
+   "thm-doubling-method": "direct",
+   "thm-downward-theta-lift-nonvanishing": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-galois-reps-csd-above-l": "direct",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-green-regular-characters": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hecke-character-local-parameter-above-l": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-hecke-l-nonvanishing-line-one": "direct",
+   "thm-hodge-tate-count": "direct",
+   "thm-inner-form-multiplicities-equal": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-ray-class-characters-galois": "hypothesis",
+   "thm-ray-class-field": "hypothesis",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-fargues-hodge-tate-sequence": {
+   "thm-dieudonne-theory-oc": "direct"
+  },
+  "thm-flath-tensor-product": {
+   "thm-bernstein-unitary-admissible": "direct"
+  },
+  "thm-flath-unramified": {
+   "thm-bernstein-unitary-admissible": "direct",
+   "thm-flath-tensor-product": "direct"
+  },
+  "thm-fock-bad-share-mean": {
+   "prop-block-bounds-from-four": "direct"
+  },
+  "thm-formal-degree-well-spaced": {
+   "thm-discrete-series-exist-upq": "apart",
+   "thm-godement-schur-orthogonality": "apart"
+  },
+  "thm-full-level-ample-models": {
+   "thm-abelian-scheme-standard-theory": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct"
+  },
+  "thm-functorial-resolution": {
+   "thm-principalisation-reduces-dimension": "direct"
+  },
+  "thm-galois-reps-csd-above-l": {
+   "def-galois-reps-polarized": "direct",
+   "def-local-parameters": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-cusp-bounded-gl": "through",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "through",
+   "thm-multiplicity-one-gl": "through",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-galois-reps-from-geometry-and-theta": {
+   "thm-artin-reciprocity": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-galois-reps-unramified-compatible": "direct",
+   "thm-geometric-galois-odd-rank": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-local-global-ramified": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-theta-lift-nonvanishing": "direct"
+  },
+  "thm-galois-reps-hecke-eigenspaces": {
+   "thm-artin-reciprocity": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-eigenspaces-crystalline": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-hodge-tate-weights-eigenspaces": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-projective-bundle-formula": "direct",
+   "thm-proper-base-change": "direct"
+  },
+  "thm-galois-reps-polarized": {
+   "def-galois-reps-polarized": "direct",
+   "def-local-parameters": "direct",
+   "thm-base-change-unitary": "apart",
+   "thm-galois-reps-from-geometry-and-theta": "direct",
+   "thm-galois-reps-hecke-eigenspaces": "through",
+   "thm-geometric-galois-odd-rank": "direct",
+   "thm-kuga-sato-unitary-shimura": "through",
+   "thm-local-global-ramified": "through",
+   "thm-theta-lift-nonvanishing": "direct",
+   "thm-unitary-shimura-integral-models": "through"
+  },
+  "thm-galois-reps-polarized-cuspidal": {
+   "thm-galois-reps-csd-above-l": "direct",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-galois-reps-unramified-compatible": {
+   "thm-artin-reciprocity": "direct",
+   "thm-base-change-unitary": "apart",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-bz-functors-finite-length": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hecke-bound-base-change": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-hecke-l-adic-character-crystalline": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-rallis-fundamental-lemma": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-theta-lift-nonvanishing": "direct",
+   "thm-twisted-trace-lowest-type": "direct",
+   "thm-wave-kernels-gln-c": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-gelfand-kazhdan": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct"
+  },
+  "thm-geometric-galois-odd-rank": {
+   "thm-eigenspaces-crystalline": "direct",
+   "thm-fontaine-bcris": "through",
+   "thm-galois-reps-hecke-eigenspaces": "direct",
+   "thm-hodge-tate-weights-eigenspaces": "direct",
+   "thm-kuga-sato-unitary-shimura": "direct",
+   "thm-transfer-unitary-shimura": "direct"
+  },
+  "thm-geometric-lemma": {
+   "thm-bz-finiteness": "direct"
+  },
+  "thm-good-towers-from-arakelov-inputs": {
+   "lem-absolute-siegel-lemma": "beside",
+   "lem-de-rham-hodge-tate-flag-comparison": "direct",
+   "lem-flag-cover-pullback": "direct",
+   "lem-volume-theorem-from-tower-identities": "direct",
+   "lem-weyl-antisymmetry-intersection": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-arithmetic-hilbert-samuel-inequalities": "apart",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-fargues-hodge-tate-sequence": "apart",
+   "thm-gaga-sections": "apart",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-zarhin-trick": "direct"
+  },
+  "thm-good-twists-all-coprime-powers": {
+   "thm-chebotarev-degree-one": "direct",
+   "thm-greenberg-wiles": "direct",
+   "thm-ray-class-characters-galois": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-global-finiteness": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-unramified-annihilators": "direct"
+  },
+  "thm-greenberg-wiles": {
+   "thm-poitou-tate": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct"
+  },
+  "thm-grh-from-galois": {
+   "def-galois-reps-polarized": "direct",
+   "def-nonvanishing-half-plane": "direct",
+   "thm-family-data-exists": "through",
+   "thm-grh-from-sha-bound": "direct",
+   "thm-grh-from-theta-integrals": "through",
+   "thm-local-parameters-exist": "direct",
+   "thm-sha-bound": "direct",
+   "thm-zero-free-from-connected": "through",
+   "thm-zero-free-from-families": "through"
+  },
+  "thm-grh-from-sha-bound": {
+   "def-galois-reps-polarized": "direct",
+   "def-local-parameters": "direct",
+   "def-nonvanishing-half-plane": "direct",
+   "def-sha-bound": "direct",
+   "thm-galois-reps-csd-above-l": "direct",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-grh-from-theta-integrals": "direct"
+  },
+  "thm-grh-from-theta-integrals": {
+   "def-nonvanishing-half-plane": "direct",
+   "def-sha-bound": "direct",
+   "thm-family-data-exists": "direct",
+   "thm-zero-free-from-families": "direct"
+  },
+  "thm-gross-cm-curves": {
+   "thm-singular-moduli-class-number": "direct"
+  },
+  "thm-grothendieck-messing": {
+   "thm-abelian-scheme-lifting-divided-powers": "direct",
+   "thm-de-rham-abelian-schemes": "direct"
+  },
+  "thm-gsp4-lift-automorphy": {
+   "def-galois-cohomology-inputs": "direct",
+   "def-local-parameters": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-automorphic-induction-quadratic": "direct",
+   "thm-base-change-unitary": "apart",
+   "thm-bernstein-unitary-product": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-brauer-induction-degree-zero": "hypothesis",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-clozel-cohomological": "hypothesis",
+   "thm-clozel-purity": "hypothesis",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "hypothesis",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-de-rham-abelian-schemes": "hypothesis",
+   "thm-depth-zero-from-support": "hypothesis",
+   "thm-depth-zero-support": "through",
+   "thm-dual-abelian-scheme": "hypothesis",
+   "thm-fontaine-bcris": "direct",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-regular-characters": "direct",
+   "thm-greenberg-wiles": "direct",
+   "thm-grothendieck-messing": "hypothesis",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "hypothesis",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-functional-equation-cm": "hypothesis",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-henniart-local-converse": "hypothesis",
+   "thm-hilbert-modular-inputs": "apart",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-local-parameters-exist": "direct",
+   "thm-moy-prasad-jacquet": "hypothesis",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-partial-zeta-functional-equation": "hypothesis",
+   "thm-poitou-tate": "direct",
+   "thm-potential-automorphy-seeds": "direct",
+   "thm-ray-class-field": "hypothesis",
+   "thm-shimura-main-theorem-cm": "hypothesis",
+   "thm-siegel-klingen-rationality": "hypothesis",
+   "thm-singular-moduli-class-number": "hypothesis",
+   "thm-square-integrable-segment": "direct",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-global-finiteness": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-tempered-products": "hypothesis",
+   "thm-unramified-annihilators": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-half-plane": {
+   "def-nonvanishing-half-plane": "direct",
+   "thm-galois-reps-polarized": "direct",
+   "thm-grh-from-galois": "direct"
+  },
+  "thm-hc-discrete-series-classification": {
+   "thm-harish-chandra-discrete-series": "direct",
+   "thm-hc-k-finite-vectors": "direct"
+  },
+  "thm-hc-finiteness-gl": {
+   "thm-cusp-bounded-gl": "direct"
+  },
+  "thm-hc-finiteness-unitary": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cusp-uniform-decay": "direct"
+  },
+  "thm-hecke-bound-base-change": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-jacquet-rallis-fundamental-lemma": "direct",
+   "thm-wave-kernels-gln-c": "direct"
+  },
+  "thm-hecke-character-local-parameter-above-l": {
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-hecke-character-wd-above-l": {
+   "thm-artin-reciprocity": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-p-adic-monodromy": "direct"
+  },
+  "thm-hecke-fixed-points-kuga-sato": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-coincidence-points-cm": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-shimura-integral-models": "direct"
+  },
+  "thm-hecke-l-adic-character": {
+   "thm-artin-reciprocity": "direct"
+  },
+  "thm-hecke-l-adic-character-above-l": {
+   "thm-hecke-l-adic-character-crystalline": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-p-adic-monodromy": "direct"
+  },
+  "thm-hecke-l-adic-character-crystalline": {
+   "def-local-parameters": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-p-adic-monodromy": "direct"
+  },
+  "thm-hecke-l-adic-character-de-rham": {
+   "thm-chevalley-congruence-units": "direct"
+  },
+  "thm-hecke-l-nonvanishing-line-one": {
+   "thm-hecke-l-entire": "direct"
+  },
+  "thm-hermitian-hasse-principle": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-hilbert-mixed-weights": {
+   "def-galois-cohomology-inputs": "hypothesis",
+   "thm-artin-reciprocity": "direct",
+   "thm-base-change-unitary": "apart",
+   "thm-bernstein-unitary-product": "hypothesis",
+   "thm-borel-casselman": "direct",
+   "thm-brauer-induction-degree-zero": "hypothesis",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-clozel-cohomological": "hypothesis",
+   "thm-clozel-purity": "hypothesis",
+   "thm-cusp-rapid-decay": "hypothesis",
+   "thm-cuspidal-spectrum-gl": "hypothesis",
+   "thm-de-rham-abelian-schemes": "hypothesis",
+   "thm-depth-zero-from-support": "hypothesis",
+   "thm-dual-abelian-scheme": "hypothesis",
+   "thm-gelfand-kazhdan": "hypothesis",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-regular-characters": "hypothesis",
+   "thm-grothendieck-messing": "hypothesis",
+   "thm-hc-finiteness-gl": "hypothesis",
+   "thm-hc-finiteness-unitary": "hypothesis",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-functional-equation-cm": "hypothesis",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-henniart-local-converse": "hypothesis",
+   "thm-hilbert-modular-inputs": "apart",
+   "thm-hilbert-weight-change": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "hypothesis",
+   "thm-local-parameters-exist": "direct",
+   "thm-moy-prasad-jacquet": "hypothesis",
+   "thm-p-adic-monodromy": "direct",
+   "thm-partial-zeta-functional-equation": "hypothesis",
+   "thm-ray-class-field": "hypothesis",
+   "thm-shimura-main-theorem-cm": "hypothesis",
+   "thm-siegel-klingen-rationality": "hypothesis",
+   "thm-singular-moduli-class-number": "hypothesis",
+   "thm-square-integrable-segment": "hypothesis",
+   "thm-tempered-products": "hypothesis",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-hironaka-resolution": {
+   "thm-functorial-resolution": "direct"
+  },
+  "thm-hodge-numbers-eigenspaces": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hecke-fixed-points-kuga-sato": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-shimura-integral-models": "direct"
+  },
+  "thm-hodge-tate-decomposition": {
+   "thm-projective-bundle-formula": "direct"
+  },
+  "thm-hodge-tate-functorial": {
+   "thm-hodge-tate-decomposition": "direct",
+   "thm-projective-bundle-formula": "direct"
+  },
+  "thm-hodge-tate-weights-eigenspaces": {
+   "thm-eigenspaces-crystalline": "direct",
+   "thm-etale-finiteness": "direct",
+   "thm-hodge-tate-functorial": "direct",
+   "thm-projective-bundle-formula": "direct",
+   "thm-proper-base-change": "direct"
+  },
+  "thm-howe-duality-archimedean-trivial": {
+   "thm-oscillator-lie-action": "direct"
+  },
+  "thm-indefinite-slope-bound": {
+   "def-family-data": "through",
+   "thm-artin-reciprocity": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-chowla-selberg": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-doubling-method": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-hecke-functional-equation-cm": "direct",
+   "thm-howe-duality-archimedean-trivial": "direct",
+   "thm-non-endoscopic-hypotheses-hold": "direct",
+   "thm-oscillator-lie-action": "direct",
+   "thm-rational-test-vectors-theta": "direct",
+   "thm-reduction-theory-unitary": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-square-term-estimates": "direct",
+   "thm-theta-functionals-separate": "through",
+   "thm-theta-tower-step-identities": "through",
+   "thm-twisting-index-and-archimedean-bounds": "through",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-inner-form-multiplicities-equal": {
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cusp-trace-class": "direct",
+   "thm-dixmier-malliavin": "direct",
+   "thm-flath-unramified": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-analyticity-density": "direct",
+   "thm-hc-discrete-series-classification": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-pseudo-coefficients-unitary": "direct",
+   "thm-radford-shuffle": "direct",
+   "thm-reduction-theory-unitary": "direct"
+  },
+  "thm-jacquet-shalika": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-galois-reps-csd-above-l": "beside",
+   "thm-jacquet-shalika-strong-mult-one": "direct"
+  },
+  "thm-jacquet-shalika-strong-mult-one": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-hc-finiteness-gl": "direct"
+  },
+  "thm-kato-euler-system-ordinary": {
+   "thm-chebotarev-degree-one": "direct",
+   "thm-kato-explicit-reciprocity": "direct",
+   "thm-kato-zeta-integral": "direct"
+  },
+  "thm-kato-explicit-reciprocity": {
+   "thm-chebotarev-degree-one": "direct",
+   "thm-reciprocity-fixed-exponent": "direct"
+  },
+  "thm-kato-selmer-vanishing": {
+   "def-galois-cohomology-inputs": "direct",
+   "def-local-parameters": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-base-change-unitary": "apart",
+   "thm-bernstein-unitary-product": "hypothesis",
+   "thm-bloch-kato-local": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-brauer-induction-degree-zero": "hypothesis",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "hypothesis",
+   "thm-clozel-cohomological": "hypothesis",
+   "thm-clozel-purity": "hypothesis",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "hypothesis",
+   "thm-cuspidal-spectrum-gl": "hypothesis",
+   "thm-de-rham-abelian-schemes": "hypothesis",
+   "thm-depth-zero-from-support": "hypothesis",
+   "thm-dual-abelian-scheme": "hypothesis",
+   "thm-fontaine-bcris": "direct",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-regular-characters": "hypothesis",
+   "thm-grothendieck-messing": "hypothesis",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "hypothesis",
+   "thm-hecke-character-wd-above-l": "hypothesis",
+   "thm-hecke-functional-equation-cm": "hypothesis",
+   "thm-hecke-l-adic-character-above-l": "hypothesis",
+   "thm-henniart-local-converse": "hypothesis",
+   "thm-hilbert-modular-inputs": "apart",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-kato-euler-system-ordinary": "direct",
+   "thm-local-parameters-exist": "direct",
+   "thm-moy-prasad-jacquet": "hypothesis",
+   "thm-p-adic-monodromy": "hypothesis",
+   "thm-partial-zeta-functional-equation": "hypothesis",
+   "thm-ray-class-field": "hypothesis",
+   "thm-shimura-main-theorem-cm": "hypothesis",
+   "thm-siegel-klingen-rationality": "hypothesis",
+   "thm-singular-moduli-class-number": "hypothesis",
+   "thm-square-integrable-segment": "hypothesis",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-tempered-products": "hypothesis",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-kato-zeta-integral": {
+   "def-galois-cohomology-inputs": "apart",
+   "thm-artin-reciprocity": "apart",
+   "thm-bernstein-unitary-product": "apart",
+   "thm-borel-casselman": "apart",
+   "thm-brauer-induction-degree-zero": "apart",
+   "thm-bz-finiteness": "apart",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "apart",
+   "thm-clozel-cohomological": "apart",
+   "thm-clozel-purity": "apart",
+   "thm-cusp-rapid-decay": "apart",
+   "thm-cuspidal-spectrum-gl": "apart",
+   "thm-de-rham-abelian-schemes": "apart",
+   "thm-depth-zero-from-support": "apart",
+   "thm-depth-zero-support": "apart",
+   "thm-dual-abelian-scheme": "apart",
+   "thm-gelfand-kazhdan": "apart",
+   "thm-geometric-lemma": "apart",
+   "thm-green-regular-characters": "apart",
+   "thm-grothendieck-messing": "apart",
+   "thm-hasse-norm-quadratic": "apart",
+   "thm-hc-finiteness-gl": "apart",
+   "thm-hc-finiteness-unitary": "apart",
+   "thm-hecke-character-wd-above-l": "apart",
+   "thm-hecke-functional-equation-cm": "apart",
+   "thm-hecke-l-adic-character-above-l": "apart",
+   "thm-henniart-local-converse": "apart",
+   "thm-jacquet-shalika": "apart",
+   "thm-moy-prasad-jacquet": "apart",
+   "thm-p-adic-monodromy": "apart",
+   "thm-partial-zeta-functional-equation": "apart",
+   "thm-ray-class-field": "apart",
+   "thm-shimura-main-theorem-cm": "apart",
+   "thm-siegel-klingen-rationality": "apart",
+   "thm-singular-moduli-class-number": "apart",
+   "thm-square-integrable-segment": "apart",
+   "thm-tempered-products": "apart",
+   "thm-zelevinsky-segments": "apart"
+  },
+  "thm-kuga-sato-unitary-shimura": {
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-abelian-scheme-lifting-divided-powers": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-grothendieck-messing": "direct",
+   "thm-hecke-fixed-points-kuga-sato": "direct",
+   "thm-hodge-numbers-eigenspaces": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-shimura-integral-models": "direct"
+  },
+  "thm-labesse-base-change": {
+   "thm-base-change-unitary": "apart",
+   "thm-bz-derivative-leibniz": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-jacquet-irreducible-admissible": "direct"
+  },
+  "thm-landau-windows": {
+   "def-chebyshev-weighted": "direct"
+  },
+  "thm-landherr-cm": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-landherr-hermitian-forms": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-lattice-term-pair-bound": {
+   "lem-pair-count-siegel-mass-ratio": "direct",
+   "thm-formal-degree-well-spaced": "direct",
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-lifting-clustered-weights": {
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-lifting-deep-weights": {
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-lifting-potentially-crystalline": {
+   "lem-lifting-crystalline-lattices": "direct",
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-bhatt-scholze-crystalline-lattices": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-local-global-ramified": {
+   "thm-artin-reciprocity": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-bz-functors-finite-length": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-compatibility-depth-zero": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-depth-zero-from-support": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-hecke-l-adic-character-crystalline": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-local-parameters-exist": {
+   "def-local-parameters": "direct"
+  },
+  "thm-mean-arithmetic-volume-lower-bound": {
+   "def-family-data": "apart",
+   "lem-absolute-siegel-lemma": "direct",
+   "lem-de-rham-hodge-tate-flag-comparison": "through",
+   "lem-flag-cover-pullback": "through",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-arithmetic-hilbert-samuel-inequalities": "apart",
+   "thm-arithmetic-intersection-theory": "direct",
+   "thm-dieudonne-theory-oc": "through",
+   "thm-fargues-hodge-tate-sequence": "direct",
+   "thm-good-towers-from-arakelov-inputs": "direct",
+   "thm-hilbert-samuel-nef": "direct",
+   "thm-hironaka-resolution": "direct",
+   "thm-poincare-lelong-integrated": "direct",
+   "thm-principalisation-relative": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-zarhin-trick": "direct"
+  },
+  "thm-member-gap-bound": {
+   "def-family-member": "apart",
+   "def-slope-data": "beside",
+   "thm-chain-averaging": "beside",
+   "thm-chowla-selberg": "apart"
+  },
+  "thm-multiplicity-one-gl": {
+   "thm-cusp-bounded-gl": "direct",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-hc-finiteness-gl": "direct"
+  },
+  "thm-mumford-degeneration": {
+   "lem-uniformisation-labelled-cover": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-unitary-integral-models": "direct"
+  },
+  "thm-mumford-good-metrics": {
+   "thm-arithmetic-intersection-theory": "direct"
+  },
+  "thm-offdiagonal-bound": {
+   "prop-archimedean-model-data": "direct",
+   "prop-offdiagonal-hypotheses-hold": "direct",
+   "thm-hc-finiteness-unitary": "apart",
+   "thm-siegel-main-theorem-hermitian": "beside"
+  },
+  "thm-p-adic-monodromy": {
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-poincare-lelong-integrated": {
+   "thm-arithmetic-intersection-theory": "direct"
+  },
+  "thm-poitou-tate": {
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-potential-automorphy-seeds": {
+   "def-galois-cohomology-inputs": "hypothesis",
+   "thm-artin-reciprocity": "direct",
+   "thm-automorphic-induction-quadratic": "direct",
+   "thm-base-change-unitary": "apart",
+   "thm-bernstein-unitary-product": "hypothesis",
+   "thm-brauer-induction-degree-zero": "hypothesis",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "hypothesis",
+   "thm-clozel-cohomological": "hypothesis",
+   "thm-clozel-purity": "hypothesis",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "hypothesis",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-de-rham-abelian-schemes": "hypothesis",
+   "thm-depth-zero-from-support": "hypothesis",
+   "thm-dual-abelian-scheme": "hypothesis",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-regular-characters": "hypothesis",
+   "thm-grothendieck-messing": "hypothesis",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "hypothesis",
+   "thm-hecke-character-wd-above-l": "hypothesis",
+   "thm-hecke-functional-equation-cm": "hypothesis",
+   "thm-hecke-l-adic-character-above-l": "hypothesis",
+   "thm-henniart-local-converse": "hypothesis",
+   "thm-hilbert-mixed-weights": "direct",
+   "thm-hilbert-modular-inputs": "apart",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-local-parameters-exist": "direct",
+   "thm-moy-prasad-jacquet": "hypothesis",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-p-adic-monodromy": "hypothesis",
+   "thm-partial-zeta-functional-equation": "hypothesis",
+   "thm-ray-class-field": "hypothesis",
+   "thm-shimura-main-theorem-cm": "hypothesis",
+   "thm-siegel-klingen-rationality": "hypothesis",
+   "thm-singular-moduli-class-number": "hypothesis",
+   "thm-square-integrable-segment": "hypothesis",
+   "thm-tempered-products": "hypothesis",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-prime-sums-lattice-gains": {
+   "thm-fock-bad-share-mean": "direct",
+   "thm-large-summand-low-degree": "direct",
+   "thm-local-estimate-inert-primes": "direct"
+  },
+  "thm-primitive-suffice": {
+   "def-nonvanishing-half-plane": "apart",
+   "def-zero-free-primitive": "direct"
+  },
+  "thm-principalisation-projective": {
+   "thm-principalisation-reduces-dimension": "direct"
+  },
+  "thm-principalisation-reduces-dimension": {
+   "lem-order-step-reduces-order": "direct"
+  },
+  "thm-principalisation-relative": {
+   "thm-principalisation-reduces-dimension": "direct"
+  },
+  "thm-quadratic-class-field-theory": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-rallis-inner-product": {
+   "thm-cusp-rapid-decay": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-weil-convergence-criterion": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-rational-test-vectors-theta": {
+   "lem-grid-steps-preserve-cusp-forms": "direct",
+   "lem-twisted-jets-assemble": "direct",
+   "lem-twisted-theta-unfolding": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cusp-uniform-decay": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-strong-approximation-su": "direct",
+   "thm-theta-tower-step-identities": "through",
+   "thm-weil-convergence-criterion": "through",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-ray-class-characters-galois": {
+   "thm-artin-reciprocity": "direct"
+  },
+  "thm-ray-class-field": {
+   "thm-artin-reciprocity": "direct"
+  },
+  "thm-reciprocity-fixed-exponent": {
+   "thm-siegel-units-diamond": "direct"
+  },
+  "thm-riemann-hypothesis": {
+   "def-riemann-hypothesis": "direct",
+   "lem-zeta-nonvanishing": "no-lean-target",
+   "thm-half-plane": "direct"
+  },
+  "thm-semi-abelian-hom-extension": {
+   "thm-abelian-variety-torsion-count": "direct"
+  },
+  "thm-semi-abelian-theta-models": {
+   "thm-abelian-scheme-standard-theory": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-degenerations-mumford-uniformisation": "direct",
+   "thm-semistable-reduction": "direct"
+  },
+  "thm-sha-bound": {
+   "def-galois-cohomology-inputs": "direct",
+   "def-local-parameters": "direct",
+   "def-sha-bound": "direct",
+   "lem-h2-tate-twists-bound": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-base-change-unitary": "direct",
+   "thm-bernstein-unitary-product": "direct",
+   "thm-bloch-kato-local": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-brauer-induction-degree-zero": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-chevalley-congruence-units": "direct",
+   "thm-clozel-cohomological": "direct",
+   "thm-clozel-purity": "direct",
+   "thm-cusp-bounded-gl": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-cuspidal-spectrum-gl": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-depth-zero-from-support": "direct",
+   "thm-depth-zero-support": "through",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-galois-reps-csd-above-l": "apart",
+   "thm-galois-reps-polarized": "apart",
+   "thm-gelfand-kazhdan": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-green-regular-characters": "direct",
+   "thm-greenberg-wiles": "direct",
+   "thm-grothendieck-messing": "direct",
+   "thm-gsp4-lift-automorphy": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-gl": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hecke-bound-base-change": "direct",
+   "thm-hecke-character-wd-above-l": "direct",
+   "thm-hecke-functional-equation-cm": "direct",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-hecke-l-adic-character-de-rham": "direct",
+   "thm-henniart-local-converse": "direct",
+   "thm-hilbert-modular-inputs": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-jacquet-rallis-fundamental-lemma": "direct",
+   "thm-jacquet-shalika": "direct",
+   "thm-jacquet-shalika-strong-mult-one": "direct",
+   "thm-kato-euler-system-ordinary": "through",
+   "thm-kato-explicit-reciprocity": "through",
+   "thm-kato-selmer-vanishing": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-local-parameters-exist": "direct",
+   "thm-moy-prasad-jacquet": "direct",
+   "thm-multiplicity-one-gl": "direct",
+   "thm-p-adic-monodromy": "direct",
+   "thm-partial-zeta-functional-equation": "direct",
+   "thm-poitou-tate": "direct",
+   "thm-radford-shuffle": "direct",
+   "thm-ray-class-field": "direct",
+   "thm-shimura-main-theorem-cm": "direct",
+   "thm-siegel-klingen-rationality": "direct",
+   "thm-singular-moduli-class-number": "direct",
+   "thm-square-integrable-segment": "direct",
+   "thm-tadic-generic-unitary-dual": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-global-euler-characteristic": "direct",
+   "thm-tate-global-finiteness": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct",
+   "thm-tempered-products": "direct",
+   "thm-twisted-trace-lowest-type": "direct",
+   "thm-unramified-annihilators": "direct",
+   "thm-wave-kernels-gln-c": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-siegel-eisenstein-residue-theta": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hermitian-hasse-principle": "direct",
+   "thm-unitary-quotient-finite-volume": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-siegel-klingen-rationality": {
+   "thm-deligne-ribet": "direct"
+  },
+  "thm-siegel-units-diamond": {
+   "thm-siegel-units-mackey": "direct"
+  },
+  "thm-siegel-units-mackey": {
+   "thm-siegel-units-eisenstein": "direct"
+  },
+  "thm-siegel-weil-convergent-doubling": {
+   "thm-siegel-weil-outside-weil-range": "direct"
+  },
+  "thm-siegel-weil-definite": {
+   "thm-eisenstein-continuation-growth": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-reduction-theory-unitary": "direct"
+  },
+  "thm-siegel-weil-definite-k": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-reduction-theory-unitary": "direct"
+  },
+  "thm-siegel-weil-outside-weil-range": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-reduction-theory-unitary": "direct",
+   "thm-weil-convergence-criterion": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-siegel-weil-weil-range": {
+   "lem-siegel-weil-singular-coefficients": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-reduction-theory-unitary": "direct",
+   "thm-weil-convergence-criterion": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-singular-moduli-class-number": {
+   "thm-cm-j-hilbert-class-field": "direct"
+  },
+  "thm-square-integrable-segment": {
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-square-term-estimates": {
+   "thm-bz-finiteness": "direct",
+   "thm-chowla-selberg": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-doubling-method": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hecke-functional-equation-cm": "through",
+   "thm-howe-duality-archimedean-trivial": "direct",
+   "thm-non-endoscopic-hypotheses-hold": "through",
+   "thm-oscillator-lie-action": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-theta-tower-step-identities": "through",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct",
+   "thm-witt-tower-square-ratios": "direct"
+  },
+  "thm-strong-approximation-su": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-tadic-generic-unitary-dual": {
+   "thm-bz-finiteness": "direct",
+   "thm-bz-functors-finite-length": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-tempered-products": {
+   "thm-bz-finiteness": "direct",
+   "thm-bz-functors-finite-length": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-jacquet-irreducible-admissible": "direct",
+   "thm-zelevinsky-segments": "direct"
+  },
+  "thm-theta-functionals-separate": {
+   "thm-bessel-period-ascent": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-branching-coefficients": "direct",
+   "thm-discrete-series-exist-upq": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-doubling-method": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-finiteness-unitary": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-unitary-quotient-finite-volume": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-theta-inputs": {
+   "def-family-data": "no-lean-source",
+   "def-local-parameters": "no-lean-source",
+   "def-theta-tower-step": "no-lean-source",
+   "lem-counting-constants-siegel-weil": "no-lean-source",
+   "lem-valuations-level-primes": "no-lean-source",
+   "prop-isometric-period-identity": "no-lean-source",
+   "thm-bessel-transform-radial-space": "no-lean-source",
+   "thm-counting-automorphic-forms-unitary": "no-lean-source",
+   "thm-counting-constant-mass-constant": "no-lean-source",
+   "thm-downward-theta-lift-nonvanishing": "no-lean-source",
+   "thm-indefinite-slope-bound": "no-lean-source",
+   "thm-offdiagonal-bound": "no-lean-source",
+   "thm-rational-test-vectors-theta": "no-lean-source",
+   "thm-siegel-main-theorem-hermitian": "no-lean-source",
+   "thm-siegel-weil-definite": "no-lean-source",
+   "thm-siegel-weil-weil-range": "no-lean-source",
+   "thm-theta-functionals-separate": "no-lean-source",
+   "thm-theta-tower-step-identities": "no-lean-source"
+  },
+  "thm-theta-lift-nonvanishing": {
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-reduction-theory-unitary": "direct",
+   "thm-siegel-weil-definite-k": "direct"
+  },
+  "thm-theta-tower-step-identities": {
+   "def-theta-tower-step": "direct",
+   "prop-theta-integrals-along-towers": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-eisenstein-continuation-growth": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hecke-l-entire": "direct",
+   "thm-reduction-theory-unitary": "direct",
+   "thm-siegel-weil-definite": "direct",
+   "thm-weil-representation-unitary-exists": "through"
+  },
+  "thm-toroidal-compactification-siegel": {
+   "lem-siegel-minimal-blowup-smooth": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-complex-theta-uniformisation": "direct",
+   "thm-degenerations-mumford-uniformisation": "direct",
+   "thm-gaga-sections": "direct",
+   "thm-semi-abelian-hom-extension": "direct",
+   "thm-semi-abelian-theta-models": "direct",
+   "thm-semistable-reduction": "direct"
+  },
+  "thm-toroidal-compactification-unitary": {
+   "lem-kodaira-spencer-from-rigid-charts": "direct",
+   "thm-unitary-rigid-boundary-charts": "direct"
+  },
+  "thm-transfer-unitary-shimura": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-twisted-admissibility": {
+   "lem-served-twists-prime-sums": "direct"
+  },
+  "thm-twisting-index-and-archimedean-bounds": {
+   "def-local-parameters": "direct",
+   "prop-exponent-bounds-twisting-places": "direct",
+   "prop-height-inequalities-at-points": "direct",
+   "prop-lattice-and-depth-estimates": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-artin-reciprocity": "direct",
+   "thm-bhatt-scholze-coefficients": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-casselman-wallach": "direct",
+   "thm-chebotarev-degree-one": "direct",
+   "thm-clozel-cohomological": "direct",
+   "thm-cusp-decay-sobolev": "through",
+   "thm-cusp-rapid-decay": "direct",
+   "thm-discrete-series-parametrisation": "direct",
+   "thm-doubling-method": "direct",
+   "thm-eisenstein-continuation-growth": "direct",
+   "thm-formal-degree-upq": "direct",
+   "thm-full-level-ample-models": "direct",
+   "thm-galois-reps-polarized-cuspidal": "direct",
+   "thm-godement-schur-orthogonality": "direct",
+   "thm-green-parametrisation": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-hc-modules-unitary": "direct",
+   "thm-hecke-l-adic-character": "direct",
+   "thm-hecke-l-adic-character-above-l": "direct",
+   "thm-labesse-base-change": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-ray-class-field": "direct",
+   "thm-semistable-reduction": "direct",
+   "thm-siegel-weil-convergent-doubling": "direct",
+   "thm-siegel-weil-weil-range": "direct",
+   "thm-unitary-integral-models": "direct",
+   "thm-unramified-doubling-gl": "direct",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-unitary-integral-models": {
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-full-level-ample-models": "direct",
+   "thm-semistable-reduction": "direct"
+  },
+  "thm-unitary-moduli-representable": {
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-abelian-scheme-lifting-divided-powers": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-grothendieck-messing": "direct"
+  },
+  "thm-unitary-moduli-smooth": {
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-abelian-scheme-lifting-divided-powers": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-grothendieck-messing": "direct",
+   "thm-universal-first-order-deformation": "direct"
+  },
+  "thm-unitary-rigid-boundary-charts": {
+   "lem-unitary-boundary-prechart": "direct",
+   "lem-unitary-boundary-separation": "direct",
+   "thm-abelian-variety-torsion-count": "direct",
+   "thm-gaga-sections": "direct",
+   "thm-semi-abelian-hom-extension": "direct"
+  },
+  "thm-unitary-shimura-integral-models": {
+   "thm-unitary-moduli-representable": "direct",
+   "thm-unitary-moduli-smooth": "direct"
+  },
+  "thm-universal-first-order-deformation": {
+   "lem-first-order-deformation-count": "direct",
+   "lem-hodge-filtration-abelian-scheme": "direct",
+   "thm-abelian-scheme-lifting-divided-powers": "direct",
+   "thm-de-rham-abelian-schemes": "direct",
+   "thm-dual-abelian-scheme": "direct",
+   "thm-grothendieck-messing": "direct"
+  },
+  "thm-unramified-annihilators": {
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct",
+   "thm-tate-local-finiteness": "direct"
+  },
+  "thm-wach-lifting-theorem": {
+   "thm-bloch-kato-local": "direct",
+   "thm-fontaine-bcris": "direct",
+   "thm-tate-euler-characteristic-global-places": "direct",
+   "thm-tate-local-duality-global-places": "direct"
+  },
+  "thm-weber-ray-class-field": {
+   "thm-artin-reciprocity": "direct",
+   "thm-ray-class-field": "direct"
+  },
+  "thm-weighted-bessel-sum-bound": {
+   "lem-radial-operator-transfer": "direct",
+   "thm-bessel-transform-radial-space": "direct"
+  },
+  "thm-weil-convergence-criterion": {
+   "thm-reduction-theory-unitary": "direct"
+  },
+  "thm-weil-representation-unitary-exists": {
+   "thm-hasse-norm-quadratic": "direct"
+  },
+  "thm-witt-tower-square-ratios": {
+   "thm-bz-finiteness": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-hasse-norm-quadratic": "direct",
+   "thm-howe-duality-archimedean-trivial": "direct",
+   "thm-landherr-cm": "direct",
+   "thm-oscillator-lie-action": "direct",
+   "thm-reduction-theory-unitary": "direct",
+   "thm-strong-approximation-su": "direct",
+   "thm-theta-tower-step-identities": "through",
+   "thm-weil-representation-unitary-exists": "direct"
+  },
+  "thm-zarhin-trick": {
+   "thm-dual-abelian-scheme": "direct"
+  },
+  "thm-zelevinsky-segments": {
+   "def-galois-reps-polarized": "direct",
+   "def-local-parameters": "direct",
+   "thm-borel-casselman": "direct",
+   "thm-bz-finiteness": "direct",
+   "thm-bz-functors-finite-length": "direct",
+   "thm-geometric-lemma": "direct",
+   "thm-geometric-lemma-filtration": "direct",
+   "thm-henniart-local-converse": "direct",
+   "thm-jacquet-irreducible-admissible": "direct"
+  },
+  "thm-zero-free-from-connected": {
+   "def-auxiliary-field-data": "direct",
+   "def-connected-families": "direct",
+   "def-slope-data": "direct",
+   "def-zero-free-primitive": "direct",
+   "thm-core-inequality": "direct",
+   "thm-zero-free-from-windows": "direct"
+  },
+  "thm-zero-free-from-families": {
+   "def-family-data": "direct",
+   "def-nonvanishing-half-plane": "direct",
+   "def-sha-bound": "direct",
+   "def-zero-free-primitive": "direct",
+   "thm-auxiliary-fields": "direct",
+   "thm-families-connected": "direct",
+   "thm-primitive-suffice": "direct",
+   "thm-zero-free-from-connected": "direct"
+  },
+  "thm-zero-free-from-windows": {
+   "def-chebyshev-weighted": "direct",
+   "def-zero-free-primitive": "apart",
+   "thm-landau-windows": "direct"
+  }
+ },
+ "undrawn": {
+  "def-automorphic-galois-inputs": [
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-artin-reciprocity",
+   "thm-clozel-cohomological",
+   "thm-clozel-purity",
+   "thm-cusp-rapid-decay",
+   "thm-cuspidal-spectrum-gl",
+   "thm-gelfand-kazhdan",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hecke-character-wd-above-l",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-jacquet-shalika",
+   "thm-p-adic-monodromy",
+   "thm-ray-class-field",
+   "thm-zelevinsky-segments"
+  ],
+  "def-auxiliary-field-data": [
+   "def-family-ranks"
+  ],
+  "def-congruence-data": [
+   "def-family-ranks",
+   "def-sha-bound"
+  ],
+  "def-connected-families": [
+   "def-auxiliary-field-data",
+   "def-family",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-sha-bound"
+  ],
+  "def-family": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "def-family-data": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-connected-families",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-lattice-term-pair-bound"
+  ],
+  "def-family-member": [
+   "def-congruence-data"
+  ],
+  "def-family-scale": [
+   "def-auxiliary-field-data",
+   "def-family-ranks"
+  ],
+  "def-galois-cohomology-inputs": [
+   "thm-bloch-kato-local",
+   "thm-greenberg-wiles",
+   "thm-poitou-tate",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-global-euler-characteristic",
+   "thm-tate-global-finiteness",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness",
+   "thm-unramified-annihilators"
+  ],
+  "def-galois-reps-polarized": [
+   "def-congruence-data",
+   "def-quantum-determinant"
+  ],
+  "def-hodge-bundle-inputs": [
+   "thm-abelian-variety-torsion-count",
+   "thm-arithmetic-hilbert-samuel",
+   "thm-arithmetic-intersection-theory",
+   "thm-arithmetic-volume-bound",
+   "thm-arithmetic-volume-nef",
+   "thm-chow-form",
+   "thm-de-rham-abelian-schemes",
+   "thm-dieudonne-theory-oc",
+   "thm-gaga-sections",
+   "thm-green-parametrisation",
+   "thm-grothendieck-existence",
+   "thm-grothendieck-messing",
+   "thm-hasse-norm-quadratic",
+   "thm-jantzen-lowest-alcove",
+   "thm-kawamata-viehweg",
+   "thm-landherr-cm",
+   "thm-mumford-good-metrics",
+   "thm-ohsawa-takegoshi-points",
+   "thm-principal-polarisation-one-section",
+   "thm-principalisation-projective",
+   "thm-ray-class-field",
+   "thm-semi-abelian-hom-extension",
+   "thm-semistable-reduction",
+   "thm-strong-approximation-su",
+   "thm-toroidal-compactification-unitary"
+  ],
+  "def-local-rep-theory-package": [
+   "def-local-parameters",
+   "thm-bernstein-unitary-product",
+   "thm-brauer-induction-degree-zero",
+   "thm-bz-finiteness",
+   "thm-chevalley-congruence-units",
+   "thm-depth-zero-from-support",
+   "thm-geometric-lemma",
+   "thm-green-regular-characters",
+   "thm-henniart-local-converse",
+   "thm-moy-prasad-jacquet",
+   "thm-square-integrable-segment",
+   "thm-tempered-products",
+   "thm-zelevinsky-segments"
+  ],
+  "def-non-endoscopic-package": [
+   "def-automorphic-galois-inputs",
+   "def-galois-cohomology-inputs",
+   "def-local-rep-theory-package",
+   "thm-hecke-functional-equation-cm",
+   "thm-non-endoscopic-hypotheses-hold"
+  ],
+  "def-padic-hodge-package": [
+   "thm-artin-reciprocity",
+   "thm-bhatt-scholze-crystalline-lattices",
+   "thm-bloch-kato-local",
+   "thm-fontaine-bcris",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness"
+  ],
+  "def-sha-error-term": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-sha-bound"
+  ],
+  "def-slope-data": [
+   "def-auxiliary-field-data",
+   "def-chebyshev-weighted",
+   "def-family",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-chain-averaging"
+  ],
+  "def-theta-analytic-inputs": [
+   "thm-cusp-trace-class",
+   "thm-discrete-series-exist-upq",
+   "thm-dixmier-malliavin",
+   "thm-doubling-method",
+   "thm-flath-unramified",
+   "thm-hc-analyticity-density",
+   "thm-hc-discrete-series-classification",
+   "thm-hecke-l-nonvanishing-line-one",
+   "thm-hodge-tate-count",
+   "thm-siegel-weil-weil-range",
+   "thm-unramified-doubling-gl",
+   "thm-weil-representation-unitary-exists"
+  ],
+  "lem-archimedean-volume-identity": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-behrend-sets": [
+   "def-auxiliary-field-data",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "lem-complete-family-from-constants": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-constructed-points-from-depth-four": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-counting-constants-siegel-weil": [
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member"
+  ],
+  "lem-cutoff-energy-limit": [
+   "def-archimedean-bessel-data"
+  ],
+  "lem-de-rham-eigenpart-rank": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "lem-depth-three-to-four": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-finite-classes-twists-from-wach": [
+   "def-family-member"
+  ],
+  "lem-first-order-deformation-count": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "lem-five-laws-chain-kernels": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-good-frames-exist": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-grid-steps-preserve-cusp-forms": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-grh-from-theta-integrals"
+  ],
+  "lem-h2-tate-twists-bound": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound"
+  ],
+  "lem-height-lower-bound-deep-covers": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-lifting-divided-powers",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-covolume-bound",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-dieudonne-theory-oc",
+   "thm-grh-from-sha-bound",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-hodge-filtration-abelian-scheme": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "lem-inert-theta-admissibility-cm": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-integrable-spectral-setting": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "lem-integral-moments-kernel-jets": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-kernel-conditions-standard-data": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-cm-j-integral-good-reduction"
+  ],
+  "lem-kodaira-spencer-from-rigid-charts": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-toroidal-compactification-unitary"
+  ],
+  "lem-local-decomposition-inputs": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-local-lattice-counts-isometries": [
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "lem-local-models-constructed-points": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-local-models-weight-range": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-sha-bound"
+  ],
+  "lem-local-partner-counts": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-local-point-data-heights": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "lem-measured-setting-standard-character": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "lem-membership-two-passes": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-sha-bound",
+   "thm-hasse-norm-quadratic"
+  ],
+  "lem-orbit-data-inert-primes": [
+   "def-auxiliary-field-data",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-pair-count-siegel-mass-ratio": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-radial-operator-transfer": [
+   "def-archimedean-bessel-data",
+   "def-quantum-determinant"
+  ],
+  "lem-reference-weights-deep-covers": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-second-coordinates-integral-laws": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-howe-duality-gl-gl",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-served-twists-prime-sums": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-siegel-minimal-blowup-smooth": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-siegel-tautological-charts": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-siegel-weil-represented-coefficients": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-siegel-weil-singular-coefficients": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "lem-standard-frames-good": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-theta-lift-smooth-cusp-forms": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-cusp-decay-sobolev",
+   "thm-grh-from-theta-integrals",
+   "thm-hc-finiteness-unitary",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-twisted-jets-assemble": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-grh-from-theta-integrals"
+  ],
+  "lem-twisted-theta-unfolding": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-grh-from-theta-integrals",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "lem-twisted-vacua-base-comparison": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-twisted-vacua-real-points": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-uniformisation-labelled-cover": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-unitary-boundary-prechart": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "lem-unitary-boundary-separation": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-unitary-tautological-charts": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "lem-valuations-level-primes": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "lem-weyl-antisymmetry-intersection": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "prop-admissible-data-exist": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-ray-class-field",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "prop-archimedean-model-data": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "prop-block-bounds-from-four": [
+   "def-family-member"
+  ],
+  "prop-block-sums-ranges": [
+   "def-family-member"
+  ],
+  "prop-chosen-data-serve-families": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-cm-j-integral-good-reduction"
+  ],
+  "prop-congruence-bound-auxiliary-pair": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-sha-bound"
+  ],
+  "prop-congruence-bound-auxiliary-primes": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-sha-bound"
+  ],
+  "prop-congruence-bound-intermediate-primes": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-sha-bound"
+  ],
+  "prop-congruence-bound-large-primes": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-sha-bound",
+   "thm-bloch-kato-local",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-local-duality-global-places"
+  ],
+  "prop-congruence-bounds-all-primes": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-sha-bound"
+  ],
+  "prop-counting-constants-constituents": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "prop-defect-condition": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "lem-behrend-sets",
+   "thm-cusp-rapid-decay",
+   "thm-discrete-series-exist-upq",
+   "thm-hc-finiteness-unitary",
+   "thm-weil-representation-unitary-exists"
+  ],
+  "prop-definite-side-norm-bounds": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "prop-exponent-bounds-twisting-places": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-jacquet-shalika",
+   "thm-jacquet-shalika-strong-mult-one"
+  ],
+  "prop-family-characters-with-links": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "prop-finite-classes-cyclotomic-twists": [
+   "def-family-member"
+  ],
+  "prop-good-twists-from-theta-series": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "prop-hecke-integrality-transformation": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "prop-height-inequalities-at-points": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "prop-intermediate-constructions-exist": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "prop-isometric-period-identity": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-formal-degree-well-spaced",
+   "thm-unitary-quotient-finite-volume",
+   "thm-zuckerman-tensor-discrete-series"
+  ],
+  "prop-lattice-and-depth-estimates": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "prop-lifting-ramified-coefficients": [
+   "def-family-member"
+  ],
+  "prop-local-data-unitary-shimura-points": [
+   "def-auxiliary-field-data",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "prop-member-hypotheses-from-literature": [
+   "def-archimedean-bessel-data",
+   "def-automorphic-galois-inputs",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-galois-cohomology-inputs",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-local-rep-theory-package",
+   "def-non-endoscopic-package",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "def-theta-analytic-inputs",
+   "prop-hecke-integrality-transformation",
+   "thm-abelian-scheme-standard-theory",
+   "thm-abelian-variety-torsion-count",
+   "thm-artin-reciprocity",
+   "thm-bernstein-unitary-product",
+   "thm-bloch-kato-local",
+   "thm-borel-casselman",
+   "thm-brauer-induction-degree-zero",
+   "thm-bz-derivative-leibniz",
+   "thm-bz-finiteness",
+   "thm-chebotarev-degree-one",
+   "thm-chevalley-congruence-units",
+   "thm-chowla-selberg",
+   "thm-clozel-cohomological",
+   "thm-clozel-purity",
+   "thm-clozel-regular-algebraic",
+   "thm-complex-theta-uniformisation",
+   "thm-cusp-bounded-gl",
+   "thm-cusp-rapid-decay",
+   "thm-cusp-trace-class",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-depth-zero-from-support",
+   "thm-depth-zero-jacquet-injective",
+   "thm-depth-zero-support",
+   "thm-discrete-series-exist-upq",
+   "thm-disjoint-support-product-irreducible",
+   "thm-dixmier-malliavin",
+   "thm-doubling-method",
+   "thm-downward-theta-lift-nonvanishing",
+   "thm-flath-unramified",
+   "thm-fontaine-bcris",
+   "thm-galois-reps-csd-above-l",
+   "thm-galois-reps-polarized-cuspidal",
+   "thm-gelfand-kazhdan",
+   "thm-geometric-lemma",
+   "thm-geometric-lemma-filtration",
+   "thm-green-parametrisation",
+   "thm-green-regular-characters",
+   "thm-greenberg-wiles",
+   "thm-hasse-norm-quadratic",
+   "thm-hc-analyticity-density",
+   "thm-hc-discrete-series-classification",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hecke-character-local-parameter-above-l",
+   "thm-hecke-character-wd-above-l",
+   "thm-hecke-functional-equation-cm",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-hecke-l-nonvanishing-line-one",
+   "thm-henniart-local-converse",
+   "thm-hodge-tate-count",
+   "thm-inner-form-multiplicities-equal",
+   "thm-jacquet-irreducible-admissible",
+   "thm-jacquet-shalika",
+   "thm-jacquet-shalika-strong-mult-one",
+   "thm-labesse-base-change",
+   "thm-landherr-cm",
+   "thm-moy-prasad-jacquet",
+   "thm-non-endoscopic-hypotheses-hold",
+   "thm-p-adic-monodromy",
+   "thm-poitou-tate",
+   "thm-ray-class-characters-galois",
+   "thm-ray-class-field",
+   "thm-semistable-reduction",
+   "thm-siegel-weil-weil-range",
+   "thm-square-integrable-segment",
+   "thm-tadic-generic-unitary-dual",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-global-euler-characteristic",
+   "thm-tate-global-finiteness",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness",
+   "thm-tempered-products",
+   "thm-unitary-integral-models",
+   "thm-unitary-quotient-finite-volume",
+   "thm-unramified-annihilators",
+   "thm-unramified-doubling-gl",
+   "thm-weil-representation-unitary-exists",
+   "thm-zelevinsky-segments"
+  ],
+  "prop-offdiagonal-hypotheses-hold": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "prop-pair-coefficient-local-decomposition": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "prop-paired-character-bound": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-sha-bound"
+  ],
+  "prop-period-identity-real-package": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-hecke-l-entire",
+   "thm-hecke-l-nonvanishing-line-one",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "prop-periods-valuations-good-data": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "prop-small-terms-offdiag-level": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced",
+   "thm-unitary-quotient-finite-volume",
+   "thm-zuckerman-tensor-discrete-series"
+  ],
+  "prop-twisting-property-constructed-points": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-abelian-scheme-lifting-divided-powers": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-angehrn-siu-point-separation": [
+   "thm-grh-from-sha-bound"
+  ],
+  "thm-archimedean-models": [
+   "def-archimedean-bessel-data",
+   "def-quantum-determinant"
+  ],
+  "thm-arithmetic-hilbert-samuel": [
+   "thm-grh-from-sha-bound"
+  ],
+  "thm-automorphic-induction-quadratic": [
+   "def-quantum-determinant",
+   "thm-bz-derivative-leibniz",
+   "thm-bz-finiteness",
+   "thm-jacquet-irreducible-admissible",
+   "thm-jacquet-shalika",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-auxiliary-fields": [
+   "def-auxiliary-field-data",
+   "def-chebyshev-weighted",
+   "def-congruence-data",
+   "def-connected-families",
+   "def-family-ranks",
+   "def-family-scale",
+   "lem-behrend-sets"
+  ],
+  "thm-base-change-unitary": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-borel-casselman",
+   "thm-bz-finiteness",
+   "thm-cusp-bounded-gl",
+   "thm-geometric-lemma",
+   "thm-geometric-lemma-filtration",
+   "thm-hasse-norm-quadratic",
+   "thm-hc-finiteness-gl",
+   "thm-jacquet-irreducible-admissible",
+   "thm-jacquet-rallis-fundamental-lemma",
+   "thm-jacquet-shalika",
+   "thm-jacquet-shalika-strong-mult-one",
+   "thm-wave-kernels-gln-c",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-basic-conditions-from-local-parameters": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-complex-theta-uniformisation",
+   "thm-doubling-method",
+   "thm-geometric-lemma-filtration",
+   "thm-grh-from-theta-integrals",
+   "thm-ray-class-field",
+   "thm-siegel-main-theorem-hermitian",
+   "thm-siegel-weil-convergent-doubling",
+   "thm-siegel-weil-weil-range",
+   "thm-strong-approximation-su",
+   "thm-unitary-quotient-finite-volume",
+   "thm-unramified-doubling-gl"
+  ],
+  "thm-bessel-period-ascent": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-bessel-transform-radial-space": [
+   "def-quantum-determinant"
+  ],
+  "thm-bz-finiteness": [
+   "thm-jacquet-irreducible-admissible"
+  ],
+  "thm-casselman-wallach": [
+   "def-archimedean-bessel-data"
+  ],
+  "thm-charpoly-de-rham-abelian": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "thm-chowla-selberg": [
+   "def-auxiliary-field-data",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "thm-clozel-cohomological": [
+   "def-quantum-determinant"
+  ],
+  "thm-clozel-purity": [
+   "def-quantum-determinant"
+  ],
+  "thm-clozel-regular-algebraic": [
+   "def-quantum-determinant"
+  ],
+  "thm-coincidence-points-cm": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "thm-compatibility-depth-zero": [
+   "def-congruence-data",
+   "def-quantum-determinant",
+   "thm-hasse-norm-cyclic",
+   "thm-jacquet-shalika",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-complex-theta-uniformisation": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-congruence-module-selmer-bound": [
+   "def-auxiliary-field-data",
+   "def-family-ranks",
+   "def-sha-bound"
+  ],
+  "thm-core-inequality": [
+   "def-auxiliary-field-data",
+   "def-family",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "thm-counting-automorphic-forms-unitary": [
+   "def-archimedean-bessel-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-quantum-determinant"
+  ],
+  "thm-counting-constant-mass-constant": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters"
+  ],
+  "thm-covolume-bound": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-family-data-exists",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-critical-line": [
+   "def-nonvanishing-half-plane",
+   "def-riemann-hypothesis",
+   "thm-riemann-hypothesis"
+  ],
+  "thm-critical-line-primitive": [
+   "def-nonvanishing-half-plane"
+  ],
+  "thm-cusp-bounded-gl": [
+   "def-quantum-determinant"
+  ],
+  "thm-cusp-bounded-unitary": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-cusp-decay-sobolev": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-cusp-rapid-decay": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-cusp-trace-class": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-cusp-uniform-decay": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-cuspidal-spectrum-gl": [
+   "def-quantum-determinant"
+  ],
+  "thm-degenerations-mumford-uniformisation": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-depth-zero-base-change-principal-series": [
+   "def-local-parameters",
+   "def-quantum-determinant",
+   "thm-cusp-bounded-gl",
+   "thm-cuspidal-spectrum-gl",
+   "thm-hasse-norm-cyclic",
+   "thm-jacquet-shalika",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-discrete-series-bessel-pointwise-bound": [
+   "def-harish-chandra-parameters",
+   "thm-formal-degree-well-spaced",
+   "thm-zuckerman-tensor-discrete-series"
+  ],
+  "thm-discrete-series-branching-coefficients": [
+   "def-archimedean-bessel-data",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-discrete-series-exist-cover": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced"
+  ],
+  "thm-discrete-series-exist-upq": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced"
+  ],
+  "thm-discrete-series-frame-independent": [
+   "def-archimedean-bessel-data",
+   "def-quantum-determinant"
+  ],
+  "thm-discrete-series-lowest-k-type": [
+   "def-quantum-determinant"
+  ],
+  "thm-discrete-series-parametrisation": [
+   "def-archimedean-bessel-data",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced"
+  ],
+  "thm-doubling-method": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-downward-theta-lift-nonvanishing": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-dual-abelian-scheme": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-eigenspaces-crystalline": [
+   "thm-additive-characteristic-classes"
+  ],
+  "thm-eisenstein-continuation-growth": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-hasse-norm-quadratic"
+  ],
+  "thm-families-connected": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-chebyshev-weighted",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "def-sha-error-term",
+   "def-slope-data",
+   "thm-chain-averaging",
+   "thm-formal-degree-well-spaced",
+   "thm-landherr-cm",
+   "thm-lattice-term-pair-bound"
+  ],
+  "thm-family-conditions-from-basic": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-cm-j-integral-good-reduction",
+   "thm-complex-theta-uniformisation",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-family-data-exists": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-connected-families",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-non-endoscopic-package",
+   "def-padic-hodge-package",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "def-sha-error-term",
+   "def-theta-analytic-inputs",
+   "def-theta-tower-step",
+   "prop-member-hypotheses-from-literature",
+   "thm-abelian-scheme-standard-theory",
+   "thm-abelian-variety-torsion-count",
+   "thm-artin-reciprocity",
+   "thm-bernstein-unitary-product",
+   "thm-bloch-kato-local",
+   "thm-bz-finiteness",
+   "thm-casselman-wallach",
+   "thm-chebotarev-degree-one",
+   "thm-chowla-selberg",
+   "thm-clozel-regular-algebraic",
+   "thm-cm-j-integral-good-reduction",
+   "thm-complex-theta-uniformisation",
+   "thm-congruence-module-selmer-bound",
+   "thm-counting-constant-mass-constant",
+   "thm-cusp-rapid-decay",
+   "thm-depth-zero-jacquet-injective",
+   "thm-depth-zero-support",
+   "thm-discrete-series-exist-upq",
+   "thm-discrete-series-parametrisation",
+   "thm-disjoint-support-product-irreducible",
+   "thm-fock-bad-share-mean",
+   "thm-fontaine-bcris",
+   "thm-formal-degree-well-spaced",
+   "thm-galois-reps-csd-above-l",
+   "thm-galois-reps-polarized-cuspidal",
+   "thm-geometric-lemma",
+   "thm-geometric-lemma-filtration",
+   "thm-green-parametrisation",
+   "thm-greenberg-wiles",
+   "thm-grh-from-theta-integrals",
+   "thm-hasse-norm-quadratic",
+   "thm-hc-discrete-series-classification",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hc-modules-unitary",
+   "thm-hecke-character-local-parameter-above-l",
+   "thm-hecke-functional-equation-cm",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-howe-duality-archimedean-trivial",
+   "thm-jacquet-shalika",
+   "thm-landherr-cm",
+   "thm-large-summand-low-degree",
+   "thm-lattice-term-pair-bound",
+   "thm-oscillator-lie-action",
+   "thm-p-adic-monodromy",
+   "thm-ray-class-characters-galois",
+   "thm-ray-class-field",
+   "thm-reduction-theory-unitary",
+   "thm-semistable-reduction",
+   "thm-siegel-main-theorem-hermitian",
+   "thm-siegel-weil-convergent-doubling",
+   "thm-siegel-weil-weil-range",
+   "thm-tadic-generic-unitary-dual",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-global-euler-characteristic",
+   "thm-tate-global-finiteness",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness",
+   "thm-unitary-integral-models",
+   "thm-unitary-quotient-finite-volume",
+   "thm-unramified-annihilators",
+   "thm-unramified-doubling-gl",
+   "thm-weighted-bessel-sum-bound",
+   "thm-weil-representation-unitary-exists",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-family-membership-admissible-data": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-non-endoscopic-package",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "def-theta-analytic-inputs",
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-grh-from-theta-integrals",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-family-sha-error-bound": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-sha-bound",
+   "def-sha-error-term",
+   "thm-cusp-trace-class",
+   "thm-dixmier-malliavin",
+   "thm-flath-unramified",
+   "thm-hc-analyticity-density",
+   "thm-hc-discrete-series-classification",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-fock-bad-share-mean": [
+   "def-family-member"
+  ],
+  "thm-formal-degree-upq": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced"
+  ],
+  "thm-formal-degree-well-spaced": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-full-level-ample-models": [
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-galois-reps-csd-above-l": [
+   "def-congruence-data",
+   "def-quantum-determinant"
+  ],
+  "thm-galois-reps-from-geometry-and-theta": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-galois-reps-hecke-eigenspaces": [
+   "def-congruence-data",
+   "def-harish-chandra-parameters",
+   "thm-additive-characteristic-classes",
+   "thm-etale-finiteness"
+  ],
+  "thm-galois-reps-polarized-cuspidal": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-local-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-galois-reps-unramified-compatible": [
+   "def-congruence-data",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-bernstein-unitary-product",
+   "thm-hasse-norm-cyclic",
+   "thm-ray-class-field",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-gelfand-kazhdan": [
+   "def-quantum-determinant",
+   "thm-multiplicity-one-gl"
+  ],
+  "thm-geometric-galois-odd-rank": [
+   "def-congruence-data",
+   "def-harish-chandra-parameters"
+  ],
+  "thm-good-towers-from-arakelov-inputs": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-good-twists-all-coprime-powers": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-member",
+   "def-family-ranks",
+   "def-sha-bound"
+  ],
+  "thm-grh-from-galois": [
+   "def-local-parameters"
+  ],
+  "thm-grh-from-sha-bound": [
+   "def-harish-chandra-parameters",
+   "def-padic-hodge-package",
+   "def-quantum-determinant",
+   "def-theta-analytic-inputs",
+   "def-theta-tower-step",
+   "def-trivial-statement",
+   "lem-height-lower-bound-deep-covers",
+   "thm-abelian-scheme-lifting-divided-powers",
+   "thm-angehrn-siu-point-separation",
+   "thm-arithmetic-hilbert-samuel-inequalities",
+   "thm-arithmetic-intersection-theory",
+   "thm-artin-reciprocity",
+   "thm-base-change-unitary",
+   "thm-bernstein-unitary-admissible",
+   "thm-bernstein-unitary-product",
+   "thm-bhatt-scholze-coefficients",
+   "thm-bhatt-scholze-crystalline-lattices",
+   "thm-bloch-kato-local",
+   "thm-borel-casselman",
+   "thm-brauer-induction-degree-zero",
+   "thm-bz-finiteness",
+   "thm-casselman-wallach",
+   "thm-chebotarev-degree-one",
+   "thm-chevalley-congruence-units",
+   "thm-clozel-cohomological",
+   "thm-clozel-purity",
+   "thm-clozel-regular-algebraic",
+   "thm-cm-j-hilbert-class-field",
+   "thm-covolume-bound",
+   "thm-cusp-bounded-gl",
+   "thm-cusp-bounded-unitary",
+   "thm-cusp-decay-sobolev",
+   "thm-cusp-rapid-decay",
+   "thm-cusp-trace-class",
+   "thm-cusp-uniform-decay",
+   "thm-de-rham-abelian-schemes",
+   "thm-depth-zero-from-support",
+   "thm-depth-zero-jacquet-injective",
+   "thm-depth-zero-support",
+   "thm-discrete-series-exist-cover",
+   "thm-discrete-series-exist-upq",
+   "thm-discrete-series-frame-independent",
+   "thm-discrete-series-lowest-k-type",
+   "thm-discrete-series-parametrisation",
+   "thm-disjoint-support-product-irreducible",
+   "thm-dixmier-malliavin",
+   "thm-doubling-method",
+   "thm-dual-abelian-scheme",
+   "thm-eisenstein-continuation-growth",
+   "thm-fargues-hodge-tate-sequence",
+   "thm-flath-tensor-product",
+   "thm-flath-unramified",
+   "thm-fontaine-bcris",
+   "thm-formal-degree-upq",
+   "thm-gelfand-cuspidal-mirabolic",
+   "thm-gelfand-kazhdan",
+   "thm-geometric-lemma",
+   "thm-geometric-lemma-filtration",
+   "thm-godement-schur-orthogonality",
+   "thm-green-parametrisation",
+   "thm-green-regular-characters",
+   "thm-gross-cm-curves",
+   "thm-grothendieck-messing",
+   "thm-hc-analyticity-density",
+   "thm-hc-discrete-series-classification",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hc-infinitesimal-equivalence",
+   "thm-hc-k-finite-vectors",
+   "thm-hc-modules-unitary",
+   "thm-hecke-character-local-parameter-above-l",
+   "thm-hecke-character-wd-above-l",
+   "thm-hecke-l-adic-character",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-hecke-l-adic-character-crystalline",
+   "thm-hecke-l-adic-character-de-rham",
+   "thm-hecke-l-entire",
+   "thm-hecke-l-nonvanishing-line-one",
+   "thm-henniart-local-converse",
+   "thm-hermitian-hasse-principle",
+   "thm-hilbert-samuel-nef",
+   "thm-hironaka-resolution",
+   "thm-hodge-bundle-semipositive",
+   "thm-hodge-tate-count",
+   "thm-holomorphic-discrete-series",
+   "thm-howe-duality-archimedean-trivial",
+   "thm-howe-duality-gl-gl",
+   "thm-jacquet-shalika",
+   "thm-jacquet-shalika-strong-mult-one",
+   "thm-kudla-splitting",
+   "thm-labesse-base-change",
+   "thm-landherr-hermitian-forms",
+   "thm-linnik",
+   "thm-log-derivative-at-one",
+   "thm-multiplicity-one-gl",
+   "thm-non-endoscopic-hypotheses-hold",
+   "thm-oscillator-lie-action",
+   "thm-p-adic-monodromy",
+   "thm-poincare-lelong-integrated",
+   "thm-principalisation-relative",
+   "thm-quadratic-class-field-theory",
+   "thm-radford-shuffle",
+   "thm-rallis-inner-product",
+   "thm-ray-class-characters-galois",
+   "thm-ray-class-field",
+   "thm-reduction-theory-unitary",
+   "thm-siegel-main-theorem-hermitian",
+   "thm-siegel-weil-convergent-doubling",
+   "thm-siegel-weil-outside-weil-range",
+   "thm-siegel-weil-weil-range",
+   "thm-singular-moduli-class-number",
+   "thm-stone-von-neumann",
+   "thm-strong-approximation-su",
+   "thm-tadic-generic-unitary-dual",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness",
+   "thm-theta-rational-invariance",
+   "thm-theta-tower-step-identities",
+   "thm-toroidal-compactification-siegel",
+   "thm-toroidal-compactification-unitary",
+   "thm-unramified-doubling-gl",
+   "thm-weber-ray-class-field",
+   "thm-weil-convergence-criterion",
+   "thm-weil-representation-unitary-exists",
+   "thm-weyl-branching",
+   "thm-zarhin-trick",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-grh-from-theta-integrals": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-non-endoscopic-package",
+   "def-padic-hodge-package",
+   "def-quantum-determinant",
+   "def-theta-analytic-inputs",
+   "def-theta-tower-step",
+   "def-trivial-statement",
+   "thm-artin-reciprocity",
+   "thm-bernstein-unitary-product",
+   "thm-bhatt-scholze-coefficients",
+   "thm-borel-casselman",
+   "thm-bz-finiteness",
+   "thm-casselman-wallach",
+   "thm-chebotarev-degree-one",
+   "thm-clozel-cohomological",
+   "thm-clozel-regular-algebraic",
+   "thm-cm-j-hilbert-class-field",
+   "thm-cusp-bounded-unitary",
+   "thm-cusp-decay-sobolev",
+   "thm-cusp-rapid-decay",
+   "thm-cusp-trace-class",
+   "thm-cusp-uniform-decay",
+   "thm-depth-zero-jacquet-injective",
+   "thm-depth-zero-support",
+   "thm-discrete-series-exist-cover",
+   "thm-discrete-series-exist-upq",
+   "thm-discrete-series-frame-independent",
+   "thm-discrete-series-lowest-k-type",
+   "thm-discrete-series-parametrisation",
+   "thm-disjoint-support-product-irreducible",
+   "thm-dixmier-malliavin",
+   "thm-doubling-method",
+   "thm-eisenstein-continuation-growth",
+   "thm-flath-unramified",
+   "thm-formal-degree-upq",
+   "thm-galois-reps-csd-above-l",
+   "thm-galois-reps-polarized-cuspidal",
+   "thm-gelfand-cuspidal-mirabolic",
+   "thm-geometric-lemma-filtration",
+   "thm-godement-schur-orthogonality",
+   "thm-green-parametrisation",
+   "thm-green-regular-characters",
+   "thm-gross-cm-curves",
+   "thm-hc-analyticity-density",
+   "thm-hc-discrete-series-classification",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hc-infinitesimal-equivalence",
+   "thm-hc-k-finite-vectors",
+   "thm-hc-modules-unitary",
+   "thm-hecke-character-local-parameter-above-l",
+   "thm-hecke-l-adic-character",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-hecke-l-entire",
+   "thm-hecke-l-nonvanishing-line-one",
+   "thm-hermitian-hasse-principle",
+   "thm-holomorphic-discrete-series",
+   "thm-howe-duality-archimedean-trivial",
+   "thm-howe-duality-gl-gl",
+   "thm-jacquet-shalika",
+   "thm-kudla-splitting",
+   "thm-labesse-base-change",
+   "thm-landherr-hermitian-forms",
+   "thm-linnik",
+   "thm-log-derivative-at-one",
+   "thm-oscillator-lie-action",
+   "thm-p-adic-monodromy",
+   "thm-quadratic-class-field-theory",
+   "thm-radford-shuffle",
+   "thm-rallis-inner-product",
+   "thm-ray-class-characters-galois",
+   "thm-ray-class-field",
+   "thm-reduction-theory-unitary",
+   "thm-siegel-main-theorem-hermitian",
+   "thm-siegel-weil-convergent-doubling",
+   "thm-siegel-weil-outside-weil-range",
+   "thm-siegel-weil-weil-range",
+   "thm-singular-moduli-class-number",
+   "thm-stone-von-neumann",
+   "thm-strong-approximation-su",
+   "thm-tadic-generic-unitary-dual",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness",
+   "thm-theta-rational-invariance",
+   "thm-unramified-doubling-gl",
+   "thm-weber-ray-class-field",
+   "thm-weil-representation-unitary-exists",
+   "thm-weyl-branching",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-gsp4-lift-automorphy": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-hasse-norm-cyclic",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-harish-chandra-discrete-series": [
+   "def-archimedean-bessel-data",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced"
+  ],
+  "thm-hasse-norm-cyclic": [
+   "thm-hasse-norm-quadratic"
+  ],
+  "thm-hc-discrete-series-classification": [
+   "def-archimedean-bessel-data",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced"
+  ],
+  "thm-hc-finiteness-gl": [
+   "def-quantum-determinant"
+  ],
+  "thm-hc-finiteness-unitary": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-quantum-determinant",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-hc-infinitesimal-equivalence": [
+   "def-archimedean-bessel-data"
+  ],
+  "thm-hc-modules-unitary": [
+   "def-archimedean-bessel-data"
+  ],
+  "thm-hecke-bound-base-change": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-hecke-character-local-parameter-above-l": [
+   "def-congruence-data",
+   "def-local-parameters"
+  ],
+  "thm-hecke-character-wd-above-l": [
+   "def-congruence-data",
+   "thm-hecke-l-adic-character"
+  ],
+  "thm-hecke-fixed-points-kuga-sato": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-hecke-l-adic-character-crystalline": [
+   "def-congruence-data"
+  ],
+  "thm-hilbert-mixed-weights": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-quantum-determinant",
+   "thm-fontaine-bcris",
+   "thm-hecke-l-adic-character",
+   "thm-hecke-l-adic-character-de-rham"
+  ],
+  "thm-hilbert-modular-inputs": [
+   "def-congruence-data",
+   "def-galois-cohomology-inputs",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-quantum-determinant",
+   "thm-artin-reciprocity",
+   "thm-bernstein-unitary-product",
+   "thm-borel-casselman",
+   "thm-brauer-induction-degree-zero",
+   "thm-bz-finiteness",
+   "thm-chebotarev-degree-one",
+   "thm-chevalley-congruence-units",
+   "thm-clozel-cohomological",
+   "thm-clozel-purity",
+   "thm-cusp-bounded-gl",
+   "thm-cusp-rapid-decay",
+   "thm-cuspidal-spectrum-gl",
+   "thm-de-rham-abelian-schemes",
+   "thm-depth-zero-from-support",
+   "thm-dual-abelian-scheme",
+   "thm-gelfand-kazhdan",
+   "thm-geometric-lemma",
+   "thm-geometric-lemma-filtration",
+   "thm-green-regular-characters",
+   "thm-grothendieck-messing",
+   "thm-hasse-norm-cyclic",
+   "thm-hasse-norm-quadratic",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hecke-character-wd-above-l",
+   "thm-hecke-functional-equation-cm",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-henniart-local-converse",
+   "thm-jacquet-irreducible-admissible",
+   "thm-jacquet-shalika",
+   "thm-jacquet-shalika-strong-mult-one",
+   "thm-local-parameters-exist",
+   "thm-moy-prasad-jacquet",
+   "thm-multiplicity-one-gl",
+   "thm-p-adic-monodromy",
+   "thm-partial-zeta-functional-equation",
+   "thm-ray-class-field",
+   "thm-shimura-main-theorem-cm",
+   "thm-shintani-casselman-shalika",
+   "thm-siegel-klingen-rationality",
+   "thm-singular-moduli-class-number",
+   "thm-square-integrable-segment",
+   "thm-tempered-products",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-hilbert-weight-change": [
+   "def-quantum-determinant"
+  ],
+  "thm-hodge-numbers-eigenspaces": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-hodge-tate-count": [
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-hodge-tate-decomposition": [
+   "thm-additive-characteristic-classes",
+   "thm-etale-finiteness",
+   "thm-proper-base-change"
+  ],
+  "thm-hodge-tate-functorial": [
+   "thm-additive-characteristic-classes",
+   "thm-etale-finiteness",
+   "thm-proper-base-change"
+  ],
+  "thm-hodge-tate-weights-eigenspaces": [
+   "thm-additive-characteristic-classes"
+  ],
+  "thm-holomorphic-discrete-series": [
+   "def-quantum-determinant"
+  ],
+  "thm-howe-duality-gl-gl": [
+   "def-harish-chandra-parameters"
+  ],
+  "thm-indefinite-slope-bound": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-theta-tower-step",
+   "thm-abelian-scheme-standard-theory",
+   "thm-cm-j-integral-good-reduction",
+   "thm-complex-theta-uniformisation",
+   "thm-grh-from-theta-integrals",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-inner-form-multiplicities-equal": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-jacquet-irreducible-admissible": [
+   "thm-bz-finiteness"
+  ],
+  "thm-jacquet-shalika": [
+   "def-quantum-determinant",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-jacquet-shalika-strong-mult-one": [
+   "def-quantum-determinant",
+   "thm-jacquet-shalika",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-jantzen-lowest-alcove": [
+   "def-harish-chandra-parameters"
+  ],
+  "thm-kato-selmer-vanishing": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-greenberg-wiles",
+   "thm-poitou-tate",
+   "thm-shintani-casselman-shalika",
+   "thm-tate-global-finiteness",
+   "thm-unramified-annihilators"
+  ],
+  "thm-katz-measures-cm-theta": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-cm-j-integral-good-reduction"
+  ],
+  "thm-kawamata-viehweg": [
+   "thm-principalisation-projective"
+  ],
+  "thm-kuga-sato-unitary-shimura": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-charpoly-de-rham-abelian",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-labesse-base-change": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-large-summand-low-degree": [
+   "def-family-member"
+  ],
+  "thm-lattice-term-pair-bound": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-zuckerman-tensor-discrete-series"
+  ],
+  "thm-lifting-clustered-weights": [
+   "def-family-member"
+  ],
+  "thm-lifting-deep-weights": [
+   "def-family-member"
+  ],
+  "thm-lifting-potentially-crystalline": [
+   "def-family-member"
+  ],
+  "thm-local-estimate-inert-primes": [
+   "def-family-member"
+  ],
+  "thm-local-global-ramified": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-local-parameters",
+   "def-quantum-determinant",
+   "thm-hasse-norm-cyclic",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-local-parameters-exist": [
+   "thm-artin-reciprocity",
+   "thm-bz-finiteness",
+   "thm-chevalley-congruence-units",
+   "thm-depth-zero-support",
+   "thm-geometric-lemma",
+   "thm-green-regular-characters",
+   "thm-jacquet-irreducible-admissible",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-mean-arithmetic-volume-lower-bound": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-hasse-norm-quadratic",
+   "thm-landherr-cm"
+  ],
+  "thm-mean-value-bad-shares": [
+   "def-family-member"
+  ],
+  "thm-multiplicity-one-gl": [
+   "def-quantum-determinant",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-mumford-degeneration": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-mumford-good-metrics": [
+   "thm-grh-from-sha-bound"
+  ],
+  "thm-non-endoscopic-hypotheses-hold": [
+   "def-automorphic-galois-inputs",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-galois-cohomology-inputs",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-local-rep-theory-package",
+   "def-non-endoscopic-package",
+   "def-quantum-determinant",
+   "thm-artin-reciprocity",
+   "thm-base-change-unitary",
+   "thm-bernstein-unitary-product",
+   "thm-bloch-kato-local",
+   "thm-brauer-induction-degree-zero",
+   "thm-bz-finiteness",
+   "thm-bz-functors-finite-length",
+   "thm-chevalley-congruence-units",
+   "thm-clozel-cohomological",
+   "thm-clozel-purity",
+   "thm-cusp-bounded-gl",
+   "thm-cusp-rapid-decay",
+   "thm-cuspidal-spectrum-gl",
+   "thm-deligne-ribet",
+   "thm-depth-zero-from-support",
+   "thm-gelfand-kazhdan",
+   "thm-geometric-lemma",
+   "thm-green-regular-characters",
+   "thm-greenberg-wiles",
+   "thm-grh-from-sha-bound",
+   "thm-hc-finiteness-gl",
+   "thm-hc-finiteness-unitary",
+   "thm-hecke-character-wd-above-l",
+   "thm-hecke-functional-equation-cm",
+   "thm-hecke-l-adic-character-above-l",
+   "thm-hecke-l-adic-character-crystalline",
+   "thm-hecke-l-adic-character-de-rham",
+   "thm-henniart-local-converse",
+   "thm-jacquet-irreducible-admissible",
+   "thm-jacquet-shalika",
+   "thm-jacquet-shalika-strong-mult-one",
+   "thm-moy-prasad-jacquet",
+   "thm-p-adic-monodromy",
+   "thm-partial-zeta-functional-equation",
+   "thm-poitou-tate",
+   "thm-ray-class-field",
+   "thm-shimura-main-theorem-cm",
+   "thm-siegel-klingen-rationality",
+   "thm-singular-moduli-class-number",
+   "thm-square-integrable-segment",
+   "thm-tate-euler-characteristic-global-places",
+   "thm-tate-global-euler-characteristic",
+   "thm-tate-global-finiteness",
+   "thm-tate-local-duality-global-places",
+   "thm-tate-local-finiteness",
+   "thm-tempered-products",
+   "thm-unramified-annihilators",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-offdiagonal-bound": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced",
+   "thm-landherr-cm"
+  ],
+  "thm-pnt-progressions-exceptional-zero": [
+   "def-chebyshev-weighted"
+  ],
+  "thm-potential-automorphy-seeds": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-local-parameters",
+   "def-quantum-determinant",
+   "thm-borel-casselman",
+   "thm-hasse-norm-cyclic",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-prime-sums-lattice-gains": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "lem-behrend-sets"
+  ],
+  "thm-pseudo-coefficients-unitary": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-rallis-inner-product": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-quantum-determinant",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-rational-test-vectors-theta": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-theta-tower-step",
+   "thm-grh-from-theta-integrals",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-reduction-theory-unitary": [
+   "def-archimedean-bessel-data"
+  ],
+  "thm-riemann-hypothesis": [
+   "def-nonvanishing-half-plane",
+   "thm-critical-line"
+  ],
+  "thm-semistable-reduction": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-abelian-variety-torsion-count"
+  ],
+  "thm-sha-bound": [
+   "def-congruence-data",
+   "def-galois-reps-polarized",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-abelian-scheme-lifting-divided-powers",
+   "thm-abelian-scheme-standard-theory",
+   "thm-abelian-variety-torsion-count",
+   "thm-bz-functors-finite-length",
+   "thm-complex-theta-uniformisation",
+   "thm-deligne-ribet",
+   "thm-gaga-sections",
+   "thm-hasse-norm-cyclic",
+   "thm-hecke-l-adic-character-crystalline",
+   "thm-landherr-cm",
+   "thm-shintani-casselman-shalika"
+  ],
+  "thm-siegel-eisenstein-residue-theta": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-siegel-main-theorem-hermitian": [
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-siegel-weil-convergent-doubling": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-siegel-weil-definite": [
+   "def-archimedean-bessel-data",
+   "thm-grh-from-sha-bound",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-siegel-weil-definite-k": [
+   "def-archimedean-bessel-data",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-siegel-weil-outside-weil-range": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-siegel-weil-weil-range": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-square-term-estimates": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "def-theta-tower-step",
+   "thm-cm-j-integral-good-reduction",
+   "thm-grh-from-theta-integrals",
+   "thm-hecke-l-entire",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-tate-euler-characteristic-global-places": [
+   "def-congruence-data"
+  ],
+  "thm-tate-local-duality-global-places": [
+   "def-congruence-data"
+  ],
+  "thm-tate-local-finiteness": [
+   "def-congruence-data"
+  ],
+  "thm-theta-functionals-separate": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-grh-from-theta-integrals",
+   "thm-hecke-l-entire",
+   "thm-hecke-l-nonvanishing-line-one"
+  ],
+  "thm-theta-lift-nonvanishing": [
+   "def-harish-chandra-parameters",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-theta-rational-invariance": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-theta-tower-step-identities": [
+   "def-archimedean-bessel-data",
+   "thm-grh-from-sha-bound",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-toroidal-compactification-siegel": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-grh-from-sha-bound"
+  ],
+  "thm-toroidal-compactification-unitary": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-transfer-unitary-shimura": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-twisted-admissibility": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters"
+  ],
+  "thm-twisted-trace-lowest-type": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ],
+  "thm-twisting-index-and-archimedean-bounds": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-local-rep-theory-package",
+   "def-non-endoscopic-package",
+   "def-quantum-determinant",
+   "thm-abelian-scheme-standard-theory",
+   "thm-brauer-induction-degree-zero",
+   "thm-chevalley-congruence-units",
+   "thm-chowla-selberg",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation",
+   "thm-depth-zero-from-support",
+   "thm-geometric-lemma",
+   "thm-grh-from-theta-integrals",
+   "thm-henniart-local-converse",
+   "thm-unitary-quotient-finite-volume",
+   "thm-zelevinsky-segments"
+  ],
+  "thm-unitary-integral-models": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-unitary-moduli-representable": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation"
+  ],
+  "thm-unitary-moduli-smooth": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-unitary-rigid-boundary-charts": [
+   "thm-abelian-scheme-standard-theory",
+   "thm-complex-theta-uniformisation",
+   "thm-degenerations-mumford-uniformisation"
+  ],
+  "thm-universal-first-order-deformation": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-unramified-annihilators": [
+   "def-congruence-data"
+  ],
+  "thm-wach-lifting-theorem": [
+   "def-family-member"
+  ],
+  "thm-weighted-bessel-sum-bound": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-member",
+   "def-family-ranks",
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant",
+   "thm-formal-degree-well-spaced",
+   "thm-zuckerman-tensor-discrete-series"
+  ],
+  "thm-weil-convergence-criterion": [
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-weil-representation-unitary-exists": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks"
+  ],
+  "thm-weyl-branching": [
+   "def-harish-chandra-parameters"
+  ],
+  "thm-witt-tower-square-ratios": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-theta-tower-step",
+   "thm-grh-from-theta-integrals",
+   "thm-unitary-quotient-finite-volume"
+  ],
+  "thm-zarhin-trick": [
+   "thm-abelian-scheme-standard-theory"
+  ],
+  "thm-zelevinsky-segments": [
+   "def-congruence-data",
+   "def-quantum-determinant"
+  ],
+  "thm-zero-free-from-connected": [
+   "def-chebyshev-weighted",
+   "def-family",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-sha-bound",
+   "thm-auxiliary-fields",
+   "thm-landau-windows"
+  ],
+  "thm-zero-free-from-families": [
+   "def-archimedean-bessel-data",
+   "def-auxiliary-field-data",
+   "def-congruence-data",
+   "def-connected-families",
+   "def-family",
+   "def-family-hermitian-spaces",
+   "def-family-member",
+   "def-family-ranks",
+   "def-family-scale",
+   "def-harish-chandra-parameters",
+   "def-sha-error-term",
+   "thm-green-parametrisation",
+   "thm-lattice-term-pair-bound"
+  ],
+  "thm-zero-free-from-windows": [
+   "def-auxiliary-field-data",
+   "def-family",
+   "def-family-member",
+   "def-family-ranks",
+   "def-slope-data"
+  ],
+  "thm-zuckerman-tensor-discrete-series": [
+   "def-harish-chandra-parameters",
+   "def-quantum-determinant"
+  ]
+ },
+ "lean_not_in_proof": {
+  "def-archimedean-bessel-data": [
+   "Formalism.QuantumDeterminants.IsBesselFunctional"
+  ],
+  "lem-admissibility-each-place": [
+   "GlobalTheory.TwV.admissible_at_each_site"
+  ],
+  "lem-orbit-data-inert-primes": [
+   "UpperTheory.OrbitFamilyRestriction.exists_rowFamS"
+  ],
+  "lem-theta-constant-term-big-cone": [
+   "GlobalTheory.T.exists_isCT_integral_eq_cone_integral_add_hasLaw",
+   "GlobalTheory.ThK.unfoldCTBigCone"
+  ],
+  "lem-zeta-nonvanishing": [
+   "UpperTheory.zeta_ne_zero_of_everyCharacter"
+  ],
+  "prop-theta-integrals-along-towers": [
+   "GlobalTheory.ThK.ctBigCone"
+  ],
+  "thm-geometric-lemma": [
+   "UpperTheory.V.Z.Win.Extra.geo"
+  ],
+  "thm-riemann-hypothesis": [
+   "UpperTheory.FinalTheorems.riemannHypothesis",
+   "UpperTheory.riemannHypothesis_of_everyCharacter"
+  ]
+ }
+}
