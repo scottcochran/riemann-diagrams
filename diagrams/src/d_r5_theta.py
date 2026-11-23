@@ -2,7 +2,8 @@
 
 The layout is computed by chapter.py from the chapter's own edges. EXPECTED records the proof-use edges within
 the chapter at the blueprint commit the diagrams were written against, and HYPOTHESES the results that proofs name
-without listing as uses; the build fails if the blueprint now differs."""
+without listing as uses; the build fails if the blueprint now differs. VERDICTS and HYPOTHESES_LEAN record
+the same against the formal proof (src/lean-edges.json)."""
 import chapter
 
 ID, SLUG, CH = "R5", "theta", "chap-theta"
@@ -104,6 +105,44 @@ EXPECTED = [
 # (named, in the proof of): results a proof names in its text without listing them as uses
 HYPOTHESES = []
 
+# (used, user): the verdict on each arrow against the formal proof (src/lean-edges.json), where it is not
+# `direct`; the build fails if one has another
+VERDICTS = {
+    ("lem-counting-constants-siegel-weil", "thm-theta-inputs"): "no-lean-source",
+    ("lem-theta-constant-term-big-cone", "prop-theta-integrals-along-towers"): "no-lean-target",
+    ("lem-valuations-level-primes", "thm-theta-inputs"): "no-lean-source",
+    ("prop-isometric-period-identity", "thm-theta-inputs"): "no-lean-source",
+    ("thm-bessel-transform-radial-space", "thm-theta-inputs"): "no-lean-source",
+    ("thm-counting-automorphic-forms-unitary", "thm-theta-inputs"): "no-lean-source",
+    ("thm-counting-constant-mass-constant", "thm-theta-inputs"): "no-lean-source",
+    ("thm-downward-theta-lift-nonvanishing", "thm-theta-inputs"): "no-lean-source",
+    ("thm-indefinite-slope-bound", "thm-theta-inputs"): "no-lean-source",
+    ("thm-non-endoscopic-hypotheses-hold", "thm-square-term-estimates"): "through",
+    ("thm-offdiagonal-bound", "thm-theta-inputs"): "no-lean-source",
+    ("thm-rational-test-vectors-theta", "thm-theta-inputs"): "no-lean-source",
+    ("thm-siegel-main-theorem-hermitian", "lem-pair-count-siegel-mass-ratio"): "apart",
+    ("thm-siegel-main-theorem-hermitian", "prop-offdiagonal-hypotheses-hold"): "apart",
+    ("thm-siegel-main-theorem-hermitian", "thm-counting-constant-mass-constant"): "apart",
+    ("thm-siegel-main-theorem-hermitian", "thm-offdiagonal-bound"): "beside",
+    ("thm-siegel-main-theorem-hermitian", "thm-theta-inputs"): "no-lean-source",
+    ("thm-siegel-weil-definite", "thm-theta-inputs"): "no-lean-source",
+    ("thm-siegel-weil-weil-range", "lem-theta-constant-term-big-cone"): "no-lean-source",
+    ("thm-siegel-weil-weil-range", "prop-theta-integrals-along-towers"): "apart",
+    ("thm-siegel-weil-weil-range", "thm-theta-inputs"): "no-lean-source",
+    ("thm-theta-functionals-separate", "thm-indefinite-slope-bound"): "through",
+    ("thm-theta-functionals-separate", "thm-theta-inputs"): "no-lean-source",
+    ("thm-theta-tower-step-identities", "thm-indefinite-slope-bound"): "through",
+    ("thm-theta-tower-step-identities", "thm-rational-test-vectors-theta"): "through",
+    ("thm-theta-tower-step-identities", "thm-square-term-estimates"): "through",
+    ("thm-theta-tower-step-identities", "thm-theta-inputs"): "no-lean-source",
+    ("thm-theta-tower-step-identities", "thm-witt-tower-square-ratios"): "through",
+}
+
+# (named, in the proof of): what the Lean of the second does with the first: "direct" (uses it),
+# "through" (reaches it by way of other statements), or None (does not reach it)
+HYPOTHESES_LEAN = {
+}
+
 
 def build():
-    return chapter.build(ID, CH, EXPECTED, HYPOTHESES)
+    return chapter.build(ID, CH, EXPECTED, HYPOTHESES, VERDICTS, HYPOTHESES_LEAN)

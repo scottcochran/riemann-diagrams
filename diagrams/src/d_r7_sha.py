@@ -2,7 +2,8 @@
 
 The layout is computed by chapter.py from the chapter's own edges. EXPECTED records the proof-use edges within
 the chapter at the blueprint commit the diagrams were written against, and HYPOTHESES the results that proofs name
-without listing as uses; the build fails if the blueprint now differs."""
+without listing as uses; the build fails if the blueprint now differs. VERDICTS and HYPOTHESES_LEAN record
+the same against the formal proof (src/lean-edges.json)."""
 import chapter
 
 ID, SLUG, CH = "R7", "sha", "chap-sha"
@@ -60,6 +61,26 @@ HYPOTHESES = [
     ("thm-wach-lifting-theorem", "thm-sha-bound"),
 ]
 
+# (used, user): the verdict on each arrow against the formal proof (src/lean-edges.json), where it is not
+# `direct`; the build fails if one has another
+VERDICTS = {
+    ("thm-hilbert-modular-inputs", "lem-h2-tate-twists-bound"): "apart",
+    ("thm-hilbert-modular-inputs", "thm-gsp4-lift-automorphy"): "apart",
+    ("thm-hilbert-modular-inputs", "thm-hilbert-mixed-weights"): "apart",
+    ("thm-hilbert-modular-inputs", "thm-kato-selmer-vanishing"): "apart",
+    ("thm-hilbert-modular-inputs", "thm-potential-automorphy-seeds"): "apart",
+    ("thm-kato-euler-system-ordinary", "thm-sha-bound"): "through",
+    ("thm-kato-explicit-reciprocity", "thm-sha-bound"): "through",
+}
+
+# (named, in the proof of): what the Lean of the second does with the first: "direct" (uses it),
+# "through" (reaches it by way of other statements), or None (does not reach it)
+HYPOTHESES_LEAN = {
+    ("thm-congruence-module-selmer-bound", "thm-sha-bound"): None,
+    ("thm-family-sha-error-bound", "thm-sha-bound"): None,
+    ("thm-wach-lifting-theorem", "thm-sha-bound"): None,
+}
+
 
 def build():
-    return chapter.build(ID, CH, EXPECTED, HYPOTHESES)
+    return chapter.build(ID, CH, EXPECTED, HYPOTHESES, VERDICTS, HYPOTHESES_LEAN)

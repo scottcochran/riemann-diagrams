@@ -2,7 +2,8 @@
 
 The layout is computed by chapter.py from the chapter's own edges. EXPECTED records the proof-use edges within
 the chapter at the blueprint commit the diagrams were written against, and HYPOTHESES the results that proofs name
-without listing as uses; the build fails if the blueprint now differs."""
+without listing as uses; the build fails if the blueprint now differs. VERDICTS and HYPOTHESES_LEAN record
+the same against the formal proof (src/lean-edges.json)."""
 import chapter
 
 ID, SLUG, CH = "R4", "families", "chap-families"
@@ -58,6 +59,24 @@ EXPECTED = [
 # (named, in the proof of): results a proof names in its text without listing them as uses
 HYPOTHESES = []
 
+# (used, user): the verdict on each arrow against the formal proof (src/lean-edges.json), where it is not
+# `direct`; the build fails if one has another
+VERDICTS = {
+    ("lem-admissibility-each-place", "lem-local-models-constructed-points"): "no-lean-target",
+    ("lem-inert-theta-admissibility-cm", "lem-admissibility-each-place"): "no-lean-source",
+    ("lem-inert-theta-admissibility-cm", "lem-local-models-constructed-points"): "apart",
+    ("prop-hecke-integrality-transformation", "prop-good-twists-from-theta-series"): "apart",
+    ("prop-hecke-integrality-transformation", "prop-twisting-property-constructed-points"): "apart",
+    ("thm-inner-form-multiplicities-equal", "prop-admissible-data-exist"): "apart",
+    ("thm-inner-form-multiplicities-equal", "thm-family-data-exists"): "through",
+    ("thm-twisting-index-and-archimedean-bounds", "thm-family-conditions-from-basic"): "beside",
+}
+
+# (named, in the proof of): what the Lean of the second does with the first: "direct" (uses it),
+# "through" (reaches it by way of other statements), or None (does not reach it)
+HYPOTHESES_LEAN = {
+}
+
 
 def build():
-    return chapter.build(ID, CH, EXPECTED, HYPOTHESES)
+    return chapter.build(ID, CH, EXPECTED, HYPOTHESES, VERDICTS, HYPOTHESES_LEAN)

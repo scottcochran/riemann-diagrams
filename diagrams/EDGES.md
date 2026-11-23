@@ -10,8 +10,9 @@ The short version: of the blueprint's 2,004 arrows, 1,760 are borne out by the f
 directly, 157 as a hypothesis the Lean carries, and 54 by way of other statements. Another 19 meet the arrow's
 target only beside it, and 148 are not borne out. The last 77 cannot be judged, because one end names no Lean
 that the proof contains. Two source statements account for 89 of the 148. The proof also makes 1,995 uses that
-the blueprint does not draw. R3 is the first poster to show the verdicts: all 17 of its arrows are `direct`, and
-its card "Against the formal proof" reads the rest of the chapter against the file.
+the blueprint does not draw. The chapter posters R3 to R8 and the traces T1 and T2 show the verdicts. An arrow
+that is not borne out directly is drawn thin, dotted or red, and each chapter poster's card "Against the formal
+proof" reads the rest of the chapter against the file.
 
 ## 1. Where the formal proof's references come from
 

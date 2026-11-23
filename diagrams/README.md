@@ -252,7 +252,7 @@ four files the generator reads.
 | `src/d_f5_sections.py` | F5: the sections chapter by chapter, laid out by their edges; `EXPECTED`, `UPWARD` |
 | `src/d_f6_depth.py` | F6: the wheel, rings by depth and sectors by chapter; `EXPECTED_DEPTHS`, `UNREACHED` |
 | `map/` | the map set, as `map-*.svg`, and its own `manifest.json` |
-| `src/lean-edges.json` | a verdict on every blueprint arrow from the formal proof's references, with its provenance; written by `tools/lean-edges/`, pinned by `LEAN_EDGES_SHA256` in `bp.py`; R3 reads it |
+| `src/lean-edges.json` | a verdict on every blueprint arrow from the formal proof's references, with its provenance; written by `tools/lean-edges/`, pinned by `LEAN_EDGES_SHA256` in `bp.py`; R3 to R8, T1 and T2 read it |
 | `TEXT.md`, `PAGE.md`, `EDGES.md` | where each kind of text on a poster comes from; how the light page's grey was chosen; how the blueprint's arrows compare with the formal proof |
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same

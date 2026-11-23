@@ -293,7 +293,7 @@
    "thm-pseudo-coefficients-unitary",
    "thm-twisting-index-and-archimedean-bounds"
   ],
-  "links": 197,
+  "links": 216,
   "links_out": 92,
   "links_ext": 140
  },
@@ -365,7 +365,7 @@
    "thm-weighted-bessel-sum-bound",
    "thm-witt-tower-square-ratios"
   ],
-  "links": 315,
+  "links": 330,
   "links_out": 48,
   "links_ext": 150
  },
@@ -408,7 +408,7 @@
    "thm-unitary-integral-models",
    "thm-unitary-rigid-boundary-charts"
   ],
-  "links": 184,
+  "links": 201,
   "links_out": 20,
   "links_ext": 101
  },
@@ -454,7 +454,7 @@
    "thm-siegel-units-mackey",
    "thm-wach-lifting-theorem"
   ],
-  "links": 171,
+  "links": 189,
   "links_out": 36,
   "links_ext": 121
  },
@@ -503,7 +503,7 @@
    "thm-universal-first-order-deformation",
    "thm-wave-kernels-gln-c"
   ],
-  "links": 235,
+  "links": 253,
   "links_out": 66,
   "links_ext": 111
  },
@@ -525,7 +525,7 @@
    "thm-offdiagonal-bound",
    "thm-riemann-hypothesis"
   ],
-  "links": 41,
+  "links": 45,
   "links_out": 79,
   "links_ext": 11
  },
@@ -542,7 +542,7 @@
    "thm-zero-free-from-connected",
    "thm-zero-free-from-windows"
   ],
-  "links": 22,
+  "links": 26,
   "links_out": 49,
   "links_ext": 0
  }

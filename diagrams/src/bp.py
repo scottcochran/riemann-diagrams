@@ -59,6 +59,32 @@ CHECKS_SHA256 = {
 # EDGES.md and the cards that quote it are brought up to date, before it is drawn.
 LEAN_EDGES_SHA256 = "7b040dedf54b19027c8b0eea2dfc38ed14f9b878c138d080551e8bd620b516b3"
 VERDICTS = ("direct", "hypothesis", "through", "beside", "apart", "no-lean-source", "no-lean-target")
+# How an arrow is drawn by its verdict: (accent, or None for the arrow's own; dash; stroke width). An arrow the
+# formal proof bears out, directly or as a hypothesis, is drawn as before.
+VERDICT_STYLE = {
+    "through": (None, None, 1.1),
+    "beside": ("grey", "2 4", 2.2),
+    "apart": ("red", "2 4", 2.4),
+    "no-lean-source": ("faint", "1 5", 2),
+    "no-lean-target": ("faint", "1 5", 2),
+}
+VERDICT_LEGEND = {
+    "through": ("A → B, thin: the Lean of B reaches A's only by way of other statements", "muted"),
+    "beside": ("A ⋯ B, grey: the Lean never reaches A's, but uses it beside B's", "grey"),
+    "apart": ("A ⋯ B, red: the formal proof does not bear the arrow out", "red"),
+    "no-lean": ("A ⋯ B, faint: A or B names no Lean the proof contains", "faint"),
+}
+
+
+def verdict_legend(used):
+    """Legend items for the verdict styles among `used`, in a fixed order; none for an arrow borne out."""
+    out = []
+    for v in ("through", "beside", "apart", "no-lean"):
+        if v in used or (v == "no-lean" and used & {"no-lean-source", "no-lean-target"}):
+            label, acc = VERDICT_LEGEND[v]
+            st = VERDICT_STYLE["no-lean-source" if v == "no-lean" else v]
+            out.append(("arrow", acc, label, st[1], st[2]))
+    return out
 
 # Map mode: no text of the blueprint and no Lean source is quoted. Each card keeps the statement's title, id,
 # kind, provenance, Lean name and location, and every edge. Set by gen-diagrams.py --map, before the modules load.
@@ -645,13 +671,14 @@ def code(s, limit=34):
 
 
 # ------------------------------------------------------------------------------------------------ arrows
-def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), labels=None):
+def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), labels=None, verdicts=None):
     """Draw every (a, b) of `edges` as an arrow from the bottom (or top) of card a to the top of card b: a is
     drawn above b, or in the same row. Adjacent cards in a row are joined across the gutter; other pairs in a row
     go over the lane above; cards one row apart go through the lane between; farther pairs drop through a free
     gutter, or round a margin. Edges sharing a lane or a gutter are staggered. `labels`: (a, b) -> text set on
-    the arrow's lane segment."""
+    the arrow's lane segment. `verdicts`: (a, b) -> the arrow's verdict, which sets its style (VERDICT_STYLE)."""
     labels = labels or {}
+    verdicts = verdicts or {}
     rows = {}
     for k, r in rowof.items():
         rows.setdefault(r, []).append(k)
@@ -722,7 +749,12 @@ def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), 
     for kind, a, b, data in plans:
         acc = "amber" if (a, b) in dashed else accent(a)
         dash = "7 5" if (a, b) in dashed else None
+        sw = 2
+        st = VERDICT_STYLE.get(verdicts.get((a, b)))
+        if st and (a, b) not in dashed:
+            acc, dash, sw = st[0] or acc, st[1], st[2]
         lab = {"label": labels[(a, b)], "lpos": 0.5} if (a, b) in labels else {}
+        lab["sw"] = sw
         xa, ya, wa, ha = pos[a]
         xb, yb, wb, hb = pos[b]
         if kind == "across":
