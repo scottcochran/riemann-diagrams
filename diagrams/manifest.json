@@ -153,6 +153,16 @@
   "links_out": 254,
   "links_ext": 164
  },
+ "F7": {
+  "file": "F7-verdicts-2026.11.23.svg",
+  "title": "The blueprint against the Lean: every arrow checked against the formal proof, chapter by chapter",
+  "cards": 0,
+  "arrows": 0,
+  "anchors": [],
+  "links": 0,
+  "links_out": 39,
+  "links_ext": 6
+ },
  "R1": {
   "file": "R1-main-theorems-2026.11.23.svg",
   "title": "`Main.lean`, theorem by theorem: the five theorems, the statements they are made of, and the chain of reductions that proves them",

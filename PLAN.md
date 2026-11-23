@@ -498,6 +498,12 @@ statements, not the declaration graph, and stays well under a megabyte.
   statements. A second band compares depths: each statement's depth from the main theorems in the formal
   graph, against its depth in the blueprint (F6), listing those that move by two or more. Reads
   `lean-edges.json` alone.
+  Done 2026.11.23 as `d_f7_verdicts.py`. Two things changed from the plan. Most statements move in depth: 150 by
+  two or more, 112 of them two deeper in the Lean. So the depth band is a cross-table of blueprint depth
+  against Lean depth, with a count of moves and a list of the 14 that move by three or more. And the matrix is
+  two tables, arrows and uses with no arrow, with the statements the trouble concentrates in beside them. The
+  build checks the counts by verdict, the two statements that hold 90 of the 167 arrows not borne out (every
+  other holds at most 4), and the depth moves.
 - **8c: F8, what the proof assumes and what it invokes.** 157 arrows are borne out only through the fields of
   a structure: A takes B as a hypothesis rather than proving or citing it. F8 draws each such package (such as
   `LiteratureCMHypothesis`): its fields, as statements, and the statements that take it. Against F4, the
