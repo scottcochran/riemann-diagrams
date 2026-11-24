@@ -1,6 +1,6 @@
 ---
 name: linking-papers
-description: "Finds the stable link for each paper a bibliography cites and records it in the project's papers file: a DOI from Crossref checked against the DOI's own record, else zbMATH Open's record and the DOI or stable scan it links, else a stable scan chosen by hand with a note. Use when the build fails on a reference with no entry in the papers file, or on an entry that names no reference; when a new reference appears after a source moved; or when asked to add, fix or check a paper link. Not for the poster that draws the references (drawing-posters), and not for the source move that brought the reference in (moving-pins)."
+description: "Finds the stable link for each paper a bibliography cites and records it in the project's papers file: a DOI from Crossref checked against the DOI's own record, else zbMATH Open's record and the DOI or stable scan it links, else a stable scan chosen by hand with a note. Use when the build fails on a reference with no entry in the papers file, or on an entry that names no reference; when a new reference appears after a source moved; or when asked to add, fix or check a paper link. Not for the poster that draws the references (the project's own poster skill), and not for the source move that brought the reference in (moving-pins)."
 ---
 
 # Linking papers

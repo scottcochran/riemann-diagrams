@@ -68,10 +68,10 @@ No sentence may state a fact the build does not check. A poster that shows a ver
 ## Build and look
 
 ```sh
-uv run python diagrams/gen-diagrams.py <ID>            # one poster; exits 1 with NOTE if anchors moved: run again
-uv run python diagrams/gen-diagrams.py                 # then all, so every poster's links follow
-uv run python diagrams/gen-diagrams.py --map           # the map set
-.claude/skills/drawing-posters/scripts/determinism.sh  # both sets, twice, two hash seeds: must be byte-identical
+uv run python diagrams/gen-diagrams.py <ID>              # one poster; exits 1 with NOTE if anchors moved: run again
+uv run python diagrams/gen-diagrams.py                   # then all, so every poster's links follow
+uv run python diagrams/gen-diagrams.py --map             # the map set
+uv run python skills/moving-pins/scripts/determinism.py  # both sets, twice, two hash seeds: must be byte-identical
 ```
 
 Any WARNING or ERROR is a failure: a word too wide for its cell, two texts overlapping, a character outside the
@@ -100,8 +100,8 @@ moves no expectation is PATCH.
 
 ## Check before you stop
 
-- `determinism.sh` passes. The committed SVGs and manifests are the regenerated ones, so `git status -- diagrams`
-  is clean after a fresh run.
+- `determinism.py` (the plugin's, in `skills/moving-pins/scripts/`) passes. The committed SVGs and manifests are
+  the regenerated ones, so `git status -- diagrams` is clean after a fresh run.
 - Every sentence on the poster is quoted, computed, framing, or a guarded interpretation.
 - Both sets look right in both themes, and the map set quotes nothing.
 - Every doc above that names posters or checks names this one. Files are staged by name.

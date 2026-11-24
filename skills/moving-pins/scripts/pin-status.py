@@ -26,9 +26,10 @@ def git(*args, cwd=None):
     return r.stdout.strip() if r.returncode == 0 else None
 
 
-# load_config and pin_value are the same in moving-pins/scripts/pin-status.py and in
-# cutting-releases/scripts/release-facts.py and verify-release.py (load_config only), so that each skill's folder
-# stands alone and the scripts still read the config and the pins the same way. Change all copies together.
+# load_config is the same in moving-pins/scripts/pin-status.py and determinism.py and in
+# cutting-releases/scripts/release-facts.py and verify-release.py; pin_value is the same in pin-status.py and
+# release-facts.py. Each skill's folder stands alone, and the scripts still read the config and the pins the same
+# way. Change all copies together.
 def load_config(argv, prog, need):
     """The project's proof-posters.toml, from --config FILE or the root of the git tree, and the directory it is in.
 

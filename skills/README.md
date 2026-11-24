@@ -9,7 +9,7 @@ repository is the first user, and its own copy of the project config is `proof-p
 
 | Skill | Use it when | It ends with |
 |---|---|---|
-| [`moving-pins`](moving-pins/SKILL.md) | a source has new commits; a pin, re-read hash or derived-file hash fails; the daily sources check failed | every check passing by recording what the sources say, never by loosening one; the list of posters to re-read |
+| [`moving-pins`](moving-pins/SKILL.md) | a source has new commits; a pin, re-read hash or derived-file hash fails; the daily sources check failed | every check passing by recording what the sources say, never by loosening one; the outputs byte-identical over two rounds; the list of posters to re-read |
 | [`linking-papers`](linking-papers/SKILL.md) | a reference has no paper in the papers file, or a link needs checking | one verified, stable URL per reference, with how it was found |
 | [`extracting-lean-deps`](extracting-lean-deps/SKILL.md) | a derived file about the formal proof must be rebuilt, or a poster needs a new fact about it | derived files read from the published export and the build cache, pinned by hash and commit |
 | [`cutting-releases`](cutting-releases/SKILL.md) | a release is due, or one needs checking | a class, a drafted tag message handed to the custodian, and a published release checked against the tree |
@@ -44,8 +44,8 @@ scripts read it; nothing in them names a riemann-diagrams path. What it describe
 
 | Table | What it says |
 |---|---|
-| `[project]` | the custodian who pushes tags, the default branch, the plan file, the docs that state counts |
-| `[build]` | the regenerate commands, the failure markers, the outputs and manifests, the counts each manifest gives per poster, the poster modules, the names of the expectations they record and which of them make a release MINOR |
+| `[project]` | the custodian who pushes tags, the default branch, the plan file, the docs that state counts, the project's own poster skill if it has one |
+| `[build]` | the regenerate commands, the failure markers, the line that asks for a run again, the environment of each round of the determinism check, the outputs and manifests, the counts each manifest gives per poster, the poster modules, the names of the expectations they record and which of them make a release MINOR |
 | `[pins]`, `[[pins.commit]]` | the file the pins live in; each commit pin, with its checkout or the file it is read from |
 | `[[pins.reread]]` | each hash that guards prose the posters paraphrase: its source, how to refresh it, what to re-read |
 | `[[pins.derived]]` | each derived file, its hash pin and its provenance file |
@@ -58,3 +58,23 @@ script that needs a key the file lacks stops and names it. The scripts read the 
 (`.json`) or Python (anything else), where a pin is a top-level `NAME = literal`, annotated or not. The poster
 modules are read as Python. `load_config` and `pin_value` are copied into each script that uses them, so that each
 skill's folder stands alone; the copies are kept identical.
+
+## What the project brings
+
+The skills hold the method and the scripts hold the mechanical steps. The rest is the project's, and the plugin
+ships none of it, not even as a template: this repository's files are the worked example. A project without a
+part skips the skill that needs it.
+
+| The project needs | Used by | Here |
+|---|---|---|
+| A build: commands that regenerate every output from the pinned sources, print a line with a failure marker on any failure, and fail when a checkout is at another commit than its pin | moving-pins and `determinism.py`, linking-papers, extracting-lean-deps | `diagrams/gen-diagrams.py`, both sets |
+| A pins file that assigns each pin as a top-level `NAME = literal` (or a TOML or JSON key) | `pin-status.py`, `release-facts.py` | `diagrams/src/bp.py` |
+| Modules that record what the sources say as module-level Python literals, under the names in `[build].expected_names`, and a build that fails when the sources say otherwise | moving-pins, `release-facts.py` | `diagrams/src/d_*.py`, 20 of them |
+| Manifests: JSON objects keyed by output id, with the fields in `[build].manifest_counts` | `release-facts.py` | `diagrams/manifest.json`, `diagrams/map/manifest.json` |
+| For each re-read hash, a `refresh` command that fetches the pages again, saves them, and records their hashes | moving-pins, case A | `tools/check-sources.py`, run daily by `.github/workflows/sources.yml` |
+| A papers file, and a build check that fails on a reference with no entry or an entry with no reference | linking-papers | `diagrams/src/papers.toml`, checked by `diagrams/src/d_f4_literature.py` |
+| A release workflow that, on a pushed tag, publishes the outputs with a checksum file, and optionally a metadata file that names the tag and a Pages site that serves it; on GitHub, since `verify-release.py` uses `gh` | cutting-releases | `.github/workflows/release.yml`, `pages.yml`, `tools/release-notes.py` |
+| A runbook and tools that read the formal proof's export and build cache and write the derived files, each with a `meta` file of the commits it was read at. The skill has no scripts | extracting-lean-deps | `tools/lean-edges/` and its `README.md` |
+| Optionally, a skill for adding or reworking a poster, named in `[project].poster_skill` | the other skills hand that work to it | `.claude/skills/drawing-posters/` |
+
+The scripts need git and Python 3.11 or later, and `verify-release.py` also needs the GitHub CLI, logged in.

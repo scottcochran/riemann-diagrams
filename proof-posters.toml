@@ -8,12 +8,16 @@ name = "riemann-diagrams"
 custodian = "scottcochran"            # the only account whose release tags the workflow accepts
 default_branch = "main"
 plan = "PLAN.md"                      # decisions, the release table (Phase 5), and a done note per phase
+poster_skill = "drawing-posters"      # this repository's own skill for adding or reworking a poster (.claude/skills/)
 docs = ["README.md", "diagrams/README.md", "diagrams/TEXT.md", "diagrams/EDGES.md", "tools/lean-edges/README.md"]
 
 [build]
 # Both sets, in this order. A run exits 1 with a NOTE line when a poster's anchors moved: run it again.
 regenerate = ["uv run python diagrams/gen-diagrams.py", "uv run python diagrams/gen-diagrams.py --map"]
 failure_markers = ["WARNING", "ERROR"]
+rerun_marker = "NOTE "                # a run that exits 1 with a line starting so is run once more
+# One table per round of moving-pins' determinism.py: the rounds must give the same bytes.
+vary_env = [{ PYTHONHASHSEED = "0" }, { PYTHONHASHSEED = "1" }]
 outputs = ["diagrams/*.svg", "diagrams/map/*.svg"]
 manifests = ["diagrams/manifest.json", "diagrams/map/manifest.json"]
 # Each manifest is a JSON object keyed by poster id. cutting-releases reports each poster whose values of these
