@@ -1,0 +1,9 @@
+{
+  "name": "proof-posters",
+  "version": "0.1.0",
+  "description": "Skills for keeping generated diagrams of a formal proof true to their pinned sources: moving the pins, linking the papers cited, reading a Lean proof's dependencies without building it, and cutting releases that are never edited.",
+  "author": { "name": "Scott Cochran" },
+  "repository": "https://github.com/scottcochran/riemann-diagrams",
+  "license": "Apache-2.0",
+  "keywords": ["lean", "blueprint", "diagrams", "releases", "provenance"]
+}
