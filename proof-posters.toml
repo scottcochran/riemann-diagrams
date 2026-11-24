@@ -16,6 +16,9 @@ regenerate = ["uv run python diagrams/gen-diagrams.py", "uv run python diagrams/
 failure_markers = ["WARNING", "ERROR"]
 outputs = ["diagrams/*.svg", "diagrams/map/*.svg"]
 manifests = ["diagrams/manifest.json", "diagrams/map/manifest.json"]
+# Each manifest is a JSON object keyed by poster id. cutting-releases reports each poster whose values of these
+# fields differ between a tag and HEAD.
+manifest_counts = ["cards", "arrows"]
 modules = "diagrams/src/d_*.py"       # one per poster; each records what it expects the sources to say
 ci = ".github/workflows/posters.yml"  # regenerates at the pins and fails on any byte that differs
 
@@ -27,6 +30,9 @@ expected_names = ["EXPECTED", "HYPOTHESES", "VERDICTS", "VERDICT", "HYPOTHESES_L
                   "HEAVIEST", "INTERFACES", "KINDS", "LIBRARY", "MOVES", "NAME_STATUS", "NOLEAN", "NO_LEAN",
                   "N_CITING", "N_DECLS", "N_DEFS", "N_MODULES2", "N_REFS", "N_SECTIONS", "N_UNITS", "OPENED",
                   "OTHERS_MAX", "TOP", "TOPS", "TOTALS", "UNREACHED", "UPWARD", "USER_LEFT", "YEARS"]
+# The expected_names whose change makes a release MINOR: PLAN.md, Phase 5, keeps PATCH for "every EXPECTED and
+# HYPOTHESES list unchanged". A change to the others is reported, and is PATCH unless something else moved.
+minor_names = ["EXPECTED", "HYPOTHESES"]
 
 [pins]
 file = "diagrams/src/bp.py"
@@ -100,11 +106,15 @@ note = "only where the choice needs one"
 [release]
 classification = "PLAN.md, Phase 5: the MAJOR / MINOR / PATCH table"
 tag = "vMAJOR.MINOR.PATCH, annotated and signed (git tag -s), on main, pushed by the custodian"
+tag_match = "v*"                                   # the glob that finds the last release tag (git describe --match)
 workflow = ".github/workflows/release.yml"
 pages_workflow = ".github/workflows/pages.yml"
 pages_url = "https://scottcochran.github.io/riemann-diagrams/"
-assets = ["diagrams/*.svg", "diagrams/map/*.svg"]  # each is in the release's SHA256SUMS under its file name
+assets = ["diagrams/*.svg", "diagrams/map/*.svg"]  # each is in the release's checksum file under its file name
 generated_assets = ["pins.json"]                   # written by the workflow, not in the tree
+checksums = "SHA256SUMS"                           # the release asset with the SHA-256 of every other asset
+metadata = "pins.json"                             # the workflow's record of the release; the site serves it too
+metadata_tag = "tag"                               # the key in metadata that names the release's tag
 done_note = "the phase's Done paragraph in PLAN.md: tag, commit, run id, asset count, checksums against the tree"
 
 [lean]

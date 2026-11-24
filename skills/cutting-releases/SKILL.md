@@ -17,7 +17,10 @@ Tags are pushed by the custodian (`[project].custodian`), not by you: you draft,
 ## Setup
 
 Read `[release]` and `[project]` in `proof-posters.toml`. They give the classification table (in the plan), the
-tag form, the release and Pages workflows, the site's address, the asset globs and the files the workflow writes.
+tag form and the glob that finds the last tag (`tag_match`), the release and Pages workflows, the site's address,
+the asset globs, the checksum file, and the file the workflow writes to record the release (`metadata`, naming its
+tag under `metadata_tag`). `release-facts.py` also reads `[build]`: the manifests and the counts in them
+(`manifest_counts`), and which recorded expectations make a release MINOR when they change (`minor_names`).
 
 ## Steps
 
@@ -27,13 +30,14 @@ tag form, the release and Pages workflows, the site's address, the asset globs a
 2. **Facts:**
 
    ```sh
-   python3 ${CLAUDE_SKILL_DIR}/scripts/release-facts.py            # since the last v* tag, to HEAD
+   python3 ${CLAUDE_SKILL_DIR}/scripts/release-facts.py            # since the last tag, to HEAD
    python3 ${CLAUDE_SKILL_DIR}/scripts/release-facts.py --to origin/main
    ```
 
    It prints the pins at both ends, the derived and re-read hashes that moved, the posters added and removed,
    the cards and arrows that changed, the expectations that changed in each poster module, the commits, and a
-   suggested class. Run it against the commit that will be tagged, which is on the default branch after the
+   suggested class. It prints ERROR and suggests no class when it cannot read something it needs: a pin the
+   config names that the pins file does not assign, a module that is not Python, a manifest of another shape. Run it against the commit that will be tagged, which is on the default branch after the
    merge.
 3. **Classify** with the project's table (`references/classification.md` gives the default and how to read it):
    - **MAJOR**: what a poster is verified against changed. The script cannot see this, so decide it.
@@ -59,8 +63,9 @@ tag form, the release and Pages workflows, the site's address, the asset globs a
    python3 ${CLAUDE_SKILL_DIR}/scripts/verify-release.py vX.Y.Z
    ```
 
-   It downloads `SHA256SUMS` and `pins.json`, and checks every asset against the tree at the tag (not the
-   working tree). It also checks that `pins.json` and the Pages site both name the tag. If something fails,
+   It downloads the checksum file and the metadata file (`SHA256SUMS` and `pins.json` here), and checks every
+   asset against the tree at the tag (not the working tree). It also checks that the metadata file and the Pages
+   site both name the tag. Without `[release].metadata` it checks the assets only, and says so. If something fails,
    report it. The fix is a successor release, never a change to this one.
 7. **Done note.** Add to the plan's entry for the phase (`[release].done_note`): the tag, the commit, the run id,
    the asset count, and that the checksums match the tree. Commit it on a branch. It goes in with the next change,

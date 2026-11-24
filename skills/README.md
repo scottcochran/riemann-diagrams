@@ -45,12 +45,16 @@ scripts read it; nothing in them names a riemann-diagrams path. What it describe
 | Table | What it says |
 |---|---|
 | `[project]` | the custodian who pushes tags, the default branch, the plan file, the docs that state counts |
-| `[build]` | the regenerate commands, the failure markers, the outputs and manifests, the poster modules, the names of the expectations they record |
+| `[build]` | the regenerate commands, the failure markers, the outputs and manifests, the counts each manifest gives per poster, the poster modules, the names of the expectations they record and which of them make a release MINOR |
 | `[pins]`, `[[pins.commit]]` | the file the pins live in; each commit pin, with its checkout or the file it is read from |
 | `[[pins.reread]]` | each hash that guards prose the posters paraphrase: its source, how to refresh it, what to re-read |
 | `[[pins.derived]]` | each derived file, its hash pin and its provenance file |
 | `[papers]` | the papers file, the references it must cover, the poster that checks it, the form of an entry |
-| `[release]` | where the classification table is, the tag form, the workflows, the Pages address, the asset globs |
+| `[release]` | where the classification table is, the tag form and the glob that finds the last tag, the workflows, the Pages address, the asset globs, the checksum file, the file that records the release and the key in it that names the tag |
 | `[lean]` | the runbook for the derived Lean files, the tools directory, the data's size and where it lives |
 
-A project without a part (no papers, no Lean) leaves that table out, and the skill that needs it says so.
+A project without a part (no papers, no Lean) leaves that table out, and the skill that needs it says so. A
+script that needs a key the file lacks stops and names it. The scripts read the pins file as TOML (`.toml`), JSON
+(`.json`) or Python (anything else), where a pin is a top-level `NAME = literal`, annotated or not. The poster
+modules are read as Python. `load_config` and `pin_value` are copied into each script that uses them, so that each
+skill's folder stands alone; the copies are kept identical.
