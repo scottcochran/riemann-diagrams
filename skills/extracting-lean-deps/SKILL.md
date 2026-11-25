@@ -1,6 +1,6 @@
 ---
 name: extracting-lean-deps
-description: "Reads the real dependency graph of a Lean formal proof without building it, from a published export of the proof (lean4export NDJSON) cross-checked against the project's public build cache of compiled modules, and turns it into small derived files a poster can read: a verdict on every edge a blueprint draws, the assumptions the proof takes, the formal work under each statement, and what changed between two commits. Each file is pinned by its hash and the commits it was read from. Use when a derived Lean file must be rebuilt because a pin moved; when the build stops on a derived file's hash or commits; when a new poster needs a new fact about the formal proof; or when asked whether the Lean bears out a blueprint arrow. Not for regenerating the posters themselves (moving-pins, drawing-posters)."
+description: "Reads the real dependency graph of a Lean formal proof without building it, from a published export of the proof (lean4export NDJSON) cross-checked against the project's public build cache of compiled modules, and turns it into small derived files a poster can read: a verdict on every edge a blueprint draws, the assumptions the proof takes, the formal work under each statement, and what changed between two commits. Each file is pinned by its hash and the commits it was read from. Use when a derived Lean file must be rebuilt because a pin moved; when the build stops on a derived file's hash or commits; when a new poster needs a new fact about the formal proof; or when asked whether the Lean bears out a blueprint arrow. Not for regenerating the posters themselves (moving-pins), or for writing a poster that reads the files (recording-expectations)."
 ---
 
 # Extracting Lean dependencies
@@ -13,7 +13,9 @@ Lean is built and the result can be repeated by anyone with the files.
 
 Read `[lean]` and `[[pins.derived]]` in `proof-posters.toml`. `[lean].method` is the project's own runbook, with
 the exact commands in order, their timings and their sizes. Follow it for the commands. This skill is the
-method behind them: what to trust, in what order, and what goes wrong.
+method behind them: what to trust, in what order, and what goes wrong. To learn it, start with
+`references/sketch.md`: the method in one picture, a ten-statement example run through the reference tools, each
+lesson with what it does to that example, and five questions to check yourself.
 
 The data is large (tens to a hundred GB) and lives outside the repository, on a disk with room. Say how much
 before starting, and ask where to put it.

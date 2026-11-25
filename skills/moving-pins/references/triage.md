@@ -17,7 +17,7 @@ writing the value the source now has, with the source line in the running list.
 | a derived file hashes to another value, or was read from other commits | the derived file is stale | Rebuild it with extracting-lean-deps. Never set the hash to make the build pass. |
 | a re-read hash differs (notes, checked pages) | prose the poster paraphrases changed | moving-pins A: re-read, then set the hash. |
 | a reference has no paper, or a paper has no reference | the bibliography changed | linking-papers. |
-| a title does not fit its card, or two texts overlap | longer text at the new pin | A layout fix (drawing-posters), not a check to relax. Shorten nothing that is quoted unless the poster marks abridgement. |
+| a title does not fit its card, or two texts overlap | longer text at the new pin | A layout fix (the project's poster skill, `[project].poster_skill`, or by hand where there is none), not a check to relax. Shorten nothing that is quoted unless the poster marks abridgement. |
 | a drawn declaration has no signature in the facts index | the Lean name was renamed or dropped | Check the facts index at the new pin. If the statement now names another declaration, the source did it; if the index lost it, report it upstream rather than draw around it. |
 | a link names a card no poster draws | an anchor moved | Run the generator a second time, after the manifest update. If it persists, the target was removed: the link follows the source. |
 

@@ -52,4 +52,5 @@ repository's own, in `.claude/skills/`.
 | `proof-posters:linking-papers` | a reference has no entry in `diagrams/src/papers.toml` |
 | `proof-posters:extracting-lean-deps` | a `diagrams/src/lean-*.json` file must be rebuilt (`tools/lean-edges/README.md`) |
 | `proof-posters:cutting-releases` | a release is due (PLAN.md, Phase 5), or a published one needs checking |
+| `proof-posters:recording-expectations` | the method for any poster: read, record, compare both ways, four kinds of sentence, deterministic |
 | `drawing-posters` | a poster is added, or its layout or wording changes |

@@ -1,19 +1,21 @@
 ---
 name: drawing-posters
-description: "Adds a poster to riemann-diagrams or reworks one: the diagrams/src/d_<id>_<slug>.py module with its recorded expectations and guards, every sentence computed or guarded, both sets built and deterministic, the link registry, a look in both themes, and every doc that lists posters or checks. Use when asked for a new poster, frame or trace, or to change a poster's layout, wording or cards. Not for moving a source pin (proof-posters:moving-pins), rebuilding the Lean-derived files (proof-posters:extracting-lean-deps), or tagging (proof-posters:cutting-releases)."
+description: "Adds a poster to riemann-diagrams or reworks one, applying proof-posters:recording-expectations with this repository's library: the diagrams/src/d_<id>_<slug>.py module and its recorded expectations, the bp.py sources, map mode, the link registry, both sets built and deterministic, a look in both themes, and every doc that lists posters or checks. Use when asked for a new poster, frame or trace, or to change a poster's layout, wording or cards. Not for moving a source pin (proof-posters:moving-pins), rebuilding the Lean-derived files (proof-posters:extracting-lean-deps), or tagging (proof-posters:cutting-releases)."
 ---
 
 # Drawing posters
 
-This skill is specific to this repository. The general skills are in `./skills/` (the `proof-posters` plugin),
-and the shared rules are in `CLAUDE.md`. A poster is a module that reads the sources, records what it expects
-them to say, and fails the build when they say otherwise. The drawing is the easy part; the checks are the work.
+This skill is specific to this repository. The method is the plugin's **recording-expectations**
+(`skills/recording-expectations/SKILL.md`, `proof-posters:recording-expectations` when the plugin is loaded):
+read every fact, record what you expect and compare it both ways, four kinds of sentence, deterministic bytes,
+say what is not checked, update the docs that count. Read it first. This skill is how each of those is done here,
+with this repository's library, and the shared rules are in `CLAUDE.md`.
 
 ## Contents
 
 - Before writing
 - The module
-- Text: quoted, computed, or guarded
+- The method, as this repository does it
 - Build and look
 - The docs a poster touches
 - Check before you stop
@@ -35,16 +37,6 @@ them to say, and fails the build when they say otherwise. The drawing is the eas
 ## The module
 
 - Expose `ID`, `SLUG` and `build() -> Canvas`. The generator finds `d_*.py` on its own; there is no list to add it to.
-- **Record what it expects** at module level, as literals: `EXPECTED` (the edges between drawn statements, as
-  `(used, user)`), `HYPOTHESES`, `VERDICTS`, `HYPOTHESES_LEAN`, count guards (`N_*`), the top-k lists (`TOP`), a
-  trace's path. The build compares each one with the sources and raises `ValueError` with both values when they
-  differ. Write the comparison so that the message says what to re-read.
-- **Read, don't restate.** Every node, edge, count and quotation comes from `bp.load()` and the files it reads
-  (the blueprint at `BP_COMMIT`, `lean-facts.json`, the mirror at `MIRROR_COMMIT`, and the pinned `src/*.json`
-  and `src/*.toml`). A poster that needs a new fact about the formal proof gets a new derived file first
-  (proof-posters:extracting-lean-deps), pinned by hash in `bp.py`.
-- **Deterministic:** sort every ranking by count, then by name. Never iterate over a set or a dict whose order
-  comes from hashing. Use no time, randomness or environment in the output except `lib.DATE`.
 - **Map mode:** under `bp.MAP`, quote nothing of the blueprint's prose or the Lean source (`bp.NOT_QUOTED`
   explains the gap on the card). Keep titles, ids, kinds, provenance, Lean names and locations, and every edge.
 - **Links:** an id set in code links on its own through the registry. If the poster draws statements in full and
@@ -52,26 +44,25 @@ them to say, and fails the build when they say otherwise. The drawing is the eas
   leave it out.
 - Standard library only. Python 3.12+.
 
-## Text: quoted, computed, or guarded
+## The method, as this repository does it
 
-`diagrams/TEXT.md` sections 4 and 5 are the rule. Every sentence on a poster is one of these:
-
-- **quoted**: in italics or a Lean panel, from a file the card's footer links to, abridged with ` …` where cut;
-- **computed**: a template filled at build time; the numbers are data and the wording is the module's;
-- **framing**: titles, legends, "How to read", and the caveats that no Lean was built and that a card says what a
-  statement is, not that it is proved;
-- **an interpretation**: what the data shows, in the posters' own voice in a grey or amber card. It must be
-  computed, or stand behind an assertion that fails when the data no longer supports it (like F2's `HEAVIEST`).
-
-No sentence may state a fact the build does not check. A poster that shows a verdict says where it came from.
+| recording-expectations | Here |
+|---|---|
+| 1. Read, don't restate | Everything comes from `bp.load()` and the files it reads: the blueprint at `BP_COMMIT`, `lean-facts.json`, the mirror at `MIRROR_COMMIT`, and the pinned `src/*.json` and `src/*.toml`. A new derived file is pinned by hash in `bp.py`. |
+| 2. Record what you expect | `EXPECTED` (the edges between drawn statements, as `(used, user)`), `HYPOTHESES`, `VERDICTS`, `HYPOTHESES_LEAN`, count guards (`N_*`), top-k lists (`TOP`), a trace's path; the full list is `[build].expected_names` in `proof-posters.toml`. The build raises `ValueError` with both values. |
+| 3. Four kinds of sentence | `diagrams/TEXT.md`, sections 4 and 5, is the rule. Quotations are in italics or a Lean panel, from a file the card's footer links to. Interpretations are in a grey or amber card, computed or guarded (F2's `HEAVIEST`). |
+| 4. Deterministic bytes | The only date is `lib.DATE`. `vary_env` is `PYTHONHASHSEED` 0, then 1. |
+| 5. Say what is not checked | The caveats that no Lean was built and that a card says what a statement is, not that it is proved; a poster that shows a verdict says it came from `src/lean-edges.json`. |
+| 6. The docs that count | The list under "The docs a poster touches", below. |
 
 ## Build and look
 
 ```sh
-uv run python diagrams/gen-diagrams.py <ID>            # one poster; exits 1 with NOTE if anchors moved: run again
-uv run python diagrams/gen-diagrams.py                 # then all, so every poster's links follow
-uv run python diagrams/gen-diagrams.py --map           # the map set
-.claude/skills/drawing-posters/scripts/determinism.sh  # both sets, twice, two hash seeds: must be byte-identical
+uv run python diagrams/gen-diagrams.py <ID>              # one poster; exits 1 with NOTE if anchors moved: run again
+uv run python diagrams/gen-diagrams.py                   # then all, so every poster's links follow
+uv run python diagrams/gen-diagrams.py --map             # the map set
+uv run python skills/moving-pins/scripts/determinism.py  # both sets, twice, two hash seeds: must be byte-identical
+uv run python skills/recording-expectations/scripts/check-expectations.py  # expectations recorded and read
 ```
 
 Any WARNING or ERROR is a failure: a word too wide for its cell, two texts overlapping, a character outside the
@@ -100,8 +91,8 @@ moves no expectation is PATCH.
 
 ## Check before you stop
 
-- `determinism.sh` passes. The committed SVGs and manifests are the regenerated ones, so `git status -- diagrams`
-  is clean after a fresh run.
-- Every sentence on the poster is quoted, computed, framing, or a guarded interpretation.
+- recording-expectations' own list holds.
+- `determinism.py` (the plugin's, in `skills/moving-pins/scripts/`) passes. The committed SVGs and manifests are
+  the regenerated ones, so `git status -- diagrams` is clean after a fresh run.
 - Both sets look right in both themes, and the map set quotes nothing.
 - Every doc above that names posters or checks names this one. Files are staged by name.

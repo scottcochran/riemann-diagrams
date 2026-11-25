@@ -1,6 +1,6 @@
 ---
 name: moving-pins
-description: "Moves generated diagrams to new commits of the sources they are drawn from, and re-reads the poster's own prose when a source it paraphrases changes. Bumps the pins, regenerates, and fixes each failing check by recording what the source now says, never by loosening the check; ends with the list of posters a reader must re-read. Use when an upstream source (a blueprint, a mirror of a formal proof) has new commits; when asked to bump a pin such as BP_COMMIT; when the build stops on a pin, on a re-read hash such as NOTES_SHA256 or CHECKS_SHA256, or on a derived file's hash; or when the scheduled sources check failed even though no pin moved. Not for adding or redrawing a poster (drawing-posters), not for a missing paper link alone (linking-papers), not for rebuilding the Lean-derived files (extracting-lean-deps), and not for tagging the result (cutting-releases)."
+description: "Moves generated diagrams to new commits of the sources they are drawn from, and re-reads the poster's own prose when a source it paraphrases changes. Bumps the pins, regenerates, and fixes each failing check by recording what the source now says, never by loosening the check; ends with the list of posters a reader must re-read. Use when an upstream source (a blueprint, a mirror of a formal proof) has new commits; when asked to bump a pin such as BP_COMMIT; when the build stops on a pin, on a re-read hash such as NOTES_SHA256 or CHECKS_SHA256, or on a derived file's hash; or when the scheduled sources check failed even though no pin moved. Not for adding or redrawing a poster (recording-expectations, and the project's own poster skill), not for a missing paper link alone (linking-papers), not for rebuilding the Lean-derived files (extracting-lean-deps), and not for tagging the result (cutting-releases)."
 ---
 
 # Moving pins
@@ -23,7 +23,8 @@ shows up as a failing check and is never silently redrawn. This skill does the r
 Read `proof-posters.toml` at the root of the repository. It names the pins file, each commit pin (and where its
 checkout is), the re-read hashes with the prose each one guards, the derived files, the regenerate commands and
 the names of the recorded expectations (`[build].expected_names`). If the file is missing, stop and ask: the
-skill does not guess a project's layout. The project's `CLAUDE.md` holds its shared rules.
+skill does not guess a project's layout. The project's `CLAUDE.md` holds its shared rules, and
+`[project].poster_skill` names its own skill for adding or redrawing a poster, where it has one.
 
 Then see where things stand:
 
@@ -74,6 +75,7 @@ This is what a failed scheduled sources check means: a page the poster paraphras
 3. **Regenerate** both sets and collect every ERROR and WARNING. Work through them one poster at a time, in the
    build's order. `references/triage.md` maps each kind of failure to its fix.
 4. **Set each expectation** to what the source says (the rule above), with the source line in your running list.
+   Keep its form: recording-expectations says how an expectation is written and compared.
    - A hand layout (a `PLACE`-style dict) needs new cards placed by hand.
    - A computed layout takes the move without hand work; look at the result anyway.
    - A count in prose that a guard checks (`N_REFS`, a "416 statements" in a README) changes everywhere it is
@@ -84,7 +86,17 @@ This is what a failed scheduled sources check means: a page the poster paraphras
 6. **A reference with no paper** (or a paper with no reference): hand it to **linking-papers**.
 7. **Re-read hashes** that fail as well (new verification notes usually come with a newer mirror): do A.3 to A.4
    for each one.
-8. **Regenerate until it is clean.** If a run reports that anchors moved and exits 1, run it again. Do both sets.
+8. **Regenerate until it is clean.** If a run exits non-zero with a line starting with `[build].rerun_marker`
+   (anchors moved, here), run it again. Run every `[build].regenerate` command. Then check that the output does
+   not depend on the run:
+
+   ```sh
+   python3 ${CLAUDE_SKILL_DIR}/scripts/determinism.py
+   ```
+
+   It runs every regenerate command in two rounds that differ only by `[build].vary_env` (here PYTHONHASHSEED
+   0 and 1), fails on any `failure_markers` line, and compares every file `[build].outputs` and `manifests` match,
+   byte for byte. It ends by saying how many of those files differ from the committed tree.
 
 ## C. Finish: what a reader must re-read
 
@@ -101,7 +113,7 @@ one. Stage files by name, never a whole directory, and commit.
 
 ## Check before you stop
 
-- Both sets regenerate with no WARNING or ERROR, and running them a second time changes no byte.
+- `determinism.py` passes: every regenerate command is clean, and two rounds give the same bytes.
 - `git diff` over the poster modules shows only expectations that each trace to a source line in your list.
 - No check was removed or widened, and no hash was set before its prose was re-read.
 - The summary names the posters to re-read.
