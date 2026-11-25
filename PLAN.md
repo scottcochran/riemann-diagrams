@@ -236,6 +236,12 @@ the `pages` permission (the first split had it in build, and failed once more). 
 published `v0.2.0` to Pages by hand: the site's `pins.json` names the tag and its index lists all sixteen
 posters of both sets. The release itself was not touched.
 
+`v0.2.3` was cut 2026.11.23 from `e0dce85` (the merge of pull request 25) by run 45118061197, a PATCH with no
+poster changed: the Pages site renders `diagrams/README.md` from the tagged tree, so the rewritten home page
+needed a release. 34 assets, the 32 SVGs of both sets byte for byte `v0.2.2`'s, each matching the tree at the tag
+byte for byte, `pins.json` and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py`
+checked the assets against the tree and found `pins.json` naming the tag.
+
 `v0.3.0` was cut 2026.11.23 from `47467ec` (the merge of pull request 28) by run 45128389330, a MINOR:
 `MIRROR_COMMIT` moved from `2dea990069` to `c592e91eb8`, and R1's band 5 began to report what has been checked of
 the formal proof. 34 assets, the 32 SVGs of both sets, each matching the tree at the tag byte for byte, `pins.json`
@@ -488,6 +494,11 @@ Open, which Crossref misses for the older literature; 32 settled by hand, with a
 one; the blueprint's one `url`. The build fails on a reference without a paper, an entry that is not a
 reference, or a link out that is neither pinned nor a paper. The proper home for the links is a `doi` field
 in the blueprint's reference files; until the blueprint carries one, the table here stands in.
+
+Released 2026.11.22 as `v0.2.2`, a PATCH, from `1937fdd` (the merge of pull request 23) by run 45056741278: only
+F4 changed, in both sets. 34 assets, the 32 SVGs of both sets, each matching the tree at the tag byte for byte,
+`pins.json` and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked the assets
+against the tree and found `pins.json` naming the tag.
 
 ### Phase 8: what the formal proof shows
 
