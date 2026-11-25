@@ -120,6 +120,9 @@ def _css():
     lines.append("@media (prefers-color-scheme: dark){svg:not([data-theme=light]){" + block(1, 2, 3) + "}}")
     lines.append("svg[data-theme=dark]{" + block(1, 2, 3) + "}")
     lines.append("a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect{stroke-width:3.4}")
+    lines.append(".rd-target{opacity:0} g:target>.rd-target{opacity:1;animation:rd-pulse 0.9s ease-in-out 3} "
+                 "@keyframes rd-pulse{50%{stroke-width:9}} g[id]{scroll-margin-top:90px} "
+                 "@media (prefers-reduced-motion:reduce){g:target>.rd-target{animation:none}}")
     for k in BASE:
         lines.append(f".f-{k}{{fill:var(--{k})}} .s-{k}{{stroke:var(--{k})}}")
     for k in ACCENTS:
@@ -154,6 +157,20 @@ def fs(fill_name, stroke_name):
 
 def sonly(stroke_name):
     return f'fill="none" stroke="{light(stroke_name)}" class="s-{stroke_name}"'
+
+
+# A link's target is framed when it is opened (the plugin's linking-posters, step 3): every anchored group's first
+# child is a halo, a rounded rectangle a little larger than what the group draws, hidden by its opacity attribute and
+# shown by the poster's own style while the group is the target. A renderer that runs no CSS keeps it hidden.
+TOP = "top"          # the id of every poster's header group, so that a link to a poster as a whole has a target
+HALO_PAD = 7
+
+
+def halo(x, y, w, h, accent, pad=HALO_PAD, rx=14):
+    """The halo behind a group from (x, y) of size w x h: one class attribute, the frame's and the colours'."""
+    return (f'<rect x="{x - pad:.1f}" y="{y - pad:.1f}" width="{w + 2 * pad:.1f}" height="{h + 2 * pad:.1f}" '
+            f'rx="{rx}" fill="{light(accent + "-t")}" stroke="{light(accent)}" '
+            f'class="rd-target ft-{accent} s-{accent}" stroke-width="3.5" opacity="0"/>')
 
 
 # ---------------------------------------------------------------------------------------------
@@ -295,11 +312,12 @@ def load_registry(manifest):
 
 
 def chapter_poster(stmts):
-    """The file of the chapter poster (R3 to R8) that anchors every one of `stmts`, else None."""
+    """The address of the chapter poster (R3 to R8) that anchors every one of `stmts`, at its header (#top), so that
+    the link has a target to frame; else None."""
     for pid in HOME_ORDER[:6]:
         f = POSTERS.get(pid)
         if f and all(k in ANCHORS_OF[f] for k in stmts):
-            return f
+            return f"{f}#{TOP}"
     return None
 
 
@@ -368,6 +386,8 @@ class Canvas:
 
     def _header(self):
         p = self.pad
+        self.add(f'<g id="{TOP}">')
+        mark = len(self.out)
         self.add(f'<text x="{p}" y="{p + 8}" font-family="{SANS}" font-size="13" letter-spacing="1.5" '
                  f'font-weight="bold" {fill("faint")}>{BRAND} · {escape(self.ident)}</text>')
         y = p + 44
@@ -379,6 +399,8 @@ class Canvas:
             self.add(render_line(p, y, ln, 16, "muted"))
             y += 23
         y += 10
+        self.out.insert(mark, halo(p - 10, p - 12, self.W - 2 * p + 20, y - p + 4, "grey"))
+        self.add("</g>")
         self.add(f'<line x1="{p}" y1="{y}" x2="{self.W - p}" y2="{y}" {sonly("line")} stroke-width="1.5"/>', y)
         return y + 34
 
@@ -693,7 +715,7 @@ class Canvas:
                 warn.append(f"link to no card on this poster: #{frag}")
             elif f and f not in files:
                 warn.append(f"link to a poster the manifest does not list: {f}")
-            elif f and frag and frag not in ANCHORS_OF[f]:
+            elif f and frag and frag != TOP and frag not in ANCHORS_OF[f]:
                 warn.append(f"link to a card {f} does not draw: #{frag}")
         for a in self.anchors:
             if not re.fullmatch(r"[A-Za-z_][\w.-]*", a) or a in ("t", "d") or a.startswith("arw-"):

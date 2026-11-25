@@ -12,6 +12,7 @@ svg{--bg:#ffffff;--page:#eeeeee;--ink:#1e2430;--muted:#4a5262;--faint:#7d8596;--
 @media (prefers-color-scheme: dark){svg:not([data-theme=light]){--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;--panel:#1a1e26;--line:#363d4a;--zebra:#161a21;--blue:#8fb0ec;--blue-t:#1a2540;--teal:#6cc7b0;--teal-t:#12302a;--amber:#f0b15c;--amber-t:#33260f;--violet:#b9a0e8;--violet-t:#261d38;--red:#f08a8f;--red-t:#3a1a1d;--grey:#a3abb9;--grey-t:#22262e;--brown:#e0a56b;--brown-t:#2f2215;--pink:#ec8cc2;--pink-t:#351a2a;--green:#85c98a;--green-t:#17291a;}}
 svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;--panel:#1a1e26;--line:#363d4a;--zebra:#161a21;--blue:#8fb0ec;--blue-t:#1a2540;--teal:#6cc7b0;--teal-t:#12302a;--amber:#f0b15c;--amber-t:#33260f;--violet:#b9a0e8;--violet-t:#261d38;--red:#f08a8f;--red-t:#3a1a1d;--grey:#a3abb9;--grey-t:#22262e;--brown:#e0a56b;--brown-t:#2f2215;--pink:#ec8cc2;--pink-t:#351a2a;--green:#85c98a;--green-t:#17291a;}
 a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect{stroke-width:3.4}
+.rd-target{opacity:0} g:target>.rd-target{opacity:1;animation:rd-pulse 0.9s ease-in-out 3} @keyframes rd-pulse{50%{stroke-width:9}} g[id]{scroll-margin-top:90px} @media (prefers-reduced-motion:reduce){g:target>.rd-target{animation:none}}
 .f-bg{fill:var(--bg)} .s-bg{stroke:var(--bg)}
 .f-page{fill:var(--page)} .s-page{stroke:var(--page)}
 .f-ink{fill:var(--ink)} .s-ink{stroke:var(--ink)}
@@ -32,12 +33,15 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 </style>
 <defs><marker id="arw-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f5aa8" class="f-blue"/></marker><marker id="arw-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#166b5b" class="f-teal"/></marker><marker id="arw-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a35a00" class="f-amber"/></marker><marker id="arw-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b46a8" class="f-violet"/></marker><marker id="arw-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a4262c" class="f-red"/></marker><marker id="arw-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6878" class="f-grey"/></marker><marker id="arw-brown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8a4b14" class="f-brown"/></marker><marker id="arw-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9d2f6e" class="f-pink"/></marker><marker id="arw-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32" class="f-green"/></marker><marker id="arw-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e2430" class="f-ink"/></marker><marker id="arw-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5262" class="f-muted"/></marker><marker id="arw-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7d8596" class="f-faint"/></marker></defs>
 <rect width="3400" height="10023" fill="#eeeeee" class="f-page"/>
+<g id="top">
+<rect x="39.0" y="37.0" width="3322.0" height="204.0" rx="14" fill="#f1f2f4" stroke="#5f6878" class="rd-target ft-grey s-grey" stroke-width="3.5" opacity="0"/>
 <text x="56" y="64" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1.5" font-weight="bold" fill="#7d8596" class="f-faint">RIEMANN · R7</text>
 <text x="56.0" y="100.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="30" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">The Tate-Shafarevich bound: every statement of the chapter, and what each one rests on</tspan></text>
 <text x="56.0" y="140.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">The blueprint's chapter 7 in one poster: its 35 statements as cards, each with the Lean declaration it stands for, the statement in words, how its proof goes, and what it uses and is used by. <tspan font-weight="bold">Read it from the foot up</tspan>: the chapter's theorem, <a href="#thm-sha-bound"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">thm-sha-bound</tspan></a>, is at the bottom, and every card stands above the cards whose proofs use it. An arrow from A to B says that the proof of B uses A; a dashed arrow says that the proof of B names A</text>
 <text x="56.0" y="163.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">without listing it as a use. Every arrow is checked against the formal proof's references, and one drawn thin, dotted or red is not borne out directly: see the card <tspan font-weight="bold">Against the formal proof</tspan>. The statements that head a section or a group of results have full cards; the others are drawn shorter. The chapter's own introduction: This chapter proves <a href="#thm-sha-bound"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">thm-sha-bound</tspan></a> and shows where the rest of the proof uses it. For a primitive Dirichlet</text>
 <text x="56.0" y="186.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">character <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">ψ</tspan> the <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">ψ</tspan>-fields <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">E</tspan> are abelian fields in a 2-power cyclotomic tower (<a href="F1-definitions-2026.11.23.svg#def-sha-bound"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">def-sha-bound</tspan></a>). The theorem says that the Tate–Shafarevich groups <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">Ш^1_l(E, e)</tspan> of the Tate twists <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">Q_l/Z_l(-e)</tspan>, <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">0 &lt; e &lt; t = ⌊ x^(401)⌋</tspan>, are finite, and that the sum of their lengths, weighted by <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">log l</tspan>, is at most <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">e^(x^ε/2)</tspan>. The families of definite unitary groups (<a href="R2-chapters-2026.11.23.svg#chap-families"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">chap-families</tspan></a>) carry an error term that these lengths control, and the bound keeps that term</text>
 <text x="56.0" y="209.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">small. <tspan font-weight="bold">No Lean was built</tspan>: see diagram R1, band 5.</text>
+</g>
 <line x1="56" y1="242" x2="3344" y2="242" fill="none" stroke="#d4d8e0" class="s-line" stroke-width="1.5"/>
 <text x="56.0" y="298.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">1 · Reading the poster</tspan></text>
 <text x="56.0" y="343.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#7d8596" class="f-faint" text-anchor="start"><tspan font-weight="bold">Legend</tspan></text>
@@ -102,6 +106,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="56.0" y="821.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">2 · The chapter, from its leaves down to its theorem</tspan></text>
 <text x="56.0" y="849.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">10 rows. Section by section the chapter runs: 1. Second cohomology of Tate twists (2); 2. Selmer groups from Kato's Euler system (3); 3. Kato's explicit reciprocity law (5); 4. Automorphy of symplectic lifts (5); 5. The error term of the families (8); 6. Congruence modules and Selmer groups (2); 7. Local lifting theorems for crystalline lattices (8). The cards keep that order within a row where the arrows allow.</text>
 <g id="def-congruence-data">
+<rect x="1389.8" y="865.8" width="620.4" height="369.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="872.8" width="606.4" height="355.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="902.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence data of a member</tspan></text>
 <rect x="1879.8" y="885.8" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -123,6 +128,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="1209.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-congruence/def-congruence-data.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-congruence/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">def-congruence-data.md</tspan></a></text>
 </g>
 <g id="def-sha-error-term">
+<rect x="2060.2" y="865.8" width="620.4" height="369.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="872.8" width="606.4" height="355.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="902.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The Tate–Shafarevich error term</tspan></text>
 <rect x="2550.2" y="885.8" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -143,6 +149,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="1209.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-error/def-sha-error-term.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-error/def-sha-error-term.md</tspan></a></text>
 </g>
 <g id="thm-hilbert-weight-change">
+<rect x="719.4" y="1437.0" width="620.4" height="505.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="1444.0" width="606.4" height="491.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="1474.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Weight change for ordinary Hilbert modular forms</tspan></text>
 <rect x="1215.7" y="1457.0" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -169,6 +176,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="1917.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-gsp4/thm-gsp4-lift-automorphy/thm-potential-automorphy-seeds/thm-hilbert-weight-change.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-potential-automorphy-seeds/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-hilbert-weight-change.md</tspan></a></text>
 </g>
 <g id="thm-siegel-units-eisenstein">
+<rect x="1389.8" y="1437.0" width="620.4" height="505.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="1444.0" width="606.4" height="491.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="1474.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Kummer classes of Siegel units are congruent to</tspan></text>
 <text x="1412.8" y="1495.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Eisenstein series</tspan></text>
@@ -198,6 +206,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="1917.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-reciprocity/thm-kato-explicit-reciprocity/thm-siegel-units-mackey/thm-siegel-units-eisenstein.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-siegel-units-mackey/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-siegel-units-eisenstein.md</tspan></a></text>
 </g>
 <g id="prop-lifting-ramified-coefficients">
+<rect x="49.0" y="2144.6" width="620.4" height="679.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="2151.6" width="606.4" height="665.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="2181.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local lifting bound with ramified coefficients</tspan></text>
 <rect x="528.6" y="2164.6" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -230,6 +239,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="2798.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-lifting/thm-wach-lifting-theorem/thm-lifting-clustered-weights/prop-lifting-ramified-coefficients.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-lifting-clustered-weights/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-lifting-ramified-coefficients.md</tspan></a></text>
 </g>
 <g id="thm-siegel-units-mackey">
+<rect x="719.4" y="2144.6" width="620.4" height="679.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="2151.6" width="606.4" height="665.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="2181.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Mackey decomposition of Siegel unit classes</tspan></text>
 <rect x="1215.7" y="2164.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -264,6 +274,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="2798.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">theorems</text>
 </g>
 <g id="thm-hilbert-modular-inputs">
+<rect x="1389.8" y="2144.6" width="620.4" height="679.4" rx="14" fill="#f1f2f4" stroke="#5f6878" class="rd-target ft-grey s-grey" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="2151.6" width="606.4" height="665.4" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6"/>
 <text x="1412.8" y="2181.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">The results on Hilbert modular forms used</tspan></text>
 <rect x="1857.2" y="2164.6" width="130.0" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -290,6 +301,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="2798.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/thm-sha-bound/thm-hilbert-modular-inputs.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/thm-sha-bound/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-hilbert-modular-inputs.md</tspan></a></text>
 </g>
 <g id="thm-congruence-module-selmer-bound">
+<rect x="2060.2" y="2144.6" width="620.4" height="679.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="2151.6" width="606.4" height="665.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="2181.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence modules are bounded by Selmer data</tspan></text>
 <rect x="2556.5" y="2164.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -321,6 +333,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="2798.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-congruence/thm-congruence-module-selmer-bound.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-congruence/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-congruence-module-selmer-bound.md</tspan></a></text>
 </g>
 <g id="thm-wach-lifting-theorem">
+<rect x="2730.6" y="2144.6" width="620.4" height="679.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="2151.6" width="606.4" height="665.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="2181.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local lifting theorem for Wach lattices</tspan></text>
 <rect x="3226.9" y="2164.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -359,6 +372,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="2798.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Tate-Shafarevich bound) · depth 6 from the main theorems</text>
 </g>
 <g id="lem-finite-classes-twists-from-wach">
+<rect x="49.0" y="3026.0" width="620.4" height="487.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="3033.0" width="606.4" height="473.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="3063.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Finite classes of twists from Wach lattices</tspan></text>
 <rect x="555.4" y="3046.0" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -387,6 +401,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="3488.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-lifting/thm-wach-lifting-theorem/prop-finite-classes-cyclotomic-twists/lem-finite-classes-twists-from-wach.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-finite-classes-cyclotomic-twists/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-finite-classes-twists-from-wach.md</tspan></a></text>
 </g>
 <g id="lem-lifting-crystalline-lattices">
+<rect x="719.4" y="3026.0" width="620.4" height="487.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="3033.0" width="606.4" height="473.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="3063.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Lifting finite classes along crystalline lattices</tspan></text>
 <rect x="1225.8" y="3046.0" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -414,6 +429,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="3488.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-lifting/thm-wach-lifting-theorem/thm-lifting-potentially-crystalline/lem-lifting-crystalline-lattices.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-lifting-potentially-crystalline/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-lifting-crystalline-lattices.md</tspan></a></text>
 </g>
 <g id="thm-automorphic-induction-quadratic">
+<rect x="1389.8" y="3026.0" width="620.4" height="487.8" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="3033.0" width="606.4" height="473.8" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6"/>
 <text x="1412.8" y="3063.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Automorphic induction for quadratic extensions</tspan></text>
 <rect x="1859.1" y="3046.0" width="128.1" height="21.5" rx="10.75" fill="#a35a00" stroke="#a35a00" class="f-amber s-amber" stroke-width="1.2"/>
@@ -440,6 +456,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="3488.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-gsp4/thm-gsp4-lift-automorphy/thm-automorphic-induction-quadratic.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-automorphic-induction-quadratic.md</tspan></a></text>
 </g>
 <g id="thm-kato-zeta-integral">
+<rect x="2060.2" y="3026.0" width="620.4" height="487.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="3033.0" width="606.4" height="473.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="3063.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Kato's zeta classes are integral and norm-compatible</tspan></text>
 <rect x="2556.5" y="3046.0" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -467,6 +484,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="3488.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-kato/thm-kato-selmer-vanishing/thm-kato-euler-system-ordinary/thm-kato-zeta-integral.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-kato-euler-system-ordinary/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-kato-zeta-integral.md</tspan></a></text>
 </g>
 <g id="thm-siegel-units-diamond">
+<rect x="2730.6" y="3026.0" width="620.4" height="487.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="3033.0" width="606.4" height="473.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="3063.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Kummer classes of Siegel units under diamond</tspan></text>
 <text x="2753.6" y="3084.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">operators</tspan></text>
@@ -495,6 +513,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="3488.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-reciprocity/thm-kato-explicit-reciprocity/thm-reciprocity-fixed-exponent/thm-siegel-units-diamond.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-reciprocity-fixed-exponent/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-siegel-units-diamond.md</tspan></a></text>
 </g>
 <g id="thm-lifting-clustered-weights">
+<rect x="49.0" y="3715.8" width="620.4" height="734.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="3722.8" width="606.4" height="720.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="3752.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local lifting bound for clustered weights</tspan></text>
 <rect x="545.3" y="3735.8" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -533,6 +552,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="4425.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">main theorems</text>
 </g>
 <g id="thm-lifting-deep-weights">
+<rect x="719.4" y="3715.8" width="620.4" height="734.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="3722.8" width="606.4" height="720.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="3752.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Lifting bound for crystalline lattices with deep</tspan></text>
 <text x="742.4" y="3773.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">weights</tspan></text>
@@ -566,6 +586,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="4425.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-lifting/thm-wach-lifting-theorem/thm-lifting-deep-weights.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-lifting-deep-weights.md</tspan></a></text>
 </g>
 <g id="thm-reciprocity-fixed-exponent">
+<rect x="1389.8" y="3715.8" width="620.4" height="734.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="3722.8" width="606.4" height="720.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="3752.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The reciprocity law for zeta classes of fixed exponent</tspan></text>
 <rect x="1886.1" y="3735.8" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -600,6 +621,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="4425.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the main theorems</text>
 </g>
 <g id="thm-lifting-potentially-crystalline">
+<rect x="2060.2" y="3715.8" width="620.4" height="734.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="3722.8" width="606.4" height="720.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="3752.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Lifting finite classes along potentially crystalline</tspan></text>
 <text x="2083.2" y="3773.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">lattices</tspan></text>
@@ -641,6 +663,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="4425.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">from the main theorems</text>
 </g>
 <g id="prop-finite-classes-cyclotomic-twists">
+<rect x="2730.6" y="3715.8" width="620.4" height="734.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="3722.8" width="606.4" height="720.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="3752.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Finite classes of cyclotomic twists</tspan></text>
 <rect x="3210.2" y="3735.8" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -678,6 +701,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="4425.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">from the main theorems</text>
 </g>
 <g id="prop-congruence-bound-intermediate-primes">
+<rect x="49.0" y="4652.4" width="620.4" height="660.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="4659.4" width="606.4" height="646.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="4689.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence bound at intermediate primes</tspan></text>
 <rect x="528.6" y="4672.4" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -707,6 +731,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="5287.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-error/thm-family-sha-error-bound/prop-congruence-bounds-all-primes/prop-congruence-bound-intermediate-primes.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bounds-all-primes/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bound-intermediate-primes.md</tspan></a></text>
 </g>
 <g id="thm-hilbert-mixed-weights">
+<rect x="719.4" y="4652.4" width="620.4" height="660.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="4659.4" width="606.4" height="646.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="4689.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Ordinary Hilbert modular forms with mixed weights</tspan></text>
 <rect x="1215.7" y="4672.4" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -735,6 +760,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="5287.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-gsp4/thm-gsp4-lift-automorphy/thm-potential-automorphy-seeds/thm-hilbert-mixed-weights.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-potential-automorphy-seeds/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-hilbert-mixed-weights.md</tspan></a></text>
 </g>
 <g id="thm-kato-explicit-reciprocity">
+<rect x="1389.8" y="4652.4" width="620.4" height="660.2" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="4659.4" width="606.4" height="646.2" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6"/>
 <text x="1412.8" y="4689.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Kato's explicit reciprocity law</tspan></text>
 <rect x="1859.1" y="4672.4" width="128.1" height="21.5" rx="10.75" fill="#a35a00" stroke="#a35a00" class="f-amber s-amber" stroke-width="1.2"/>
@@ -772,6 +798,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="5287.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Tate-Shafarevich bound) · depth 4 from the main theorems</text>
 </g>
 <g id="prop-paired-character-bound">
+<rect x="2060.2" y="4652.4" width="620.4" height="660.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="4659.4" width="606.4" height="646.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="4689.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The paired character bound</tspan></text>
 <rect x="2539.8" y="4672.4" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -802,6 +829,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="5287.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-error/thm-family-sha-error-bound/prop-congruence-bound-auxiliary-primes/prop-paired-character-bound.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bound-auxiliary-primes/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-paired-character-bound.md</tspan></a></text>
 </g>
 <g id="prop-congruence-bound-auxiliary-pair">
+<rect x="2730.6" y="4652.4" width="620.4" height="660.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="4659.4" width="606.4" height="646.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="4689.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence bound at the primes of the auxiliary</tspan></text>
 <text x="2753.6" y="4710.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">pair</tspan></text>
@@ -831,6 +859,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="5287.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-error/thm-family-sha-error-bound/prop-congruence-bounds-all-primes/prop-congruence-bound-auxiliary-pair.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bounds-all-primes/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bound-auxiliary-pair.md</tspan></a></text>
 </g>
 <g id="prop-congruence-bound-large-primes">
+<rect x="2730.6" y="5514.6" width="620.4" height="502.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="5521.6" width="606.4" height="488.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="5551.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence bound at large primes</tspan></text>
 <rect x="3210.2" y="5534.6" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -860,6 +889,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="5991.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-error/thm-family-sha-error-bound/prop-congruence-bounds-all-primes/prop-congruence-bound-large-primes.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bounds-all-primes/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-congruence-bound-large-primes.md</tspan></a></text>
 </g>
 <g id="thm-borel-type-rank-bound">
+<rect x="49.0" y="6219.0" width="620.4" height="672.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="6226.0" width="606.4" height="658.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="6256.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">A rank bound of Borel type</tspan></text>
 <rect x="545.3" y="6239.0" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -886,6 +916,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="6866.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-sha/sec-sha-h2/lem-h2-tate-twists-bound/thm-borel-type-rank-bound.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-sha/sec-sha-h2/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-h2-tate-twists-bound/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-borel-type-rank-bound.md</tspan></a></text>
 </g>
 <g id="thm-potential-automorphy-seeds">
+<rect x="719.4" y="6219.0" width="620.4" height="672.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="6226.0" width="606.4" height="658.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="6256.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Seed points for potential automorphy</tspan></text>
 <rect x="1215.7" y="6239.0" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -921,6 +952,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="6866.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the main theorems</text>
 </g>
 <g id="thm-kato-euler-system-ordinary">
+<rect x="1389.8" y="6219.0" width="620.4" height="672.6" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="6226.0" width="606.4" height="658.6" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6"/>
 <text x="1412.8" y="6256.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Kato's Euler system for ordinary newforms</tspan></text>
 <rect x="1859.1" y="6239.0" width="128.1" height="21.5" rx="10.75" fill="#a35a00" stroke="#a35a00" class="f-amber s-amber" stroke-width="1.2"/>
@@ -955,6 +987,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="6866.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the main theorems</text>
 </g>
 <g id="prop-congruence-bound-auxiliary-primes">
+<rect x="2060.2" y="6219.0" width="620.4" height="672.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="6226.0" width="606.4" height="658.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="6256.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence bound at the auxiliary primes</tspan></text>
 <rect x="2539.8" y="6239.0" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -985,6 +1018,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="6866.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">5 from the main theorems</text>
 </g>
 <g id="prop-congruence-bounds-all-primes">
+<rect x="2730.6" y="6219.0" width="620.4" height="672.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="6226.0" width="606.4" height="658.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="6256.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence bounds at all primes</tspan></text>
 <rect x="3210.2" y="6239.0" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -1023,6 +1057,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="6866.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">from the main theorems</text>
 </g>
 <g id="thm-kato-selmer-vanishing">
+<rect x="719.4" y="7093.6" width="620.4" height="901.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="7100.6" width="606.4" height="887.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="7130.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Vanishing of Selmer groups from Kato's Euler system</tspan></text>
 <rect x="1215.7" y="7113.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -1061,6 +1096,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="7969.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Tate-Shafarevich bound) · depth 4 from the main theorems</text>
 </g>
 <g id="thm-family-sha-error-bound">
+<rect x="1389.8" y="7093.6" width="620.4" height="901.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="7100.6" width="606.4" height="887.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="7130.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The Tate–Shafarevich error bound for the families</tspan></text>
 <rect x="1886.1" y="7113.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -1114,6 +1150,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="7969.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Tate-Shafarevich bound) · depth 4 from the main theorems</text>
 </g>
 <g id="thm-gsp4-lift-automorphy">
+<rect x="2060.2" y="7093.6" width="620.4" height="901.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="7100.6" width="606.4" height="887.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="7130.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Automorphy of symplectic lifts in the cases of rank</tspan></text>
 <text x="2083.2" y="7151.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">four</tspan></text>
@@ -1148,6 +1185,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="7969.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Tate-Shafarevich bound) · depth 4 from the main theorems</text>
 </g>
 <g id="lem-h2-tate-twists-bound">
+<rect x="2730.6" y="7093.6" width="620.4" height="901.2" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="7100.6" width="606.4" height="887.2" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="7130.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Second cohomology of Tate twists</tspan></text>
 <rect x="3237.0" y="7113.6" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -1180,6 +1218,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="7969.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Tate-Shafarevich bound) · depth 4 from the main theorems</text>
 </g>
 <g id="thm-sha-bound">
+<rect x="1389.8" y="8196.8" width="620.4" height="834.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="8203.8" width="606.4" height="820.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="8233.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The Tate–Shafarevich bound</tspan></text>
 <rect x="1886.1" y="8216.8" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>

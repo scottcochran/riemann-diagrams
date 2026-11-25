@@ -186,7 +186,14 @@ F5, carries its blueprint id as the `id` of the group around it, so that
 `R3-zero-free-2026.11.23.svg#thm-landau-windows` opens the poster at that
 card when the SVG is opened on its own, as the Pages site serves it (tested
 in Chromium). A statement drawn on more than one poster has the same id on
-each; the manifest lists each poster's anchors.
+each; the manifest lists each poster's anchors. Each poster's header is the
+anchor `top`. The card or header a link opens is framed: a halo in the
+card's colour, hidden until the poster's style shows it for the group the
+address names, which pulses three times and stays, without the pulse for a
+reader who has asked for reduced motion. Measured in headless Chrome, a
+card opened this way lands about 90 px below the top of the window, framed;
+Firefox and Safari are untested. A renderer that runs no CSS never shows the
+halo.
 
 An id set in code that names a card on the same poster is a link to that
 card, in a Stated with, Proof uses or Used by footer, in a card's text or in
@@ -197,7 +204,7 @@ R1, or in GitHub's file viewer, a poster draws the same and links nowhere.
 An id with no card on the poster links to its card on the poster that draws
 it in full: a statement's chapter poster, R3 to R8, first, then F1, R1, the
 traces, F5, R2 and F2, in that order. A chapter card on R2 or F2 links, by
-its frame and title, to that chapter's poster. The targets are read from the
+its frame and title, to that chapter's poster, at its header (`#top`). The targets are read from the
 set's `manifest.json`, which lists every poster's anchors, so a map poster
 links only to map posters and a reader to readers, and the relative links
 resolve in the tree, on the Pages site and among a release's assets alike.

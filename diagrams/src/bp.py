@@ -595,6 +595,7 @@ def node(c, x, y, w, name, accent, formula, pill=None, say=None, bullets=(), foo
     if anchor:
         c.add(f'<g id="{anchor}">')
         c.anchors.append(anchor)
+        c.out.append(lib.halo(x, y, w, hh, accent))     # the frame shown when a link opens this card
     c.blocks.append((x, y, x + w, y + hh, "node " + name))
     if href:
         c.add(f'<a href="{href}">')

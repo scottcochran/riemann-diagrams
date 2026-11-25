@@ -12,6 +12,7 @@ svg{--bg:#ffffff;--page:#eeeeee;--ink:#1e2430;--muted:#4a5262;--faint:#7d8596;--
 @media (prefers-color-scheme: dark){svg:not([data-theme=light]){--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;--panel:#1a1e26;--line:#363d4a;--zebra:#161a21;--blue:#8fb0ec;--blue-t:#1a2540;--teal:#6cc7b0;--teal-t:#12302a;--amber:#f0b15c;--amber-t:#33260f;--violet:#b9a0e8;--violet-t:#261d38;--red:#f08a8f;--red-t:#3a1a1d;--grey:#a3abb9;--grey-t:#22262e;--brown:#e0a56b;--brown-t:#2f2215;--pink:#ec8cc2;--pink-t:#351a2a;--green:#85c98a;--green-t:#17291a;}}
 svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;--panel:#1a1e26;--line:#363d4a;--zebra:#161a21;--blue:#8fb0ec;--blue-t:#1a2540;--teal:#6cc7b0;--teal-t:#12302a;--amber:#f0b15c;--amber-t:#33260f;--violet:#b9a0e8;--violet-t:#261d38;--red:#f08a8f;--red-t:#3a1a1d;--grey:#a3abb9;--grey-t:#22262e;--brown:#e0a56b;--brown-t:#2f2215;--pink:#ec8cc2;--pink-t:#351a2a;--green:#85c98a;--green-t:#17291a;}
 a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect{stroke-width:3.4}
+.rd-target{opacity:0} g:target>.rd-target{opacity:1;animation:rd-pulse 0.9s ease-in-out 3} @keyframes rd-pulse{50%{stroke-width:9}} g[id]{scroll-margin-top:90px} @media (prefers-reduced-motion:reduce){g:target>.rd-target{animation:none}}
 .f-bg{fill:var(--bg)} .s-bg{stroke:var(--bg)}
 .f-page{fill:var(--page)} .s-page{stroke:var(--page)}
 .f-ink{fill:var(--ink)} .s-ink{stroke:var(--ink)}
@@ -32,10 +33,13 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 </style>
 <defs><marker id="arw-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f5aa8" class="f-blue"/></marker><marker id="arw-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#166b5b" class="f-teal"/></marker><marker id="arw-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a35a00" class="f-amber"/></marker><marker id="arw-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b46a8" class="f-violet"/></marker><marker id="arw-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a4262c" class="f-red"/></marker><marker id="arw-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6878" class="f-grey"/></marker><marker id="arw-brown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8a4b14" class="f-brown"/></marker><marker id="arw-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9d2f6e" class="f-pink"/></marker><marker id="arw-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32" class="f-green"/></marker><marker id="arw-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e2430" class="f-ink"/></marker><marker id="arw-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5262" class="f-muted"/></marker><marker id="arw-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7d8596" class="f-faint"/></marker></defs>
 <rect width="3400" height="6840" fill="#eeeeee" class="f-page"/>
+<g id="top">
+<rect x="39.0" y="37.0" width="3322.0" height="158.0" rx="14" fill="#f1f2f4" stroke="#5f6878" class="rd-target ft-grey s-grey" stroke-width="3.5" opacity="0"/>
 <text x="56" y="64" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1.5" font-weight="bold" fill="#7d8596" class="f-faint">RIEMANN · F1</text>
 <text x="56.0" y="100.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="30" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">What the stages pass to each other: the 24 definitions of the blueprint, how they are built from one another, and which chapters use each</tspan></text>
 <text x="56.0" y="140.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">Every other poster follows the theorems. This one follows the definitions: the objects one chapter of the proof makes and another consumes. Each card is one of the blueprint's definitions, with the Lean declaration it stands for, the definition in words, and the chapter that makes it in its pill. <tspan font-weight="bold">Read the grid from the foot up</tspan>: a definition stands above the definitions stated in terms of it, and an arrow from A to B says that B is defined using</text>
 <text x="56.0" y="163.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">A. The table at the foot is the flow between stages: for each definition, how many statements of each chapter use it, with the chapter that makes it marked. The outline's own section on the interfaces names three definitions as what the arithmetic stages pass to the analytic ones; those three are used by 35 statements in 7 chapters. <tspan font-weight="bold">No Lean was built</tspan>: see diagram R1, band 5.</text>
+</g>
 <line x1="56" y1="196" x2="3344" y2="196" fill="none" stroke="#d4d8e0" class="s-line" stroke-width="1.5"/>
 <text x="56.0" y="252.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">1 · Reading the poster</tspan></text>
 <text x="56.0" y="297.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#7d8596" class="f-faint" text-anchor="start"><tspan font-weight="bold">Legend</tspan></text>
@@ -90,6 +94,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="56.0" y="658.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">2 · The definitions, each above the definitions stated in terms of it</tspan></text>
 <text x="56.0" y="686.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">7 rows. The 14 definitions joined by an arrow are laid out from their uses, the families chapter's tower from auxiliary field data to family data running down the grid; the 10 that no arrow touches fill the free places, the emptiest rows first, in the blueprint's chapter order.</text>
 <g id="def-riemann-hypothesis">
+<rect x="49.0" y="702.6" width="620.4" height="544.8" rx="14" fill="#edf2fb" stroke="#2f5aa8" class="rd-target ft-blue s-blue" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="709.6" width="606.4" height="530.8" rx="8" fill="#edf2fb" stroke="#2f5aa8" class="ft-blue s-blue" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="72.0" y="739.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2f5aa8" class="f-blue" text-anchor="start"><tspan font-weight="bold">The Riemann Hypothesis</tspan></text>
 <rect x="410.5" y="722.6" width="235.9" height="21.5" rx="10.75" fill="#2f5aa8" stroke="#2f5aa8" class="f-blue s-blue" stroke-width="1.2"/>
@@ -112,6 +117,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="1222.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">main theorems</text>
 </g>
 <g id="def-chebyshev-weighted">
+<rect x="719.4" y="702.6" width="620.4" height="544.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="709.6" width="606.4" height="530.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="739.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The weighted Chebyshev function</tspan></text>
 <rect x="1147.3" y="722.6" width="169.5" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -137,6 +143,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="1222.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the zero-free half-plane) · depth 5 from the main theorems</text>
 </g>
 <g id="def-trivial-statement">
+<rect x="1389.8" y="702.6" width="620.4" height="544.8" rx="14" fill="#f1f2f4" stroke="#5f6878" class="rd-target ft-grey s-grey" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="709.6" width="606.4" height="530.8" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="739.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">A trivially true statement</tspan></text>
 <rect x="1776.1" y="722.6" width="211.1" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -156,6 +163,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="1222.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">depth 5 from the main theorems</text>
 </g>
 <g id="def-auxiliary-field-data">
+<rect x="2060.2" y="702.6" width="620.4" height="544.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="709.6" width="606.4" height="530.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="739.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Auxiliary CM fields and their Galois data</tspan></text>
 <rect x="2488.1" y="722.6" width="169.5" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -186,6 +194,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="1222.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">prime sums to the zero-free half-plane) · depth 4 from the main theorems</text>
 </g>
 <g id="def-nonvanishing-half-plane">
+<rect x="49.0" y="1377.4" width="620.4" height="584.6" rx="14" fill="#edf2fb" stroke="#2f5aa8" class="rd-target ft-blue s-blue" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="1384.4" width="606.4" height="570.6" rx="8" fill="#edf2fb" stroke="#2f5aa8" class="ft-blue s-blue" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="72.0" y="1414.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2f5aa8" class="f-blue" text-anchor="start"><tspan font-weight="bold">Non-vanishing right of the critical line</tspan></text>
 <rect x="410.5" y="1397.4" width="235.9" height="21.5" rx="10.75" fill="#2f5aa8" stroke="#2f5aa8" class="f-blue s-blue" stroke-width="1.2"/>
@@ -211,6 +220,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="1936.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the main theorems</text>
 </g>
 <g id="def-zero-free-primitive">
+<rect x="719.4" y="1377.4" width="620.4" height="584.6" rx="14" fill="#edf2fb" stroke="#2f5aa8" class="rd-target ft-blue s-blue" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="1384.4" width="606.4" height="570.6" rx="8" fill="#edf2fb" stroke="#2f5aa8" class="ft-blue s-blue" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="1414.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2f5aa8" class="f-blue" text-anchor="start"><tspan font-weight="bold">Zero-freeness for primitive characters</tspan></text>
 <rect x="1115.2" y="1397.4" width="201.6" height="21.5" rx="10.75" fill="#2f5aa8" stroke="#2f5aa8" class="f-blue s-blue" stroke-width="1.2"/>
@@ -233,6 +243,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="1936.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the zero-free half-plane) · depth 4 from the main theorems</text>
 </g>
 <g id="def-family-ranks">
+<rect x="2060.2" y="1377.4" width="620.4" height="584.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="1384.4" width="606.4" height="570.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="1414.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Ranks of a family</tspan></text>
 <rect x="2493.6" y="1397.4" width="164.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -265,6 +276,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="1936.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">of definite unitary groups) · depth 7 from the main theorems</text>
 </g>
 <g id="def-archimedean-bessel-data">
+<rect x="49.0" y="2092.0" width="620.4" height="623.4" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="2099.0" width="606.4" height="609.4" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="72.0" y="2129.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Archimedean Bessel data</tspan></text>
 <rect x="470.0" y="2112.0" width="176.4" height="21.5" rx="10.75" fill="#a35a00" stroke="#a35a00" class="f-amber s-amber" stroke-width="1.2"/>
@@ -295,6 +307,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="2690.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">periods and the Siegel-Weil formula) · depth 7 from the main theorems</text>
 </g>
 <g id="def-family-hermitian-spaces">
+<rect x="2060.2" y="2092.0" width="620.4" height="623.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="2099.0" width="606.4" height="609.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="2129.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The hermitian spaces of a family member</tspan></text>
 <rect x="2493.6" y="2112.0" width="164.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -324,6 +337,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="2690.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-family-hermitian-spaces.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">md</tspan></a> (Families of definite unitary groups) · depth 7 from the main theorems</text>
 </g>
 <g id="def-harish-chandra-parameters">
+<rect x="2730.6" y="2092.0" width="620.4" height="623.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="2099.0" width="606.4" height="609.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2753.6" y="2129.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Harish-Chandra parameters and dominant</tspan></text>
 <text x="2753.6" y="2150.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">weights</tspan></text>
@@ -358,6 +372,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="2690.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">main theorems</text>
 </g>
 <g id="def-zeros-on-line">
+<rect x="49.0" y="2845.4" width="620.4" height="581.8" rx="14" fill="#edf2fb" stroke="#2f5aa8" class="rd-target ft-blue s-blue" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="2852.4" width="606.4" height="567.8" rx="8" fill="#edf2fb" stroke="#2f5aa8" class="ft-blue s-blue" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="72.0" y="2882.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2f5aa8" class="f-blue" text-anchor="start"><tspan font-weight="bold">Zeros in the critical strip lie on the line</tspan></text>
 <rect x="410.5" y="2865.4" width="235.9" height="21.5" rx="10.75" fill="#2f5aa8" stroke="#2f5aa8" class="f-blue s-blue" stroke-width="1.2"/>
@@ -380,6 +395,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="3401.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">theorems</text>
 </g>
 <g id="def-quantum-determinant">
+<rect x="719.4" y="2845.4" width="620.4" height="581.8" rx="14" fill="#edf2fb" stroke="#2f5aa8" class="rd-target ft-blue s-blue" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="2852.4" width="606.4" height="567.8" rx="8" fill="#edf2fb" stroke="#2f5aa8" class="ft-blue s-blue" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="2882.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2f5aa8" class="f-blue" text-anchor="start"><tspan font-weight="bold">The quantum determinant</tspan></text>
 <rect x="1135.2" y="2865.4" width="181.6" height="21.5" rx="10.75" fill="#2f5aa8" stroke="#2f5aa8" class="f-blue s-blue" stroke-width="1.2"/>
@@ -407,6 +423,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="3401.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">periods and the Siegel-Weil formula) · depth 7 from the main theorems</text>
 </g>
 <g id="def-family-member">
+<rect x="2060.2" y="2845.4" width="620.4" height="581.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="2852.4" width="606.4" height="567.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="2882.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Members of a family</tspan></text>
 <rect x="2493.6" y="2865.4" width="164.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -439,6 +456,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="3401.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">of definite unitary groups) · depth 6 from the main theorems</text>
 </g>
 <g id="def-sha-bound">
+<rect x="49.0" y="3557.2" width="620.4" height="525.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="3564.2" width="606.4" height="511.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="72.0" y="3594.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The Tate–Shafarevich bound</tspan></text>
 <rect x="487.0" y="3577.2" width="159.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -463,6 +481,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="4057.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">depth 4 from the main theorems</text>
 </g>
 <g id="def-theta-tower-step">
+<rect x="719.4" y="3557.2" width="620.4" height="525.6" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="3564.2" width="606.4" height="511.6" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="3594.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Steps in theta towers</tspan></text>
 <rect x="1140.4" y="3577.2" width="176.4" height="21.5" rx="10.75" fill="#a35a00" stroke="#a35a00" class="f-amber s-amber" stroke-width="1.2"/>
@@ -492,6 +511,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="4057.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the Siegel-Weil formula) · depth 5 from the main theorems</text>
 </g>
 <g id="def-family-scale">
+<rect x="2060.2" y="3557.2" width="620.4" height="525.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="3564.2" width="606.4" height="511.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="3594.2" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Scale and size data of a member</tspan></text>
 <rect x="2493.6" y="3577.2" width="164.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -518,6 +538,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="4057.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">of definite unitary groups) · depth 6 from the main theorems</text>
 </g>
 <g id="def-slope-data">
+<rect x="719.4" y="4212.8" width="620.4" height="547.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="4219.8" width="606.4" height="533.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="4249.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Slope data</tspan></text>
 <rect x="1147.3" y="4232.8" width="169.5" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -548,6 +569,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="4735.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">half-plane) · depth 4 from the main theorems</text>
 </g>
 <g id="def-local-parameters">
+<rect x="1389.8" y="4212.8" width="620.4" height="547.6" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="4219.8" width="606.4" height="533.6" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="4249.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Local parameters</tspan></text>
 <rect x="1800.9" y="4232.8" width="186.3" height="21.5" rx="10.75" fill="#a35a00" stroke="#a35a00" class="f-amber s-amber" stroke-width="1.2"/>
@@ -573,6 +595,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="4735.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">proof in outline) · depth 3 from the main theorems</text>
 </g>
 <g id="def-family">
+<rect x="2060.2" y="4212.8" width="620.4" height="547.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="4219.8" width="606.4" height="533.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="4249.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Families</tspan></text>
 <rect x="2493.6" y="4232.8" width="164.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -603,6 +626,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="4735.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">definite unitary groups) · depth 5 from the main theorems</text>
 </g>
 <g id="def-sha-error-term">
+<rect x="2730.6" y="4212.8" width="620.4" height="547.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="4219.8" width="606.4" height="533.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2753.6" y="4249.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The Tate–Shafarevich error term</tspan></text>
 <rect x="3190.7" y="4232.8" width="137.3" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -627,6 +651,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="4735.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">depth 5 from the main theorems</text>
 </g>
 <g id="def-connected-families">
+<rect x="719.4" y="4890.4" width="620.4" height="602.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="4897.4" width="606.4" height="588.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="4927.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Classes of families with slope data</tspan></text>
 <rect x="1147.3" y="4910.4" width="169.5" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -652,6 +677,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="5467.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">to the zero-free half-plane) · depth 4 from the main theorems</text>
 </g>
 <g id="def-galois-reps-polarized">
+<rect x="1389.8" y="4890.4" width="620.4" height="602.4" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="4897.4" width="606.4" height="588.4" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="4927.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Galois representations of polarized</tspan></text>
 <text x="1412.8" y="4948.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">representations</tspan></text>
@@ -682,6 +708,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="5467.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">in outline) · depth 3 from the main theorems</text>
 </g>
 <g id="def-family-data">
+<rect x="2060.2" y="4890.4" width="620.4" height="602.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="4897.4" width="606.4" height="588.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="4927.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Families of definite unitary groups</tspan></text>
 <rect x="2493.6" y="4910.4" width="164.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -715,6 +742,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="5467.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">unitary groups) · depth 4 from the main theorems</text>
 </g>
 <g id="def-congruence-data">
+<rect x="2730.6" y="4890.4" width="620.4" height="602.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="4897.4" width="606.4" height="588.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2753.6" y="4927.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Congruence data of a member</tspan></text>
 <rect x="3190.7" y="4910.4" width="137.3" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
