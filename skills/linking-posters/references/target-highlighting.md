@@ -73,6 +73,11 @@ specific than the row's own colour class, so it wins without `!important`.
   opened at a fragment leaves the area above the target unpainted, and on a poster of 46,000 pixels it left the whole
   capture blank. The same happened with the posters from before the frames existed, and a capture with no fragment is
   whole: the capture fails, not the poster.
+- **`scroll-margin-top` works on a group in a standalone SVG**, in Chrome. Measured, not captured: a tall SVG
+  opened in headless Chrome at `t.svg#target`, then asked through its DevTools protocol (`Runtime.evaluate`) for
+  `window.scrollY` and the group's `getBoundingClientRect().top`. With `g[id]{scroll-margin-top:200px}` the group
+  landed 200 px below the top of the window (`scrollY` 2800); without the rule, at 0 (`scrollY` 3000). Firefox and
+  Safari are untested. Measuring where a link lands this way is the test to trust; a capture is not.
 - **To test a frame without scrolling**, copy the poster with its `:target` rule rewritten to name one group, and
   capture the copy whole:
 

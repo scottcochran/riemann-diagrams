@@ -9,7 +9,8 @@ optional [links] table. Parses every output as XML and collects its ids and the 
 
 - an output that does not parse, or an id given twice in one output;
 - a link to `#id` that the same output does not have;
-- a link to another file by a relative name that is not an output, or to an `#id` that output does not have;
+- a link to another file by a relative name that is not an output, or to an `#id` that output does not have (the
+  path and the fragment are percent-decoded first, and a `?query` on a relative link is dropped);
 - with [links].require_targets = true, a link to another output with no `#id`;
 - a link out (an absolute address) that is neither at a pinned commit nor under one of [links].allow, when [links]
   has an `allow` list; without one, such links are counted and listed as NOTEs;
@@ -19,7 +20,9 @@ optional [links] table. Parses every output as XML and collects its ids and the 
 
 A pinned commit is each [[pins.commit]] that names a `repo`. A link https://github.com/<repo>/blob/<commit>/…
 (or /tree/, /commit/) is at the pin when its repository is the pin's and its commit begins with the value the pins
-file gives the pin, so that a short pin matches the full commit a link carries. It ends with the links by kind. Standard library only, Python 3.11+.
+file gives the pin, so that a short pin matches the full commit a link carries. Only GitHub addresses are read for a
+commit: a pinned link on another host needs a [links].allow prefix. It ends with the links by kind. Standard library
+only, Python 3.11+.
 """
 import ast
 import collections
@@ -30,6 +33,7 @@ import pathlib
 import subprocess
 import sys
 import tomllib
+import urllib.parse
 import xml.etree.ElementTree as ET
 
 NEED = ["build.outputs"]
@@ -191,7 +195,8 @@ def main(argv):
                     kinds["out, not at a pin"] += 1
                     out_of_pin[h.split("#")[0]] += 1
                 continue
-            path, _, frag = h.partition("#")
+            parts = urllib.parse.urlsplit(h)
+            path, frag = urllib.parse.unquote(parts.path), urllib.parse.unquote(parts.fragment)
             target = (f.parent / path).resolve() if path else f
             if target not in ids:
                 errors.append(f"{rel}: link to {path!r}, which is not an output")
@@ -211,6 +216,8 @@ def main(argv):
                f"under [links].allow")
         if allow is not None:
             errors += [f"link out not at a pin or an allowed prefix: {h}" for h in sorted(out_of_pin)[:20]]
+            if len(out_of_pin) > 20:
+                errors.append(f"… {msg}: {len(out_of_pin) - 20} more addresses not listed")
         else:
             notes.append(msg + "; e.g. " + ", ".join(sorted(out_of_pin)[:3]))
     if frames:
