@@ -59,6 +59,8 @@ it was. Frame it with CSS `:target`, which matches the element the address's fra
   hidden by a presentation attribute (`opacity="0"`), and shown by the poster's own style while the group is the
   target (`g:target>.halo{opacity:1}`), pulsing a few times and then staying. CSS beats presentation attributes, so a
   renderer that runs no CSS keeps it hidden, and the poster looks as it did.
+- **No pulse under reduced motion**: `@media (prefers-reduced-motion:reduce)` turns the animation off for the halo
+  and the row, and leaves the frame shown.
 - **A row frames itself**: `g.row:target>rect:first-child{…}` recolours the row's own background rectangle.
 - **Leave room above**: `g[id]{scroll-margin-top:…}`, so the frame is not cut by the top of the window.
 - **Where it works:** wherever a browser opens the SVG as a document: the Pages site, a release asset, a file. Not in

@@ -1,8 +1,8 @@
 # Framing a link's target
 
-A worked example, from riemann-masullo-diagrams (`diagrams/src/lib.py`, `draw.py`, `chapter.py`), where 45 posters
-carry about 29,000 links with a target and 3,577 framed groups. The code here is the pattern; the project's own
-library decides the names.
+A worked example, from riemann-masullo-diagrams (`diagrams/src/lib.py`, `draw.py`, `chapter.py`). At its commit
+`77f274d` (2026-11-25), its 45 posters carry 29,217 links to an id, 3,625 halos and 3,296 framed rows, counted from
+the committed SVGs. The code here is the pattern; the project's own library decides the names.
 
 ## The markup
 
@@ -54,9 +54,15 @@ g:target>.rd-target{opacity:1;animation:rd-pulse 0.9s ease-in-out 3}
 g[id]{scroll-margin-top:90px}
 g.rd-row:target>rect:first-child{fill:var(--amber-t);stroke:var(--amber);stroke-width:3;
   animation:rd-pulse 0.9s ease-in-out 3}
+@media (prefers-reduced-motion:reduce){
+  g:target>.rd-target,g.rd-row:target>rect:first-child{animation:none}
+}
 ```
 
-The frame pulses three times and stays while the address names it. A selector such as `g.rd-row:target>rect` is more
+The frame pulses three times and stays while the address names it. A reader who has asked their system for reduced
+motion gets the frame without the pulse: the media query turns the animation off and leaves the frame shown.
+(riemann-masullo-diagrams at `77f274d` does not have this rule yet, so it has not been seen working in a poster:
+test it with the system's reduce-motion setting on, or Chrome's "Emulate CSS prefers-reduced-motion".) A selector such as `g.rd-row:target>rect` is more
 specific than the row's own colour class, so it wins without `!important`.
 
 ## Testing it, and what misleads
