@@ -15,7 +15,7 @@ behind what it frames, and how to test it, with what failed on the way.
 ## Setup
 
 Read `[build]` in `proof-posters.toml`: `outputs` and `manifests` are what is linked, and `rerun_marker` is how the
-generator asks for the second run. Read `[links]` if there is one (`skills/README.md` gives its keys): whether every
+generator asks for the second run. Read `[links]` if there is one (the plugin's `README.md` gives its keys): whether every
 link must name a target, the markup that must never reach an output, the address prefixes allowed besides the pinned
 sources, and the classes that frame a target. Read the project's poster skill for its library's link markup.
 

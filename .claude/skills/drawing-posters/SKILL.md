@@ -6,7 +6,7 @@ description: "Adds a poster to riemann-diagrams or reworks one, applying proof-p
 # Drawing posters
 
 This skill is specific to this repository. The method is the plugin's **recording-expectations**
-(`skills/recording-expectations/SKILL.md`, `proof-posters:recording-expectations` when the plugin is loaded):
+(`plugins/proof-posters/skills/recording-expectations/SKILL.md`, `proof-posters:recording-expectations` when the plugin is loaded):
 read every fact, record what you expect and compare it both ways, four kinds of sentence, deterministic bytes,
 say what is not checked, update the docs that count. Read it first. This skill is how each of those is done here,
 with this repository's library, and the shared rules are in `CLAUDE.md`.
@@ -67,9 +67,9 @@ with this repository's library, and the shared rules are in `CLAUDE.md`.
 uv run python diagrams/gen-diagrams.py <ID>              # one poster; exits 1 with NOTE if anchors moved: run again
 uv run python diagrams/gen-diagrams.py                   # then all, so every poster's links follow
 uv run python diagrams/gen-diagrams.py --map             # the map set
-uv run python skills/moving-pins/scripts/determinism.py  # both sets, twice, two hash seeds: must be byte-identical
-uv run python skills/recording-expectations/scripts/check-expectations.py  # expectations recorded and read
-uv run python skills/linking-posters/scripts/check-links.py  # every link lands, every link out allowed; not run by CI
+uv run python plugins/proof-posters/skills/moving-pins/scripts/determinism.py  # both sets, twice, two hash seeds: must be byte-identical
+uv run python plugins/proof-posters/skills/recording-expectations/scripts/check-expectations.py  # expectations recorded and read
+uv run python plugins/proof-posters/skills/linking-posters/scripts/check-links.py  # every link lands, every link out allowed; not run by CI
 ```
 
 Any WARNING or ERROR is a failure: a word too wide for its cell, two texts overlapping, a character outside the
@@ -99,8 +99,8 @@ moves no expectation is PATCH.
 ## Check before you stop
 
 - recording-expectations' own list holds.
-- `check-links.py` (the plugin's, in `skills/linking-posters/scripts/`) passes.
-- `determinism.py` (the plugin's, in `skills/moving-pins/scripts/`) passes. The committed SVGs and manifests are
+- `check-links.py` (the plugin's, in `plugins/proof-posters/skills/linking-posters/scripts/`) passes.
+- `determinism.py` (the plugin's, in `plugins/proof-posters/skills/moving-pins/scripts/`) passes. The committed SVGs and manifests are
   the regenerated ones, so `git status -- diagrams` is clean after a fresh run.
 - Both sets look right in both themes, and the map set quotes nothing.
 - Every doc above that names posters or checks names this one. Files are staged by name.

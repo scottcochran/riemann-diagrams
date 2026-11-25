@@ -42,7 +42,7 @@ blueprint's prose under CC BY 4.0 (granted 2026-11-22, `NOTICE`), the Lean signa
 
 ## Skills
 
-The general method is in the `proof-posters` plugin in `./skills/`, enabled for this repository by
+The general method is in the `proof-posters` plugin in `./plugins/proof-posters/`, enabled for this repository by
 `.claude/settings.json`. It reads this repository's paths from `proof-posters.toml`. The poster recipe is this
 repository's own, in `.claude/skills/`.
 

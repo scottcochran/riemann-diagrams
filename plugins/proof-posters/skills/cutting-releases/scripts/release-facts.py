@@ -73,7 +73,7 @@ def load_config(argv, prog, need):
             sys.exit(f"{prog}: not in a git tree; pass --config FILE")
         path = pathlib.Path(r.stdout.strip()) / "proof-posters.toml"
     if not path.is_file():
-        sys.exit(f"{prog}: no {path}; the project describes its layout there (skills/README.md in the plugin)")
+        sys.exit(f"{prog}: no {path}; the project describes its layout there (README.md in the plugin)")
     try:
         cfg = tomllib.loads(path.read_text(encoding="utf-8"))
     except tomllib.TOMLDecodeError as e:
@@ -87,7 +87,7 @@ def load_config(argv, prog, need):
             table, _, name = key.rpartition(".")
             missing.append(f"[{table}].{name}")
     if missing:
-        sys.exit(f"{prog}: {path} has no {', '.join(missing)} (skills/README.md in the plugin says what each is)")
+        sys.exit(f"{prog}: {path} has no {', '.join(missing)} (README.md in the plugin says what each is)")
     return path.parent.resolve(), cfg
 
 

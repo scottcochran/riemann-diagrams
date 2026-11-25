@@ -178,7 +178,7 @@ Depth | Statements | Published | Modified | New
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
 | `derived/` | dated, frozen write-ups; [its README](derived/README.md) lists them |
-| `skills/`, `.claude-plugin/` | the `proof-posters` Claude Code plugin: the skills that keep the posters true to their sources |
+| `plugins/proof-posters/`, `.claude-plugin/` | the `proof-posters` Claude Code plugin, and the marketplace that lists it: the skills that keep the posters true to their sources |
 | `proof-posters.toml` | where those skills find this repository's pins, checks, papers and release settings |
 | `CLAUDE.md`, `.claude/` | the rules every change keeps, and the poster recipe, for Claude Code sessions in this repository |
 
@@ -186,12 +186,13 @@ Depth | Statements | Published | Modified | New
 
 The work that no script does is written up as Claude Code skills. Moving the pins, linking the papers, rebuilding
 the Lean-derived files and cutting a release are general: they are a plugin, `proof-posters`, in
-[skills/](skills/README.md). The plugin reads this repository's layout from `proof-posters.toml`, so another
+[plugins/proof-posters/](plugins/proof-posters/README.md). The plugin reads this repository's layout from `proof-posters.toml`, so another
 project can use it with a file of its own. Drawing a poster is specific to this repository and is in
 `.claude/skills/`. To install the plugin elsewhere:
 
 ```
-/plugin install proof-posters --marketplace scottcochran/riemann-diagrams
+/plugin marketplace add scottcochran/riemann-diagrams
+/plugin install proof-posters@riemann-diagrams
 ```
 
 ## What the graph is not
