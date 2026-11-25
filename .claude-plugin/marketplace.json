@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "proof-posters",
-      "source": "./",
+      "source": "./plugins/proof-posters",
       "description": "Skills for keeping generated diagrams of a formal proof true to their pinned sources."
     }
   ]

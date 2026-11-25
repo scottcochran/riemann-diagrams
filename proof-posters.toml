@@ -1,7 +1,8 @@
-# Where the proof-posters skills (./skills, the plugin this repository publishes) find this repository's parts.
-# The skills hold the method; this file holds the paths and names, so the same skills serve another project
-# with its own copy of this file. The scripts in skills/*/scripts read it from the root of the git tree, or from
-# --config FILE. Every path is relative to the root of this repository unless it says otherwise.
+# Where the proof-posters skills (./plugins/proof-posters, the plugin this repository publishes) find this
+# repository's parts. The skills hold the method; this file holds the paths and names, so the same skills serve
+# another project with its own copy of this file. The scripts in plugins/proof-posters/skills/*/scripts read it
+# from the root of the git tree, or from --config FILE. Every path is relative to the root of this repository
+# unless it says otherwise.
 
 [project]
 name = "riemann-diagrams"
