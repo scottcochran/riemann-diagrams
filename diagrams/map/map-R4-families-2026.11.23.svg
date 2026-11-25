@@ -12,6 +12,7 @@ svg{--bg:#ffffff;--page:#eeeeee;--ink:#1e2430;--muted:#4a5262;--faint:#7d8596;--
 @media (prefers-color-scheme: dark){svg:not([data-theme=light]){--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;--panel:#1a1e26;--line:#363d4a;--zebra:#161a21;--blue:#8fb0ec;--blue-t:#1a2540;--teal:#6cc7b0;--teal-t:#12302a;--amber:#f0b15c;--amber-t:#33260f;--violet:#b9a0e8;--violet-t:#261d38;--red:#f08a8f;--red-t:#3a1a1d;--grey:#a3abb9;--grey-t:#22262e;--brown:#e0a56b;--brown-t:#2f2215;--pink:#ec8cc2;--pink-t:#351a2a;--green:#85c98a;--green-t:#17291a;}}
 svg[data-theme=dark]{--bg:#12151b;--page:#12151b;--ink:#e6e9ef;--muted:#b0b8c6;--faint:#7f8898;--panel:#1a1e26;--line:#363d4a;--zebra:#161a21;--blue:#8fb0ec;--blue-t:#1a2540;--teal:#6cc7b0;--teal-t:#12302a;--amber:#f0b15c;--amber-t:#33260f;--violet:#b9a0e8;--violet-t:#261d38;--red:#f08a8f;--red-t:#3a1a1d;--grey:#a3abb9;--grey-t:#22262e;--brown:#e0a56b;--brown-t:#2f2215;--pink:#ec8cc2;--pink-t:#351a2a;--green:#85c98a;--green-t:#17291a;}
 a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect{stroke-width:3.4}
+.rd-target{opacity:0} g:target>.rd-target{opacity:1;animation:rd-pulse 0.9s ease-in-out 3} @keyframes rd-pulse{50%{stroke-width:9}} g[id]{scroll-margin-top:90px} @media (prefers-reduced-motion:reduce){g:target>.rd-target{animation:none}}
 .f-bg{fill:var(--bg)} .s-bg{stroke:var(--bg)}
 .f-page{fill:var(--page)} .s-page{stroke:var(--page)}
 .f-ink{fill:var(--ink)} .s-ink{stroke:var(--ink)}
@@ -32,10 +33,13 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 </style>
 <defs><marker id="arw-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2f5aa8" class="f-blue"/></marker><marker id="arw-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#166b5b" class="f-teal"/></marker><marker id="arw-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a35a00" class="f-amber"/></marker><marker id="arw-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b46a8" class="f-violet"/></marker><marker id="arw-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a4262c" class="f-red"/></marker><marker id="arw-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6878" class="f-grey"/></marker><marker id="arw-brown" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8a4b14" class="f-brown"/></marker><marker id="arw-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9d2f6e" class="f-pink"/></marker><marker id="arw-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e7d32" class="f-green"/></marker><marker id="arw-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1e2430" class="f-ink"/></marker><marker id="arw-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4a5262" class="f-muted"/></marker><marker id="arw-faint" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="13" markerHeight="13" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#7d8596" class="f-faint"/></marker></defs>
 <rect width="3400" height="7726" fill="#eeeeee" class="f-page"/>
+<g id="top">
+<rect x="39.0" y="37.0" width="3322.0" height="158.0" rx="14" fill="#f1f2f4" stroke="#5f6878" class="rd-target ft-grey s-grey" stroke-width="3.5" opacity="0"/>
 <text x="56" y="64" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13" letter-spacing="1.5" font-weight="bold" fill="#7d8596" class="f-faint">RIEMANN · MAP · R4</text>
 <text x="56.0" y="100.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="30" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">Families of definite unitary groups: every statement of the chapter, and what each one rests on</tspan></text>
 <text x="56.0" y="140.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">The blueprint's chapter 4 in one poster: its 44 statements as cards, each with the Lean declaration it stands for, the statement in words, how its proof goes, and what it uses and is used by. <tspan font-weight="bold">Read it from the foot up</tspan>: the chapter's theorem, <a href="#thm-family-data-exists"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="14.7">thm-family-data-exists</tspan></a>, is at the bottom, and every card stands above the cards whose proofs use it. An arrow from A to B says that the proof of B uses A; a dashed arrow says that the proof of B</text>
 <text x="56.0" y="163.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="16" fill="#4a5262" class="f-muted" text-anchor="start">names A without listing it as a use. Every arrow is checked against the formal proof's references, and one drawn thin, dotted or red is not borne out directly: see the card <tspan font-weight="bold">Against the formal proof</tspan>. The statements that head a section or a group of results have full cards; the others are drawn shorter. <tspan font-weight="bold">Map mode</tspan>: nothing of the blueprint's text or the proof's source is quoted. <tspan font-weight="bold">No Lean was built</tspan>: see diagram R1, band 5.</text>
+</g>
 <line x1="56" y1="196" x2="3344" y2="196" fill="none" stroke="#d4d8e0" class="s-line" stroke-width="1.5"/>
 <text x="56.0" y="252.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">1 · Reading the poster</tspan></text>
 <text x="56.0" y="297.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="13" fill="#7d8596" class="f-faint" text-anchor="start"><tspan font-weight="bold">Legend</tspan></text>
@@ -100,6 +104,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="56.0" y="794.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="22" fill="#1e2430" class="f-ink" text-anchor="start"><tspan font-weight="bold">2 · The chapter, from its leaves down to its theorem</tspan></text>
 <text x="56.0" y="822.9" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14.5" fill="#4a5262" class="f-muted" text-anchor="start">11 rows. Section by section the chapter runs: 1. Families and the family hypotheses (7); 2. Members, Siegel masses and admissible data (15); 3. Local estimates at the points of a family (9); 4. The basic conditions (3); 5. The full list of family conditions (9). The cards keep that order within a row where the arrows allow.</text>
 <g id="def-family-scale">
+<rect x="49.0" y="839.0" width="620.4" height="256.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="846.0" width="606.4" height="242.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="72.0" y="876.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Scale and size data of a member</tspan></text>
 <rect x="539.0" y="859.0" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -113,6 +118,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="1070.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-family-scale.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-objects/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">def-family-data/def-family-scale.md</tspan></a></text>
 </g>
 <g id="def-family-ranks">
+<rect x="719.4" y="839.0" width="620.4" height="256.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="846.0" width="606.4" height="242.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="742.4" y="876.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Ranks of a family</tspan></text>
 <rect x="1209.4" y="859.0" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -127,6 +133,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="1070.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-family-ranks.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-objects/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">def-family-data/def-family-ranks.md</tspan></a></text>
 </g>
 <g id="def-family-data">
+<rect x="1389.8" y="839.0" width="620.4" height="256.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="846.0" width="606.4" height="242.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="876.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Families of definite unitary groups</tspan></text>
 <rect x="1879.8" y="859.0" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -143,6 +150,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="1070.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">unitary groups) · depth 4 from the main theorems</text>
 </g>
 <g id="def-family-hermitian-spaces">
+<rect x="2060.2" y="839.0" width="620.4" height="256.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="846.0" width="606.4" height="242.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="876.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The hermitian spaces of a family member</tspan></text>
 <rect x="2550.2" y="859.0" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -157,6 +165,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="1070.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-family-hermitian-spaces.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">md</tspan></a></text>
 </g>
 <g id="def-family-member">
+<rect x="2730.6" y="839.0" width="620.4" height="256.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="846.0" width="606.4" height="242.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2753.6" y="876.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Members of a family</tspan></text>
 <rect x="3220.6" y="859.0" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -173,6 +182,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="1070.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-family-member.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-objects/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">def-family-data/def-family-member.md</tspan></a></text>
 </g>
 <g id="def-family">
+<rect x="1389.8" y="1345.6" width="620.4" height="238.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="1352.6" width="606.4" height="224.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="1412.8" y="1382.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Families</tspan></text>
 <rect x="1879.8" y="1365.6" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -186,6 +196,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="1559.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">Blueprint <a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-family.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">chap-families/sec-fam-objects/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">def-family-data/def-family.md</tspan></a></text>
 </g>
 <g id="def-harish-chandra-parameters">
+<rect x="2060.2" y="1345.6" width="620.4" height="238.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="1352.6" width="606.4" height="224.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6" stroke-dasharray="6 4"/>
 <text x="2083.2" y="1382.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Harish-Chandra parameters and dominant weights</tspan></text>
 <rect x="2550.2" y="1365.6" width="107.4" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -201,6 +212,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="1559.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-objects/def-family-data/def-harish-chandra-parameters.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">def-harish-chandra-parameters.md</tspan></a></text>
 </g>
 <g id="prop-intermediate-constructions-exist">
+<rect x="49.0" y="1834.4" width="620.4" height="313.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="1841.4" width="606.4" height="299.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="1871.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Existence of the intermediate constructions</tspan></text>
 <rect x="528.6" y="1854.4" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -220,6 +232,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="2122.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/prop-intermediate-constructions-exist.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-intermediate-constructions-exist.md</tspan></a></text>
 </g>
 <g id="lem-local-point-data-heights">
+<rect x="719.4" y="1834.4" width="620.4" height="313.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="1841.4" width="606.4" height="299.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="1871.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local point data with height bounds</tspan></text>
 <rect x="1225.8" y="1854.4" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -236,6 +249,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="2122.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-local/thm-twisting-index-and-archimedean-bounds/prop-height-inequalities-at-points/lem-local-point-data-heights.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-height-inequalities-at-points/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-local-point-data-heights.md</tspan></a></text>
 </g>
 <g id="lem-inert-theta-admissibility-cm">
+<rect x="1389.8" y="1834.4" width="620.4" height="313.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="1841.4" width="606.4" height="299.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="1871.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Admissibility of theta data at inert primes</tspan></text>
 <rect x="1896.2" y="1854.4" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -254,6 +268,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="2122.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-chosen-data-serve-families/lem-inert-theta-admissibility-cm.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-chosen-data-serve-families/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-inert-theta-admissibility-cm.md</tspan></a></text>
 </g>
 <g id="lem-orbit-data-inert-primes">
+<rect x="2060.2" y="1834.4" width="620.4" height="313.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="1841.4" width="606.4" height="299.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="1871.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Orbit data at inert primes of odd order</tspan></text>
 <rect x="2566.6" y="1854.4" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -270,6 +285,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="2122.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-local/thm-twisting-index-and-archimedean-bounds/prop-lattice-and-depth-estimates/lem-orbit-data-inert-primes.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-lattice-and-depth-estimates/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-orbit-data-inert-primes.md</tspan></a></text>
 </g>
 <g id="prop-counting-constants-constituents">
+<rect x="2730.6" y="1834.4" width="620.4" height="313.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="1841.4" width="606.4" height="299.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="1871.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Counting constants and irreducible constituents</tspan></text>
 <rect x="3210.2" y="1854.4" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -288,6 +304,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="2122.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-counting-constants-constituents.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-counting-constants-constituents.md</tspan></a></text>
 </g>
 <g id="prop-hecke-integrality-transformation">
+<rect x="49.0" y="2397.8" width="620.4" height="296.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="2404.8" width="606.4" height="282.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="2434.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Integrality and transformation of Hecke operators</tspan></text>
 <rect x="528.6" y="2417.8" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -306,6 +323,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="2669.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/prop-member-hypotheses-from-literature/prop-hecke-integrality-transformation.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-member-hypotheses-from-literature/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-hecke-integrality-transformation.md</tspan></a></text>
 </g>
 <g id="thm-good-twists-all-coprime-powers">
+<rect x="719.4" y="2397.8" width="620.4" height="296.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="2404.8" width="606.4" height="282.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="2434.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Good twists for all powers of a ray class character</tspan></text>
 <rect x="1215.7" y="2417.8" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -323,6 +341,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="2669.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/prop-twisting-property-constructed-points/thm-good-twists-all-coprime-powers.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-twisting-property-constructed-points/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-good-twists-all-coprime-powers.md</tspan></a></text>
 </g>
 <g id="lem-measured-setting-standard-character">
+<rect x="1389.8" y="2397.8" width="620.4" height="296.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="2404.8" width="606.4" height="282.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="2434.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">A measured setting with a standard character</tspan></text>
 <rect x="1896.2" y="2417.8" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -338,6 +357,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="2669.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/lem-depth-three-to-four/lem-measured-setting-standard-character.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-depth-three-to-four/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-measured-setting-standard-character.md</tspan></a></text>
 </g>
 <g id="thm-pseudo-coefficients-unitary">
+<rect x="2060.2" y="2397.8" width="620.4" height="296.8" rx="14" fill="#fdf3e4" stroke="#a35a00" class="rd-target ft-amber s-amber" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="2404.8" width="606.4" height="282.8" rx="8" fill="#fdf3e4" stroke="#a35a00" class="ft-amber s-amber" stroke-width="1.6"/>
 <text x="2083.2" y="2434.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">Pseudo-coefficients of discrete series of unitary</tspan></text>
 <text x="2083.2" y="2455.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#a35a00" class="f-amber" text-anchor="start"><tspan font-weight="bold">groups</tspan></text>
@@ -356,6 +376,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="2669.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-inner-form-multiplicities-equal/thm-pseudo-coefficients-unitary.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">thm-pseudo-coefficients-unitary.md</tspan></a></text>
 </g>
 <g id="lem-local-models-weight-range">
+<rect x="2730.6" y="2397.8" width="620.4" height="296.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="2404.8" width="606.4" height="282.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="2434.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local models at primes in the weight range</tspan></text>
 <rect x="3237.0" y="2417.8" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -373,6 +394,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="2669.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-local/thm-twisting-index-and-archimedean-bounds/prop-exponent-bounds-twisting-places/lem-local-models-weight-range.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-exponent-bounds-twisting-places/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-local-models-weight-range.md</tspan></a></text>
 </g>
 <g id="lem-admissibility-each-place">
+<rect x="719.4" y="2944.6" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="2951.6" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="2981.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Admissibility at each place</tspan></text>
 <rect x="1225.8" y="2964.6" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -389,6 +411,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="3286.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-chosen-data-serve-families/lem-admissibility-each-place.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-chosen-data-serve-families/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-admissibility-each-place.md</tspan></a></text>
 </g>
 <g id="prop-local-data-unitary-shimura-points">
+<rect x="1389.8" y="2944.6" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="2951.6" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="2981.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local data at the points of unitary Shimura varieties</tspan></text>
 <rect x="1869.4" y="2964.6" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -405,6 +428,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="3286.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-local/thm-twisting-index-and-archimedean-bounds/prop-lattice-and-depth-estimates/prop-local-data-unitary-shimura-points.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-lattice-and-depth-estimates/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-local-data-unitary-shimura-points.md</tspan></a></text>
 </g>
 <g id="lem-prime-power-lattice-inclusion-exponent">
+<rect x="2060.2" y="2944.6" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="2951.6" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="2981.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Exponent of a prime-power lattice inclusion</tspan></text>
 <rect x="2566.6" y="2964.6" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -422,6 +446,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="3286.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-local/thm-twisting-index-and-archimedean-bounds/prop-exponent-bounds-twisting-places/lem-prime-power-lattice-inclusion-exponent.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-exponent-bounds-twisting-places/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-prime-power-lattice-inclusion-exponent.</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">md</tspan></a></text>
 </g>
 <g id="prop-height-inequalities-at-points">
+<rect x="2730.6" y="2944.6" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="2951.6" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="2981.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Height inequalities at the points of a family</tspan></text>
 <rect x="3210.2" y="2964.6" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -444,6 +469,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="3286.1" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">depth 5 from the main theorems</text>
 </g>
 <g id="prop-good-twists-from-theta-series">
+<rect x="49.0" y="3561.4" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="3568.4" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="3598.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Good twists from theta series</tspan></text>
 <rect x="528.6" y="3581.4" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -463,6 +489,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="3938.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/prop-twisting-property-constructed-points/prop-good-twists-from-theta-series.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-twisting-property-constructed-points/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-good-twists-from-theta-series.md</tspan></a></text>
 </g>
 <g id="lem-integrable-spectral-setting">
+<rect x="719.4" y="3561.4" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="3568.4" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="3598.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">An integrable spectral setting</tspan></text>
 <rect x="1225.8" y="3581.4" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -481,6 +508,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="3938.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/lem-depth-three-to-four/lem-integrable-spectral-setting.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-depth-three-to-four/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-integrable-spectral-setting.md</tspan></a></text>
 </g>
 <g id="thm-inner-form-multiplicities-equal">
+<rect x="1389.8" y="3561.4" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="3568.4" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="3598.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Equal multiplicities on inner forms</tspan></text>
 <rect x="1886.1" y="3581.4" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -505,6 +533,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="3938.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-inner-form-multiplicities-equal/_section.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">_section.md</tspan></a> (Families of definite unitary groups) · depth 4 from the main theorems</text>
 </g>
 <g id="prop-exponent-bounds-twisting-places">
+<rect x="2060.2" y="3561.4" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="3568.4" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="3598.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Bounds on the exponents at the twisting places</tspan></text>
 <rect x="2539.8" y="3581.4" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -528,6 +557,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="3938.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">depth 5 from the main theorems</text>
 </g>
 <g id="lem-constructed-points-from-depth-four">
+<rect x="2730.6" y="3561.4" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="3568.4" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="3598.4" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Constructed points from depth four</tspan></text>
 <rect x="3237.0" y="3581.4" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -545,6 +575,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="3938.5" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/lem-membership-two-passes/lem-constructed-points-from-depth-four.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-membership-two-passes/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-constructed-points-from-depth-four.md</tspan></a></text>
 </g>
 <g id="lem-local-models-constructed-points">
+<rect x="719.4" y="4213.8" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="4220.8" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="4250.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Local models at constructed points</tspan></text>
 <rect x="1225.8" y="4233.8" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -564,6 +595,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="4555.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-chosen-data-serve-families/lem-local-models-constructed-points.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-chosen-data-serve-families/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-local-models-constructed-points.md</tspan></a></text>
 </g>
 <g id="prop-definite-side-norm-bounds">
+<rect x="1389.8" y="4213.8" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="4220.8" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="4250.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Norm bounds on the definite side</tspan></text>
 <rect x="1869.4" y="4233.8" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -582,6 +614,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="4555.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-basic/thm-basic-conditions-from-local-parameters/prop-defect-condition/prop-definite-side-norm-bounds.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-defect-condition/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-definite-side-norm-bounds.md</tspan></a></text>
 </g>
 <g id="prop-lattice-and-depth-estimates">
+<rect x="2060.2" y="4213.8" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="4220.8" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="4250.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Lattice and depth estimates at the points of a family</tspan></text>
 <rect x="2539.8" y="4233.8" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -604,6 +637,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="4555.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">from the main theorems</text>
 </g>
 <g id="lem-kernel-conditions-standard-data">
+<rect x="2730.6" y="4213.8" width="620.4" height="366.8" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="4220.8" width="606.4" height="352.8" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="4250.8" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Kernel conditions at standard data</tspan></text>
 <rect x="3237.0" y="4233.8" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -621,6 +655,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="4555.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-chosen-data-serve-families/lem-kernel-conditions-standard-data.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-chosen-data-serve-families/</tspan> <tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">lem-kernel-conditions-standard-data.md</tspan></a></text>
 </g>
 <g id="prop-twisting-property-constructed-points">
+<rect x="49.0" y="4830.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="4837.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="4867.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The twisting property at constructed points</tspan></text>
 <rect x="528.6" y="4850.6" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -645,6 +680,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="5207.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">groups) · depth 5 from the main theorems</text>
 </g>
 <g id="prop-member-hypotheses-from-literature">
+<rect x="719.4" y="4830.6" width="620.4" height="402.4" rx="14" fill="#f1f2f4" stroke="#5f6878" class="rd-target ft-grey s-grey" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="4837.6" width="606.4" height="388.4" rx="8" fill="#f1f2f4" stroke="#5f6878" class="ft-grey s-grey" stroke-width="1.6"/>
 <text x="742.4" y="4867.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#5f6878" class="f-grey" text-anchor="start"><tspan font-weight="bold">The published inputs used at the members</tspan></text>
 <rect x="1186.8" y="4850.6" width="130.0" height="21.5" rx="10.75" fill="#5f6878" stroke="#5f6878" class="f-grey s-grey" stroke-width="1.2"/>
@@ -664,6 +700,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="5207.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">depth 5 from the main theorems</text>
 </g>
 <g id="prop-admissible-data-exist">
+<rect x="1389.8" y="4830.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="4837.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="4867.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Admissible data exist</tspan></text>
 <rect x="1869.4" y="4850.6" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -681,6 +718,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="5207.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/prop-admissible-data-exist.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-admissible-data-exist.md</tspan></a></text>
 </g>
 <g id="lem-membership-two-passes">
+<rect x="2060.2" y="4830.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="4837.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="4867.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Membership from two passes</tspan></text>
 <rect x="2566.6" y="4850.6" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -701,6 +739,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="5207.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">the main theorems</text>
 </g>
 <g id="lem-depth-three-to-four">
+<rect x="2730.6" y="4830.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="4837.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="4867.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">From depth three to depth four</tspan></text>
 <rect x="3237.0" y="4850.6" width="91.0" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -722,6 +761,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="5207.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">main theorems</text>
 </g>
 <g id="prop-small-terms-offdiag-level">
+<rect x="49.0" y="5483.0" width="620.4" height="405.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="56.0" y="5490.0" width="606.4" height="391.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="72.0" y="5520.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Small terms, the off-diagonal bound and the level</tspan></text>
 <text x="72.0" y="5541.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">bound</tspan></text>
@@ -742,6 +782,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="72.0" y="5863.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-small-terms-offdiag-level.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-small-terms-offdiag-level.md</tspan></a></text>
 </g>
 <g id="prop-periods-valuations-good-data">
+<rect x="719.4" y="5483.0" width="620.4" height="405.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="726.4" y="5490.0" width="606.4" height="391.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="742.4" y="5520.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Periods and valuations at the good data</tspan></text>
 <rect x="1199.0" y="5503.0" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -759,6 +800,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="742.4" y="5863.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-conditions/thm-family-conditions-from-basic/prop-periods-valuations-good-data.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">prop-periods-valuations-good-data.md</tspan></a></text>
 </g>
 <g id="prop-defect-condition">
+<rect x="1389.8" y="5483.0" width="620.4" height="405.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="5490.0" width="606.4" height="391.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="5520.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The defect condition</tspan></text>
 <rect x="1869.4" y="5503.0" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -777,6 +819,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="5863.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">main theorems</text>
 </g>
 <g id="thm-twisting-index-and-archimedean-bounds">
+<rect x="2060.2" y="5483.0" width="620.4" height="405.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="5490.0" width="606.4" height="391.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="5520.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Index bounds at the twisting places and a lower</tspan></text>
 <text x="2083.2" y="5541.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">bound on archimedean weights</tspan></text>
@@ -801,6 +844,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="5863.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-local/thm-twisting-index-and-archimedean-bounds/_section.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">_section.md</tspan></a> (Families of definite unitary groups) · depth 4 from the main theorems</text>
 </g>
 <g id="prop-chosen-data-serve-families">
+<rect x="2730.6" y="5483.0" width="620.4" height="405.6" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="5490.0" width="606.4" height="391.6" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="5520.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The chosen data serve their families</tspan></text>
 <rect x="3210.2" y="5503.0" width="117.8" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -823,6 +867,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="5863.3" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">from the main theorems</text>
 </g>
 <g id="thm-basic-conditions-from-local-parameters">
+<rect x="1389.8" y="6138.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="6145.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="6175.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The basic conditions hold for the families from local</tspan></text>
 <text x="1412.8" y="6196.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">parameters</tspan></text>
@@ -846,6 +891,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="1412.8" y="6515.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-basic/thm-basic-conditions-from-local-parameters/_section.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">_section.md</tspan></a> (Families of definite unitary groups) · depth 4 from the main theorems</text>
 </g>
 <g id="thm-family-conditions-from-basic">
+<rect x="2060.2" y="6138.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2067.2" y="6145.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2083.2" y="6175.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The full list of family conditions from the basic ones</tspan></text>
 <rect x="2556.5" y="6158.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -868,6 +914,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2083.2" y="6515.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start">from the main theorems</text>
 </g>
 <g id="thm-family-membership-admissible-data">
+<rect x="2730.6" y="6138.6" width="620.4" height="402.4" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="2737.6" y="6145.6" width="606.4" height="388.4" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="2753.6" y="6175.6" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">Membership and admissible data for the families</tspan></text>
 <rect x="3226.9" y="6158.6" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>
@@ -892,6 +939,7 @@ a:hover tspan,a:focus tspan,a:hover>text{text-decoration:underline} a:hover>rect
 <text x="2753.6" y="6515.7" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="12.5" fill="#4a5262" class="f-muted" text-anchor="start"><a href="https://github.com/chrisflav/riemann-blueprint/blob/137d97602647e450901981a7decfb86ab3024a48/blueprint/chap-families/sec-fam-membership/thm-family-membership-admissible-data/_section.md"><tspan font-family="'RD Noto Sans Mono', 'RD Noto Sans Math', 'Noto Sans Mono', Menlo, Consolas, monospace" font-size="11.5">_section.md</tspan></a> (Families of definite unitary groups) · depth 4 from the main theorems</text>
 </g>
 <g id="thm-family-data-exists">
+<rect x="1389.8" y="6791.0" width="620.4" height="401.0" rx="14" fill="#edf6ee" stroke="#2e7d32" class="rd-target ft-green s-green" stroke-width="3.5" opacity="0"/>
 <rect x="1396.8" y="6798.0" width="606.4" height="387.0" rx="8" fill="#edf6ee" stroke="#2e7d32" class="ft-green s-green" stroke-width="1.6"/>
 <text x="1412.8" y="6828.0" font-family="'RD Noto Sans', 'RD Noto Sans Math', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="17" fill="#2e7d32" class="f-green" text-anchor="start"><tspan font-weight="bold">The families exist</tspan></text>
 <rect x="1886.1" y="6811.0" width="101.1" height="21.5" rx="10.75" fill="#2e7d32" stroke="#2e7d32" class="f-green s-green" stroke-width="1.2"/>

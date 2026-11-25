@@ -41,12 +41,13 @@ with this repository's library, and the shared rules are in `CLAUDE.md`.
   explains the gap on the card). Keep titles, ids, kinds, provenance, Lean names and locations, and every edge.
 - **Links:** an id set in code links on its own through the registry. If the poster draws statements in full and
   should be where an id link from elsewhere lands, add it to `lib.HOME_ORDER` at the right priority. Otherwise
-  leave it out. The plugin's linking-posters is the method. This repository follows its steps 1 and 2 (anchors
-  from blueprint ids, links only to anchors the manifest lists, the second run, sources at their pins) with two
-  differences, which its `[links]` table in `proof-posters.toml` records: a chapter card on R2 or F2 links to its
-  chapter poster as a whole, so a link to a poster need not name a target, and the posters have no `top` anchor;
-  and no target is framed (step 3 is not done here). A link out not at a pin must come from `src/papers.toml` or
-  `src/checks.toml`, and its prefix must be in `[links].allow`.
+  leave it out. The plugin's linking-posters is the method, and this repository follows all of it: anchors from
+  blueprint ids, links only to anchors the manifest lists, the second run, sources at their pins, every poster's
+  header a `top` anchor (`lib.TOP`), which R2's and F2's chapter cards link to, and every anchored group framed
+  by a halo (`lib.halo`, drawn first in the group by `bp.node` and `Canvas._header`, shown by the `:target`
+  style in `lib._css`). An anchored group drawn any other way needs its halo too, or `check-links.py` fails on
+  it (`[links].frame_classes`). A link out not at a pin must come from `src/papers.toml` or `src/checks.toml`, and
+  its prefix must be in `[links].allow`.
 - Standard library only. Python 3.12+.
 
 ## The method, as this repository does it

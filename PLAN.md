@@ -446,6 +446,11 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   poster of the set and to its anchor, an absolute one to a `lib.PINNED` prefix.
 - **What it does not do.** A poster inside an `<img>`, as the README embeds R1, or in GitHub's file viewer, draws
   the same and links nowhere. The README points to the Pages site for reading.
+- **The target is framed.** Done 2026.11.25, after the plugin's linking-posters: every anchored card and every
+  poster's header (`top`, which R2's and F2's chapter cards now link to) has a halo, shown by `:target` and
+  without its pulse under reduced motion, and `check-links.py` with `require_targets` and `frame_classes` holds
+  every link to a target and every target framed. The content of every poster is unchanged, and every poster's
+  bytes changed.
 
 **Done when** every footer id and Lean line on all sixteen posters is a link, in both sets, the link check
 runs in CI and in the release workflow, a map poster's links resolve to map posters in a downloaded release
