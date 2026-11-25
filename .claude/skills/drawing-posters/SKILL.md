@@ -41,7 +41,12 @@ with this repository's library, and the shared rules are in `CLAUDE.md`.
   explains the gap on the card). Keep titles, ids, kinds, provenance, Lean names and locations, and every edge.
 - **Links:** an id set in code links on its own through the registry. If the poster draws statements in full and
   should be where an id link from elsewhere lands, add it to `lib.HOME_ORDER` at the right priority. Otherwise
-  leave it out.
+  leave it out. The plugin's linking-posters is the method. This repository follows its steps 1 and 2 (anchors
+  from blueprint ids, links only to anchors the manifest lists, the second run, sources at their pins) with two
+  differences, which its `[links]` table in `proof-posters.toml` records: a chapter card on R2 or F2 links to its
+  chapter poster as a whole, so a link to a poster need not name a target, and the posters have no `top` anchor;
+  and no target is framed (step 3 is not done here). A link out not at a pin must come from `src/papers.toml` or
+  `src/checks.toml`, and its prefix must be in `[links].allow`.
 - Standard library only. Python 3.12+.
 
 ## The method, as this repository does it
@@ -63,6 +68,7 @@ uv run python diagrams/gen-diagrams.py                   # then all, so every po
 uv run python diagrams/gen-diagrams.py --map             # the map set
 uv run python skills/moving-pins/scripts/determinism.py  # both sets, twice, two hash seeds: must be byte-identical
 uv run python skills/recording-expectations/scripts/check-expectations.py  # expectations recorded and read
+uv run python skills/linking-posters/scripts/check-links.py  # every link lands, every link out allowed; not run by CI
 ```
 
 Any WARNING or ERROR is a failure: a word too wide for its cell, two texts overlapping, a character outside the
@@ -92,6 +98,7 @@ moves no expectation is PATCH.
 ## Check before you stop
 
 - recording-expectations' own list holds.
+- `check-links.py` (the plugin's, in `skills/linking-posters/scripts/`) passes.
 - `determinism.py` (the plugin's, in `skills/moving-pins/scripts/`) passes. The committed SVGs and manifests are
   the regenerated ones, so `git status -- diagrams` is clean after a fresh run.
 - Both sets look right in both themes, and the map set quotes nothing.

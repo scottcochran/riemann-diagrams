@@ -32,9 +32,9 @@ NEED = ["build.modules", "build.expected_names"]
 
 
 # load_config is the same in moving-pins/scripts/pin-status.py and determinism.py, in
-# cutting-releases/scripts/release-facts.py and verify-release.py, and in
-# recording-expectations/scripts/check-expectations.py. Each skill's folder stands alone, and the scripts still
-# read the config the same way. Change all copies together.
+# cutting-releases/scripts/release-facts.py and verify-release.py, in
+# recording-expectations/scripts/check-expectations.py, and in linking-posters/scripts/check-links.py. Each
+# skill's folder stands alone, and the scripts still read the config the same way. Change all copies together.
 def load_config(argv, prog, need):
     """The project's proof-posters.toml, from --config FILE or the root of the git tree, and the directory it is in.
 

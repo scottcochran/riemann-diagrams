@@ -107,6 +107,22 @@ via = "crossref"          # crossref | zbmath | hand | blueprint
 note = "only where the choice needs one"
 """
 
+[links]
+# For linking-posters' check-links.py, as this repository links today. Ids link to cards on the same or another
+# poster through the manifest registry; a chapter card on R2 or F2 links to its chapter poster as a whole, so a link
+# to a poster need not name a target, and no target is framed (no frame_classes).
+require_targets = false
+unrendered = ["[[@"]          # this library's link marker (bp.linked): never left as text in an output
+# Every link out that is not at a pin comes from src/papers.toml (the papers F4 links) or src/checks.toml (the pages
+# R1's band 5 rests on). A new paper on another host fails check-links until it is added here.
+allow = [
+    "https://doi.org/", "https://zbmath.org/", "https://www.numdam.org/", "https://eudml.org/",
+    "https://arxiv.org/", "https://archive.org/", "https://alpo.ge/remark.pdf",
+    "https://www.claymath.org/collections/riemanns-1859-manuscript/",
+    "https://math.mit.edu/~drew/grh/", "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
+    "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/",
+]
+
 [release]
 classification = "PLAN.md, Phase 5: the MAJOR / MINOR / PATCH table"
 tag = "vMAJOR.MINOR.PATCH, annotated and signed (git tag -s), on main, pushed by the custodian"
