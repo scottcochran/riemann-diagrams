@@ -143,6 +143,10 @@ of the formal proof, and shows the proof's status once one is recorded. The plan
   "Against the formal proof", reads the chapter against the file: the dashed hypotheses, the uses no arrow
   draws, and the statement uses the cards list. R4 to R8 and the traces followed as Phase 8a, each with the
   verdicts it expects, and an arrow the proof does not bear out drawn in a style of its own.
+  R3's verdicts were released 2026.11.23 as `v0.5.0`, a MINOR standing in for a MAJOR before 1.0, from `19a779b`
+  (pull request 34) by run 45269535700: 34 assets, the 32 SVGs of both sets, each matching the tree at the tag byte
+  for byte, `pins.json` and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked
+  the assets against the tree and found `pins.json` naming the tag.
 - **The statuses.** When the mirror's Comparator run finishes and its notes record a result, R1's band 5 is the
   first thing to update, and a status pill on every card the second.
 
@@ -231,6 +235,18 @@ that publishes, as GitHub's own Pages workflow does, with the configure step in 
 the `pages` permission (the first split had it in build, and failed once more). With that in, run 45035596381
 published `v0.2.0` to Pages by hand: the site's `pins.json` names the tag and its index lists all sixteen
 posters of both sets. The release itself was not touched.
+
+`v0.3.0` was cut 2026.11.23 from `47467ec` (the merge of pull request 28) by run 45128389330, a MINOR:
+`MIRROR_COMMIT` moved from `2dea990069` to `c592e91eb8`, and R1's band 5 began to report what has been checked of
+the formal proof. 34 assets, the 32 SVGs of both sets, each matching the tree at the tag byte for byte, `pins.json`
+and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked the assets against the
+tree and found `pins.json` naming the tag.
+
+`v0.4.0` was cut the same day from `bbcc963` (pull request 30) by run 45183122989, a MINOR: `MIRROR_COMMIT` moved
+to `c900e67c2f`, and F6 links every id. 34 assets, the 32 SVGs of both sets, each matching the tree at the tag byte
+for byte, `pins.json` and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked
+the assets against the tree and found `pins.json` naming the tag. The site serves the latest release, so neither
+is served now; neither was touched after its run.
 
 ### Phase 6: other frames
 
@@ -451,6 +467,10 @@ from the address bar and from an `<a>` inside it. Firefox and Safari are unteste
   without its pulse under reduced motion, and `check-links.py` with `require_targets` and `frame_classes` holds
   every link to a target and every target framed. The content of every poster is unchanged, and every poster's
   bytes changed.
+  Released 2026.11.25 as `v0.8.1`, a PATCH, cut from `3d9dc44` (the merge of pull request 45) by run
+  45562085830, every job of which passed, the Pages deploy included: 42 assets, the 40 SVGs of both sets, each
+  matching the tree at the tag byte for byte, `pins.json` and `SHA256SUMS`. `verify-release.py` checked the
+  assets against the tree, and the site's `pins.json` names `v0.8.1`. Nothing was touched after the run.
 
 **Done when** every footer id and Lean line on all sixteen posters is a link, in both sets, the link check
 runs in CI and in the release workflow, a map poster's links resolve to map posters in a downloaded release
@@ -497,6 +517,10 @@ statements, not the declaration graph, and stays well under a megabyte.
   whether the chain holds. Both traces hold: each has one link borne out only by way of other statements. Of
   the chapter posters' drawn arrows, R4 has 4 `apart`, R5 4, R6 6, R7 5 and R8 4. In R7 all five come from
   `thm-hilbert-modular-inputs`; in R8 all four involve `thm-base-change-unitary`.
+  Released 2026.11.23 as `v0.6.0`, a MINOR standing in for a MAJOR before 1.0, from `f7209ac` (pull request 35) by
+  run 45274166643: 34 assets, the 32 SVGs of both sets, each matching the tree at the tag byte for byte,
+  `pins.json` and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked the
+  assets against the tree and found `pins.json` naming the tag.
 - **8b: F7, the blueprint against the Lean, chapter by chapter.** A matrix like F3's: a row per chapter that
   uses, a column per chapter used, and in each cell the arrows by verdict and the uses the blueprint does not
   draw. It shows where the blueprint's graph can be trusted, and that most of the trouble sits in a few
@@ -509,6 +533,10 @@ statements, not the declaration graph, and stays well under a megabyte.
   two tables, arrows and uses with no arrow, with the statements the trouble concentrates in beside them. The
   build checks the counts by verdict, the two statements that hold 90 of the 167 arrows not borne out (every
   other holds at most 4), and the depth moves.
+  Released 2026.11.23 as `v0.7.0`, a MINOR for a new poster, from `1c1ec8f` (pull request 36) by run 45276636660:
+  36 assets, the 34 SVGs of both sets, each matching the tree at the tag byte for byte, `pins.json` and
+  `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked the assets against the
+  tree and found `pins.json` naming the tag.
 - **8c: F8, what the proof assumes and what it invokes.** 157 arrows are borne out only through the fields of
   a structure: A takes B as a hypothesis rather than proving or citing it. F8 draws each such package (such as
   `LiteratureCMHypothesis`): its fields, as statements, and the statements that take it. Against F4, the
@@ -546,6 +574,10 @@ statements, not the declaration graph, and stays well under a megabyte.
   but unused, and 659 joined. Of the blueprint's Lean names, 5 are gone
   from the later tree. The build checks the counts by kind, the user-written names that left and the names'
   statuses. With 8e, Phase 8 is done.
+  F8, F9 and F10 were released together 2026.11.23 as `v0.8.0`, a MINOR, from `b92d964` (pull request 39) by run
+  45291444007: 42 assets, the 40 SVGs of both sets, each matching the tree at the tag byte for byte, `pins.json`
+  and `SHA256SUMS`. Every job passed, the Pages deploy included; `verify-release.py` checked the assets against
+  the tree and found `pins.json` naming the tag.
 
 Order: 8a, then 8b, which need nothing new; then 8c, which has the most to say about the mathematics; 8d and 8e
 as wanted. Releases follow Phase 5's table: a batch of 8a's posters changes what they are verified against, a
