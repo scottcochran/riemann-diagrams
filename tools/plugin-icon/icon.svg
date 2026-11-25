@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- The proof-posters plugin icon: a theorem card (blue) resting on two cards that it uses (teal), which rest
+       on one more (grey), drawn in the posters' palette (diagrams/src/lib.py, light theme). The PNG at
+       plugins/proof-posters/.claude-plugin/icon.png is this file rendered at 1024 x 1024 by render.cjs. -->
+  <rect width="1024" height="1024" fill="#eeeeee"/>
+  <g stroke="#1e2430" stroke-width="22" stroke-linecap="round" fill="none">
+    <path d="M312 436 L383 366"/>
+    <path d="M712 436 L641 366"/>
+    <path d="M420 758 L376 681"/>
+    <path d="M604 758 L648 681"/>
+  </g>
+  <g fill="#1e2430">
+    <path d="M420 330 L396 388 L361 353 z"/>
+    <path d="M604 330 L663 353 L628 388 z"/>
+    <path d="M350 636 L401 674 L357 699 z"/>
+    <path d="M674 636 L667 699 L623 674 z"/>
+  </g>
+  <g stroke-width="22">
+    <rect x="292" y="104" width="440" height="208" rx="34" fill="#edf2fb" stroke="#2f5aa8"/>
+    <rect x="96" y="454" width="384" height="160" rx="30" fill="#e8f5f1" stroke="#166b5b"/>
+    <rect x="544" y="454" width="384" height="160" rx="30" fill="#e8f5f1" stroke="#166b5b"/>
+    <rect x="352" y="776" width="320" height="136" rx="28" fill="#f1f2f4" stroke="#5f6878"/>
+  </g>
+  <g stroke-linecap="round" stroke-width="26">
+    <path d="M352 174 H672" stroke="#2f5aa8"/>
+    <path d="M352 242 H560" stroke="#2f5aa8" opacity="0.55"/>
+    <path d="M152 510 H424" stroke="#166b5b"/>
+    <path d="M152 558 H336" stroke="#166b5b" opacity="0.55"/>
+    <path d="M600 510 H872" stroke="#166b5b"/>
+    <path d="M600 558 H784" stroke="#166b5b" opacity="0.55"/>
+    <path d="M408 828 H616" stroke="#5f6878"/>
+    <path d="M408 868 H536" stroke="#5f6878" opacity="0.55"/>
+  </g>
+</svg>
