@@ -41,7 +41,8 @@ with this repository's library, and the shared rules are in `CLAUDE.md`.
   explains the gap on the card). Keep titles, ids, kinds, provenance, Lean names and locations, and every edge.
 - **Links:** an id set in code links on its own through the registry. If the poster draws statements in full and
   should be where an id link from elsewhere lands, add it to `lib.HOME_ORDER` at the right priority. Otherwise
-  leave it out.
+  leave it out. The plugin's linking-posters is the method (anchors, targets, the second run, framing a target);
+  its `check-links.py` checks the built posters.
 - Standard library only. Python 3.12+.
 
 ## The method, as this repository does it
