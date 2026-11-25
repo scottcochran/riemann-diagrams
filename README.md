@@ -178,7 +178,7 @@ Depth | Statements | Published | Modified | New
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
 | `derived/` | dated, frozen write-ups; [its README](derived/README.md) lists them |
-| `plugins/proof-posters/`, `.claude-plugin/` | the `proof-posters` Claude Code plugin, and the marketplace that lists it: the skills that keep the posters true to their sources |
+| `plugins/proof-posters/`, `.claude-plugin/` | the `proof-posters` Claude Code plugin, and the marketplace that lists it: the skills that keep the posters true to their sources. Its icon is drawn from `tools/plugin-icon/icon.svg` by `render.cjs` there |
 | `proof-posters.toml` | where those skills find this repository's pins, checks, papers and release settings |
 | `CLAUDE.md`, `.claude/` | the rules every change keeps, and the poster recipe, for Claude Code sessions in this repository |
 
