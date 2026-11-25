@@ -38,8 +38,9 @@ sources, and the classes that frame a target. Read the project's poster skill fo
 - **Link only to what exists.** A poster learns another's anchors from the committed manifest, which the generator
   writes with every poster's anchors. A link is made only to an anchor it lists, and stays plain text otherwise. When
   a run moves any poster's anchors, the generator updates the manifest, prints the rerun marker (`NOTE …`) and exits
-  1; the second run makes the links follow. CI runs once against the committed manifest, so a manifest that was not
-  regenerated fails there.
+  1; the second run makes the links follow. If CI regenerates once and compares the result with the committed
+  files, as it should, a manifest that was not regenerated fails there; if it does not, nothing catches a stale
+  manifest but this second run.
 - **Every link has a target** (`[links].require_targets`). A link to a whole poster opens its `top`. A count
   ("8 declarations", "Chapter 3 (4)") opens the list it counts: the one item's card when it counts one, else a block
   or row that names them, each of which links on. Where nothing yet lists what a count counts, add the list (a new
@@ -62,7 +63,9 @@ it was. Frame it with CSS `:target`, which matches the element the address's fra
 - **No pulse under reduced motion**: `@media (prefers-reduced-motion:reduce)` turns the animation off for the halo
   and the row, and leaves the frame shown.
 - **A row frames itself**: `g.row:target>rect:first-child{…}` recolours the row's own background rectangle.
-- **Leave room above**: `g[id]{scroll-margin-top:…}`, so the frame is not cut by the top of the window.
+- **Leave room above**: `g[id]{scroll-margin-top:…}`, so the frame is not cut by the top of the window. Measured to
+  work on a group in a standalone SVG in Chrome; untested in Firefox and Safari (the reference says how it was
+  measured).
 - **Where it works:** wherever a browser opens the SVG as a document: the Pages site, a release asset, a file. Not in
   GitHub's file viewer, which shows an SVG as an image, without its links or its style. Say so in the docs.
 
@@ -74,7 +77,9 @@ python3 ${CLAUDE_SKILL_DIR}/scripts/check-links.py
 
 It reads every output, parses it as XML, and fails on: a duplicate id; a link to an id that is not there, on the same
 poster or another; a link to a file that is not an output; with `require_targets`, a link to a poster with no
-fragment; a link out that is not at a pinned commit or an allowed prefix (or, without `[links].allow`, reports them);
+fragment; a link out that is not at a pinned commit or an allowed prefix (or, without `[links].allow`, reports them;
+a commit is recognised only in a GitHub `blob`, `tree` or `commit` address, so a pinned link on another host needs
+an `allow` prefix);
 any `[links].unrendered` marker; and, with `frame_classes`, a linked id with no frame. It ends with the links by
 kind. Then look: open a few targets in a browser, and read `references/target-highlighting.md` before trusting a
 headless capture of one.
