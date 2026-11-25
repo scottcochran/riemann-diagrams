@@ -1,6 +1,6 @@
 ---
 name: extracting-lean-deps
-description: "Reads the real dependency graph of a Lean formal proof without building it, from a published export of the proof (lean4export NDJSON) cross-checked against the project's public build cache of compiled modules, and turns it into small derived files a poster can read: a verdict on every edge a blueprint draws, the assumptions the proof takes, the formal work under each statement, and what changed between two commits. Each file is pinned by its hash and the commits it was read from. Use when a derived Lean file must be rebuilt because a pin moved; when the build stops on a derived file's hash or commits; when a new poster needs a new fact about the formal proof; or when asked whether the Lean bears out a blueprint arrow. Not for regenerating the posters themselves (moving-pins), or for writing a poster that reads the files (recording-expectations)."
+description: "Reads the real dependency graph of a Lean formal proof without building it, from a published export of the proof (lean4export NDJSON) cross-checked against the project's public build cache of compiled modules, and turns it into small derived files a poster can read: a verdict on every edge a blueprint draws, the assumptions the proof takes, the formal work under each statement, what changed between two commits, and, where the formalisation annotates its declarations by a convention, what its docstrings record (the paper item each formalises, gaps, deviations). Each file is pinned by its hash and the commits it was read from. Use when a derived Lean file must be rebuilt because a pin moved; when the build stops on a derived file's hash or commits; when a new poster needs a new fact about the formal proof; or when asked whether the Lean bears out a blueprint arrow. Not for regenerating the posters themselves (moving-pins), or for writing a poster that reads the files (recording-expectations)."
 ---
 
 # Extracting Lean dependencies
@@ -40,6 +40,24 @@ it, in dependency order (the edges file first, since others read it), then updat
 `references/verdicts.md` defines the verdicts, applied in order. Use them as defined and keep them in order: a
 poster's legend and its checks depend on the definitions, and changing them is a change in what is checked (a
 MAJOR release).
+
+## The formalisers' docstrings
+
+Some formalisations annotate their declarations by a convention: a docstring line naming the paper item a
+declaration formalises (`Paper:`), or recording a gap, an input from the literature or a departure from the print.
+Where a project does, read it as data, into a derived file pinned like the others. `references/docstrings.md` is
+the method, from riemann-masullo-diagrams. In short:
+
+- **Not from the export.** A lean4export export carries no docstrings. Read them from the compiled modules (the
+  docstring extension, at the exported and the server level) or from the source, and say which in the `meta`.
+- **Record the rules exactly:** a label counts only at the start of a line; where a labelled part ends; the
+  pattern a reference must match. Count the near-misses (the label's word inside a sentence) and report them,
+  and report a reference the pattern cannot parse rather than drop it.
+- **The labels are the formal project's**, read at a pinned commit; when its convention changes, the reader and
+  the counts change with it.
+- **Quote a docstring only under the Lean source's licence.** Without one, count and link, do not quote.
+
+A project with no such convention has nothing to read here; say so and skip it.
 
 ## Pitfalls (each one cost a run)
 

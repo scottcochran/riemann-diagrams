@@ -21,7 +21,8 @@ only) and reference tables under `references/`. Under Claude Code they are named
 Three skills have a page to learn them from, each built on an example that was run:
 `recording-expectations/references/example.md` (one small output, broken by four changes to its source),
 `extracting-lean-deps/references/sketch.md` (the method in one picture, and a ten-statement example run through
-the reference tools, with each lesson's effect on it), and `linking-posters/references/target-highlighting.md`
+the reference tools, with each lesson's effect on it, and `docstrings.md` beside it, reading a formalisation's
+annotated docstrings, from riemann-masullo-diagrams), and `linking-posters/references/target-highlighting.md`
 (the markup and style of a framed target, from riemann-masullo-diagrams, and how to test one without being misled).
 
 What stays out of the plugin because it is this repository's own: the poster recipe
