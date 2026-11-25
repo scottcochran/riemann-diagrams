@@ -31,9 +31,10 @@ import tomllib
 NEED = ["build.regenerate", "build.failure_markers", "build.outputs"]
 
 
-# load_config is the same in moving-pins/scripts/pin-status.py and determinism.py and in
-# cutting-releases/scripts/release-facts.py and verify-release.py, so that each skill's folder stands alone and the
-# scripts still read the config the same way. Change all copies together.
+# load_config is the same in moving-pins/scripts/pin-status.py and determinism.py, in
+# cutting-releases/scripts/release-facts.py and verify-release.py, and in
+# recording-expectations/scripts/check-expectations.py. Each skill's folder stands alone, and the scripts still
+# read the config the same way. Change all copies together.
 def load_config(argv, prog, need):
     """The project's proof-posters.toml, from --config FILE or the root of the git tree, and the directory it is in.
 

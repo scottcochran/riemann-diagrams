@@ -62,6 +62,7 @@ uv run python diagrams/gen-diagrams.py <ID>              # one poster; exits 1 w
 uv run python diagrams/gen-diagrams.py                   # then all, so every poster's links follow
 uv run python diagrams/gen-diagrams.py --map             # the map set
 uv run python skills/moving-pins/scripts/determinism.py  # both sets, twice, two hash seeds: must be byte-identical
+uv run python skills/recording-expectations/scripts/check-expectations.py  # expectations recorded and read
 ```
 
 Any WARNING or ERROR is a failure: a word too wide for its cell, two texts overlapping, a character outside the

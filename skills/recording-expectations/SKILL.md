@@ -9,6 +9,10 @@ An output drawn from pinned sources is a second reading of them. It stays true o
 that touches it stops the build, so that the reading is redone by a person rather than redrawn in silence. This
 skill is how an output is written so that this holds. The drawing is the easy part; the checks are the work.
 
+To learn it, start with `references/example.md`: a 54-line output module written this way, run, then broken by
+four changes to its source, with what the build printed each time, what happens with its checks taken out, and
+what the check script and a release see.
+
 ## Contents
 
 - Setup
@@ -53,6 +57,16 @@ records what it expects them to say, and the build compares the two.
   file or id that changed, so that the person moving a pin knows where to look.
 - **Never soften a comparison**: no tolerance, no caught exception, no skipped item. Loosening a check is the one
   thing moving-pins forbids, so it must not be built in.
+- **Check the record:**
+
+  ```sh
+  python3 ${CLAUDE_SKILL_DIR}/scripts/check-expectations.py
+  ```
+
+  It fails on a module that records no expectation, a name recorded and never read in its module (it checks
+  nothing), a name assigned twice, a name in `expected_names` no module records, and a `minor_names` entry outside
+  `expected_names`; it lists each value that is not a literal. It cannot see whether a name that is read is
+  compared, or in both directions: that is checked by reading.
 
 ## 3. Every sentence is one of four kinds
 
@@ -96,7 +110,7 @@ is a MINOR release (cutting-releases).
 
 - Every fact shown is read from the pinned sources or a pinned derived file.
 - Every expectation is a module-level literal under a name in `expected_names`, compared in both directions, and
-  its failure says what to re-read.
+  its failure says what to re-read. `check-expectations.py` passes.
 - Every sentence is quoted, computed, framing, or a guarded interpretation.
 - `determinism.py` passes, and the committed outputs are the regenerated ones.
 - Every doc that lists or counts outputs says the same as the build.

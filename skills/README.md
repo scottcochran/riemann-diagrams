@@ -12,13 +12,15 @@ repository is the first user, and its own copy of the project config is `proof-p
 | [`moving-pins`](moving-pins/SKILL.md) | a source has new commits; a pin, re-read hash or derived-file hash fails; the daily sources check failed | every check passing by recording what the sources say, never by loosening one; the outputs byte-identical over two rounds; the list of posters to re-read |
 | [`linking-papers`](linking-papers/SKILL.md) | a reference has no paper in the papers file, or a link needs checking | one verified, stable URL per reference, with how it was found |
 | [`extracting-lean-deps`](extracting-lean-deps/SKILL.md) | a derived file about the formal proof must be rebuilt, or a poster needs a new fact about it | derived files read from the published export and the build cache, pinned by hash and commit |
-| [`recording-expectations`](recording-expectations/SKILL.md) | an output is added, or what one reads, draws or says changes | every fact read from the sources, what it expects recorded as literals and compared both ways, every sentence one of four kinds, the bytes deterministic, the docs that count updated |
+| [`recording-expectations`](recording-expectations/SKILL.md) | an output is added, or what one reads, draws or says changes | every fact read from the sources, what it expects recorded as literals and compared both ways (`check-expectations.py` passing), every sentence one of four kinds, the bytes deterministic, the docs that count updated |
 | [`cutting-releases`](cutting-releases/SKILL.md) | a release is due, or one needs checking | a class, a drafted tag message handed to the custodian, and a published release checked against the tree |
 
 Each skill has a `SKILL.md` and, where a step is mechanical, a script under `scripts/` (Python standard library
 only) and reference tables under `references/`. Under Claude Code they are named `proof-posters:<skill>`.
-`extracting-lean-deps/references/sketch.md` is where to start learning that skill: the method in one picture, a
-ten-statement example run through the reference tools, and each lesson with what it does to the example.
+Two skills have a page to learn them from, each built on an example that was run:
+`recording-expectations/references/example.md` (one small output, broken by four changes to its source) and
+`extracting-lean-deps/references/sketch.md` (the method in one picture, and a ten-statement example run through
+the reference tools, with each lesson's effect on it).
 
 What stays out of the plugin because it is this repository's own: the poster recipe
 (`.claude/skills/drawing-posters/`), which applies recording-expectations with this repository's library, and the
