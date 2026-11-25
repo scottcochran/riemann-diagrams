@@ -279,7 +279,7 @@ four files the generator reads.
 | `src/lean-hypotheses.json` | the structures of assumptions behind the hypothesis arrows, the theorems that conclude each statement's `Prop`, and the export's axioms; written by `tools/lean-edges/hypotheses.py`, pinned by `LEAN_HYPOTHESES_SHA256` in `bp.py`; F8 reads it |
 | `src/lean-weight.json` | the declarations under each statement's Lean, counted and sized, and two statements opened to their helpers; written by `tools/lean-edges/weight.py`, pinned by `LEAN_WEIGHT_SHA256` in `bp.py`; F9 reads it |
 | `src/lean-drift.json` | the proof's closures at the two pins compared by name, per statement and per blueprint Lean name, with the mirror's git history between them; written by `tools/lean-edges/drift.py`, pinned by `LEAN_DRIFT_SHA256` in `bp.py` and checked against `MIRROR_COMMIT`; F10 reads it |
-| `TEXT.md`, `PAGE.md`, `EDGES.md` | where each kind of text on a poster comes from; how the light page's grey was chosen; how the blueprint's arrows compare with the formal proof |
+| `TEXT.md`, `PAGE.md`, `EDGES.md`, `SOURCES.md` | where each kind of text on a poster comes from; how the light page's grey was chosen; how the blueprint's arrows compare with the formal proof; the other published sources for a blueprint, against the one in use |
 
 `lib.py` is the drawing library of the TOPAK diagram family (Apache-2.0, same
 author), with the brand, the date and the fonts changed. `bp.py` is new here:

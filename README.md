@@ -90,7 +90,9 @@ What on a poster is quoted, what is computed and what is written here is set
 out in [diagrams/TEXT.md](diagrams/TEXT.md); why the light theme's page is a
 93% grey, and how that was measured, in [diagrams/PAGE.md](diagrams/PAGE.md);
 how the blueprint's arrows compare with the formal proof's references, in
-[diagrams/EDGES.md](diagrams/EDGES.md).
+[diagrams/EDGES.md](diagrams/EDGES.md); and why the blueprint is the source,
+against the other published readings of the proof, in
+[diagrams/SOURCES.md](diagrams/SOURCES.md).
 A release is a version tag; each one carries every poster as a file, both
 sets, with checksums and the pins they were drawn from, so a poster can be
 cited by release and fetched after the tree has moved on: see
