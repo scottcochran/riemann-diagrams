@@ -22,6 +22,10 @@ the asset globs, the checksum file, and the file the workflow writes to record t
 tag under `metadata_tag`). `release-facts.py` also reads `[build]`: the manifests and the counts in them
 (`manifest_counts`), and which recorded expectations make a release MINOR when they change (`minor_names`).
 
+A project without a Pages site leaves `pages_workflow` and `pages_url` out. To set one up, follow
+`references/pages-site.md`: the workflow's checks, the one-time settings, and the pitfalls. A Pages site is public
+even for a private repository, so ask the custodian before enabling it.
+
 ## Steps
 
 1. **Is a release due?** Releases go out when a pin moves, a poster is added or removed, or the checks change.
