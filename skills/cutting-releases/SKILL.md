@@ -1,6 +1,6 @@
 ---
 name: cutting-releases
-description: "Prepares a release of generated posters as an annotated, signed version tag: decides MAJOR, MINOR or PATCH from what moved since the last tag, drafts the tag message (the kind of move, what changed, which posters a reader must re-read), hands the tag and push to the custodian, then checks the release run, the release's checksums against the tree at the tag and the Pages site, and writes the plan's done note. Never edits, moves, deletes or re-points a published release or tag. Use when asked to cut, tag or prepare a release; when a phase or a pin move has landed and a release is due; or to check a published release. Not for the pin move itself (moving-pins) or a new poster (the project's own poster skill)."
+description: "Prepares a release of generated posters as an annotated, signed version tag: decides MAJOR, MINOR or PATCH from what moved since the last tag, drafts the tag message (the kind of move, what changed, which posters a reader must re-read), hands the tag and push to the custodian, then checks the release run, the release's checksums against the tree at the tag and the Pages site, and writes the plan's done note. Never edits, moves, deletes or re-points a published release or tag. Use when asked to cut, tag or prepare a release; when a phase or a pin move has landed and a release is due; or to check a published release. Not for the pin move itself (moving-pins) or a new poster (recording-expectations)."
 ---
 
 # Cutting releases

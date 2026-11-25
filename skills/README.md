@@ -12,13 +12,15 @@ repository is the first user, and its own copy of the project config is `proof-p
 | [`moving-pins`](moving-pins/SKILL.md) | a source has new commits; a pin, re-read hash or derived-file hash fails; the daily sources check failed | every check passing by recording what the sources say, never by loosening one; the outputs byte-identical over two rounds; the list of posters to re-read |
 | [`linking-papers`](linking-papers/SKILL.md) | a reference has no paper in the papers file, or a link needs checking | one verified, stable URL per reference, with how it was found |
 | [`extracting-lean-deps`](extracting-lean-deps/SKILL.md) | a derived file about the formal proof must be rebuilt, or a poster needs a new fact about it | derived files read from the published export and the build cache, pinned by hash and commit |
+| [`recording-expectations`](recording-expectations/SKILL.md) | an output is added, or what one reads, draws or says changes | every fact read from the sources, what it expects recorded as literals and compared both ways, every sentence one of four kinds, the bytes deterministic, the docs that count updated |
 | [`cutting-releases`](cutting-releases/SKILL.md) | a release is due, or one needs checking | a class, a drafted tag message handed to the custodian, and a published release checked against the tree |
 
 Each skill has a `SKILL.md` and, where a step is mechanical, a script under `scripts/` (Python standard library
 only) and reference tables under `references/`. Under Claude Code they are named `proof-posters:<skill>`.
 
 What stays out of the plugin because it is this repository's own: the poster recipe
-(`.claude/skills/drawing-posters/`) and the shared rules (`CLAUDE.md`).
+(`.claude/skills/drawing-posters/`), which applies recording-expectations with this repository's library, and the
+shared rules (`CLAUDE.md`).
 
 ## Installing
 
@@ -75,6 +77,6 @@ part skips the skill that needs it.
 | A papers file, and a build check that fails on a reference with no entry or an entry with no reference | linking-papers | `diagrams/src/papers.toml`, checked by `diagrams/src/d_f4_literature.py` |
 | A release workflow that, on a pushed tag, publishes the outputs with a checksum file, and optionally a metadata file that names the tag and a Pages site that serves it; on GitHub, since `verify-release.py` uses `gh` | cutting-releases | `.github/workflows/release.yml`, `pages.yml`, `tools/release-notes.py` |
 | A runbook and tools that read the formal proof's export and build cache and write the derived files, each with a `meta` file of the commits it was read at. The skill has no scripts | extracting-lean-deps | `tools/lean-edges/` and its `README.md` |
-| Optionally, a skill for adding or reworking a poster, named in `[project].poster_skill` | the other skills hand that work to it | `.claude/skills/drawing-posters/` |
+| Optionally, a skill for adding or reworking a poster with the project's own library, named in `[project].poster_skill` | recording-expectations defers to it for layout and look | `.claude/skills/drawing-posters/` |
 
 The scripts need git and Python 3.11 or later, and `verify-release.py` also needs the GitHub CLI, logged in.

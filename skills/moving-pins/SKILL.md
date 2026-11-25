@@ -1,6 +1,6 @@
 ---
 name: moving-pins
-description: "Moves generated diagrams to new commits of the sources they are drawn from, and re-reads the poster's own prose when a source it paraphrases changes. Bumps the pins, regenerates, and fixes each failing check by recording what the source now says, never by loosening the check; ends with the list of posters a reader must re-read. Use when an upstream source (a blueprint, a mirror of a formal proof) has new commits; when asked to bump a pin such as BP_COMMIT; when the build stops on a pin, on a re-read hash such as NOTES_SHA256 or CHECKS_SHA256, or on a derived file's hash; or when the scheduled sources check failed even though no pin moved. Not for adding or redrawing a poster (the project's own poster skill), not for a missing paper link alone (linking-papers), not for rebuilding the Lean-derived files (extracting-lean-deps), and not for tagging the result (cutting-releases)."
+description: "Moves generated diagrams to new commits of the sources they are drawn from, and re-reads the poster's own prose when a source it paraphrases changes. Bumps the pins, regenerates, and fixes each failing check by recording what the source now says, never by loosening the check; ends with the list of posters a reader must re-read. Use when an upstream source (a blueprint, a mirror of a formal proof) has new commits; when asked to bump a pin such as BP_COMMIT; when the build stops on a pin, on a re-read hash such as NOTES_SHA256 or CHECKS_SHA256, or on a derived file's hash; or when the scheduled sources check failed even though no pin moved. Not for adding or redrawing a poster (recording-expectations, and the project's own poster skill), not for a missing paper link alone (linking-papers), not for rebuilding the Lean-derived files (extracting-lean-deps), and not for tagging the result (cutting-releases)."
 ---
 
 # Moving pins
@@ -75,6 +75,7 @@ This is what a failed scheduled sources check means: a page the poster paraphras
 3. **Regenerate** both sets and collect every ERROR and WARNING. Work through them one poster at a time, in the
    build's order. `references/triage.md` maps each kind of failure to its fix.
 4. **Set each expectation** to what the source says (the rule above), with the source line in your running list.
+   Keep its form: recording-expectations says how an expectation is written and compared.
    - A hand layout (a `PLACE`-style dict) needs new cards placed by hand.
    - A computed layout takes the move without hand work; look at the result anyway.
    - A count in prose that a guard checks (`N_REFS`, a "416 statements" in a README) changes everywhere it is
