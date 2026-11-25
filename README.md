@@ -177,6 +177,7 @@ Depth | Statements | Published | Modified | New
 | `graphs/trace_proof.py` | prints a single chain of reductions, and draws it with Graphviz on request |
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
+| `derived/` | dated, frozen write-ups; [its README](derived/README.md) lists them |
 | `skills/`, `.claude-plugin/` | the `proof-posters` Claude Code plugin: the skills that keep the posters true to their sources |
 | `proof-posters.toml` | where those skills find this repository's pins, checks, papers and release settings |
 | `CLAUDE.md`, `.claude/` | the rules every change keeps, and the poster recipe, for Claude Code sessions in this repository |
