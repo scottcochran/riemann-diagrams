@@ -4,7 +4,8 @@ The chain is a shortest path in the blueprint's `uses` graph from the three theo
 target, found breadth-first; its cards run in reading order from the target, the deepest statement, to the
 Main.lean theorem, so that the poster reads as a proof: nothing is used before it is proved. Each module records
 the chain it expects (EXPECTED), and the build fails if the blueprint now gives another. The cards and the arrows
-are those of the chapter posters."""
+are those of the chapter posters. Each link is drawn by its verdict against the formal proof (src/lean-edges.json),
+which must be the module's VERDICTS (every link `direct` but those named)."""
 import collections
 
 import bp
@@ -37,7 +38,7 @@ def chain_to(g, target):
     return list(reversed(path))
 
 
-def build(ID, TARGET, EXPECTED, title, why):
+def build(ID, TARGET, EXPECTED, title, why, VERDICTS=None):
     g = bp.load()
     mirror = bp.read_mirror()
     path = chain_to(g, TARGET) if TARGET else g.deepest_trace(g.roots())
@@ -52,6 +53,14 @@ def build(ID, TARGET, EXPECTED, title, why):
     for a, b in steps:
         if a not in g.uses(b):
             raise ValueError(f"{ID}: {b} does not use {a}")
+    lean = bp.read_edges(g)
+    VERDICTS = VERDICTS or {}
+    verd = {(a, b): lean.verdict(b, a) for a, b in steps}
+    diff = sorted((e, v) for e, v in verd.items() if v != VERDICTS.get(e, "direct"))
+    if diff or set(VERDICTS) - set(verd):
+        raise ValueError(f"{ID}: verdicts differ from VERDICTS (link, verdict now): {diff or sorted(VERDICTS)}")
+    borne = {"direct", "hypothesis", "through"}
+    holds = all(v in borne for v in verd.values())
     chapters = []
     for k in order:
         ch = g.nodes[k]["_chapter"]
@@ -66,12 +75,15 @@ def build(ID, TARGET, EXPECTED, title, why):
                "uses, so every statement on it is as far from the main theorems as it can be. **Read it as a "
                "proof**, left to right and top to bottom: nothing is used before it is proved. Each card is one "
                "blueprint statement, as in the chapter posters; an arrow from A to B says that the proof of B "
-               "uses A. " + why + (" **Map mode**: nothing of the blueprint's text or the proof's source is "
+               "uses A. Each link is checked against the formal proof's references: see the card **The chain**. "
+               + why + (" **Map mode**: nothing of the blueprint's text or the proof's source is "
                "quoted." if bp.MAP else "") + " **No Lean was built**: see diagram R1, band 5.",
                W, f"`riemann-blueprint` at {g.bp_commit} (the front matter, statement and proof of every statement "
                "on the chain; `lean-facts.json` for the signatures, files and lines); "
-               f"`leanprover-community/riemann-hypothesis` at {mirror['commit']} (`src/Main.lean`). The chain is "
-               "computed; the abridgements are the diagram's own, as marked.",
+               f"`leanprover-community/riemann-hypothesis` at {mirror['commit']} (`src/Main.lean`); "
+               "`diagrams/src/lean-edges.json`, the verdicts on the blueprint's arrows from Sutherland's export of "
+               f"the proof at {g.mirror_pin} (sha256 {lean.export_sha256[:12]}…). The chain is computed; the "
+               "abridgements are the diagram's own, as marked.",
                state=f"State drawn: riemann-blueprint at {g.bp_commit}, which pins the mirror at {g.mirror_pin}; "
                      f"Main.lean from the mirror at {mirror['commit']}")
     X0, X1 = c.x0, c.x1
@@ -89,7 +101,8 @@ def build(ID, TARGET, EXPECTED, title, why):
     y += c.legend(X0, y, [("box", "green", "new in Alpöge's proof"), ("box", "amber", "modified from the literature"),
                           ("box", "blue", "published"),
                           ("arrow", "muted", "A → B: the proof of B uses A (the arrow takes A's colour)"),
-                          ("arrow", "amber", "A ⇢ B: B is stated with A (dashed)", "7 5")], title="Legend") + 26
+                          ("arrow", "amber", "A ⇢ B: B is stated with A (dashed)", "7 5")]
+                  + bp.verdict_legend(set(verd.values())), title="Legend") + 26
     key = [
         "**Title and pill.** The title is the blueprint's; the pill gives the step on the chain, the kind and the "
         "provenance: **new** in Alpöge's proof, **modified** from a published result, or **published** as it "
@@ -115,6 +128,16 @@ def build(ID, TARGET, EXPECTED, title, why):
         f"the deepest statement on the chain. The blueprint's deepest statement of all is at depth "
         f"{max(depth.values())}.",
     ]
+    cnt = collections.Counter(verd.values())
+    odd = [f"`{a}` → `{b}` {'only by way of other statements' if v == 'through' else v}"
+           for (a, b), v in verd.items() if v != "direct"]
+    chain_body.append(
+        ("**The chain holds in the formal proof.** " if holds else "**The chain breaks in the formal proof.** ")
+        + f"Of its {len(steps)} links, {cnt['direct']} are borne out directly"
+        + (": " + "; ".join(odd) if odd else "") + ". "
+        + f"The Lean of `{order[-1]}` " + ("reaches" if lean.reaches(order[-1], order[0]) else "does not reach")
+        + f" `{order[0]}`. Read from Sutherland's export of the published proof, with no Lean built; "
+        "`diagrams/EDGES.md` gives the method.")
     hk = max(c.card(0, 0, span(2), "How to read a node", key, draw=False, size=S),
              c.card(0, 0, span(3), "The chain", chain_body, draw=False, size=S))
     c.card(colx(0), y, span(2), "How to read a node", key, "grey", h=hk, size=S, tint=False)
@@ -139,5 +162,5 @@ def build(ID, TARGET, EXPECTED, title, why):
         y += hh + VG
     y -= VG
     bp.arrows(c, pos, rowof, steps, lambda a: PROV_ACCENT[g.nodes[a].get("provenance")], VG, G, X0, X1, NCOLS,
-              colx, dashed=dashed)
+              colx, dashed=dashed, verdicts=verd)
     return c

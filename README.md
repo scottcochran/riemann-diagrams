@@ -4,12 +4,15 @@ Diagrams of the theorem dependency graph of Levent Alpöge's Lean proof of the
 Riemann Hypothesis: two generated teaching posters, and Graphviz diagrams of
 the dependency tree and of single chains of reductions.
 
-Nothing here reads or builds the Lean source. The graph is read from the
+Nothing here builds the Lean source. The graph is read from the
 [riemann-blueprint](https://github.com/chrisflav/riemann-blueprint): 416 statements, each one a
 Markdown file with TOML front matter naming its Lean declarations and the
 statements it `uses`, plus `lean-facts.json`, which gives a signature, file
 and line for every Lean name. The blueprint was itself reconstructed by a
 static analysis of the formal proof (see its README for the limits of that).
+Its edges are then checked against the references of the published formal
+proof, read from Sutherland's export of it
+([diagrams/EDGES.md](diagrams/EDGES.md)).
 
 ## Posters
 
@@ -61,6 +64,23 @@ and zoom in.
 - [Depth as geometry](diagrams/F6-depth-2026.11.23.svg): every statement on
   one wheel, rings by distance from the main theorems and sectors by chapter,
   with the two trace chains drawn through the rings.
+- [The blueprint against the Lean](diagrams/F7-verdicts-2026.11.23.svg):
+  every arrow of the blueprint checked against the formal proof's
+  references, chapter against chapter, with the statements the disagreements
+  concentrate in, the uses the Lean makes that no arrow draws, and each
+  statement's depth in the two graphs.
+- [Where the assumptions enter](diagrams/F8-assumptions-2026.11.23.svg): the
+  structures of assumptions the proof's theorems take, with what their fields
+  state, who takes them and who builds them, and every claim the blueprint
+  states as a `Prop`, by whether the proof concludes it.
+- [Where the formal work is](diagrams/F9-weight-2026.11.23.svg): the Lean
+  declarations under each statement, by chapter and provenance, the
+  statements with the most formal work of their own against the length of
+  their proofs in the blueprint, and two statements opened to their helpers.
+- [Between the pins](diagrams/F10-drift-2026.11.23.svg): what changed in the
+  formal proof from the commit the blueprint pins to the mirror's head, by
+  kind of name, for each of the blueprint's Lean names, by namespace, and
+  for the statements whose Lean lost the most.
 
 [![Main.lean, theorem by theorem](diagrams/R1-main-theorems-2026.11.23.svg)](diagrams/R1-main-theorems-2026.11.23.svg)
 
@@ -68,7 +88,11 @@ They are generated from the blueprint and the mirror, and the build fails if
 the two disagree with what is drawn: see [diagrams/README.md](diagrams/README.md).
 What on a poster is quoted, what is computed and what is written here is set
 out in [diagrams/TEXT.md](diagrams/TEXT.md); why the light theme's page is a
-93% grey, and how that was measured, in [diagrams/PAGE.md](diagrams/PAGE.md).
+93% grey, and how that was measured, in [diagrams/PAGE.md](diagrams/PAGE.md);
+how the blueprint's arrows compare with the formal proof's references, in
+[diagrams/EDGES.md](diagrams/EDGES.md); and why the blueprint is the source,
+against the other published readings of the proof, in
+[diagrams/SOURCES.md](diagrams/SOURCES.md).
 A release is a version tag; each one carries every poster as a file, both
 sets, with checksums and the pins they were drawn from, so a poster can be
 cited by release and fetched after the tree has moved on: see
@@ -154,12 +178,30 @@ Depth | Statements | Published | Modified | New
 | `pyproject.toml` | the one dependency, the `graphviz` Python package (the posters need none) |
 | `diagrams/` | the posters and their generator |
 | `derived/` | dated, frozen write-ups; [its README](derived/README.md) lists them |
+| `skills/`, `.claude-plugin/` | the `proof-posters` Claude Code plugin: the skills that keep the posters true to their sources |
+| `proof-posters.toml` | where those skills find this repository's pins, checks, papers and release settings |
+| `CLAUDE.md`, `.claude/` | the rules every change keeps, and the poster recipe, for Claude Code sessions in this repository |
+
+## Skills
+
+The work that no script does is written up as Claude Code skills. Moving the pins, linking the papers, rebuilding
+the Lean-derived files and cutting a release are general: they are a plugin, `proof-posters`, in
+[skills/](skills/README.md). The plugin reads this repository's layout from `proof-posters.toml`, so another
+project can use it with a file of its own. Drawing a poster is specific to this repository and is in
+`.claude/skills/`. To install the plugin elsewhere:
+
+```
+/plugin install proof-posters --marketplace scottcochran/riemann-diagrams
+```
 
 ## What the graph is not
 
 The edges come from the blueprint's `uses` lists, which were resolved from
 identifiers in the Lean source text without building it, so some edges are
-wrong and the blueprint records no proof status. A box here says which Lean
+wrong and the blueprint records no proof status. The chapter and trace posters
+draw each edge by its verdict against the formal proof's references, and F7
+lays the verdicts out chapter by chapter; a verdict says whether one
+statement's Lean reaches another's, not whether either is proved. A box here says which Lean
 declarations a statement stands for. Whether they are proved is a question for
 the kernel checks, which R1's band 5 reports from the mirror's
 `verification/NOTES.md` and the pages of `diagrams/src/checks.toml`: the

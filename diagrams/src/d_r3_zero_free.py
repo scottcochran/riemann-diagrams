@@ -3,7 +3,9 @@
 Every statement of the blueprint's chapter `chap-zero-free` is a card (bp.statement_card): the Lean signature, the
 statement, the proof, the uses. Solid arrows are the proof uses within the chapter, and the build fails if they are
 not exactly EXPECTED. Dashed arrows are the two hypotheses the chapter theorem takes rather than proves: the
-blueprint's proof text names their sources, but its `uses` list does not, and the build checks the text."""
+blueprint's proof text names their sources, but its `uses` list does not, and the build checks the text. A card
+reads the chapter against the formal proof (src/lean-edges.json): every arrow's verdict must be VERDICT, and the
+facts its sentences rest on are checked."""
 import bp
 from bp import PROV_ACCENT, abridge, names, node, paragraphs, rich
 from lib import Canvas
@@ -49,9 +51,16 @@ EXPECTED = [
 ]
 # The hypotheses: named in the proof text of THM as the source of its two hypotheses, absent from its uses.
 HYPOTHESES = [("thm-families-connected", THM), ("thm-auxiliary-fields", THM)]
-# The cards that are not statements: row -> (column, columns spanned, title, accent, body key)
-EXTRA = {3: (3, 1, "How to read a node", "grey", "key"), 4: (2, 1, "The two hypotheses", "amber", "hyp"),
-         5: (4, 1, "What the chapter uses from outside", "grey", "imports")}
+# The verdict every arrow has in src/lean-edges.json; the build fails if one has another.
+VERDICT = "direct"
+# What the Lean of THM does with each hypothesis's source: "direct" (uses it), "through" (reaches it by way of
+# other statements), or None (does not reach it); and, for one it does not reach, the definition it uses instead.
+HYPOTHESES_LEAN = {"thm-auxiliary-fields": ("direct", None),
+                   "thm-families-connected": (None, "def-connected-families")}
+# The cards that are not statements: row -> [(column, columns spanned, title, accent, body key)]
+EXTRA = {3: [(3, 1, "How to read a node", "grey", "key")],
+         4: [(2, 1, "The two hypotheses", "amber", "hyp"), (4, 1, "Against the formal proof", "teal", "lean")],
+         5: [(4, 1, "What the chapter uses from outside", "grey", "imports")]}
 
 
 def band(c, x, y, title, sub=None):
@@ -77,6 +86,16 @@ def build():
             raise ValueError(f"R3: the proof of {b} does not name {a}")
         if a in g.uses(b):
             raise ValueError(f"R3: {a} is a use of {b}; draw it solid")
+    lean = bp.read_edges(g)
+    wrong = [(a, b, v) for a, b in EXPECTED if (v := lean.verdict(b, a)) != VERDICT]
+    if wrong:
+        raise ValueError(f"R3: arrows whose verdict is not {VERDICT}: {wrong}")
+    for a, (how, instead) in HYPOTHESES_LEAN.items():
+        got = "direct" if a in lean.formal(THM) else "through" if lean.reaches(THM, a) else None
+        if got != how:
+            raise ValueError(f"R3: the Lean of {THM} reaches {a} {got or 'not at all'}, the card says {how}")
+        if instead and instead not in lean.formal(THM):
+            raise ValueError(f"R3: the Lean of {THM} does not use {instead}, which the card says it uses instead")
     rev = g.used_by()
     depth, _ = g.depths(g.roots())
     main_names = {t["name"] for t in mirror["theorems"]}
@@ -103,13 +122,16 @@ def build():
                "**Read it from the foot up**: the theorem is at the bottom, its two inputs stand on either side, "
                "and each column above is one strand of the argument. An arrow from A to B says that the proof "
                "of B uses A; a dashed arrow says that B takes A as a hypothesis, which the proof text names and "
-               "the uses list does not. The blueprint says of this chapter that the square root in the core "
+               "the uses list does not. Every arrow is checked against the formal proof's references: see the card "
+               "**Against the formal proof**. The blueprint says of this chapter that the square root in the core "
                "inequality is the Riemann Hypothesis. **No Lean was built**: see diagram R1, band 5."
                + (" **Map mode**: nothing of the blueprint's text or the proof's source is quoted." if bp.MAP else ""),
                W, f"`riemann-blueprint` at {g.bp_commit} (`{ch['_path'].rsplit('/', 1)[0]}/`: the chapter's and "
                "every section's `_section.md`, every statement's front matter, body and proof; `lean-facts.json` "
                "for the signatures, files and lines); `leanprover-community/riemann-hypothesis` at "
-               f"{mirror['commit']} (`src/Main.lean`, for the Main.lean pills). The layout, the two hypothesis "
+               f"{mirror['commit']} (`src/Main.lean`, for the Main.lean pills); `diagrams/src/lean-edges.json`, the verdicts on "
+               f"the blueprint's arrows from Sutherland's export of the proof at {g.mirror_pin} (sha256 "
+               f"{lean.export_sha256[:12]}…). The layout, the two hypothesis "
                "arrows, the abridgements and the import table are the diagram's own, as marked.",
                state=f"State drawn: riemann-blueprint at {g.bp_commit}, which pins the mirror at {g.mirror_pin}; "
                      f"Main.lean from the mirror at {mirror['commit']}")
@@ -152,9 +174,40 @@ def build():
                                                  for u in imports[k]))
     imp.append("Everything else the chapter uses is in the chapter. Statements used from outside it: "
                + ", ".join(f"`{k}` by {len(v)}" for k, v in sorted(exported.items())) + ".")
+    # The chapter against the formal proof: the arrows, the hypotheses, the uses no arrow draws, and the verdicts
+    # on the statement uses, which the cards list but no arrow draws.
+    hyp_pairs = {(a, b) for a, b in HYPOTHESES}
+    nodraw = {}
+    for k in sorted(drawn):
+        for u in sorted(lean.undrawn(k) & drawn):
+            if (u, k) not in hyp_pairs:
+                nodraw.setdefault(u, []).append(k)
+    stated = sorted((k, u) for k in drawn for u in drawn
+                    if u in lean.raw["arrows"].get(k, {}) and (u, k) not in set(EXPECTED))
+    sv = {(k, u): lean.verdict(k, u) for k, u in stated}
+    how = {"through": "reached only by way of other statements", "beside": "met only beside it",
+           "apart": "not borne out", "hypothesis": "borne out as a hypothesis",
+           "no-lean-source": "cannot be judged", "no-lean-target": "cannot be judged"}
+    order = ["apart", "beside", "through", "hypothesis", "no-lean-source", "no-lean-target"]
+    others = [f"`{k}` stated with `{u}`: {how[v]}"
+              for (k, u), v in sorted(sv.items(), key=lambda x: (order.index(x[1]) if x[1] in order else -1, x[0]))
+              if v != "direct"]
+    (h1, _), (h2, (_, inst)) = sorted(HYPOTHESES_LEAN.items())
+    leancard = [
+        f"**All {len(EXPECTED)} solid arrows are borne out**: for each A → B, the Lean for B uses A's directly. The "
+        "references were read from Sutherland's export of the published proof, with no Lean built; "
+        "`diagrams/EDGES.md` gives the method.",
+        f"**The dashed arrows.** The Lean of `{THM}` uses `{h1}` directly. It does not reach `{h2}`: for that "
+        f"hypothesis it uses `{inst}`, the slope data itself.",
+        f"**Uses with no arrow.** The Lean makes {sum(map(len, nodraw.values()))} more uses between the chapter's "
+        "statements: " + "; ".join(f"`{u}` by {len(ks)}" for u, ks in
+                                     sorted(nodraw.items(), key=lambda x: (-len(x[1]), x[0]))) + ".",
+        f"**Stated with.** Of the {len(stated)} statement uses between the chapter's cards, "
+        f"{sum(v == 'direct' for v in sv.values())} are borne out directly. " + "; ".join(others) + ".",
+    ]
     if bp.MAP:
         key = bp.MAP_KEY
-    bodies = {"key": key, "hyp": hyp, "imports": imp}
+    bodies = {"key": key, "hyp": hyp, "imports": imp, "lean": leancard}
 
     y = c.y
     y = band(c, X0, y, "The chapter, from its definitions down to its theorem",
@@ -174,15 +227,15 @@ def build():
     for r in sorted(rows):
         items = [(k, i, n, bp.statement_card(g, k, span(n), drawn, rev, depth, main_names, "R3")) for k, i, n in rows[r]]
         hh = max(node(c, 0, 0, span(n), draw=False, **kw) for _, _, n, kw in items)
-        ex = EXTRA.get(r)
-        if ex:
+        exs = EXTRA.get(r, [])
+        for ex in exs:
             hh = max(hh, c.card(0, 0, span(ex[1]), ex[2], bodies[ex[4]], draw=False, size=S))
         for k, i, n, kw in items:
             node(c, colx(i), y, span(n), h=hh, **kw)
             pos[k] = (colx(i), y, span(n), hh)
-        if ex:
+        for j, ex in enumerate(exs):
             c.card(colx(ex[0]), y, span(ex[1]), ex[2], bodies[ex[4]], ex[3], h=hh, size=S, tint=ex[3] != "grey")
-            pos[f"_extra{r}"], rowof[f"_extra{r}"] = (colx(ex[0]), y, span(ex[1]), hh), r
+            pos[f"_extra{r}.{j}"], rowof[f"_extra{r}.{j}"] = (colx(ex[0]), y, span(ex[1]), hh), r
         y += hh + VG
     y -= VG
     bp.arrows(c, pos, rowof, edges + HYPOTHESES, lambda a: PROV_ACCENT[g.nodes[a].get("provenance")], VG, G, X0, X1,

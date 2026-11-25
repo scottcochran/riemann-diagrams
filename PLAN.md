@@ -4,8 +4,10 @@ Written 2026.11.22, after the two posters R1 and R2 and the Graphviz diagrams th
 same day as Phase 1, the five chapter posters that follow it, Phases 2, 3, 5, 6 and 7 were done. It is a plan,
 not a record: nothing below is built unless the README says so. Phases 1, 2, 3, 5, 6 and 7 are done, Phase 6
 with two of its eight posters waiting on things outside this repository, Phase 7 released as `v0.2.1`, the
-first release whose posters link; what is left is Phase 4, which waits on a machine, two hand steps under
-Phase 5, and the decisions under "Open" at the end, of which 1 and 6 are taken.
+first release whose posters link; what is left is Phase 4, two hand steps under Phase 5, and the decisions under
+"Open" at the end, of which 1 and 6 are taken. Phase 4 began on 2026.11.23: its edge data is done and every
+chapter and trace poster shows it; the statuses wait on the mirror's Comparator run. Phase 8, the frames the
+formal proof's references make possible, was planned and done the same day: F7 to F10.
 
 ## Goal
 
@@ -34,7 +36,9 @@ the edges true (Phase 4).
 4. **The output is deterministic, and CI holds it to that.** Unchanged inputs give unchanged bytes, so a diff in
    an SVG means a source moved under a diagram, and the workflow fails on the first such byte.
 5. **No Lean is built.** The blueprint's edges come from static analysis of the source text and some are wrong;
-   every proof status reads absent. Every poster says so, and no diagram claims that a statement is proved.
+   every proof status reads absent. Every poster says so, and no diagram claims that a statement is proved. The
+   edges are checked against the formal proof's references, read from published files rather than a build
+   (`src/lean-edges.json`, Phase 4), and a poster that shows a verdict says where it came from.
 6. **Standard library only** for the posters, so that anyone with Python 3.12 can regenerate them.
 7. **The page matches the content.** In the light theme the page behind the cards is the mean relative
    luminance of the content, measured once on R2 and applied to every poster (`diagrams/PAGE.md`,
@@ -124,15 +128,25 @@ trace poster is a six-line module. The three Graphviz trace images are retired f
 
 ### Phase 4: real edges and statuses
 
-Everything here rests on edges resolved from source text. The blueprint tool's `extract` command, run against
-built oleans, would replace them with the real reference graph and fill in each statement's proof status.
+Everything here rested on edges resolved from source text. Phase 4 checks each of them against the references
+of the formal proof, and shows the proof's status once one is recorded. The plan was to run the blueprint tool's
+`extract` command against built oleans, on a machine with a lot of memory; that turned out not to be needed.
 
-- Needs the mirror built: the community build cache (about 5 GB) or a clean build (hours, about 100 GB of
-  disk), and a machine with a lot of memory for the extraction. Not a laptop job.
-- When the mirror's Comparator run finishes and its notes record a result, R1's band 5 is the first thing to
-  update, and a status pill on every card the second.
+- **The edge data: done 2026.11.23.** The references are read from Sutherland's export of the published proof at
+  `MIRROR_PIN`, which holds exactly what the five main theorems depend on. They are cross-checked against every
+  compiled module of the mirror at `MIRROR_COMMIT`, from its public build cache. Both runs need only a laptop
+  and an external disk, and no Lean is built; `tools/lean-edges/` has the scripts and the steps.
+  `src/lean-edges.json` gives a verdict on every blueprint arrow. Its hash is pinned (`LEAN_EDGES_SHA256`), and
+  the build checks that it was read from `BP_COMMIT` and `MIRROR_PIN`. `diagrams/EDGES.md` writes up the method
+  and the findings.
+- **The posters: done.** R3 holds all 17 of its arrows to the verdict `direct`, which every one has. A card,
+  "Against the formal proof", reads the chapter against the file: the dashed hypotheses, the uses no arrow
+  draws, and the statement uses the cards list. R4 to R8 and the traces followed as Phase 8a, each with the
+  verdicts it expects, and an arrow the proof does not bear out drawn in a style of its own.
+- **The statuses.** When the mirror's Comparator run finishes and its notes record a result, R1's band 5 is the
+  first thing to update, and a status pill on every card the second.
 
-**Done when** `lean-facts.json` carries statuses, the posters show them, and R1's "Judged" card reports a
+**Done when** every chapter and trace poster shows the verdicts on its arrows, and R1's "Judged" card reports a
 recorded result rather than its absence.
 
 ### Phase 5: releases
@@ -450,6 +464,88 @@ one; the blueprint's one `url`. The build fails on a reference without a paper, 
 reference, or a link out that is neither pinned nor a paper. The proper home for the links is a `doi` field
 in the blueprint's reference files; until the blueprint carries one, the table here stands in.
 
+### Phase 8: what the formal proof shows
+
+Phase 4's verdicts (`src/lean-edges.json`, `diagrams/EDGES.md`) let the set draw the proof as the Lean has it,
+not only as the blueprint draws it. This phase turns them into five frames, in order of what a reader learns.
+
+One rule covers the data. A poster reads only files in this repository, with the standard library (rules 1
+and 6). Frames 8a and 8b read `lean-edges.json` alone. 8c to 8e each need a derived file beside it, which
+`tools/lean-edges/` writes from the export. Each such file is pinned by hash in `bp.py`, as `LEAN_EDGES_SHA256`
+is, checked against `BP_COMMIT` and `MIRROR_PIN`, and described in `EDGES.md`. A derived file holds facts about
+statements, not the declaration graph, and stays well under a megabyte.
+
+- **8a: verdicts on every chapter and trace poster.** R4 to R8 do what R3 does. Each module lists the verdicts
+  its arrows have (`VERDICTS`: every arrow `direct` but the ones named), and the build fails on another.
+  `bp.arrows` draws an arrow by its verdict: `beside` and `apart` get styles of their own, the legend lists
+  only the styles a poster uses, and nothing changes for an arrow that is borne out. Each chapter poster gets
+  the card "Against the formal proof", or a band where the grid has no room. T1 and T2 give each link of their
+  chain its verdict and say whether the chain holds in the Lean. The dashed arrows of R7 and R8 come first:
+  the risks below name them as the edges to check.
+  **Done when** every chapter and trace poster shows its verdicts, which is the edge half of Phase 4's "done
+  when".
+  Done 2026.11.23. `chapter.build` and `trace.build` take `VERDICTS`, and R4 to R8, T1 and T2 list theirs. The
+  chapter modules also list `HYPOTHESES_LEAN`, what the Lean does with each dashed arrow's source, and the build
+  checks both. `bp.VERDICT_STYLE` draws `through` thin, `beside` grey dotted, `apart` red dotted, and an arrow
+  with no Lean at one end faint dotted; `bp.verdict_legend` adds only the styles a poster uses. Each chapter
+  poster has a full-width card "Against the formal proof" under its key, and each trace's chain card says
+  whether the chain holds. Both traces hold: each has one link borne out only by way of other statements. Of
+  the chapter posters' drawn arrows, R4 has 4 `apart`, R5 4, R6 6, R7 5 and R8 4. In R7 all five come from
+  `thm-hilbert-modular-inputs`; in R8 all four involve `thm-base-change-unitary`.
+- **8b: F7, the blueprint against the Lean, chapter by chapter.** A matrix like F3's: a row per chapter that
+  uses, a column per chapter used, and in each cell the arrows by verdict and the uses the blueprint does not
+  draw. It shows where the blueprint's graph can be trusted, and that most of the trouble sits in a few
+  statements. A second band compares depths: each statement's depth from the main theorems in the formal
+  graph, against its depth in the blueprint (F6), listing those that move by two or more. Reads
+  `lean-edges.json` alone.
+  Done 2026.11.23 as `d_f7_verdicts.py`. Two things changed from the plan. Most statements move in depth: 150 by
+  two or more, 112 of them two deeper in the Lean. So the depth band is a cross-table of blueprint depth
+  against Lean depth, with a count of moves and a list of the 14 that move by three or more. And the matrix is
+  two tables, arrows and uses with no arrow, with the statements the trouble concentrates in beside them. The
+  build checks the counts by verdict, the two statements that hold 90 of the 167 arrows not borne out (every
+  other holds at most 4), and the depth moves.
+- **8c: F8, what the proof assumes and what it invokes.** 157 arrows are borne out only through the fields of
+  a structure: A takes B as a hypothesis rather than proving or citing it. F8 draws each such package (such as
+  `LiteratureCMHypothesis`): its fields, as statements, and the statements that take it. Against F4, the
+  literature chapter, it says which published results are hypotheses of the final theorem and which the proof
+  applies as lemmas. Needs `lean-hypotheses.json`: per package, its Lean name, the statements its fields
+  state, and who takes it.
+  Done 2026.11.23 as `d_f8_assumptions.py`, with `tools/lean-edges/hypotheses.py` writing the file. The framing
+  changed with the data. The theorems of `Main.lean` are closed, so no published result is a hypothesis of the
+  final theorem; every assumption is discharged inside the proof. F8 shows where each enters and where it is
+  discharged. There are 8 structures behind the 157 hypothesis arrows, each with its builders and the
+  statements that reach them. For every statement's `Prop`, it gives whether a theorem of the proof concludes
+  it: outright for 275 of 289, and for all 184 of the literature chapter's. It also gives the export's axioms:
+  the three `comparator.json` permits, and no `sorryAx`. The build checks the structures, the counts by class
+  and the axioms.
+- **8d: where the formal work is.** Per statement, the declarations under its Lean that no other statement
+  reaches first, with their count and size. Drawn first as a measure on F2 (new, modified, published) and on
+  F6's wheel, then as the deeper frame of Phase 6: one statement opened to its declarations, R3's chapter
+  theorem first. Needs `lean-weight.json`, and a file per opened statement.
+  Done 2026.11.23 as a poster of its own, F9 (`d_f9_weight.py`), rather than marks on F2 and F6, which keeps
+  those two and their checks as they were. `tools/lean-edges/weight.py` writes one file that holds the opened
+  statements too. R3's chapter theorem turned out to be glue: 2 helpers of its own and
+  48 shared. So F9 opens the statement with the most formal work of its own as well,
+  `thm-family-membership-admissible-data`, with 12,225 helpers across 452 namespaces. Statements marked new hold 81% of the
+  formal work any single statement owns. The build checks the file's totals, the three heaviest statements and
+  the statements opened.
+- **8e: drift between the pins.** The export (at `MIRROR_PIN`) and the cache (at `MIRROR_COMMIT`) are about
+  230,000 declarations apart, and ten of the blueprint's Lean names are not in the published proof. A poster
+  per chapter of what the later tree dropped, and of which blueprint names point at nothing. It is Phase 6's
+  "Change between pins" for the Lean. Needs `lean-drift.json`.
+  Done 2026.11.23 as one poster, F10 (`d_f10_drift.py`), rather than one per chapter; `tools/lean-edges/drift.py`
+  writes the file. Comparing like with like meant closing the cache graph from the same five theorems as the
+  export. Names had to be sorted by kind, because the compiler's auxiliaries and private names change with
+  the Lean version: 199,833 auxiliaries left and 193,811 private names joined.
+  Of the user-written names, 8,324 left the closure, 7,693 of them still compiled
+  but unused, and 659 joined. Of the blueprint's Lean names, 5 are gone
+  from the later tree. The build checks the counts by kind, the user-written names that left and the names'
+  statuses. With 8e, Phase 8 is done.
+
+Order: 8a, then 8b, which need nothing new; then 8c, which has the most to say about the mathematics; 8d and 8e
+as wanted. Releases follow Phase 5's table: a batch of 8a's posters changes what they are verified against, a
+MAJOR that takes a MINOR before 1.0, and each new poster is a MINOR.
+
 ## Risks
 
 - **The blueprint moves.** It is young and reorganised twice in its first days. Every move costs a pin bump and
@@ -470,7 +566,11 @@ in the blueprint's reference files; until the blueprint carries one, the table h
   than it was. Settled 2026.11.22 for the blueprint's prose, by its author's
   CC BY 4.0 grant (Open, 1); the Lean signatures remain unlicensed.
 - **The edges are wrong in places.** A chapter poster laid out around a wrong edge draws a wrong argument with
-  confidence. Phase 4 is the fix. Until then, the dashed arrows are the symptom to watch: in three chapters a
+  confidence. Phase 4 is the fix: `diagrams/EDGES.md` has what the check found, and R3 is the first poster to
+  show it (of its two dashed arrows, the Lean bears out one). R4 to R8 and the traces now show it too, and the
+  check answered the question below: the Lean reaches none of the five dashed arrows of R7 and R8. Those
+  results are named in the proof text, but the formal proof neither uses them nor takes them as hypotheses. The
+  text as it stood: in three chapters a
   proof's text names a result its `uses` list leaves out, and the diagram cannot tell a hypothesis the Lean
   theorem takes from an edge the blueprint's resolution missed. The three in the Tate–Shafarevich chapter and the
   two in Galois representations are the first edges to check against the Lean when Phase 4 runs.

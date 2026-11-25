@@ -1,0 +1,4860 @@
+{
+ "about": "Where the formal work is: for each blueprint statement, its own Lean declarations and the helper declarations only its Lean reaches, with their count and size (distinct expression nodes). Written by tools/lean-edges/weight.py from Sutherland's export of the proof; the README beside it says how to rebuild it. No Lean was built.",
+ "blueprint": "137d97602647e450901981a7decfb86ab3024a48",
+ "proof": {
+  "mirror": "8c90877ceaa694974526e0aab9aaaf6ea0f5099e",
+  "export": "https://math.mit.edu/~drew/grh/solution.ndjson.zst",
+  "export_sha256": "61a8938ad5f5e57397c1c0e3b954916af546d9004ade01c3555744a681b05381",
+  "export_unpacked_sha256": "5ea74b912147c5c93cc2b6d70cc727cf908df2f62ac6a20480a3fa02f6be244e",
+  "exporter": "lean4export 3.1.0",
+  "lean": "4.33.1",
+  "note": "The export holds the dependency closure of the five main theorems, so a declaration missing from it is not used by the proof."
+ },
+ "project_names": {
+  "mirror": "c900e67c2fcd1fdb041685820bbd2b867fbc5a4b",
+  "receipt_sha256": "ebbb530e36a188409812186155e319d2afed6f41a44417135b0d9defcd9b3c14",
+  "note": "Which declarations are the project's rather than the library's is read from the cache run at this commit, whose deps cover the project's modules only; weight.py's docstring gives the rule for names that run does not have."
+ },
+ "totals": {
+  "declarations": 1484733,
+  "project": 1269850,
+  "named": 1229,
+  "helpers": 1268621,
+  "helpers_by_reach": {
+   "none": 4928,
+   "one": 502612,
+   "two": 179332,
+   "more": 581749
+  },
+  "size_project": 2503334210,
+  "size_unreached": 5886290
+ },
+ "statements": {
+  "def-archimedean-bessel-data": {
+   "own": 19,
+   "own_size": 3228,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 25
+  },
+  "def-automorphic-galois-inputs": {
+   "own": 2,
+   "own_size": 34,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 70
+  },
+  "def-auxiliary-field-data": {
+   "own": 20,
+   "own_size": 9465,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 50
+  },
+  "def-chebyshev-weighted": {
+   "own": 3,
+   "own_size": 164,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 43
+  },
+  "def-congruence-data": {
+   "own": 6,
+   "own_size": 4641,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 89
+  },
+  "def-connected-families": {
+   "own": 3,
+   "own_size": 326,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 200
+  },
+  "def-family": {
+   "own": 5,
+   "own_size": 2517,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 492
+  },
+  "def-family-data": {
+   "own": 2,
+   "own_size": 4317,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 5814
+  },
+  "def-family-hermitian-spaces": {
+   "own": 6,
+   "own_size": 3741,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 41
+  },
+  "def-family-member": {
+   "own": 10,
+   "own_size": 13727,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 611
+  },
+  "def-family-ranks": {
+   "own": 7,
+   "own_size": 279,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 5
+  },
+  "def-family-scale": {
+   "own": 4,
+   "own_size": 2458,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 113
+  },
+  "def-galois-cohomology-inputs": {
+   "own": 2,
+   "own_size": 26,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-galois-reps-polarized": {
+   "own": 3,
+   "own_size": 1013,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 221
+  },
+  "def-harish-chandra-parameters": {
+   "own": 5,
+   "own_size": 392,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 7
+  },
+  "def-hodge-bundle-inputs": {
+   "own": 2,
+   "own_size": 58,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-local-parameters": {
+   "own": 2,
+   "own_size": 627,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 54
+  },
+  "def-local-rep-theory-package": {
+   "own": 2,
+   "own_size": 40,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-non-endoscopic-package": {
+   "own": 2,
+   "own_size": 12,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-nonvanishing-half-plane": {
+   "own": 3,
+   "own_size": 381,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 3
+  },
+  "def-padic-hodge-package": {
+   "own": 2,
+   "own_size": 16,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-quantum-determinant": {
+   "own": 4,
+   "own_size": 529,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-riemann-hypothesis": {
+   "own": 2,
+   "own_size": 236,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 2
+  },
+  "def-sha-bound": {
+   "own": 9,
+   "own_size": 2976,
+   "helpers": 1,
+   "helpers_size": 34,
+   "shared": 88
+  },
+  "def-sha-error-term": {
+   "own": 1,
+   "own_size": 91,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 72
+  },
+  "def-slope-data": {
+   "own": 4,
+   "own_size": 1426,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 391
+  },
+  "def-theta-analytic-inputs": {
+   "own": 2,
+   "own_size": 26,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-theta-tower-step": {
+   "own": 2,
+   "own_size": 590,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 427
+  },
+  "def-trivial-statement": {
+   "own": 1,
+   "own_size": 2,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "def-zero-free-primitive": {
+   "own": 1,
+   "own_size": 6,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 7
+  },
+  "def-zeros-on-line": {
+   "own": 3,
+   "own_size": 334,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 2
+  },
+  "lem-absolute-siegel-lemma": {
+   "own": 1,
+   "own_size": 362,
+   "helpers": 1610,
+   "helpers_size": 2459139,
+   "shared": 3600
+  },
+  "lem-admissibility-each-place": {
+   "own": 0,
+   "own_size": 0,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "lem-archimedean-volume-identity": {
+   "own": 1,
+   "own_size": 43,
+   "helpers": 3109,
+   "helpers_size": 4123456,
+   "shared": 4496
+  },
+  "lem-behrend-sets": {
+   "own": 2,
+   "own_size": 34170,
+   "helpers": 33,
+   "helpers_size": 58033,
+   "shared": 23
+  },
+  "lem-complete-family-from-constants": {
+   "own": 2,
+   "own_size": 57449,
+   "helpers": 6354,
+   "helpers_size": 15850187,
+   "shared": 38420
+  },
+  "lem-constructed-points-from-depth-four": {
+   "own": 2,
+   "own_size": 16714,
+   "helpers": 2586,
+   "helpers_size": 5060535,
+   "shared": 22946
+  },
+  "lem-counting-constants-siegel-weil": {
+   "own": 1,
+   "own_size": 751,
+   "helpers": 420,
+   "helpers_size": 850659,
+   "shared": 3069
+  },
+  "lem-cutoff-energy-limit": {
+   "own": 2,
+   "own_size": 627,
+   "helpers": 2089,
+   "helpers_size": 2671879,
+   "shared": 3072
+  },
+  "lem-de-rham-eigenpart-rank": {
+   "own": 2,
+   "own_size": 7982,
+   "helpers": 29,
+   "helpers_size": 89081,
+   "shared": 13445
+  },
+  "lem-de-rham-hodge-tate-flag-comparison": {
+   "own": 2,
+   "own_size": 54542,
+   "helpers": 356,
+   "helpers_size": 771748,
+   "shared": 1328
+  },
+  "lem-de-rham-hodge-tate-relations-dvr": {
+   "own": 3,
+   "own_size": 5804,
+   "helpers": 3376,
+   "helpers_size": 6708382,
+   "shared": 2395
+  },
+  "lem-depth-three-to-four": {
+   "own": 2,
+   "own_size": 157,
+   "helpers": 1425,
+   "helpers_size": 2624052,
+   "shared": 27018
+  },
+  "lem-finite-classes-twists-from-wach": {
+   "own": 1,
+   "own_size": 2537,
+   "helpers": 2955,
+   "helpers_size": 8292879,
+   "shared": 5623
+  },
+  "lem-first-order-deformation-count": {
+   "own": 6,
+   "own_size": 73456,
+   "helpers": 287,
+   "helpers_size": 700720,
+   "shared": 14996
+  },
+  "lem-five-laws-chain-kernels": {
+   "own": 2,
+   "own_size": 4246,
+   "helpers": 544,
+   "helpers_size": 1264106,
+   "shared": 15377
+  },
+  "lem-flag-cover-pullback": {
+   "own": 3,
+   "own_size": 60459,
+   "helpers": 2055,
+   "helpers_size": 3887332,
+   "shared": 1879
+  },
+  "lem-good-auxiliary-primes": {
+   "own": 2,
+   "own_size": 11641,
+   "helpers": 385,
+   "helpers_size": 707757,
+   "shared": 565
+  },
+  "lem-good-frames-exist": {
+   "own": 2,
+   "own_size": 619,
+   "helpers": 94,
+   "helpers_size": 114258,
+   "shared": 1916
+  },
+  "lem-grid-steps-preserve-cusp-forms": {
+   "own": 1,
+   "own_size": 5279,
+   "helpers": 77,
+   "helpers_size": 185006,
+   "shared": 15122
+  },
+  "lem-h2-tate-twists-bound": {
+   "own": 1,
+   "own_size": 15,
+   "helpers": 1150,
+   "helpers_size": 1886502,
+   "shared": 8385
+  },
+  "lem-height-lower-bound-deep-covers": {
+   "own": 2,
+   "own_size": 187,
+   "helpers": 865,
+   "helpers_size": 3104723,
+   "shared": 98818
+  },
+  "lem-hilbert-samuel-block": {
+   "own": 2,
+   "own_size": 458,
+   "helpers": 2887,
+   "helpers_size": 3852731,
+   "shared": 5585
+  },
+  "lem-hodge-filtration-abelian-scheme": {
+   "own": 5,
+   "own_size": 6539,
+   "helpers": 1687,
+   "helpers_size": 3921090,
+   "shared": 7532
+  },
+  "lem-inert-theta-admissibility-cm": {
+   "own": 3,
+   "own_size": 3004,
+   "helpers": 1846,
+   "helpers_size": 2555165,
+   "shared": 14462
+  },
+  "lem-integrable-spectral-setting": {
+   "own": 3,
+   "own_size": 16590,
+   "helpers": 373,
+   "helpers_size": 722624,
+   "shared": 32744
+  },
+  "lem-integral-moments-kernel-jets": {
+   "own": 3,
+   "own_size": 1009,
+   "helpers": 300,
+   "helpers_size": 1026489,
+   "shared": 5204
+  },
+  "lem-kernel-conditions-standard-data": {
+   "own": 4,
+   "own_size": 6698,
+   "helpers": 3552,
+   "helpers_size": 6202370,
+   "shared": 25452
+  },
+  "lem-kodaira-spencer-from-rigid-charts": {
+   "own": 4,
+   "own_size": 15533,
+   "helpers": 2880,
+   "helpers_size": 8630060,
+   "shared": 19594
+  },
+  "lem-lifting-crystalline-lattices": {
+   "own": 2,
+   "own_size": 87810,
+   "helpers": 4641,
+   "helpers_size": 11989059,
+   "shared": 3797
+  },
+  "lem-local-decomposition-inputs": {
+   "own": 1,
+   "own_size": 425,
+   "helpers": 1623,
+   "helpers_size": 3353960,
+   "shared": 3381
+  },
+  "lem-local-lattice-counts-isometries": {
+   "own": 1,
+   "own_size": 12,
+   "helpers": 1897,
+   "helpers_size": 4271913,
+   "shared": 137
+  },
+  "lem-local-models-constructed-points": {
+   "own": 8,
+   "own_size": 14191,
+   "helpers": 4303,
+   "helpers_size": 10821629,
+   "shared": 28409
+  },
+  "lem-local-models-weight-range": {
+   "own": 2,
+   "own_size": 27312,
+   "helpers": 3133,
+   "helpers_size": 4872627,
+   "shared": 12650
+  },
+  "lem-local-partner-counts": {
+   "own": 1,
+   "own_size": 86,
+   "helpers": 170,
+   "helpers_size": 304620,
+   "shared": 385
+  },
+  "lem-local-point-data-heights": {
+   "own": 2,
+   "own_size": 1842,
+   "helpers": 3793,
+   "helpers_size": 10333507,
+   "shared": 29254
+  },
+  "lem-measured-setting-standard-character": {
+   "own": 1,
+   "own_size": 7634,
+   "helpers": 2589,
+   "helpers_size": 4954389,
+   "shared": 22437
+  },
+  "lem-membership-two-passes": {
+   "own": 2,
+   "own_size": 1713,
+   "helpers": 490,
+   "helpers_size": 789858,
+   "shared": 22898
+  },
+  "lem-orbit-data-inert-primes": {
+   "own": 2,
+   "own_size": 17189,
+   "helpers": 2802,
+   "helpers_size": 3495571,
+   "shared": 15234
+  },
+  "lem-order-step-reduces-order": {
+   "own": 2,
+   "own_size": 234,
+   "helpers": 1751,
+   "helpers_size": 1473214,
+   "shared": 3030
+  },
+  "lem-p-divisible-period-matrices": {
+   "own": 1,
+   "own_size": 56017,
+   "helpers": 1630,
+   "helpers_size": 2917108,
+   "shared": 1558
+  },
+  "lem-pair-count-siegel-mass-ratio": {
+   "own": 2,
+   "own_size": 16139,
+   "helpers": 1872,
+   "helpers_size": 4578276,
+   "shared": 5157
+  },
+  "lem-prime-power-lattice-inclusion-exponent": {
+   "own": 3,
+   "own_size": 3316,
+   "helpers": 1742,
+   "helpers_size": 1799531,
+   "shared": 1684
+  },
+  "lem-radial-operator-transfer": {
+   "own": 1,
+   "own_size": 15,
+   "helpers": 1460,
+   "helpers_size": 2063098,
+   "shared": 8035
+  },
+  "lem-reference-weights-deep-covers": {
+   "own": 2,
+   "own_size": 39,
+   "helpers": 2065,
+   "helpers_size": 3264522,
+   "shared": 65404
+  },
+  "lem-second-coordinates-integral-laws": {
+   "own": 2,
+   "own_size": 82410,
+   "helpers": 4112,
+   "helpers_size": 11834353,
+   "shared": 40347
+  },
+  "lem-served-twists-prime-sums": {
+   "own": 2,
+   "own_size": 8393,
+   "helpers": 2703,
+   "helpers_size": 3548765,
+   "shared": 4773
+  },
+  "lem-siegel-minimal-blowup-smooth": {
+   "own": 3,
+   "own_size": 728,
+   "helpers": 1546,
+   "helpers_size": 6388240,
+   "shared": 32170
+  },
+  "lem-siegel-tautological-charts": {
+   "own": 2,
+   "own_size": 69869,
+   "helpers": 1741,
+   "helpers_size": 4863304,
+   "shared": 35493
+  },
+  "lem-siegel-weil-represented-coefficients": {
+   "own": 2,
+   "own_size": 13537,
+   "helpers": 1795,
+   "helpers_size": 5708445,
+   "shared": 8168
+  },
+  "lem-siegel-weil-singular-coefficients": {
+   "own": 2,
+   "own_size": 2695,
+   "helpers": 287,
+   "helpers_size": 459788,
+   "shared": 1752
+  },
+  "lem-standard-frames-good": {
+   "own": 2,
+   "own_size": 25840,
+   "helpers": 2143,
+   "helpers_size": 5774303,
+   "shared": 7663
+  },
+  "lem-theta-constant-term-big-cone": {
+   "own": 0,
+   "own_size": 0,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "lem-theta-lift-smooth-cusp-forms": {
+   "own": 2,
+   "own_size": 3649,
+   "helpers": 2226,
+   "helpers_size": 4508605,
+   "shared": 13152
+  },
+  "lem-twisted-jets-assemble": {
+   "own": 4,
+   "own_size": 41847,
+   "helpers": 1737,
+   "helpers_size": 3764718,
+   "shared": 17185
+  },
+  "lem-twisted-theta-unfolding": {
+   "own": 2,
+   "own_size": 3216,
+   "helpers": 2535,
+   "helpers_size": 4838147,
+   "shared": 27195
+  },
+  "lem-twisted-vacua-base-comparison": {
+   "own": 4,
+   "own_size": 2088,
+   "helpers": 827,
+   "helpers_size": 1833757,
+   "shared": 17655
+  },
+  "lem-twisted-vacua-real-points": {
+   "own": 1,
+   "own_size": 440,
+   "helpers": 23,
+   "helpers_size": 46341,
+   "shared": 15070
+  },
+  "lem-uniformisation-labelled-cover": {
+   "own": 2,
+   "own_size": 28896,
+   "helpers": 1490,
+   "helpers_size": 4064850,
+   "shared": 15835
+  },
+  "lem-unitary-boundary-prechart": {
+   "own": 4,
+   "own_size": 12773,
+   "helpers": 38,
+   "helpers_size": 196013,
+   "shared": 7469
+  },
+  "lem-unitary-boundary-separation": {
+   "own": 4,
+   "own_size": 18260,
+   "helpers": 2159,
+   "helpers_size": 11607954,
+   "shared": 40056
+  },
+  "lem-unitary-tautological-charts": {
+   "own": 2,
+   "own_size": 10391,
+   "helpers": 1579,
+   "helpers_size": 5060255,
+   "shared": 31928
+  },
+  "lem-valuations-level-primes": {
+   "own": 6,
+   "own_size": 4454,
+   "helpers": 731,
+   "helpers_size": 1234948,
+   "shared": 7471
+  },
+  "lem-volume-theorem-from-tower-identities": {
+   "own": 2,
+   "own_size": 3491,
+   "helpers": 2105,
+   "helpers_size": 2009602,
+   "shared": 2357
+  },
+  "lem-weyl-antisymmetry-intersection": {
+   "own": 5,
+   "own_size": 2883,
+   "helpers": 2512,
+   "helpers_size": 5420018,
+   "shared": 25532
+  },
+  "lem-zeta-nonvanishing": {
+   "own": 0,
+   "own_size": 0,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "prop-admissible-data-exist": {
+   "own": 2,
+   "own_size": 3100,
+   "helpers": 1360,
+   "helpers_size": 9292770,
+   "shared": 51780
+  },
+  "prop-archimedean-model-data": {
+   "own": 3,
+   "own_size": 1000,
+   "helpers": 2773,
+   "helpers_size": 5726211,
+   "shared": 57506
+  },
+  "prop-block-bounds-from-four": {
+   "own": 1,
+   "own_size": 2177,
+   "helpers": 571,
+   "helpers_size": 757971,
+   "shared": 723
+  },
+  "prop-block-sums-ranges": {
+   "own": 2,
+   "own_size": 496,
+   "helpers": 189,
+   "helpers_size": 282835,
+   "shared": 366
+  },
+  "prop-chosen-data-serve-families": {
+   "own": 8,
+   "own_size": 1425,
+   "helpers": 1120,
+   "helpers_size": 1793520,
+   "shared": 23471
+  },
+  "prop-congruence-bound-auxiliary-pair": {
+   "own": 4,
+   "own_size": 4205,
+   "helpers": 248,
+   "helpers_size": 592361,
+   "shared": 15083
+  },
+  "prop-congruence-bound-auxiliary-primes": {
+   "own": 2,
+   "own_size": 663,
+   "helpers": 4,
+   "helpers_size": 10615,
+   "shared": 3226
+  },
+  "prop-congruence-bound-intermediate-primes": {
+   "own": 4,
+   "own_size": 6900,
+   "helpers": 132,
+   "helpers_size": 616577,
+   "shared": 18268
+  },
+  "prop-congruence-bound-large-primes": {
+   "own": 2,
+   "own_size": 8695,
+   "helpers": 512,
+   "helpers_size": 1817432,
+   "shared": 9283
+  },
+  "prop-congruence-bounds-all-primes": {
+   "own": 2,
+   "own_size": 12242,
+   "helpers": 862,
+   "helpers_size": 1399213,
+   "shared": 20581
+  },
+  "prop-counting-constants-constituents": {
+   "own": 2,
+   "own_size": 2499,
+   "helpers": 990,
+   "helpers_size": 1204274,
+   "shared": 12345
+  },
+  "prop-defect-condition": {
+   "own": 3,
+   "own_size": 6436,
+   "helpers": 114,
+   "helpers_size": 259033,
+   "shared": 21351
+  },
+  "prop-definite-side-norm-bounds": {
+   "own": 7,
+   "own_size": 563573,
+   "helpers": 1702,
+   "helpers_size": 2478433,
+   "shared": 21743
+  },
+  "prop-exponent-bounds-twisting-places": {
+   "own": 5,
+   "own_size": 38295,
+   "helpers": 1485,
+   "helpers_size": 3164184,
+   "shared": 28020
+  },
+  "prop-family-characters-with-links": {
+   "own": 2,
+   "own_size": 15452,
+   "helpers": 4372,
+   "helpers_size": 12085636,
+   "shared": 30823
+  },
+  "prop-finite-classes-cyclotomic-twists": {
+   "own": 2,
+   "own_size": 2132,
+   "helpers": 178,
+   "helpers_size": 608111,
+   "shared": 8947
+  },
+  "prop-good-twists-from-theta-series": {
+   "own": 4,
+   "own_size": 4292,
+   "helpers": 1088,
+   "helpers_size": 2970624,
+   "shared": 85009
+  },
+  "prop-hecke-integrality-transformation": {
+   "own": 1,
+   "own_size": 28,
+   "helpers": 1932,
+   "helpers_size": 6621106,
+   "shared": 39478
+  },
+  "prop-height-inequalities-at-points": {
+   "own": 3,
+   "own_size": 22766,
+   "helpers": 6090,
+   "helpers_size": 16686116,
+   "shared": 68526
+  },
+  "prop-intermediate-constructions-exist": {
+   "own": 2,
+   "own_size": 533,
+   "helpers": 5093,
+   "helpers_size": 10019722,
+   "shared": 162334
+  },
+  "prop-isometric-period-identity": {
+   "own": 6,
+   "own_size": 8986,
+   "helpers": 1197,
+   "helpers_size": 8395119,
+   "shared": 128036
+  },
+  "prop-lattice-and-depth-estimates": {
+   "own": 5,
+   "own_size": 37579,
+   "helpers": 2381,
+   "helpers_size": 4216075,
+   "shared": 49538
+  },
+  "prop-lifting-ramified-coefficients": {
+   "own": 5,
+   "own_size": 686,
+   "helpers": 2547,
+   "helpers_size": 9004040,
+   "shared": 11093
+  },
+  "prop-local-data-unitary-shimura-points": {
+   "own": 2,
+   "own_size": 742,
+   "helpers": 1803,
+   "helpers_size": 2515393,
+   "shared": 15676
+  },
+  "prop-member-hypotheses-from-literature": {
+   "own": 2,
+   "own_size": 409,
+   "helpers": 287,
+   "helpers_size": 737692,
+   "shared": 148186
+  },
+  "prop-offdiagonal-hypotheses-hold": {
+   "own": 1,
+   "own_size": 394,
+   "helpers": 2110,
+   "helpers_size": 3659049,
+   "shared": 62922
+  },
+  "prop-pair-coefficient-local-decomposition": {
+   "own": 2,
+   "own_size": 3239,
+   "helpers": 1459,
+   "helpers_size": 3559517,
+   "shared": 4292
+  },
+  "prop-paired-character-bound": {
+   "own": 4,
+   "own_size": 1289,
+   "helpers": 290,
+   "helpers_size": 866022,
+   "shared": 12915
+  },
+  "prop-period-identity-real-package": {
+   "own": 4,
+   "own_size": 4141,
+   "helpers": 579,
+   "helpers_size": 2409224,
+   "shared": 47158
+  },
+  "prop-periods-valuations-good-data": {
+   "own": 2,
+   "own_size": 348,
+   "helpers": 1195,
+   "helpers_size": 2008101,
+   "shared": 20173
+  },
+  "prop-small-terms-offdiag-level": {
+   "own": 3,
+   "own_size": 1242,
+   "helpers": 949,
+   "helpers_size": 1791904,
+   "shared": 110094
+  },
+  "prop-theta-integrals-along-towers": {
+   "own": 2,
+   "own_size": 54,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 515
+  },
+  "prop-twisting-property-constructed-points": {
+   "own": 4,
+   "own_size": 5927,
+   "helpers": 143,
+   "helpers_size": 285365,
+   "shared": 109170
+  },
+  "rem-local-parameters-weak": {
+   "own": 0,
+   "own_size": 0,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "rem-points-to-check": {
+   "own": 0,
+   "own_size": 0,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "thm-abelian-scheme-lifting-divided-powers": {
+   "own": 2,
+   "own_size": 159,
+   "helpers": 619,
+   "helpers_size": 1614503,
+   "shared": 13278
+  },
+  "thm-abelian-scheme-standard-theory": {
+   "own": 12,
+   "own_size": 626,
+   "helpers": 13,
+   "helpers_size": 44306,
+   "shared": 6921
+  },
+  "thm-abelian-variety-torsion-count": {
+   "own": 2,
+   "own_size": 297,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 3138
+  },
+  "thm-additive-characteristic-classes": {
+   "own": 6,
+   "own_size": 576,
+   "helpers": 2075,
+   "helpers_size": 2192412,
+   "shared": 10381
+  },
+  "thm-angehrn-siu-point-separation": {
+   "own": 4,
+   "own_size": 684,
+   "helpers": 94,
+   "helpers_size": 159461,
+   "shared": 8741
+  },
+  "thm-archimedean-models": {
+   "own": 8,
+   "own_size": 1117,
+   "helpers": 2789,
+   "helpers_size": 4554062,
+   "shared": 23358
+  },
+  "thm-arithmetic-hilbert-samuel": {
+   "own": 3,
+   "own_size": 245,
+   "helpers": 2347,
+   "helpers_size": 4002147,
+   "shared": 7449
+  },
+  "thm-arithmetic-hilbert-samuel-inequalities": {
+   "own": 1,
+   "own_size": 971,
+   "helpers": 2421,
+   "helpers_size": 4514253,
+   "shared": 11834
+  },
+  "thm-arithmetic-intersection-theory": {
+   "own": 13,
+   "own_size": 6333,
+   "helpers": 1489,
+   "helpers_size": 1814349,
+   "shared": 17889
+  },
+  "thm-arithmetic-volume-bound": {
+   "own": 2,
+   "own_size": 14339,
+   "helpers": 183,
+   "helpers_size": 233117,
+   "shared": 4568
+  },
+  "thm-arithmetic-volume-nef": {
+   "own": 2,
+   "own_size": 1066,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 228
+  },
+  "thm-artin-reciprocity": {
+   "own": 2,
+   "own_size": 200,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 6035
+  },
+  "thm-automorphic-induction-quadratic": {
+   "own": 4,
+   "own_size": 391,
+   "helpers": 3290,
+   "helpers_size": 9798581,
+   "shared": 31577
+  },
+  "thm-auxiliary-fields": {
+   "own": 3,
+   "own_size": 882,
+   "helpers": 1390,
+   "helpers_size": 2175923,
+   "shared": 2653
+  },
+  "thm-base-change-unitary": {
+   "own": 1,
+   "own_size": 4,
+   "helpers": 223,
+   "helpers_size": 2066475,
+   "shared": 46468
+  },
+  "thm-basic-conditions-from-local-parameters": {
+   "own": 2,
+   "own_size": 2933,
+   "helpers": 576,
+   "helpers_size": 5978970,
+   "shared": 48992
+  },
+  "thm-bernstein-unitary-admissible": {
+   "own": 2,
+   "own_size": 914,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 2094
+  },
+  "thm-bernstein-unitary-product": {
+   "own": 2,
+   "own_size": 1597,
+   "helpers": 1249,
+   "helpers_size": 1490392,
+   "shared": 7389
+  },
+  "thm-bessel-period-ascent": {
+   "own": 2,
+   "own_size": 35,
+   "helpers": 1039,
+   "helpers_size": 2716227,
+   "shared": 15342
+  },
+  "thm-bessel-transform-radial-space": {
+   "own": 3,
+   "own_size": 2568,
+   "helpers": 2021,
+   "helpers_size": 4911846,
+   "shared": 20661
+  },
+  "thm-bhatt-scholze-coefficients": {
+   "own": 2,
+   "own_size": 27482,
+   "helpers": 13,
+   "helpers_size": 14844,
+   "shared": 158
+  },
+  "thm-bhatt-scholze-crystalline-lattices": {
+   "own": 2,
+   "own_size": 30721,
+   "helpers": 1131,
+   "helpers_size": 2955636,
+   "shared": 4322
+  },
+  "thm-bloch-kato-local": {
+   "own": 2,
+   "own_size": 650,
+   "helpers": 484,
+   "helpers_size": 1742700,
+   "shared": 9564
+  },
+  "thm-borel-casselman": {
+   "own": 3,
+   "own_size": 1805,
+   "helpers": 1,
+   "helpers_size": 3091,
+   "shared": 245
+  },
+  "thm-borel-type-rank-bound": {
+   "own": 5,
+   "own_size": 1325,
+   "helpers": 2833,
+   "helpers_size": 3747045,
+   "shared": 9179
+  },
+  "thm-brauer-induction-degree-zero": {
+   "own": 2,
+   "own_size": 1846,
+   "helpers": 48,
+   "helpers_size": 58671,
+   "shared": 140
+  },
+  "thm-bz-derivative-leibniz": {
+   "own": 1,
+   "own_size": 91,
+   "helpers": 2401,
+   "helpers_size": 3769857,
+   "shared": 689
+  },
+  "thm-bz-finiteness": {
+   "own": 15,
+   "own_size": 2446,
+   "helpers": 33,
+   "helpers_size": 161446,
+   "shared": 4096
+  },
+  "thm-bz-functors-finite-length": {
+   "own": 2,
+   "own_size": 2680,
+   "helpers": 1,
+   "helpers_size": 116,
+   "shared": 2224
+  },
+  "thm-casselman-wallach": {
+   "own": 2,
+   "own_size": 955,
+   "helpers": 606,
+   "helpers_size": 982862,
+   "shared": 1992
+  },
+  "thm-chain-averaging": {
+   "own": 2,
+   "own_size": 24430,
+   "helpers": 196,
+   "helpers_size": 268576,
+   "shared": 67
+  },
+  "thm-charpoly-de-rham-abelian": {
+   "own": 5,
+   "own_size": 17611,
+   "helpers": 1176,
+   "helpers_size": 2616942,
+   "shared": 19212
+  },
+  "thm-chebotarev-degree-one": {
+   "own": 4,
+   "own_size": 15606,
+   "helpers": 87,
+   "helpers_size": 122148,
+   "shared": 238
+  },
+  "thm-chevalley-congruence-units": {
+   "own": 2,
+   "own_size": 1017,
+   "helpers": 10,
+   "helpers_size": 32436,
+   "shared": 28
+  },
+  "thm-chow-form": {
+   "own": 2,
+   "own_size": 904,
+   "helpers": 1,
+   "helpers_size": 868,
+   "shared": 417
+  },
+  "thm-chowla-selberg": {
+   "own": 4,
+   "own_size": 11811,
+   "helpers": 180,
+   "helpers_size": 344132,
+   "shared": 5681
+  },
+  "thm-clozel-cohomological": {
+   "own": 2,
+   "own_size": 75,
+   "helpers": 406,
+   "helpers_size": 677657,
+   "shared": 3598
+  },
+  "thm-clozel-purity": {
+   "own": 2,
+   "own_size": 240,
+   "helpers": 3,
+   "helpers_size": 4953,
+   "shared": 1849
+  },
+  "thm-clozel-regular-algebraic": {
+   "own": 2,
+   "own_size": 517,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 197
+  },
+  "thm-cm-j-hilbert-class-field": {
+   "own": 2,
+   "own_size": 3895,
+   "helpers": 16,
+   "helpers_size": 17475,
+   "shared": 10126
+  },
+  "thm-cm-j-integral-good-reduction": {
+   "own": 5,
+   "own_size": 4365,
+   "helpers": 259,
+   "helpers_size": 363199,
+   "shared": 807
+  },
+  "thm-coincidence-points-cm": {
+   "own": 2,
+   "own_size": 2714,
+   "helpers": 2341,
+   "helpers_size": 4933324,
+   "shared": 12962
+  },
+  "thm-compatibility-depth-zero": {
+   "own": 3,
+   "own_size": 1955,
+   "helpers": 307,
+   "helpers_size": 576266,
+   "shared": 36524
+  },
+  "thm-complex-theta-uniformisation": {
+   "own": 3,
+   "own_size": 13277,
+   "helpers": 19,
+   "helpers_size": 100867,
+   "shared": 708
+  },
+  "thm-congruence-module-selmer-bound": {
+   "own": 3,
+   "own_size": 60394,
+   "helpers": 4677,
+   "helpers_size": 10832030,
+   "shared": 2231
+  },
+  "thm-core-inequality": {
+   "own": 2,
+   "own_size": 32868,
+   "helpers": 65,
+   "helpers_size": 83400,
+   "shared": 544
+  },
+  "thm-counting-automorphic-forms-unitary": {
+   "own": 3,
+   "own_size": 2622,
+   "helpers": 2552,
+   "helpers_size": 5454849,
+   "shared": 7528
+  },
+  "thm-counting-constant-mass-constant": {
+   "own": 2,
+   "own_size": 3869,
+   "helpers": 2600,
+   "helpers_size": 4691767,
+   "shared": 18094
+  },
+  "thm-covolume-bound": {
+   "own": 5,
+   "own_size": 11716,
+   "helpers": 13208,
+   "helpers_size": 32397978,
+   "shared": 119836
+  },
+  "thm-critical-line": {
+   "own": 7,
+   "own_size": 6564,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 1
+  },
+  "thm-critical-line-primitive": {
+   "own": 4,
+   "own_size": 3517,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 1
+  },
+  "thm-cusp-bounded-gl": {
+   "own": 4,
+   "own_size": 13181,
+   "helpers": 121,
+   "helpers_size": 228341,
+   "shared": 5624
+  },
+  "thm-cusp-bounded-unitary": {
+   "own": 2,
+   "own_size": 1108,
+   "helpers": 6,
+   "helpers_size": 1692,
+   "shared": 1195
+  },
+  "thm-cusp-decay-sobolev": {
+   "own": 2,
+   "own_size": 841,
+   "helpers": 3,
+   "helpers_size": 4884,
+   "shared": 714
+  },
+  "thm-cusp-rapid-decay": {
+   "own": 2,
+   "own_size": 251,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 691
+  },
+  "thm-cusp-trace-class": {
+   "own": 3,
+   "own_size": 1033,
+   "helpers": 36,
+   "helpers_size": 134087,
+   "shared": 1660
+  },
+  "thm-cusp-uniform-decay": {
+   "own": 2,
+   "own_size": 26037,
+   "helpers": 42,
+   "helpers_size": 99268,
+   "shared": 3153
+  },
+  "thm-cuspidal-spectrum-gl": {
+   "own": 2,
+   "own_size": 28,
+   "helpers": 6,
+   "helpers_size": 42059,
+   "shared": 4804
+  },
+  "thm-de-rham-abelian-schemes": {
+   "own": 2,
+   "own_size": 73,
+   "helpers": 358,
+   "helpers_size": 761446,
+   "shared": 4712
+  },
+  "thm-degenerations-mumford-uniformisation": {
+   "own": 2,
+   "own_size": 1669,
+   "helpers": 1160,
+   "helpers_size": 3390115,
+   "shared": 12427
+  },
+  "thm-deligne-ribet": {
+   "own": 2,
+   "own_size": 273,
+   "helpers": 84,
+   "helpers_size": 133081,
+   "shared": 6592
+  },
+  "thm-depth-zero-base-change-principal-series": {
+   "own": 2,
+   "own_size": 1672,
+   "helpers": 2075,
+   "helpers_size": 3111559,
+   "shared": 36489
+  },
+  "thm-depth-zero-from-support": {
+   "own": 2,
+   "own_size": 9927,
+   "helpers": 52,
+   "helpers_size": 106293,
+   "shared": 1013
+  },
+  "thm-depth-zero-jacquet-injective": {
+   "own": 2,
+   "own_size": 2002,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 255
+  },
+  "thm-depth-zero-support": {
+   "own": 2,
+   "own_size": 4062,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 178
+  },
+  "thm-dieudonne-theory-oc": {
+   "own": 2,
+   "own_size": 666,
+   "helpers": 617,
+   "helpers_size": 1360459,
+   "shared": 1218
+  },
+  "thm-discrete-series-bessel-pointwise-bound": {
+   "own": 6,
+   "own_size": 16712,
+   "helpers": 1802,
+   "helpers_size": 4288318,
+   "shared": 46674
+  },
+  "thm-discrete-series-branching-coefficients": {
+   "own": 2,
+   "own_size": 1423,
+   "helpers": 1428,
+   "helpers_size": 3165397,
+   "shared": 11928
+  },
+  "thm-discrete-series-exist-cover": {
+   "own": 2,
+   "own_size": 43,
+   "helpers": 1,
+   "helpers_size": 1546,
+   "shared": 6534
+  },
+  "thm-discrete-series-exist-upq": {
+   "own": 4,
+   "own_size": 594,
+   "helpers": 2,
+   "helpers_size": 21,
+   "shared": 5387
+  },
+  "thm-discrete-series-frame-independent": {
+   "own": 2,
+   "own_size": 553,
+   "helpers": 1,
+   "helpers_size": 9,
+   "shared": 1330
+  },
+  "thm-discrete-series-lowest-k-type": {
+   "own": 2,
+   "own_size": 430,
+   "helpers": 17,
+   "helpers_size": 2528,
+   "shared": 1359
+  },
+  "thm-discrete-series-parametrisation": {
+   "own": 2,
+   "own_size": 111,
+   "helpers": 68,
+   "helpers_size": 119890,
+   "shared": 9113
+  },
+  "thm-disjoint-support-product-irreducible": {
+   "own": 2,
+   "own_size": 2663,
+   "helpers": 2,
+   "helpers_size": 2668,
+   "shared": 135
+  },
+  "thm-dixmier-malliavin": {
+   "own": 2,
+   "own_size": 401,
+   "helpers": 11,
+   "helpers_size": 75395,
+   "shared": 350
+  },
+  "thm-doubling-method": {
+   "own": 2,
+   "own_size": 2087,
+   "helpers": 1,
+   "helpers_size": 10742,
+   "shared": 3725
+  },
+  "thm-downward-theta-lift-nonvanishing": {
+   "own": 4,
+   "own_size": 3400,
+   "helpers": 421,
+   "helpers_size": 983711,
+   "shared": 27181
+  },
+  "thm-dual-abelian-scheme": {
+   "own": 2,
+   "own_size": 1018,
+   "helpers": 1342,
+   "helpers_size": 2292321,
+   "shared": 8985
+  },
+  "thm-eigenspaces-crystalline": {
+   "own": 7,
+   "own_size": 4157,
+   "helpers": 89,
+   "helpers_size": 157298,
+   "shared": 44697
+  },
+  "thm-eisenstein-continuation-growth": {
+   "own": 4,
+   "own_size": 2317,
+   "helpers": 50,
+   "helpers_size": 189096,
+   "shared": 7179
+  },
+  "thm-etale-finiteness": {
+   "own": 5,
+   "own_size": 926,
+   "helpers": 3260,
+   "helpers_size": 4111068,
+   "shared": 12725
+  },
+  "thm-families-connected": {
+   "own": 1,
+   "own_size": 5148,
+   "helpers": 5644,
+   "helpers_size": 8209072,
+   "shared": 41286
+  },
+  "thm-family-conditions-from-basic": {
+   "own": 1,
+   "own_size": 2446,
+   "helpers": 2650,
+   "helpers_size": 5879615,
+   "shared": 111000
+  },
+  "thm-family-data-exists": {
+   "own": 4,
+   "own_size": 2914,
+   "helpers": 2858,
+   "helpers_size": 8481924,
+   "shared": 235303
+  },
+  "thm-family-membership-admissible-data": {
+   "own": 6,
+   "own_size": 4780,
+   "helpers": 12225,
+   "helpers_size": 78568819,
+   "shared": 182877
+  },
+  "thm-family-sha-error-bound": {
+   "own": 6,
+   "own_size": 3799,
+   "helpers": 2801,
+   "helpers_size": 4905461,
+   "shared": 114535
+  },
+  "thm-fargues-hodge-tate-sequence": {
+   "own": 2,
+   "own_size": 1784,
+   "helpers": 109,
+   "helpers_size": 407740,
+   "shared": 910
+  },
+  "thm-flath-tensor-product": {
+   "own": 2,
+   "own_size": 574,
+   "helpers": 190,
+   "helpers_size": 328274,
+   "shared": 3115
+  },
+  "thm-flath-unramified": {
+   "own": 2,
+   "own_size": 508,
+   "helpers": 10,
+   "helpers_size": 20722,
+   "shared": 1126
+  },
+  "thm-fock-bad-share-mean": {
+   "own": 18,
+   "own_size": 400,
+   "helpers": 637,
+   "helpers_size": 945627,
+   "shared": 918
+  },
+  "thm-fontaine-bcris": {
+   "own": 3,
+   "own_size": 62,
+   "helpers": 1,
+   "helpers_size": 222,
+   "shared": 2303
+  },
+  "thm-formal-degree-upq": {
+   "own": 2,
+   "own_size": 923,
+   "helpers": 238,
+   "helpers_size": 329145,
+   "shared": 7051
+  },
+  "thm-formal-degree-well-spaced": {
+   "own": 5,
+   "own_size": 27854,
+   "helpers": 365,
+   "helpers_size": 598232,
+   "shared": 6781
+  },
+  "thm-full-level-ample-models": {
+   "own": 4,
+   "own_size": 9563,
+   "helpers": 1435,
+   "helpers_size": 3651819,
+   "shared": 22577
+  },
+  "thm-functorial-resolution": {
+   "own": 4,
+   "own_size": 251,
+   "helpers": 2142,
+   "helpers_size": 1686577,
+   "shared": 2695
+  },
+  "thm-gaga-sections": {
+   "own": 2,
+   "own_size": 13088,
+   "helpers": 4,
+   "helpers_size": 20594,
+   "shared": 942
+  },
+  "thm-galois-reps-csd-above-l": {
+   "own": 3,
+   "own_size": 995,
+   "helpers": 3,
+   "helpers_size": 6312,
+   "shared": 3593
+  },
+  "thm-galois-reps-from-geometry-and-theta": {
+   "own": 2,
+   "own_size": 197,
+   "helpers": 2148,
+   "helpers_size": 3991755,
+   "shared": 20405
+  },
+  "thm-galois-reps-hecke-eigenspaces": {
+   "own": 1,
+   "own_size": 8,
+   "helpers": 1851,
+   "helpers_size": 3494019,
+   "shared": 52455
+  },
+  "thm-galois-reps-polarized": {
+   "own": 2,
+   "own_size": 178,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 54
+  },
+  "thm-galois-reps-polarized-cuspidal": {
+   "own": 2,
+   "own_size": 387,
+   "helpers": 1,
+   "helpers_size": 534,
+   "shared": 624
+  },
+  "thm-galois-reps-unramified-compatible": {
+   "own": 1,
+   "own_size": 25,
+   "helpers": 2709,
+   "helpers_size": 7225780,
+   "shared": 90335
+  },
+  "thm-gelfand-cuspidal-mirabolic": {
+   "own": 2,
+   "own_size": 8,
+   "helpers": 245,
+   "helpers_size": 202949,
+   "shared": 951
+  },
+  "thm-gelfand-kazhdan": {
+   "own": 3,
+   "own_size": 794,
+   "helpers": 130,
+   "helpers_size": 172024,
+   "shared": 2241
+  },
+  "thm-geometric-galois-odd-rank": {
+   "own": 3,
+   "own_size": 1082,
+   "helpers": 2982,
+   "helpers_size": 5956662,
+   "shared": 5750
+  },
+  "thm-geometric-lemma": {
+   "own": 3,
+   "own_size": 186,
+   "helpers": 1,
+   "helpers_size": 39,
+   "shared": 2113
+  },
+  "thm-geometric-lemma-filtration": {
+   "own": 4,
+   "own_size": 82,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 1633
+  },
+  "thm-godement-schur-orthogonality": {
+   "own": 2,
+   "own_size": 1303,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 22
+  },
+  "thm-good-towers-from-arakelov-inputs": {
+   "own": 11,
+   "own_size": 9374,
+   "helpers": 18680,
+   "helpers_size": 46225654,
+   "shared": 80144
+  },
+  "thm-good-twists-all-coprime-powers": {
+   "own": 1,
+   "own_size": 452,
+   "helpers": 2394,
+   "helpers_size": 7312897,
+   "shared": 1657
+  },
+  "thm-green-parametrisation": {
+   "own": 5,
+   "own_size": 355,
+   "helpers": 246,
+   "helpers_size": 366508,
+   "shared": 2499
+  },
+  "thm-green-regular-characters": {
+   "own": 2,
+   "own_size": 683,
+   "helpers": 1,
+   "helpers_size": 2,
+   "shared": 2379
+  },
+  "thm-greenberg-wiles": {
+   "own": 2,
+   "own_size": 271,
+   "helpers": 88,
+   "helpers_size": 293564,
+   "shared": 309
+  },
+  "thm-grh-from-galois": {
+   "own": 1,
+   "own_size": 172,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 52
+  },
+  "thm-grh-from-sha-bound": {
+   "own": 5,
+   "own_size": 437,
+   "helpers": 102,
+   "helpers_size": 16621,
+   "shared": 7381
+  },
+  "thm-grh-from-theta-integrals": {
+   "own": 5,
+   "own_size": 287,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 5003
+  },
+  "thm-gross-cm-curves": {
+   "own": 2,
+   "own_size": 6739,
+   "helpers": 297,
+   "helpers_size": 454750,
+   "shared": 804
+  },
+  "thm-grothendieck-existence": {
+   "own": 2,
+   "own_size": 1177,
+   "helpers": 1402,
+   "helpers_size": 2254034,
+   "shared": 5661
+  },
+  "thm-grothendieck-messing": {
+   "own": 4,
+   "own_size": 692,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 413
+  },
+  "thm-gsp4-lift-automorphy": {
+   "own": 1,
+   "own_size": 22,
+   "helpers": 3069,
+   "helpers_size": 11215647,
+   "shared": 87929
+  },
+  "thm-half-plane": {
+   "own": 3,
+   "own_size": 8,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "thm-harish-chandra-discrete-series": {
+   "own": 2,
+   "own_size": 257,
+   "helpers": 2333,
+   "helpers_size": 3012149,
+   "shared": 9035
+  },
+  "thm-hasse-norm-cyclic": {
+   "own": 3,
+   "own_size": 2707,
+   "helpers": 188,
+   "helpers_size": 370329,
+   "shared": 187
+  },
+  "thm-hasse-norm-quadratic": {
+   "own": 3,
+   "own_size": 2855,
+   "helpers": 8,
+   "helpers_size": 11354,
+   "shared": 287
+  },
+  "thm-hc-analyticity-density": {
+   "own": 2,
+   "own_size": 16,
+   "helpers": 447,
+   "helpers_size": 641667,
+   "shared": 1244
+  },
+  "thm-hc-discrete-series-classification": {
+   "own": 2,
+   "own_size": 990,
+   "helpers": 1,
+   "helpers_size": 30,
+   "shared": 8433
+  },
+  "thm-hc-finiteness-gl": {
+   "own": 4,
+   "own_size": 6650,
+   "helpers": 1067,
+   "helpers_size": 2053819,
+   "shared": 6725
+  },
+  "thm-hc-finiteness-unitary": {
+   "own": 2,
+   "own_size": 2046,
+   "helpers": 2120,
+   "helpers_size": 4462663,
+   "shared": 9501
+  },
+  "thm-hc-infinitesimal-equivalence": {
+   "own": 2,
+   "own_size": 16,
+   "helpers": 146,
+   "helpers_size": 181779,
+   "shared": 1712
+  },
+  "thm-hc-k-finite-vectors": {
+   "own": 2,
+   "own_size": 795,
+   "helpers": 4,
+   "helpers_size": 6317,
+   "shared": 1018
+  },
+  "thm-hc-modules-unitary": {
+   "own": 2,
+   "own_size": 47,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 1645
+  },
+  "thm-hecke-bound-base-change": {
+   "own": 2,
+   "own_size": 296,
+   "helpers": 1825,
+   "helpers_size": 2404909,
+   "shared": 11681
+  },
+  "thm-hecke-character-local-parameter-above-l": {
+   "own": 2,
+   "own_size": 3528,
+   "helpers": 2,
+   "helpers_size": 260,
+   "shared": 2231
+  },
+  "thm-hecke-character-wd-above-l": {
+   "own": 2,
+   "own_size": 10211,
+   "helpers": 104,
+   "helpers_size": 535873,
+   "shared": 8200
+  },
+  "thm-hecke-fixed-points-kuga-sato": {
+   "own": 3,
+   "own_size": 2301,
+   "helpers": 184,
+   "helpers_size": 413123,
+   "shared": 21937
+  },
+  "thm-hecke-functional-equation-cm": {
+   "own": 2,
+   "own_size": 337,
+   "helpers": 128,
+   "helpers_size": 177664,
+   "shared": 2045
+  },
+  "thm-hecke-l-adic-character": {
+   "own": 2,
+   "own_size": 485,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 6099
+  },
+  "thm-hecke-l-adic-character-above-l": {
+   "own": 2,
+   "own_size": 2439,
+   "helpers": 4,
+   "helpers_size": 11280,
+   "shared": 562
+  },
+  "thm-hecke-l-adic-character-crystalline": {
+   "own": 3,
+   "own_size": 819,
+   "helpers": 3,
+   "helpers_size": 3934,
+   "shared": 2821
+  },
+  "thm-hecke-l-adic-character-de-rham": {
+   "own": 2,
+   "own_size": 1429,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 12342
+  },
+  "thm-hecke-l-entire": {
+   "own": 2,
+   "own_size": 191,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 407
+  },
+  "thm-hecke-l-nonvanishing-line-one": {
+   "own": 2,
+   "own_size": 228,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 456
+  },
+  "thm-henniart-local-converse": {
+   "own": 2,
+   "own_size": 675,
+   "helpers": 891,
+   "helpers_size": 1220628,
+   "shared": 966
+  },
+  "thm-hermitian-hasse-principle": {
+   "own": 2,
+   "own_size": 606,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 151
+  },
+  "thm-hilbert-mixed-weights": {
+   "own": 1,
+   "own_size": 14,
+   "helpers": 127,
+   "helpers_size": 406819,
+   "shared": 22755
+  },
+  "thm-hilbert-modular-inputs": {
+   "own": 1,
+   "own_size": 55,
+   "helpers": 5292,
+   "helpers_size": 12132268,
+   "shared": 50439
+  },
+  "thm-hilbert-samuel-nef": {
+   "own": 2,
+   "own_size": 4720,
+   "helpers": 47,
+   "helpers_size": 134224,
+   "shared": 6755
+  },
+  "thm-hilbert-weight-change": {
+   "own": 2,
+   "own_size": 1020,
+   "helpers": 1712,
+   "helpers_size": 3089260,
+   "shared": 4794
+  },
+  "thm-hironaka-resolution": {
+   "own": 2,
+   "own_size": 260,
+   "helpers": 9,
+   "helpers_size": 4597,
+   "shared": 59
+  },
+  "thm-hodge-bundle-semipositive": {
+   "own": 2,
+   "own_size": 1239,
+   "helpers": 782,
+   "helpers_size": 1240103,
+   "shared": 3620
+  },
+  "thm-hodge-numbers-eigenspaces": {
+   "own": 1,
+   "own_size": 16,
+   "helpers": 3146,
+   "helpers_size": 5236833,
+   "shared": 24421
+  },
+  "thm-hodge-tate-count": {
+   "own": 2,
+   "own_size": 4,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 1060
+  },
+  "thm-hodge-tate-decomposition": {
+   "own": 3,
+   "own_size": 648,
+   "helpers": 4145,
+   "helpers_size": 6959482,
+   "shared": 37570
+  },
+  "thm-hodge-tate-functorial": {
+   "own": 2,
+   "own_size": 2490,
+   "helpers": 897,
+   "helpers_size": 1621828,
+   "shared": 23615
+  },
+  "thm-hodge-tate-weights-eigenspaces": {
+   "own": 2,
+   "own_size": 489,
+   "helpers": 495,
+   "helpers_size": 908032,
+   "shared": 23923
+  },
+  "thm-holomorphic-discrete-series": {
+   "own": 2,
+   "own_size": 4225,
+   "helpers": 87,
+   "helpers_size": 129768,
+   "shared": 1328
+  },
+  "thm-howe-duality-archimedean-trivial": {
+   "own": 2,
+   "own_size": 24394,
+   "helpers": 634,
+   "helpers_size": 1408856,
+   "shared": 2578
+  },
+  "thm-howe-duality-gl-gl": {
+   "own": 2,
+   "own_size": 243,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 871
+  },
+  "thm-indefinite-slope-bound": {
+   "own": 2,
+   "own_size": 1331,
+   "helpers": 2832,
+   "helpers_size": 6551468,
+   "shared": 80203
+  },
+  "thm-inner-form-multiplicities-equal": {
+   "own": 3,
+   "own_size": 1423,
+   "helpers": 4094,
+   "helpers_size": 8363498,
+   "shared": 13707
+  },
+  "thm-jacquet-irreducible-admissible": {
+   "own": 6,
+   "own_size": 956,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 624
+  },
+  "thm-jacquet-rallis-fundamental-lemma": {
+   "own": 4,
+   "own_size": 72,
+   "helpers": 1872,
+   "helpers_size": 3230267,
+   "shared": 848
+  },
+  "thm-jacquet-shalika": {
+   "own": 4,
+   "own_size": 258,
+   "helpers": 410,
+   "helpers_size": 517300,
+   "shared": 3609
+  },
+  "thm-jacquet-shalika-strong-mult-one": {
+   "own": 2,
+   "own_size": 213,
+   "helpers": 27,
+   "helpers_size": 41371,
+   "shared": 11263
+  },
+  "thm-jantzen-lowest-alcove": {
+   "own": 2,
+   "own_size": 1662,
+   "helpers": 16,
+   "helpers_size": 14724,
+   "shared": 777
+  },
+  "thm-kato-euler-system-ordinary": {
+   "own": 3,
+   "own_size": 366,
+   "helpers": 5639,
+   "helpers_size": 9551400,
+   "shared": 2964
+  },
+  "thm-kato-explicit-reciprocity": {
+   "own": 3,
+   "own_size": 3859,
+   "helpers": 426,
+   "helpers_size": 948004,
+   "shared": 760
+  },
+  "thm-kato-selmer-vanishing": {
+   "own": 3,
+   "own_size": 4585,
+   "helpers": 2031,
+   "helpers_size": 3863677,
+   "shared": 41711
+  },
+  "thm-kato-zeta-integral": {
+   "own": 3,
+   "own_size": 67974,
+   "helpers": 2242,
+   "helpers_size": 5550875,
+   "shared": 1974
+  },
+  "thm-katz-measures-cm-theta": {
+   "own": 2,
+   "own_size": 56251,
+   "helpers": 1892,
+   "helpers_size": 3940237,
+   "shared": 3885
+  },
+  "thm-kawamata-viehweg": {
+   "own": 6,
+   "own_size": 941,
+   "helpers": 97,
+   "helpers_size": 223892,
+   "shared": 8820
+  },
+  "thm-kudla-splitting": {
+   "own": 2,
+   "own_size": 18190,
+   "helpers": 2028,
+   "helpers_size": 3124519,
+   "shared": 889
+  },
+  "thm-kuga-sato-unitary-shimura": {
+   "own": 1,
+   "own_size": 21,
+   "helpers": 4533,
+   "helpers_size": 9644671,
+   "shared": 32000
+  },
+  "thm-labesse-base-change": {
+   "own": 2,
+   "own_size": 11388,
+   "helpers": 12,
+   "helpers_size": 15956,
+   "shared": 8104
+  },
+  "thm-landau-windows": {
+   "own": 3,
+   "own_size": 1217,
+   "helpers": 124,
+   "helpers_size": 270525,
+   "shared": 32
+  },
+  "thm-landherr-cm": {
+   "own": 2,
+   "own_size": 381,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 168
+  },
+  "thm-landherr-hermitian-forms": {
+   "own": 2,
+   "own_size": 878,
+   "helpers": 6,
+   "helpers_size": 13352,
+   "shared": 183
+  },
+  "thm-large-summand-low-degree": {
+   "own": 2,
+   "own_size": 855,
+   "helpers": 2274,
+   "helpers_size": 3831465,
+   "shared": 2230
+  },
+  "thm-lattice-term-pair-bound": {
+   "own": 4,
+   "own_size": 213,
+   "helpers": 1555,
+   "helpers_size": 2735179,
+   "shared": 35210
+  },
+  "thm-lifting-clustered-weights": {
+   "own": 2,
+   "own_size": 308,
+   "helpers": 3427,
+   "helpers_size": 13177495,
+   "shared": 11661
+  },
+  "thm-lifting-deep-weights": {
+   "own": 5,
+   "own_size": 3116,
+   "helpers": 2150,
+   "helpers_size": 8855010,
+   "shared": 10445
+  },
+  "thm-lifting-potentially-crystalline": {
+   "own": 4,
+   "own_size": 33363,
+   "helpers": 383,
+   "helpers_size": 852031,
+   "shared": 4609
+  },
+  "thm-linnik": {
+   "own": 2,
+   "own_size": 2524,
+   "helpers": 14,
+   "helpers_size": 30052,
+   "shared": 673
+  },
+  "thm-local-estimate-inert-primes": {
+   "own": 6,
+   "own_size": 261,
+   "helpers": 3912,
+   "helpers_size": 5363380,
+   "shared": 6714
+  },
+  "thm-local-global-ramified": {
+   "own": 1,
+   "own_size": 95,
+   "helpers": 510,
+   "helpers_size": 1275839,
+   "shared": 51881
+  },
+  "thm-local-parameters-exist": {
+   "own": 1,
+   "own_size": 6988,
+   "helpers": 582,
+   "helpers_size": 1267583,
+   "shared": 7982
+  },
+  "thm-log-derivative-at-one": {
+   "own": 2,
+   "own_size": 8888,
+   "helpers": 4,
+   "helpers_size": 450,
+   "shared": 33
+  },
+  "thm-mean-arithmetic-volume-lower-bound": {
+   "own": 2,
+   "own_size": 312,
+   "helpers": 2490,
+   "helpers_size": 6607702,
+   "shared": 56546
+  },
+  "thm-mean-value-bad-shares": {
+   "own": 4,
+   "own_size": 14414,
+   "helpers": 2635,
+   "helpers_size": 3365171,
+   "shared": 777
+  },
+  "thm-member-gap-bound": {
+   "own": 2,
+   "own_size": 17876,
+   "helpers": 46,
+   "helpers_size": 161404,
+   "shared": 113
+  },
+  "thm-moy-prasad-jacquet": {
+   "own": 2,
+   "own_size": 741,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 341
+  },
+  "thm-multiplicity-one-gl": {
+   "own": 2,
+   "own_size": 170,
+   "helpers": 35,
+   "helpers_size": 43386,
+   "shared": 9019
+  },
+  "thm-mumford-degeneration": {
+   "own": 2,
+   "own_size": 11717,
+   "helpers": 2749,
+   "helpers_size": 8862738,
+   "shared": 33976
+  },
+  "thm-mumford-good-metrics": {
+   "own": 3,
+   "own_size": 19,
+   "helpers": 2006,
+   "helpers_size": 3060211,
+   "shared": 5815
+  },
+  "thm-non-endoscopic-hypotheses-hold": {
+   "own": 4,
+   "own_size": 102,
+   "helpers": 2207,
+   "helpers_size": 3441215,
+   "shared": 4016
+  },
+  "thm-offdiagonal-bound": {
+   "own": 7,
+   "own_size": 159680,
+   "helpers": 2987,
+   "helpers_size": 4247152,
+   "shared": 41105
+  },
+  "thm-ohsawa-takegoshi-points": {
+   "own": 2,
+   "own_size": 2847,
+   "helpers": 585,
+   "helpers_size": 1231319,
+   "shared": 1009
+  },
+  "thm-oscillator-lie-action": {
+   "own": 4,
+   "own_size": 64368,
+   "helpers": 297,
+   "helpers_size": 462147,
+   "shared": 612
+  },
+  "thm-p-adic-monodromy": {
+   "own": 5,
+   "own_size": 1303,
+   "helpers": 2224,
+   "helpers_size": 4957078,
+   "shared": 7860
+  },
+  "thm-partial-zeta-functional-equation": {
+   "own": 2,
+   "own_size": 506,
+   "helpers": 74,
+   "helpers_size": 69794,
+   "shared": 1746
+  },
+  "thm-pnt-progressions-exceptional-zero": {
+   "own": 2,
+   "own_size": 36461,
+   "helpers": 732,
+   "helpers_size": 1925275,
+   "shared": 618
+  },
+  "thm-poincare-lelong-integrated": {
+   "own": 2,
+   "own_size": 459,
+   "helpers": 1,
+   "helpers_size": 240,
+   "shared": 6627
+  },
+  "thm-poitou-tate": {
+   "own": 2,
+   "own_size": 1238,
+   "helpers": 503,
+   "helpers_size": 1554956,
+   "shared": 14638
+  },
+  "thm-potential-automorphy-seeds": {
+   "own": 2,
+   "own_size": 61,
+   "helpers": 2723,
+   "helpers_size": 6211564,
+   "shared": 55619
+  },
+  "thm-prime-sums-lattice-gains": {
+   "own": 3,
+   "own_size": 751,
+   "helpers": 4077,
+   "helpers_size": 5664771,
+   "shared": 18769
+  },
+  "thm-primitive-suffice": {
+   "own": 1,
+   "own_size": 3219,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 7
+  },
+  "thm-principal-polarisation-one-section": {
+   "own": 2,
+   "own_size": 511,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 3870
+  },
+  "thm-principalisation-projective": {
+   "own": 2,
+   "own_size": 3737,
+   "helpers": 72,
+   "helpers_size": 117685,
+   "shared": 3052
+  },
+  "thm-principalisation-reduces-dimension": {
+   "own": 3,
+   "own_size": 80,
+   "helpers": 2748,
+   "helpers_size": 2059974,
+   "shared": 2965
+  },
+  "thm-principalisation-relative": {
+   "own": 2,
+   "own_size": 350,
+   "helpers": 49,
+   "helpers_size": 81785,
+   "shared": 2554
+  },
+  "thm-projective-bundle-formula": {
+   "own": 2,
+   "own_size": 859,
+   "helpers": 2889,
+   "helpers_size": 3267493,
+   "shared": 9052
+  },
+  "thm-proper-base-change": {
+   "own": 3,
+   "own_size": 1055,
+   "helpers": 1784,
+   "helpers_size": 2227447,
+   "shared": 3579
+  },
+  "thm-pseudo-coefficients-unitary": {
+   "own": 3,
+   "own_size": 350,
+   "helpers": 1551,
+   "helpers_size": 2264523,
+   "shared": 5944
+  },
+  "thm-quadratic-class-field-theory": {
+   "own": 2,
+   "own_size": 596,
+   "helpers": 2,
+   "helpers_size": 758,
+   "shared": 638
+  },
+  "thm-radford-shuffle": {
+   "own": 2,
+   "own_size": 164,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 143
+  },
+  "thm-rallis-inner-product": {
+   "own": 2,
+   "own_size": 24358,
+   "helpers": 145,
+   "helpers_size": 336995,
+   "shared": 8114
+  },
+  "thm-rational-test-vectors-theta": {
+   "own": 1,
+   "own_size": 100,
+   "helpers": 883,
+   "helpers_size": 1808508,
+   "shared": 36111
+  },
+  "thm-ray-class-characters-galois": {
+   "own": 2,
+   "own_size": 21494,
+   "helpers": 22,
+   "helpers_size": 44770,
+   "shared": 198
+  },
+  "thm-ray-class-field": {
+   "own": 2,
+   "own_size": 6,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 6213
+  },
+  "thm-reciprocity-fixed-exponent": {
+   "own": 1,
+   "own_size": 105320,
+   "helpers": 23,
+   "helpers_size": 64220,
+   "shared": 950
+  },
+  "thm-reduction-theory-unitary": {
+   "own": 2,
+   "own_size": 1624,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 4004
+  },
+  "thm-riemann-hypothesis": {
+   "own": 6,
+   "own_size": 9388,
+   "helpers": 2,
+   "helpers_size": 678,
+   "shared": 1
+  },
+  "thm-semi-abelian-hom-extension": {
+   "own": 2,
+   "own_size": 324,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 3199
+  },
+  "thm-semi-abelian-theta-models": {
+   "own": 4,
+   "own_size": 1116,
+   "helpers": 2518,
+   "helpers_size": 7132012,
+   "shared": 15732
+  },
+  "thm-semistable-reduction": {
+   "own": 2,
+   "own_size": 1572,
+   "helpers": 388,
+   "helpers_size": 1034883,
+   "shared": 5989
+  },
+  "thm-sha-bound": {
+   "own": 5,
+   "own_size": 271,
+   "helpers": 27646,
+   "helpers_size": 67870679,
+   "shared": 140891
+  },
+  "thm-shimura-main-theorem-cm": {
+   "own": 2,
+   "own_size": 559,
+   "helpers": 61,
+   "helpers_size": 129243,
+   "shared": 10854
+  },
+  "thm-shintani-casselman-shalika": {
+   "own": 3,
+   "own_size": 9832,
+   "helpers": 13,
+   "helpers_size": 12146,
+   "shared": 1146
+  },
+  "thm-siegel-eisenstein-residue-theta": {
+   "own": 2,
+   "own_size": 2383,
+   "helpers": 5985,
+   "helpers_size": 11110357,
+   "shared": 19329
+  },
+  "thm-siegel-klingen-rationality": {
+   "own": 4,
+   "own_size": 177,
+   "helpers": 2,
+   "helpers_size": 3179,
+   "shared": 360
+  },
+  "thm-siegel-main-theorem-hermitian": {
+   "own": 2,
+   "own_size": 253,
+   "helpers": 6,
+   "helpers_size": 92514,
+   "shared": 5006
+  },
+  "thm-siegel-units-diamond": {
+   "own": 4,
+   "own_size": 87968,
+   "helpers": 524,
+   "helpers_size": 883896,
+   "shared": 1685
+  },
+  "thm-siegel-units-eisenstein": {
+   "own": 3,
+   "own_size": 119409,
+   "helpers": 1522,
+   "helpers_size": 2678732,
+   "shared": 1437
+  },
+  "thm-siegel-units-mackey": {
+   "own": 1,
+   "own_size": 33891,
+   "helpers": 66,
+   "helpers_size": 125160,
+   "shared": 1418
+  },
+  "thm-siegel-weil-convergent-doubling": {
+   "own": 2,
+   "own_size": 1832,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 6383
+  },
+  "thm-siegel-weil-definite": {
+   "own": 5,
+   "own_size": 3274,
+   "helpers": 2564,
+   "helpers_size": 7124818,
+   "shared": 27339
+  },
+  "thm-siegel-weil-definite-k": {
+   "own": 4,
+   "own_size": 3269,
+   "helpers": 2583,
+   "helpers_size": 7132937,
+   "shared": 27379
+  },
+  "thm-siegel-weil-outside-weil-range": {
+   "own": 4,
+   "own_size": 4726,
+   "helpers": 2534,
+   "helpers_size": 4581086,
+   "shared": 27394
+  },
+  "thm-siegel-weil-weil-range": {
+   "own": 4,
+   "own_size": 4131,
+   "helpers": 393,
+   "helpers_size": 835552,
+   "shared": 17777
+  },
+  "thm-singular-moduli-class-number": {
+   "own": 4,
+   "own_size": 969,
+   "helpers": 10,
+   "helpers_size": 27089,
+   "shared": 35
+  },
+  "thm-square-integrable-segment": {
+   "own": 2,
+   "own_size": 209,
+   "helpers": 8,
+   "helpers_size": 16242,
+   "shared": 156
+  },
+  "thm-square-term-estimates": {
+   "own": 2,
+   "own_size": 303,
+   "helpers": 3784,
+   "helpers_size": 8613079,
+   "shared": 47554
+  },
+  "thm-stone-von-neumann": {
+   "own": 2,
+   "own_size": 543,
+   "helpers": 95,
+   "helpers_size": 116927,
+   "shared": 1
+  },
+  "thm-strong-approximation-su": {
+   "own": 2,
+   "own_size": 4682,
+   "helpers": 685,
+   "helpers_size": 1711483,
+   "shared": 879
+  },
+  "thm-tadic-generic-unitary-dual": {
+   "own": 2,
+   "own_size": 14742,
+   "helpers": 51,
+   "helpers_size": 117939,
+   "shared": 8651
+  },
+  "thm-tate-euler-characteristic-global-places": {
+   "own": 4,
+   "own_size": 1154,
+   "helpers": 3,
+   "helpers_size": 12433,
+   "shared": 3982
+  },
+  "thm-tate-global-euler-characteristic": {
+   "own": 2,
+   "own_size": 246,
+   "helpers": 2679,
+   "helpers_size": 3854490,
+   "shared": 14568
+  },
+  "thm-tate-global-finiteness": {
+   "own": 2,
+   "own_size": 10823,
+   "helpers": 57,
+   "helpers_size": 88417,
+   "shared": 10631
+  },
+  "thm-tate-local-duality-global-places": {
+   "own": 4,
+   "own_size": 25876,
+   "helpers": 53,
+   "helpers_size": 245414,
+   "shared": 5679
+  },
+  "thm-tate-local-finiteness": {
+   "own": 4,
+   "own_size": 1198,
+   "helpers": 4,
+   "helpers_size": 22922,
+   "shared": 2936
+  },
+  "thm-tempered-products": {
+   "own": 2,
+   "own_size": 15307,
+   "helpers": 96,
+   "helpers_size": 251112,
+   "shared": 4593
+  },
+  "thm-theta-functionals-separate": {
+   "own": 2,
+   "own_size": 132,
+   "helpers": 2243,
+   "helpers_size": 5006854,
+   "shared": 52877
+  },
+  "thm-theta-inputs": {
+   "own": 0,
+   "own_size": 0,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 0
+  },
+  "thm-theta-lift-nonvanishing": {
+   "own": 3,
+   "own_size": 1709,
+   "helpers": 1445,
+   "helpers_size": 5444097,
+   "shared": 18016
+  },
+  "thm-theta-rational-invariance": {
+   "own": 2,
+   "own_size": 946,
+   "helpers": 6,
+   "helpers_size": 5229,
+   "shared": 2150
+  },
+  "thm-theta-tower-step-identities": {
+   "own": 4,
+   "own_size": 1103,
+   "helpers": 11520,
+   "helpers_size": 27265652,
+   "shared": 23616
+  },
+  "thm-toroidal-compactification-siegel": {
+   "own": 6,
+   "own_size": 1445,
+   "helpers": 1217,
+   "helpers_size": 5295439,
+   "shared": 42703
+  },
+  "thm-toroidal-compactification-unitary": {
+   "own": 4,
+   "own_size": 8964,
+   "helpers": 1,
+   "helpers_size": 2,
+   "shared": 14047
+  },
+  "thm-transfer-unitary-shimura": {
+   "own": 2,
+   "own_size": 770,
+   "helpers": 3280,
+   "helpers_size": 5151155,
+   "shared": 6579
+  },
+  "thm-twisted-admissibility": {
+   "own": 1,
+   "own_size": 611,
+   "helpers": 76,
+   "helpers_size": 130513,
+   "shared": 1427
+  },
+  "thm-twisted-trace-lowest-type": {
+   "own": 2,
+   "own_size": 854,
+   "helpers": 3301,
+   "helpers_size": 3892027,
+   "shared": 2690
+  },
+  "thm-twisting-index-and-archimedean-bounds": {
+   "own": 2,
+   "own_size": 1804,
+   "helpers": 5146,
+   "helpers_size": 17501101,
+   "shared": 129891
+  },
+  "thm-unitary-integral-models": {
+   "own": 1,
+   "own_size": 9,
+   "helpers": 1950,
+   "helpers_size": 8728494,
+   "shared": 28354
+  },
+  "thm-unitary-moduli-representable": {
+   "own": 2,
+   "own_size": 1377,
+   "helpers": 2898,
+   "helpers_size": 5638474,
+   "shared": 28164
+  },
+  "thm-unitary-moduli-smooth": {
+   "own": 2,
+   "own_size": 3379,
+   "helpers": 182,
+   "helpers_size": 816868,
+   "shared": 14118
+  },
+  "thm-unitary-quotient-finite-volume": {
+   "own": 6,
+   "own_size": 38204,
+   "helpers": 624,
+   "helpers_size": 914471,
+   "shared": 2523
+  },
+  "thm-unitary-rigid-boundary-charts": {
+   "own": 5,
+   "own_size": 32498,
+   "helpers": 295,
+   "helpers_size": 1144525,
+   "shared": 18008
+  },
+  "thm-unitary-shimura-integral-models": {
+   "own": 1,
+   "own_size": 218,
+   "helpers": 0,
+   "helpers_size": 0,
+   "shared": 22
+  },
+  "thm-universal-first-order-deformation": {
+   "own": 4,
+   "own_size": 55299,
+   "helpers": 295,
+   "helpers_size": 1545425,
+   "shared": 14109
+  },
+  "thm-unramified-annihilators": {
+   "own": 2,
+   "own_size": 265,
+   "helpers": 50,
+   "helpers_size": 125462,
+   "shared": 6889
+  },
+  "thm-unramified-doubling-gl": {
+   "own": 2,
+   "own_size": 7817,
+   "helpers": 112,
+   "helpers_size": 168966,
+   "shared": 420
+  },
+  "thm-wach-lifting-theorem": {
+   "own": 5,
+   "own_size": 39677,
+   "helpers": 3346,
+   "helpers_size": 6444125,
+   "shared": 11513
+  },
+  "thm-wave-kernels-gln-c": {
+   "own": 1,
+   "own_size": 94,
+   "helpers": 1387,
+   "helpers_size": 1800534,
+   "shared": 724
+  },
+  "thm-weber-ray-class-field": {
+   "own": 2,
+   "own_size": 454,
+   "helpers": 74,
+   "helpers_size": 122991,
+   "shared": 10928
+  },
+  "thm-weighted-bessel-sum-bound": {
+   "own": 5,
+   "own_size": 392,
+   "helpers": 2377,
+   "helpers_size": 4417154,
+   "shared": 53911
+  },
+  "thm-weil-convergence-criterion": {
+   "own": 2,
+   "own_size": 567,
+   "helpers": 54,
+   "helpers_size": 167951,
+   "shared": 768
+  },
+  "thm-weil-representation-unitary-exists": {
+   "own": 4,
+   "own_size": 1721,
+   "helpers": 1,
+   "helpers_size": 99,
+   "shared": 10278
+  },
+  "thm-weyl-branching": {
+   "own": 2,
+   "own_size": 187,
+   "helpers": 2,
+   "helpers_size": 259,
+   "shared": 1223
+  },
+  "thm-witt-tower-square-ratios": {
+   "own": 1,
+   "own_size": 33867,
+   "helpers": 2788,
+   "helpers_size": 9234900,
+   "shared": 34074
+  },
+  "thm-zarhin-trick": {
+   "own": 2,
+   "own_size": 270,
+   "helpers": 406,
+   "helpers_size": 641348,
+   "shared": 9030
+  },
+  "thm-zelevinsky-segments": {
+   "own": 23,
+   "own_size": 10885,
+   "helpers": 1045,
+   "helpers_size": 2155827,
+   "shared": 10251
+  },
+  "thm-zero-free-from-connected": {
+   "own": 1,
+   "own_size": 747,
+   "helpers": 2,
+   "helpers_size": 2215,
+   "shared": 48
+  },
+  "thm-zero-free-from-families": {
+   "own": 2,
+   "own_size": 335,
+   "helpers": 64,
+   "helpers_size": 48192,
+   "shared": 10764
+  },
+  "thm-zero-free-from-windows": {
+   "own": 2,
+   "own_size": 5072,
+   "helpers": 9,
+   "helpers_size": 4026,
+   "shared": 58
+  },
+  "thm-zuckerman-tensor-discrete-series": {
+   "own": 2,
+   "own_size": 463,
+   "helpers": 110,
+   "helpers_size": 469869,
+   "shared": 6310
+  }
+ },
+ "opened": {
+  "thm-zero-free-from-connected": {
+   "namespaces": {
+    "UpperTheory.Top": {
+     "helpers": 2,
+     "size": 2215
+    }
+   },
+   "largest": [
+    {
+     "name": "UpperTheory.Top.eFamC_of_cls",
+     "size": 1279
+    },
+    {
+     "name": "UpperTheory.Top.hypV_of_cls",
+     "size": 936
+    }
+   ],
+   "own": [
+    {
+     "name": "UpperTheory.Top.zeroFreeAll_of_topG",
+     "size": 747
+    }
+   ]
+  },
+  "thm-family-membership-admissible-data": {
+   "namespaces": {
+    "(private)": {
+     "helpers": 231,
+     "size": 1852133
+    },
+    "Bl.FirstBlockLemmaH": {
+     "helpers": 1,
+     "size": 4096
+    },
+    "Bl.general_b_fact_right_bis_form": {
+     "helpers": 1,
+     "size": 465
+    },
+    "Bl.general_b_fact_third_variant": {
+     "helpers": 1,
+     "size": 2086
+    },
+    "Formalism.BasicNotions": {
+     "helpers": 23,
+     "size": 91475
+    },
+    "Formalism.DoubleCosetMeasures": {
+     "helpers": 22,
+     "size": 25142
+    },
+    "Formalism.HC": {
+     "helpers": 1,
+     "size": 1124
+    },
+    "Formalism.IndefR": {
+     "helpers": 250,
+     "size": 403888
+    },
+    "Formalism.L2": {
+     "helpers": 838,
+     "size": 809224
+    },
+    "Formalism.MainNotions": {
+     "helpers": 64,
+     "size": 27908
+    },
+    "GlobalTheory": {
+     "helpers": 48,
+     "size": 718751
+    },
+    "GlobalTheory.AFormL": {
+     "helpers": 1,
+     "size": 546
+    },
+    "GlobalTheory.AbsIrrMap": {
+     "helpers": 3,
+     "size": 4671
+    },
+    "GlobalTheory.AdTh": {
+     "helpers": 34,
+     "size": 570414
+    },
+    "GlobalTheory.AdelicFactorial": {
+     "helpers": 1,
+     "size": 756
+    },
+    "GlobalTheory.AdelicRestrict": {
+     "helpers": 1,
+     "size": 8055
+    },
+    "GlobalTheory.AdelicU": {
+     "helpers": 3,
+     "size": 4522
+    },
+    "GlobalTheory.AdjBlock": {
+     "helpers": 6,
+     "size": 15420
+    },
+    "GlobalTheory.AdjBlockSpan": {
+     "helpers": 1,
+     "size": 21182
+    },
+    "GlobalTheory.AdjGood": {
+     "helpers": 3,
+     "size": 17166
+    },
+    "GlobalTheory.AdjSpan": {
+     "helpers": 8,
+     "size": 34627
+    },
+    "GlobalTheory.AdjSpanLift": {
+     "helpers": 4,
+     "size": 26747
+    },
+    "GlobalTheory.AmbCrd": {
+     "helpers": 13,
+     "size": 18969
+    },
+    "GlobalTheory.AmbNormTie": {
+     "helpers": 7,
+     "size": 10006
+    },
+    "GlobalTheory.AmbTiePosDef": {
+     "helpers": 3,
+     "size": 5449
+    },
+    "GlobalTheory.AtMember": {
+     "helpers": 1,
+     "size": 824
+    },
+    "GlobalTheory.AutFunCompare": {
+     "helpers": 17,
+     "size": 20463
+    },
+    "GlobalTheory.BadShare": {
+     "helpers": 430,
+     "size": 582678
+    },
+    "GlobalTheory.BaseFrameChange": {
+     "helpers": 22,
+     "size": 79584
+    },
+    "GlobalTheory.BaseFrameUnimod": {
+     "helpers": 4,
+     "size": 11248
+    },
+    "GlobalTheory.BesselClosed": {
+     "helpers": 28,
+     "size": 39623
+    },
+    "GlobalTheory.BesselCompare": {
+     "helpers": 51,
+     "size": 82986
+    },
+    "GlobalTheory.BesselConvDefinite": {
+     "helpers": 9,
+     "size": 41667
+    },
+    "GlobalTheory.BesselDecomp": {
+     "helpers": 15,
+     "size": 40938
+    },
+    "GlobalTheory.BlockVolume": {
+     "helpers": 7,
+     "size": 2096
+    },
+    "GlobalTheory.BorelCosetSum": {
+     "helpers": 12,
+     "size": 23991
+    },
+    "GlobalTheory.BorelSphExist": {
+     "helpers": 4,
+     "size": 5319
+    },
+    "GlobalTheory.BoxVolume": {
+     "helpers": 4,
+     "size": 3823
+    },
+    "GlobalTheory.CardValuationLt": {
+     "helpers": 6,
+     "size": 1153
+    },
+    "GlobalTheory.CarriedPart": {
+     "helpers": 14,
+     "size": 100734
+    },
+    "GlobalTheory.CarriesOne": {
+     "helpers": 5,
+     "size": 35567
+    },
+    "GlobalTheory.CartanDom": {
+     "helpers": 32,
+     "size": 31345
+    },
+    "GlobalTheory.CellDisjoint": {
+     "helpers": 13,
+     "size": 13228
+    },
+    "GlobalTheory.Chain": {
+     "helpers": 1,
+     "size": 1479
+    },
+    "GlobalTheory.ChainCells": {
+     "helpers": 1,
+     "size": 3581
+    },
+    "GlobalTheory.ChainHilb": {
+     "helpers": 24,
+     "size": 99243
+    },
+    "GlobalTheory.ChainInv": {
+     "helpers": 21,
+     "size": 17135
+    },
+    "GlobalTheory.ChainModels": {
+     "helpers": 7,
+     "size": 3331
+    },
+    "GlobalTheory.ChainNS": {
+     "helpers": 10,
+     "size": 8489
+    },
+    "GlobalTheory.ChainOnto": {
+     "helpers": 8,
+     "size": 6790
+    },
+    "GlobalTheory.ChainScalar": {
+     "helpers": 40,
+     "size": 146722
+    },
+    "GlobalTheory.ChainStepCoef": {
+     "helpers": 12,
+     "size": 27684
+    },
+    "GlobalTheory.ChainStepIdentities": {
+     "helpers": 1,
+     "size": 3163
+    },
+    "GlobalTheory.ChainStepSupp": {
+     "helpers": 8,
+     "size": 17161
+    },
+    "GlobalTheory.ChainTw": {
+     "helpers": 357,
+     "size": 1343295
+    },
+    "GlobalTheory.ChainTwNorm": {
+     "helpers": 6,
+     "size": 39926
+    },
+    "GlobalTheory.CharInfPlace": {
+     "helpers": 9,
+     "size": 44237
+    },
+    "GlobalTheory.CharacterDetermines": {
+     "helpers": 11,
+     "size": 16086
+    },
+    "GlobalTheory.ChartChi": {
+     "helpers": 4,
+     "size": 39738
+    },
+    "GlobalTheory.ChartHgt": {
+     "helpers": 11,
+     "size": 32356
+    },
+    "GlobalTheory.ChartLevel": {
+     "helpers": 11,
+     "size": 20589
+    },
+    "GlobalTheory.ChartSplitIso": {
+     "helpers": 14,
+     "size": 14261
+    },
+    "GlobalTheory.ChartStab": {
+     "helpers": 5,
+     "size": 11221
+    },
+    "GlobalTheory.ChartTwist": {
+     "helpers": 1,
+     "size": 9246
+    },
+    "GlobalTheory.ClassRank": {
+     "helpers": 50,
+     "size": 85816
+    },
+    "GlobalTheory.ClassScalarValue": {
+     "helpers": 2,
+     "size": 59498
+    },
+    "GlobalTheory.ClassSumRule": {
+     "helpers": 1,
+     "size": 54053
+    },
+    "GlobalTheory.Closing3": {
+     "helpers": 1,
+     "size": 11031
+    },
+    "GlobalTheory.CoefDim": {
+     "helpers": 2,
+     "size": 3970
+    },
+    "GlobalTheory.CoefLatIso": {
+     "helpers": 18,
+     "size": 25163
+    },
+    "GlobalTheory.CoefSpace": {
+     "helpers": 42,
+     "size": 74477
+    },
+    "GlobalTheory.CoefUniq": {
+     "helpers": 3,
+     "size": 71037
+    },
+    "GlobalTheory.CoeffRational": {
+     "helpers": 24,
+     "size": 37130
+    },
+    "GlobalTheory.CompRat": {
+     "helpers": 2,
+     "size": 5183
+    },
+    "GlobalTheory.ComplexValueBound": {
+     "helpers": 1,
+     "size": 2698
+    },
+    "GlobalTheory.ConjAdjoint": {
+     "helpers": 3,
+     "size": 64236
+    },
+    "GlobalTheory.ConjFull": {
+     "helpers": 4,
+     "size": 14966
+    },
+    "GlobalTheory.ConjLiftData": {
+     "helpers": 5,
+     "size": 69933
+    },
+    "GlobalTheory.ConjLiftHecke": {
+     "helpers": 5,
+     "size": 53343
+    },
+    "GlobalTheory.ConjNorm": {
+     "helpers": 5,
+     "size": 46402
+    },
+    "GlobalTheory.ConjRefChar": {
+     "helpers": 9,
+     "size": 77654
+    },
+    "GlobalTheory.ConjScalar": {
+     "helpers": 64,
+     "size": 281248
+    },
+    "GlobalTheory.ConjScalarCoord": {
+     "helpers": 6,
+     "size": 26819
+    },
+    "GlobalTheory.ConjScalarOff": {
+     "helpers": 3,
+     "size": 26623
+    },
+    "GlobalTheory.ConjScalarProof": {
+     "helpers": 5,
+     "size": 73668
+    },
+    "GlobalTheory.ConjSph": {
+     "helpers": 8,
+     "size": 53771
+    },
+    "GlobalTheory.ConjVacFix": {
+     "helpers": 2,
+     "size": 9753
+    },
+    "GlobalTheory.ConjVacua": {
+     "helpers": 4,
+     "size": 21664
+    },
+    "GlobalTheory.ConsCompare": {
+     "helpers": 1,
+     "size": 8131
+    },
+    "GlobalTheory.Core": {
+     "helpers": 21,
+     "size": 78094
+    },
+    "GlobalTheory.CoreExact": {
+     "helpers": 4,
+     "size": 28962
+    },
+    "GlobalTheory.CosetDistinct": {
+     "helpers": 14,
+     "size": 12383
+    },
+    "GlobalTheory.CuspMult": {
+     "helpers": 14,
+     "size": 23920
+    },
+    "GlobalTheory.DatExtForms": {
+     "helpers": 2,
+     "size": 21506
+    },
+    "GlobalTheory.DatumEigen": {
+     "helpers": 10,
+     "size": 21451
+    },
+    "GlobalTheory.DatumEigenLeft": {
+     "helpers": 2,
+     "size": 12777
+    },
+    "GlobalTheory.DatumFourier": {
+     "helpers": 4,
+     "size": 84945
+    },
+    "GlobalTheory.DefFree": {
+     "helpers": 77,
+     "size": 234031
+    },
+    "GlobalTheory.DefiniteMult": {
+     "helpers": 3,
+     "size": 24944
+    },
+    "GlobalTheory.DetSqrtCover": {
+     "helpers": 1,
+     "size": 1411
+    },
+    "GlobalTheory.DimFull": {
+     "helpers": 19,
+     "size": 92894
+    },
+    "GlobalTheory.DimPartsFull": {
+     "helpers": 11,
+     "size": 49867
+    },
+    "GlobalTheory.DiscreteSeriesConsequences": {
+     "helpers": 1,
+     "size": 114
+    },
+    "GlobalTheory.Div": {
+     "helpers": 14,
+     "size": 97516
+    },
+    "GlobalTheory.DoublingSeries": {
+     "helpers": 19,
+     "size": 59376
+    },
+    "GlobalTheory.DualCoef": {
+     "helpers": 22,
+     "size": 67178
+    },
+    "GlobalTheory.DualPairCheck": {
+     "helpers": 11,
+     "size": 27015
+    },
+    "GlobalTheory.EigSpan": {
+     "helpers": 1,
+     "size": 9890
+    },
+    "GlobalTheory.EigTie": {
+     "helpers": 1,
+     "size": 234
+    },
+    "GlobalTheory.EigTransfer": {
+     "helpers": 1,
+     "size": 474
+    },
+    "GlobalTheory.EulerConjPos": {
+     "helpers": 2,
+     "size": 9586
+    },
+    "GlobalTheory.EwfMove": {
+     "helpers": 4,
+     "size": 26799
+    },
+    "GlobalTheory.ExportSeries": {
+     "helpers": 11,
+     "size": 5017
+    },
+    "GlobalTheory.FWKapMove": {
+     "helpers": 1,
+     "size": 26897
+    },
+    "GlobalTheory.FamSep": {
+     "helpers": 4,
+     "size": 3082
+    },
+    "GlobalTheory.Fc": {
+     "helpers": 7,
+     "size": 42
+    },
+    "GlobalTheory.FieldSize": {
+     "helpers": 1,
+     "size": 815
+    },
+    "GlobalTheory.FinalJoin": {
+     "helpers": 2,
+     "size": 2034
+    },
+    "GlobalTheory.FinalJoin2": {
+     "helpers": 7,
+     "size": 54408
+    },
+    "GlobalTheory.FixAllGood": {
+     "helpers": 3,
+     "size": 3160
+    },
+    "GlobalTheory.FlatLevel": {
+     "helpers": 9,
+     "size": 17629
+    },
+    "GlobalTheory.FockBasisMatrix": {
+     "helpers": 8,
+     "size": 16209
+    },
+    "GlobalTheory.FockCoefIndep": {
+     "helpers": 9,
+     "size": 73164
+    },
+    "GlobalTheory.FockCoeffSplit": {
+     "helpers": 8,
+     "size": 16800
+    },
+    "GlobalTheory.FockCompare": {
+     "helpers": 112,
+     "size": 249020
+    },
+    "GlobalTheory.FockCxAlg": {
+     "helpers": 6,
+     "size": 9081
+    },
+    "GlobalTheory.FockDelta": {
+     "helpers": 4,
+     "size": 2220
+    },
+    "GlobalTheory.ForcedWeights": {
+     "helpers": 1,
+     "size": 23
+    },
+    "GlobalTheory.Formalism": {
+     "helpers": 7,
+     "size": 3500
+    },
+    "GlobalTheory.FrameConstMove": {
+     "helpers": 2,
+     "size": 66259
+    },
+    "GlobalTheory.FreeOfCharacter": {
+     "helpers": 13,
+     "size": 13977
+    },
+    "GlobalTheory.GEqBr": {
+     "helpers": 1,
+     "size": 8931
+    },
+    "GlobalTheory.GEquivCx": {
+     "helpers": 1,
+     "size": 7259
+    },
+    "GlobalTheory.GLDoubling": {
+     "helpers": 1,
+     "size": 695
+    },
+    "GlobalTheory.GLq": {
+     "helpers": 10,
+     "size": 18037
+    },
+    "GlobalTheory.GO": {
+     "helpers": 28,
+     "size": 52894
+    },
+    "GlobalTheory.GalToHecke": {
+     "helpers": 22,
+     "size": 46143
+    },
+    "GlobalTheory.GeoActRoad": {
+     "helpers": 6,
+     "size": 3561
+    },
+    "GlobalTheory.GeoGraft": {
+     "helpers": 3,
+     "size": 1136
+    },
+    "GlobalTheory.GeoHalfTop": {
+     "helpers": 1,
+     "size": 32387
+    },
+    "GlobalTheory.Glob": {
+     "helpers": 10,
+     "size": 4040
+    },
+    "GlobalTheory.GoodLat": {
+     "helpers": 7,
+     "size": 16266
+    },
+    "GlobalTheory.GoodLatDescent": {
+     "helpers": 1,
+     "size": 1776
+    },
+    "GlobalTheory.GoodModelVec": {
+     "helpers": 11,
+     "size": 12192
+    },
+    "GlobalTheory.GoodProjProd": {
+     "helpers": 7,
+     "size": 6980
+    },
+    "GlobalTheory.GoodSplitFam": {
+     "helpers": 1,
+     "size": 8552
+    },
+    "GlobalTheory.GoodStableDual": {
+     "helpers": 3,
+     "size": 10530
+    },
+    "GlobalTheory.GoodStableGiven": {
+     "helpers": 1,
+     "size": 352
+    },
+    "GlobalTheory.GraphIwSplit": {
+     "helpers": 3,
+     "size": 3563
+    },
+    "GlobalTheory.GraphNorm": {
+     "helpers": 5,
+     "size": 28908
+    },
+    "GlobalTheory.HQStepBlocks": {
+     "helpers": 7,
+     "size": 7765
+    },
+    "GlobalTheory.HaarMat": {
+     "helpers": 8,
+     "size": 2302
+    },
+    "GlobalTheory.HalfOnRecord": {
+     "helpers": 3,
+     "size": 375
+    },
+    "GlobalTheory.HeckeAdjEigen": {
+     "helpers": 5,
+     "size": 34790
+    },
+    "GlobalTheory.HeckeCharacterRestriction": {
+     "helpers": 1,
+     "size": 810
+    },
+    "GlobalTheory.HeckeConj": {
+     "helpers": 34,
+     "size": 76579
+    },
+    "GlobalTheory.HeckeLatIndex": {
+     "helpers": 15,
+     "size": 26593
+    },
+    "GlobalTheory.HeckeLevelFree": {
+     "helpers": 6,
+     "size": 16983
+    },
+    "GlobalTheory.HeckeRational": {
+     "helpers": 3,
+     "size": 16413
+    },
+    "GlobalTheory.HeckeTrans": {
+     "helpers": 1,
+     "size": 776
+    },
+    "GlobalTheory.HeightCounting": {
+     "helpers": 497,
+     "size": 18068504
+    },
+    "GlobalTheory.HilbertLevels": {
+     "helpers": 20,
+     "size": 49596
+    },
+    "GlobalTheory.Hk3": {
+     "helpers": 109,
+     "size": 695451
+    },
+    "GlobalTheory.HolRead": {
+     "helpers": 1,
+     "size": 363
+    },
+    "GlobalTheory.IndefiniteRowSideFullHecke": {
+     "helpers": 285,
+     "size": 148962
+    },
+    "GlobalTheory.IndependentInfimum": {
+     "helpers": 4,
+     "size": 6619
+    },
+    "GlobalTheory.IndexVolume": {
+     "helpers": 36,
+     "size": 40451
+    },
+    "GlobalTheory.InertEig": {
+     "helpers": 5,
+     "size": 10701
+    },
+    "GlobalTheory.InertEigScalar": {
+     "helpers": 4,
+     "size": 26916
+    },
+    "GlobalTheory.InertHeckeLift": {
+     "helpers": 5,
+     "size": 28497
+    },
+    "GlobalTheory.InertIwasawaGen": {
+     "helpers": 3,
+     "size": 11959
+    },
+    "GlobalTheory.InertLatLength": {
+     "helpers": 43,
+     "size": 86354
+    },
+    "GlobalTheory.InertOkH": {
+     "helpers": 5,
+     "size": 29428
+    },
+    "GlobalTheory.InertPlaces": {
+     "helpers": 1,
+     "size": 3232
+    },
+    "GlobalTheory.InertRank": {
+     "helpers": 7,
+     "size": 22811
+    },
+    "GlobalTheory.InertRows": {
+     "helpers": 5,
+     "size": 29482
+    },
+    "GlobalTheory.InertRowsEig": {
+     "helpers": 14,
+     "size": 68938
+    },
+    "GlobalTheory.InertTransferW": {
+     "helpers": 3,
+     "size": 49576
+    },
+    "GlobalTheory.InertTypeIso": {
+     "helpers": 2,
+     "size": 2771
+    },
+    "GlobalTheory.InertValLab": {
+     "helpers": 23,
+     "size": 110379
+    },
+    "GlobalTheory.InjEigen": {
+     "helpers": 2,
+     "size": 20822
+    },
+    "GlobalTheory.IsolatedTheoremFive": {
+     "helpers": 2,
+     "size": 3373
+    },
+    "GlobalTheory.KeptRows": {
+     "helpers": 12,
+     "size": 50711
+    },
+    "GlobalTheory.KerProjGood": {
+     "helpers": 1,
+     "size": 1373
+    },
+    "GlobalTheory.LFun": {
+     "helpers": 21,
+     "size": 73107
+    },
+    "GlobalTheory.LPositivity": {
+     "helpers": 7,
+     "size": 4547
+    },
+    "GlobalTheory.LamTie": {
+     "helpers": 2,
+     "size": 378
+    },
+    "GlobalTheory.LatStabAct": {
+     "helpers": 15,
+     "size": 42483
+    },
+    "GlobalTheory.LevAssembly": {
+     "helpers": 1,
+     "size": 5194
+    },
+    "GlobalTheory.LevOpFace": {
+     "helpers": 1,
+     "size": 4851
+    },
+    "GlobalTheory.LevRange": {
+     "helpers": 8,
+     "size": 13765
+    },
+    "GlobalTheory.LevToQ": {
+     "helpers": 2,
+     "size": 30225
+    },
+    "GlobalTheory.LevW": {
+     "helpers": 1,
+     "size": 4184
+    },
+    "GlobalTheory.LevelAction": {
+     "helpers": 2,
+     "size": 21938
+    },
+    "GlobalTheory.LevelClosure": {
+     "helpers": 1,
+     "size": 4616
+    },
+    "GlobalTheory.LevelRowsObj": {
+     "helpers": 2,
+     "size": 7717
+    },
+    "GlobalTheory.LevelRowsPrincipal": {
+     "helpers": 1,
+     "size": 3498
+    },
+    "GlobalTheory.LevelUnique": {
+     "helpers": 1,
+     "size": 9494
+    },
+    "GlobalTheory.LevelsProd": {
+     "helpers": 38,
+     "size": 62674
+    },
+    "GlobalTheory.LidxBaseChange": {
+     "helpers": 7,
+     "size": 30738
+    },
+    "GlobalTheory.LiftAdjointBlock": {
+     "helpers": 23,
+     "size": 70521
+    },
+    "GlobalTheory.LiftDictionary": {
+     "helpers": 12,
+     "size": 91441
+    },
+    "GlobalTheory.LiftGram": {
+     "helpers": 1,
+     "size": 28593
+    },
+    "GlobalTheory.LiftHilbertModel": {
+     "helpers": 6,
+     "size": 20083
+    },
+    "GlobalTheory.LiftOntoGood": {
+     "helpers": 2,
+     "size": 19719
+    },
+    "GlobalTheory.LiftOntoOfPublished": {
+     "helpers": 1,
+     "size": 3566
+    },
+    "GlobalTheory.LiftOntoRed": {
+     "helpers": 1,
+     "size": 1515
+    },
+    "GlobalTheory.LiftRat": {
+     "helpers": 2,
+     "size": 9687
+    },
+    "GlobalTheory.LiftRows": {
+     "helpers": 24,
+     "size": 91997
+    },
+    "GlobalTheory.LiftScalarCompare": {
+     "helpers": 2,
+     "size": 7397
+    },
+    "GlobalTheory.LiftScalarL": {
+     "helpers": 26,
+     "size": 205469
+    },
+    "GlobalTheory.LiftScalarTest": {
+     "helpers": 20,
+     "size": 37930
+    },
+    "GlobalTheory.LiftSpaces": {
+     "helpers": 7,
+     "size": 92569
+    },
+    "GlobalTheory.LiftSpan": {
+     "helpers": 8,
+     "size": 86763
+    },
+    "GlobalTheory.LiftSpanClauses": {
+     "helpers": 16,
+     "size": 132701
+    },
+    "GlobalTheory.LiftSpanEig": {
+     "helpers": 1,
+     "size": 15641
+    },
+    "GlobalTheory.LiftTestCompare": {
+     "helpers": 2,
+     "size": 4470
+    },
+    "GlobalTheory.LiftUnfold": {
+     "helpers": 2,
+     "size": 50583
+    },
+    "GlobalTheory.LiftsOnly": {
+     "helpers": 6,
+     "size": 84897
+    },
+    "GlobalTheory.LocSuppTw": {
+     "helpers": 5,
+     "size": 43529
+    },
+    "GlobalTheory.LocUnifVal": {
+     "helpers": 3,
+     "size": 15510
+    },
+    "GlobalTheory.LowerBlockHecke": {
+     "helpers": 8,
+     "size": 51652
+    },
+    "GlobalTheory.LowerBlockParam": {
+     "helpers": 5,
+     "size": 66358
+    },
+    "GlobalTheory.LowerHecke": {
+     "helpers": 49,
+     "size": 76748
+    },
+    "GlobalTheory.LowerHeckeCount": {
+     "helpers": 21,
+     "size": 38671
+    },
+    "GlobalTheory.LowerHeckeEig": {
+     "helpers": 9,
+     "size": 30536
+    },
+    "GlobalTheory.LowerHeckeSupp": {
+     "helpers": 2,
+     "size": 7032
+    },
+    "GlobalTheory.Mass": {
+     "helpers": 17,
+     "size": 52963
+    },
+    "GlobalTheory.MatchUpProof": {
+     "helpers": 1,
+     "size": 15032
+    },
+    "GlobalTheory.MellinPoly": {
+     "helpers": 1,
+     "size": 1814
+    },
+    "GlobalTheory.Mem": {
+     "helpers": 3304,
+     "size": 17268037
+    },
+    "GlobalTheory.MemN": {
+     "helpers": 6,
+     "size": 24273
+    },
+    "GlobalTheory.Member": {
+     "helpers": 18,
+     "size": 26111
+    },
+    "GlobalTheory.MonomialDiag": {
+     "helpers": 3,
+     "size": 6623
+    },
+    "GlobalTheory.MonomialSign": {
+     "helpers": 2,
+     "size": 4721
+    },
+    "GlobalTheory.MultLevelP": {
+     "helpers": 4,
+     "size": 45196
+    },
+    "GlobalTheory.NormIdealUnit": {
+     "helpers": 1,
+     "size": 4470
+    },
+    "GlobalTheory.NrmVol": {
+     "helpers": 18,
+     "size": 31993
+    },
+    "GlobalTheory.ObjExCompare": {
+     "helpers": 4,
+     "size": 7562
+    },
+    "GlobalTheory.OccW": {
+     "helpers": 2,
+     "size": 2624
+    },
+    "GlobalTheory.OneEmbeddingProbe": {
+     "helpers": 1,
+     "size": 10135
+    },
+    "GlobalTheory.OneForm": {
+     "helpers": 3,
+     "size": 12961
+    },
+    "GlobalTheory.OneFormTest": {
+     "helpers": 2,
+     "size": 9258
+    },
+    "GlobalTheory.OneMapAllCompare": {
+     "helpers": 6,
+     "size": 3306
+    },
+    "GlobalTheory.OneMapRefObj": {
+     "helpers": 1,
+     "size": 590
+    },
+    "GlobalTheory.OneMapTuples": {
+     "helpers": 43,
+     "size": 260206
+    },
+    "GlobalTheory.OntoLinAlg": {
+     "helpers": 5,
+     "size": 8740
+    },
+    "GlobalTheory.OrientedCoord": {
+     "helpers": 29,
+     "size": 43524
+    },
+    "GlobalTheory.OrientedSmall": {
+     "helpers": 10,
+     "size": 15734
+    },
+    "GlobalTheory.OrthW": {
+     "helpers": 4,
+     "size": 38500
+    },
+    "GlobalTheory.PThmBShort": {
+     "helpers": 1,
+     "size": 5741
+    },
+    "GlobalTheory.PadicPlaceExt": {
+     "helpers": 1,
+     "size": 1600
+    },
+    "GlobalTheory.ParAtCompare": {
+     "helpers": 3,
+     "size": 1607
+    },
+    "GlobalTheory.ParGroup": {
+     "helpers": 7,
+     "size": 8581
+    },
+    "GlobalTheory.ParHecke": {
+     "helpers": 111,
+     "size": 150685
+    },
+    "GlobalTheory.ParHeckeCap": {
+     "helpers": 9,
+     "size": 18157
+    },
+    "GlobalTheory.ParHeckeCard": {
+     "helpers": 23,
+     "size": 11001
+    },
+    "GlobalTheory.ParHeckeReps": {
+     "helpers": 1,
+     "size": 240
+    },
+    "GlobalTheory.ParHeckeSource": {
+     "helpers": 61,
+     "size": 80572
+    },
+    "GlobalTheory.ParHeckeSupp": {
+     "helpers": 14,
+     "size": 23588
+    },
+    "GlobalTheory.ParHeckeTarget": {
+     "helpers": 29,
+     "size": 61600
+    },
+    "GlobalTheory.ParHeckeTransfer": {
+     "helpers": 7,
+     "size": 37744
+    },
+    "GlobalTheory.ParIdx": {
+     "helpers": 1,
+     "size": 521
+    },
+    "GlobalTheory.ParahoricConjBlocks": {
+     "helpers": 24,
+     "size": 31767
+    },
+    "GlobalTheory.ParahoricConjugateOpen": {
+     "helpers": 9,
+     "size": 17101
+    },
+    "GlobalTheory.ParahoricLowerBlock": {
+     "helpers": 4,
+     "size": 12866
+    },
+    "GlobalTheory.ParahoricOpenCompact": {
+     "helpers": 2,
+     "size": 1770
+    },
+    "GlobalTheory.ParahoricTopo": {
+     "helpers": 8,
+     "size": 4424
+    },
+    "GlobalTheory.PhaseRational": {
+     "helpers": 12,
+     "size": 106894
+    },
+    "GlobalTheory.PinnedClassSum": {
+     "helpers": 14,
+     "size": 173568
+    },
+    "GlobalTheory.PinnedData": {
+     "helpers": 1,
+     "size": 2920
+    },
+    "GlobalTheory.PinnedPre": {
+     "helpers": 10,
+     "size": 94635
+    },
+    "GlobalTheory.PinsOverClauses": {
+     "helpers": 3,
+     "size": 57894
+    },
+    "GlobalTheory.PlaceOrbit": {
+     "helpers": 59,
+     "size": 134918
+    },
+    "GlobalTheory.PlaceProjAt": {
+     "helpers": 2,
+     "size": 5591
+    },
+    "GlobalTheory.PlaceRed": {
+     "helpers": 1,
+     "size": 226
+    },
+    "GlobalTheory.PolynomialCoeffEq": {
+     "helpers": 2,
+     "size": 5396
+    },
+    "GlobalTheory.PosAtBase": {
+     "helpers": 5,
+     "size": 37729
+    },
+    "GlobalTheory.PosLinVec": {
+     "helpers": 3,
+     "size": 8262
+    },
+    "GlobalTheory.PosOneData": {
+     "helpers": 36,
+     "size": 92860
+    },
+    "GlobalTheory.PosScalBase": {
+     "helpers": 1,
+     "size": 5419
+    },
+    "GlobalTheory.PosScalRed": {
+     "helpers": 4,
+     "size": 30080
+    },
+    "GlobalTheory.PosShort": {
+     "helpers": 1,
+     "size": 6200
+    },
+    "GlobalTheory.PositiveIffLtCard": {
+     "helpers": 5,
+     "size": 1586
+    },
+    "GlobalTheory.PrIsoScale": {
+     "helpers": 9,
+     "size": 40984
+    },
+    "GlobalTheory.PrimBase": {
+     "helpers": 1,
+     "size": 3643
+    },
+    "GlobalTheory.PrimIn": {
+     "helpers": 52,
+     "size": 44375
+    },
+    "GlobalTheory.PrimeBelow": {
+     "helpers": 2,
+     "size": 3339
+    },
+    "GlobalTheory.PrincipalRows": {
+     "helpers": 4,
+     "size": 23448
+    },
+    "GlobalTheory.Proof": {
+     "helpers": 1,
+     "size": 5897
+    },
+    "GlobalTheory.PtId": {
+     "helpers": 8,
+     "size": 446000
+    },
+    "GlobalTheory.PtIdCore": {
+     "helpers": 4,
+     "size": 170130
+    },
+    "GlobalTheory.Published": {
+     "helpers": 1,
+     "size": 1755
+    },
+    "GlobalTheory.QParL": {
+     "helpers": 19,
+     "size": 17167
+    },
+    "GlobalTheory.QPosCompare": {
+     "helpers": 12,
+     "size": 14093
+    },
+    "GlobalTheory.RamRational": {
+     "helpers": 5,
+     "size": 16165
+    },
+    "GlobalTheory.RangeKerCount": {
+     "helpers": 14,
+     "size": 28049
+    },
+    "GlobalTheory.RatSpan": {
+     "helpers": 3,
+     "size": 6150
+    },
+    "GlobalTheory.RealAct": {
+     "helpers": 10,
+     "size": 23269
+    },
+    "GlobalTheory.RealCoefSq": {
+     "helpers": 3,
+     "size": 13228
+    },
+    "GlobalTheory.RealGeo": {
+     "helpers": 123,
+     "size": 421638
+    },
+    "GlobalTheory.RealGeoConst": {
+     "helpers": 1,
+     "size": 8418
+    },
+    "GlobalTheory.RealMeasOne": {
+     "helpers": 7,
+     "size": 38192
+    },
+    "GlobalTheory.RealZetaTw": {
+     "helpers": 1,
+     "size": 32027
+    },
+    "GlobalTheory.RectBlockVolume": {
+     "helpers": 21,
+     "size": 25175
+    },
+    "GlobalTheory.RefCharValues": {
+     "helpers": 1,
+     "size": 1020
+    },
+    "GlobalTheory.RefPins": {
+     "helpers": 11,
+     "size": 154386
+    },
+    "GlobalTheory.Reidx": {
+     "helpers": 38,
+     "size": 44708
+    },
+    "GlobalTheory.ReindexTorus": {
+     "helpers": 5,
+     "size": 4572
+    },
+    "GlobalTheory.ResLift": {
+     "helpers": 19,
+     "size": 37217
+    },
+    "GlobalTheory.ResUnr": {
+     "helpers": 3,
+     "size": 7656
+    },
+    "GlobalTheory.ResidueCardUnif": {
+     "helpers": 1,
+     "size": 1295
+    },
+    "GlobalTheory.RkNs": {
+     "helpers": 8,
+     "size": 9046
+    },
+    "GlobalTheory.RootExch": {
+     "helpers": 169,
+     "size": 302553
+    },
+    "GlobalTheory.RootUnip": {
+     "helpers": 25,
+     "size": 29473
+    },
+    "GlobalTheory.RowDictR": {
+     "helpers": 8,
+     "size": 59163
+    },
+    "GlobalTheory.RowTieRead": {
+     "helpers": 79,
+     "size": 188109
+    },
+    "GlobalTheory.RowTypeReps": {
+     "helpers": 1,
+     "size": 10288
+    },
+    "GlobalTheory.RowsNeProof": {
+     "helpers": 4,
+     "size": 43464
+    },
+    "GlobalTheory.RowsNonzero": {
+     "helpers": 3,
+     "size": 15008
+    },
+    "GlobalTheory.RowsPartNe": {
+     "helpers": 2,
+     "size": 21551
+    },
+    "GlobalTheory.RowsPosRed": {
+     "helpers": 6,
+     "size": 27948
+    },
+    "GlobalTheory.RowsSign": {
+     "helpers": 10,
+     "size": 28655
+    },
+    "GlobalTheory.RowsSum3": {
+     "helpers": 2,
+     "size": 12382
+    },
+    "GlobalTheory.SBTwist": {
+     "helpers": 3,
+     "size": 10842
+    },
+    "GlobalTheory.SameChrFin": {
+     "helpers": 1,
+     "size": 7906
+    },
+    "GlobalTheory.SatakeSubsetSum": {
+     "helpers": 14,
+     "size": 16215
+    },
+    "GlobalTheory.ScalAll": {
+     "helpers": 1,
+     "size": 961
+    },
+    "GlobalTheory.ScalConj": {
+     "helpers": 1,
+     "size": 3869
+    },
+    "GlobalTheory.ScalConjRow": {
+     "helpers": 1,
+     "size": 5382
+    },
+    "GlobalTheory.ScalarConjugation": {
+     "helpers": 1,
+     "size": 1095
+    },
+    "GlobalTheory.ScalarExtEig": {
+     "helpers": 22,
+     "size": 27015
+    },
+    "GlobalTheory.ScaledIdealIndex": {
+     "helpers": 18,
+     "size": 14748
+    },
+    "GlobalTheory.SchurOrthOnSubgroup": {
+     "helpers": 9,
+     "size": 14805
+    },
+    "GlobalTheory.SeedChoices": {
+     "helpers": 1,
+     "size": 61167
+    },
+    "GlobalTheory.SerVec": {
+     "helpers": 11,
+     "size": 52317
+    },
+    "GlobalTheory.SeriesTie": {
+     "helpers": 2,
+     "size": 1270
+    },
+    "GlobalTheory.ShFam": {
+     "helpers": 10,
+     "size": 14190
+    },
+    "GlobalTheory.ShaTransport": {
+     "helpers": 24,
+     "size": 39947
+    },
+    "GlobalTheory.SignsAtTypePrimes": {
+     "helpers": 12,
+     "size": 54411
+    },
+    "GlobalTheory.SpanParts": {
+     "helpers": 1,
+     "size": 10488
+    },
+    "GlobalTheory.SpanPoly": {
+     "helpers": 6,
+     "size": 7183
+    },
+    "GlobalTheory.SpanW": {
+     "helpers": 1,
+     "size": 15279
+    },
+    "GlobalTheory.SphCyclic": {
+     "helpers": 34,
+     "size": 108158
+    },
+    "GlobalTheory.SphTrans": {
+     "helpers": 6,
+     "size": 73300
+    },
+    "GlobalTheory.SplitChoice": {
+     "helpers": 3,
+     "size": 4363
+    },
+    "GlobalTheory.SplitEigen": {
+     "helpers": 3,
+     "size": 47252
+    },
+    "GlobalTheory.SplitHecke": {
+     "helpers": 1,
+     "size": 8022
+    },
+    "GlobalTheory.SplitHeckeAdj": {
+     "helpers": 5,
+     "size": 54876
+    },
+    "GlobalTheory.SplitHeckeCore": {
+     "helpers": 3,
+     "size": 17259
+    },
+    "GlobalTheory.SplitInterDet": {
+     "helpers": 14,
+     "size": 37473
+    },
+    "GlobalTheory.SplitPlace": {
+     "helpers": 1,
+     "size": 3313
+    },
+    "GlobalTheory.SplitUnr": {
+     "helpers": 1,
+     "size": 7854
+    },
+    "GlobalTheory.SplitValue": {
+     "helpers": 4,
+     "size": 9380
+    },
+    "GlobalTheory.SplitValueAdelic": {
+     "helpers": 1,
+     "size": 779
+    },
+    "GlobalTheory.SplitValuePow": {
+     "helpers": 1,
+     "size": 3220
+    },
+    "GlobalTheory.SplitWeil": {
+     "helpers": 1,
+     "size": 2537
+    },
+    "GlobalTheory.SqrtUnif": {
+     "helpers": 2,
+     "size": 3419
+    },
+    "GlobalTheory.Stage1": {
+     "helpers": 1,
+     "size": 5484
+    },
+    "GlobalTheory.Stage2": {
+     "helpers": 1,
+     "size": 7286
+    },
+    "GlobalTheory.Stage3": {
+     "helpers": 1,
+     "size": 7114
+    },
+    "GlobalTheory.Stage4": {
+     "helpers": 1,
+     "size": 7682
+    },
+    "GlobalTheory.StandardWeightCharacter": {
+     "helpers": 1,
+     "size": 121455
+    },
+    "GlobalTheory.StdFrameExist": {
+     "helpers": 14,
+     "size": 30724
+    },
+    "GlobalTheory.SumW": {
+     "helpers": 6,
+     "size": 27707
+    },
+    "GlobalTheory.SuppFirstBlock": {
+     "helpers": 3,
+     "size": 5334
+    },
+    "GlobalTheory.SupportVolume": {
+     "helpers": 19,
+     "size": 20466
+    },
+    "GlobalTheory.Survey": {
+     "helpers": 1,
+     "size": 825
+    },
+    "GlobalTheory.T": {
+     "helpers": 589,
+     "size": 3073428
+    },
+    "GlobalTheory.TameLiftChar": {
+     "helpers": 10,
+     "size": 6792
+    },
+    "GlobalTheory.ThetaLeftW": {
+     "helpers": 1,
+     "size": 1907
+    },
+    "GlobalTheory.ThetaNormTwist": {
+     "helpers": 1,
+     "size": 15835
+    },
+    "GlobalTheory.ThetaPrimeHecke": {
+     "helpers": 5,
+     "size": 38903
+    },
+    "GlobalTheory.ThetaRecordTrue": {
+     "helpers": 2,
+     "size": 23700
+    },
+    "GlobalTheory.ThmAFinal": {
+     "helpers": 1,
+     "size": 6186
+    },
+    "GlobalTheory.ThmAFromAForm": {
+     "helpers": 1,
+     "size": 2041
+    },
+    "GlobalTheory.ThmBFromScal": {
+     "helpers": 6,
+     "size": 46440
+    },
+    "GlobalTheory.TiePlace": {
+     "helpers": 11,
+     "size": 21698
+    },
+    "GlobalTheory.TopBridge": {
+     "helpers": 5,
+     "size": 22014
+    },
+    "GlobalTheory.TopNorm": {
+     "helpers": 2,
+     "size": 11497
+    },
+    "GlobalTheory.TopRead": {
+     "helpers": 9,
+     "size": 46855
+    },
+    "GlobalTheory.TopSpan": {
+     "helpers": 11,
+     "size": 63976
+    },
+    "GlobalTheory.TorusIntegrand": {
+     "helpers": 9,
+     "size": 13116
+    },
+    "GlobalTheory.TorusLeft": {
+     "helpers": 3,
+     "size": 7097
+    },
+    "GlobalTheory.TorusRightScalar": {
+     "helpers": 3,
+     "size": 9828
+    },
+    "GlobalTheory.TowerCharRead": {
+     "helpers": 1,
+     "size": 5788
+    },
+    "GlobalTheory.TowerSpaces": {
+     "helpers": 1,
+     "size": 937
+    },
+    "GlobalTheory.TrCopy": {
+     "helpers": 12,
+     "size": 3934
+    },
+    "GlobalTheory.TrLevMult": {
+     "helpers": 7,
+     "size": 17853
+    },
+    "GlobalTheory.TrPass": {
+     "helpers": 2,
+     "size": 38676
+    },
+    "GlobalTheory.TracePowEq": {
+     "helpers": 1,
+     "size": 4559
+    },
+    "GlobalTheory.TwEig": {
+     "helpers": 9,
+     "size": 5993
+    },
+    "GlobalTheory.TwInputs": {
+     "helpers": 880,
+     "size": 9405666
+    },
+    "GlobalTheory.TwParts": {
+     "helpers": 1,
+     "size": 7484
+    },
+    "GlobalTheory.TwSuppLev": {
+     "helpers": 6,
+     "size": 21861
+    },
+    "GlobalTheory.TwistChart": {
+     "helpers": 9,
+     "size": 36707
+    },
+    "GlobalTheory.TwistChoice": {
+     "helpers": 91,
+     "size": 7056155
+    },
+    "GlobalTheory.TwistCoef": {
+     "helpers": 5,
+     "size": 32884
+    },
+    "GlobalTheory.TwistField": {
+     "helpers": 19,
+     "size": 196821
+    },
+    "GlobalTheory.TwistIndex": {
+     "helpers": 1,
+     "size": 13513
+    },
+    "GlobalTheory.TwistLinModel": {
+     "helpers": 9,
+     "size": 110912
+    },
+    "GlobalTheory.TwistNorm": {
+     "helpers": 6,
+     "size": 37878
+    },
+    "GlobalTheory.TwistPlacesObj": {
+     "helpers": 3,
+     "size": 7330
+    },
+    "GlobalTheory.TwistRenumber": {
+     "helpers": 8,
+     "size": 14381
+    },
+    "GlobalTheory.TwistedOperatorMainTheorem": {
+     "helpers": 1,
+     "size": 3646
+    },
+    "GlobalTheory.TwistedZeta": {
+     "helpers": 21,
+     "size": 58324
+    },
+    "GlobalTheory.TypeDim": {
+     "helpers": 14,
+     "size": 38054
+    },
+    "GlobalTheory.TypePrimeSize": {
+     "helpers": 15,
+     "size": 17972
+    },
+    "GlobalTheory.TypeStep": {
+     "helpers": 55,
+     "size": 62569
+    },
+    "GlobalTheory.TypeSum": {
+     "helpers": 2,
+     "size": 29220
+    },
+    "GlobalTheory.Unfold": {
+     "helpers": 9,
+     "size": 12610
+    },
+    "GlobalTheory.UnipRed": {
+     "helpers": 3,
+     "size": 10682
+    },
+    "GlobalTheory.UnitCoefIP": {
+     "helpers": 1,
+     "size": 40576
+    },
+    "GlobalTheory.UnivCharCopy": {
+     "helpers": 2,
+     "size": 7399
+    },
+    "GlobalTheory.UpSystem": {
+     "helpers": 7,
+     "size": 38172
+    },
+    "GlobalTheory.VacFixInert": {
+     "helpers": 16,
+     "size": 8825
+    },
+    "GlobalTheory.VarySplitFactor": {
+     "helpers": 2,
+     "size": 22153
+    },
+    "GlobalTheory.VmTwo": {
+     "helpers": 1,
+     "size": 1503
+    },
+    "GlobalTheory.VolHeckeCheck": {
+     "helpers": 1,
+     "size": 1032
+    },
+    "GlobalTheory.VolHeckeCompare": {
+     "helpers": 3,
+     "size": 4256
+    },
+    "GlobalTheory.WType": {
+     "helpers": 1,
+     "size": 10718
+    },
+    "GlobalTheory.WatType": {
+     "helpers": 3,
+     "size": 21132
+    },
+    "GlobalTheory.WeberField": {
+     "helpers": 1,
+     "size": 4503
+    },
+    "GlobalTheory.WeilTieCheck": {
+     "helpers": 8,
+     "size": 21011
+    },
+    "GlobalTheory.WeylNumber": {
+     "helpers": 4,
+     "size": 19360
+    },
+    "GlobalTheory.WgLift": {
+     "helpers": 1,
+     "size": 39133
+    },
+    "GlobalTheory.WittFracPlace": {
+     "helpers": 5,
+     "size": 12983
+    },
+    "GlobalTheory.ZPartEig": {
+     "helpers": 15,
+     "size": 65897
+    },
+    "GlobalTheory.ZeroPassage": {
+     "helpers": 5,
+     "size": 10003
+    },
+    "GlobalTheory.ZonalBi": {
+     "helpers": 1,
+     "size": 5906
+    },
+    "GlobalTheory.ZonalCellDecomposition": {
+     "helpers": 12,
+     "size": 1670
+    },
+    "GlobalTheory.ZonalEig": {
+     "helpers": 1,
+     "size": 1978
+    },
+    "GlobalTheory.ZonalInduct": {
+     "helpers": 40,
+     "size": 29324
+    },
+    "GlobalTheory.ZonalOne": {
+     "helpers": 1,
+     "size": 1984
+    },
+    "GlobalTheory.ZonalSum": {
+     "helpers": 14,
+     "size": 12232
+    },
+    "GlobalTheory.ZonalUnique": {
+     "helpers": 5,
+     "size": 5140
+    },
+    "GlobalTheory.blockVolume_prod": {
+     "helpers": 2,
+     "size": 1910
+    },
+    "GlobalTheory.chart_level_iff": {
+     "helpers": 1,
+     "size": 463
+    },
+    "GlobalTheory.exists_common_nonzero_of_polynomial_on_lines": {
+     "helpers": 2,
+     "size": 117
+    },
+    "GlobalTheory.iSupIndep_of_joint_eigen": {
+     "helpers": 1,
+     "size": 515
+    },
+    "GlobalTheory.iSup_stable_inf_typeSpace": {
+     "helpers": 1,
+     "size": 71
+    },
+    "GlobalTheory.ksForm_baseChange": {
+     "helpers": 2,
+     "size": 2638
+    },
+    "GlobalTheory.measureReal_doubleCoset_eq_relIndex_mul": {
+     "helpers": 11,
+     "size": 815
+    },
+    "IsLocalRing.ResidueField": {
+     "helpers": 1,
+     "size": 51
+    },
+    "ReciprocityTheory.ChartRestriction": {
+     "helpers": 1,
+     "size": 1528
+    },
+    "UpperTheory": {
+     "helpers": 13,
+     "size": 2147096
+    },
+    "UpperTheory.Mem": {
+     "helpers": 30,
+     "size": 620666
+    },
+    "UpperTheory.Mu": {
+     "helpers": 1,
+     "size": 2551
+    },
+    "UpperTheory.Reformulated": {
+     "helpers": 4,
+     "size": 852
+    },
+    "UpperTheory.Win": {
+     "helpers": 5,
+     "size": 28281
+    },
+    "UpperTheory.galoisRep_transport_of_copyAll_alt": {
+     "helpers": 2,
+     "size": 1777
+    },
+    "UpperTheory.heckeEigenspace_descent_of_equivariant_equiv": {
+     "helpers": 1,
+     "size": 115
+    }
+   },
+   "largest": [
+    {
+     "name": "GlobalTheory.HeightCounting.SideCopy.LamCopy.lam_copy",
+     "size": 5538412
+    },
+    {
+     "name": "GlobalTheory.HeightCounting.SideCopy.sigSpan_copy",
+     "size": 4598434
+    },
+    {
+     "name": "GlobalTheory.TwistChoice.goodTw_transfer",
+     "size": 2508714
+    },
+    {
+     "name": "GlobalTheory.TwistChoice.fullRk_basisOf_transfer",
+     "size": 2328008
+    },
+    {
+     "name": "GlobalTheory.TwInputs.Move.heckeTie_of_same",
+     "size": 2306055
+    },
+    {
+     "name": "GlobalTheory.TwistChoice.same_basic",
+     "size": 2134646
+    },
+    {
+     "name": "GlobalTheory.HeightCounting.Up.SymmetryOfAgreementRelations.move_xd",
+     "size": 2034860
+    },
+    {
+     "name": "GlobalTheory.HeightCounting.Up.ListCarry.listPin_copy",
+     "size": 1455722
+    },
+    {
+     "name": "GlobalTheory.HeightCounting.Rigid.transfer",
+     "size": 1183383
+    },
+    {
+     "name": "GlobalTheory.TwInputs.Move.SetupRel.good_of",
+     "size": 963898
+    },
+    {
+     "name": "GlobalTheory.Mem.R3.Rw.EqvMove.equivAll_enl",
+     "size": 962826
+    },
+    {
+     "name": "GlobalTheory.TwInputs.Move.exists_setupRel",
+     "size": 771180
+    }
+   ],
+   "own": [
+    {
+     "name": "GlobalTheory.Fc.StageOneU.member_bundles_large_unramified_exponents_alt",
+     "size": 1200
+    },
+    {
+     "name": "GlobalTheory.Mem.Top.Bl.exists_baseLattice_of_pair_alt",
+     "size": 564
+    },
+    {
+     "name": "GlobalTheory.Mem.Top.Bl.exists_baseLattice_of_prime_alt",
+     "size": 2025
+    },
+    {
+     "name": "GlobalTheory.Mem.Top.Closing.memberE_closing_alt_alt",
+     "size": 866
+    },
+    {
+     "name": "GlobalTheory.T.large_unramified_exponent_bundles_exist_alt",
+     "size": 60
+    },
+    {
+     "name": "GlobalTheory.T.member_exists_baseLattice_alt",
+     "size": 65
+    }
+   ]
+  }
+ }
+}

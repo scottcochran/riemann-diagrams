@@ -143,7 +143,7 @@ reader can tell the citation from the paper this repository found for it.
 
 ## 5. Derived relations the blueprint does not state
 
-Two things on the posters are neither quoted nor written: they are inferred from the sources by the generator,
+Three things on the posters are neither quoted nor written: they are inferred from the sources by the generator,
 and the posters say so where they appear.
 
 - **Dashed arrows** (R3 to R8). The proof text of a statement sometimes names a result of the same chapter,
@@ -152,6 +152,15 @@ and the posters say so where they appear.
   rest. Each chapter module records the ones it expects, and the build fails if the blueprint now gives
   others. Whether such a result is a hypothesis of the Lean theorem or a missed edge, the generator cannot
   tell, and the card beside the grid says so.
+- **Verdicts against the formal proof** (R3 to R8, T1, T2, F7 to F10). F7's tables are counts from the file, and
+  F8's cards and tables are read from `src/lean-hypotheses.json`, F9's from `src/lean-weight.json` and F10's
+  from `src/lean-drift.json`, each pinned the same way. The card "Against the formal proof", and the
+  last bullet of a trace's chain card, are computed from
+  `src/lean-edges.json`, the verdict on every blueprint arrow from the published proof's references
+  (`diagrams/EDGES.md`). Its counts and lists are read from the file. Its sentences are written in the module,
+  and each fact they state is checked: the arrows' verdicts (each module's `VERDICTS`), and what the Lean does
+  with each dashed arrow's source (`HYPOTHESES_LEAN`). An arrow's style follows its verdict (`bp.VERDICT_STYLE`).
+  The file's hash is pinned in `src/bp.py`, so a rebuilt file fails the build until it is read.
 - **Layouts.** Which card stands where is computed from the edges (R4 to R8, F1), the chapter order (R2, F2),
   or a shortest path (T1, T2); R3 is laid out by hand in its module. A layout is a reading of the argument, and
   the plan's risks section notes that a computed one can mislead.

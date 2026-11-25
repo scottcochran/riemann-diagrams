@@ -6,7 +6,10 @@ is used before it is proved; rows wider than the grid are split; a card's column
 Statements that nothing in the chapter uses in a proof get a shorter card. The arrows are the chapter's proof
 uses, and the build fails if they are not exactly the module's EXPECTED. Dashed arrows are results a proof names
 in its text without listing them as uses, checked the same way against HYPOTHESES; one that would point upward is
-listed instead of drawn. R3 is the hand-laid-out original of this form."""
+listed instead of drawn. Each arrow is drawn by its verdict against the formal proof (src/lean-edges.json), which
+must be the module's VERDICTS (every arrow `direct` but those named); what the Lean does with each dashed arrow's
+source must be its HYPOTHESES_LEAN. A card reads the chapter against the file. R3 is the hand-laid-out original
+of this form."""
 import collections
 import re
 
@@ -128,7 +131,75 @@ def layout(stmts, edges, dashed, path_of, section_of):
     return rows, drawn_dashed
 
 
-def build(ID, CH, EXPECTED, HYPOTHESES):
+HOW_LEAN = {"direct": "uses", "through": "reaches, by way of other statements,", None: "does not reach"}
+
+
+def lean_card(lean, edges, verd, hyp, stmts, drawn):
+    """The card that reads the chapter against the formal proof: the arrows by verdict, the dashed arrows, the
+    uses no arrow draws, and the statement uses the cards list."""
+    cnt = collections.Counter(verd.values())
+
+    def listed(v):
+        return ", ".join(f"`{a}` → `{b}`" for (a, b), x in sorted(verd.items()) if x == v)
+
+    borne = cnt["direct"] + cnt["hypothesis"] + cnt["through"]
+    parts = [f"{cnt['direct']} directly"]
+    if cnt["hypothesis"]:
+        parts.append(f"{cnt['hypothesis']} as a hypothesis, through a structure's fields")
+    if cnt["through"]:
+        parts.append(f"{cnt['through']} only by way of other statements (drawn thin)")
+    body = [f"**{borne} of the {len(edges)} arrows are borne out** by the published proof's references: "
+            + (", ".join(parts[:-1]) + " and " + parts[-1] if len(parts) > 1 else parts[0]) + ". The references "
+            "were read from Sutherland's export of the proof, with no Lean built; `diagrams/EDGES.md` gives the "
+            "method."]
+    if cnt["apart"]:
+        body.append("**Not borne out** (red, dotted): " + listed("apart") + ".")
+    if cnt["beside"]:
+        body.append("**Only beside** (grey, dotted): the Lean never reaches A's from B's, but a proof that uses "
+                    "both applies them together: " + listed("beside") + ".")
+    missing = collections.Counter()
+    for (a, b), x in verd.items():
+        if x == "no-lean-source":
+            missing[b] += 1
+        elif x == "no-lean-target":
+            missing[a] += 1
+    if missing:
+        body.append("**Cannot be judged** (faint, dotted): " + "; ".join(
+            f"`{k}` names no Lean the proof contains ({n} arrow{'s' if n > 1 else ''})"
+            for k, n in sorted(missing.items(), key=lambda x: (-x[1], x[0]))) + ".")
+    if hyp:
+        body.append("**The dashed arrows.** " + "; ".join(
+            f"the Lean of `{b}` {HOW_LEAN[how]} `{a}`" for (a, b), how in sorted(hyp.items())) + ".")
+    nodraw = collections.Counter()
+    for k in stmts:
+        for u in lean.undrawn(k) & drawn:
+            if (u, k) not in hyp:
+                nodraw[u] += 1
+    if nodraw:
+        top = sorted(nodraw.items(), key=lambda x: (-x[1], x[0]))
+        body.append(f"**Uses with no arrow.** The Lean makes {sum(nodraw.values())} more uses between the chapter's "
+                    "statements, of " + ", ".join(f"`{u}` ({n})" for u, n in top[:8])
+                    + (f" and {len(top) - 8} more" if len(top) > 8 else "") + ".")
+    stated = collections.Counter(lean.verdict(k, u) for k in stmts for u in drawn
+                                 if u in lean.raw["arrows"].get(k, {}) and (u, k) not in verd)
+    if stated:
+        words = {"direct": "directly", "hypothesis": "as hypotheses", "through": "by way of other statements",
+                 "beside": "only beside", "apart": "not borne out", "no-lean-source": "cannot be judged",
+                 "no-lean-target": "cannot be judged"}
+        agg = collections.Counter()
+        for v, n in stated.items():
+            agg[words[v]] += n
+        order = ["directly", "as hypotheses", "by way of other statements", "only beside", "not borne out",
+                 "cannot be judged"]
+        n = sum(stated.values())
+        body.append("**Stated with.** " + (f"Of the {n} statement uses between the chapter's cards, which no arrow "
+                                           "draws: " if n > 1 else "The one statement use between the chapter's "
+                                           "cards, which no arrow draws, is borne out ")
+                    + ", ".join(f"{agg[w]} {w}" if n > 1 else w for w in order if agg[w]) + ".")
+    return body
+
+
+def build(ID, CH, EXPECTED, HYPOTHESES, VERDICTS=None, HYPOTHESES_LEAN=None):
     g = bp.load()
     mirror = bp.read_mirror()
     stmts = sorted(k for k in g.statements if g.nodes[k]["_chapter"] == CH)
@@ -139,6 +210,18 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
     hyp = hypotheses(g, stmts)
     if set(hyp) != set(HYPOTHESES):
         raise ValueError(f"{ID}: hypotheses named in proofs differ: {sorted(set(hyp) ^ set(HYPOTHESES))}")
+    lean = bp.read_edges(g)
+    VERDICTS, HYPOTHESES_LEAN = VERDICTS or {}, HYPOTHESES_LEAN or {}
+    if set(VERDICTS) - set(edges):
+        raise ValueError(f"{ID}: VERDICTS names arrows the chapter does not draw: {sorted(set(VERDICTS) - set(edges))}")
+    verd = {(a, b): lean.verdict(b, a) for a, b in edges}
+    diff = sorted((e, verd[e]) for e in edges if verd[e] != VERDICTS.get(e, "direct"))
+    if diff:
+        raise ValueError(f"{ID}: verdicts differ from VERDICTS (arrow, verdict now): {diff}")
+    hyp_lean = {(a, b): "direct" if a in lean.formal(b) else "through" if lean.reaches(b, a) else None
+                for a, b in hyp}
+    if hyp_lean != HYPOTHESES_LEAN:
+        raise ValueError(f"{ID}: what the Lean does with the dashed arrows differs from HYPOTHESES_LEAN: {hyp_lean}")
     rev = g.used_by()
     depth, _ = g.depths(g.roots())
     main_names = {t["name"] for t in mirror["theorems"]}
@@ -189,7 +272,9 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
                "what it uses and is used by. **Read it from the foot up**: the chapter's theorem, "
                f"`{main}`, is at the bottom, and every card stands above the cards whose proofs use it. An arrow "
                "from A to B says that the proof of B uses A; a dashed arrow says that the proof of B names A "
-               "without listing it as a use. The statements that head a section or a group of results have "
+               "without listing it as a use. Every arrow is checked against the formal proof's references, and "
+               "one drawn thin, dotted or red is not borne out directly: see the card **Against the formal "
+               "proof**. The statements that head a section or a group of results have "
                "full cards; the others are drawn shorter. "
                + ("**Map mode**: nothing of the blueprint's text or the proof's source is quoted. " if bp.MAP
                   else "The chapter's own introduction: " + abridge(intro, 700) + " ")
@@ -197,7 +282,9 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
                W, f"`riemann-blueprint` at {g.bp_commit} (`{ch['_path'].rsplit('/', 1)[0]}/`: the chapter's and "
                "every section's `_section.md`, every statement's front matter, body and proof; `lean-facts.json` "
                "for the signatures, files and lines); `leanprover-community/riemann-hypothesis` at "
-               f"{mirror['commit']} (`src/Main.lean`). The layout is computed from the chapter's own edges; the "
+               f"{mirror['commit']} (`src/Main.lean`); `diagrams/src/lean-edges.json`, the verdicts on the blueprint's arrows "
+               f"from Sutherland's export of the proof at {g.mirror_pin} (sha256 {lean.export_sha256[:12]}…). The "
+               "layout is computed from the chapter's own edges; the "
                "dashed arrows, the abridgements and the import counts are the diagram's own, as marked.",
                state=f"State drawn: riemann-blueprint at {g.bp_commit}, which pins the mirror at {g.mirror_pin}; "
                      f"Main.lean from the mirror at {mirror['commit']}")
@@ -217,8 +304,8 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
     y += c.legend(X0, y, [("box", "green", "new in Alpöge's proof"), ("box", "amber", "modified from the literature"),
                           ("box", "blue", "published"),
                           ("arrow", "muted", "A → B: the proof of B uses A (the arrow takes A's colour)"),
-                          ("arrow", "amber", "A ⇢ B: the proof of B names A without listing it as a use (dashed)", "7 5")],
-                  title="Legend") + 26
+                          ("arrow", "amber", "A ⇢ B: the proof of B names A without listing it as a use (dashed)", "7 5")]
+                  + bp.verdict_legend(set(verd.values())), title="Legend") + 26
     key = [
         "**Title and pill.** The title is the blueprint's; the pill gives the kind and the provenance: **new** in "
         "Alpöge's proof, **modified** from a published result, or **published** as it stands.",
@@ -245,8 +332,8 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
     hyp_body = []
     if hyp:
         hyp_body.append("The proof texts of these statements name a result of the chapter that their `uses` lists "
-                        "leave out. Either the Lean theorem takes it as a hypothesis, or the blueprint's edge "
-                        "resolution missed it; the diagram cannot tell which.")
+                        "leave out: a hypothesis the Lean theorem takes, or an edge the blueprint's resolution "
+                        "missed. The card **Against the formal proof** says what the Lean does with each.")
         hyp_body.append("**Drawn dashed** " + (", ".join(f"`{a}` ⇢ `{b}`" for a, b in drawn_dashed) or "none") + ".")
         if not_drawn:
             hyp_body.append("**Named, not drawn** (it would point upward): "
@@ -262,7 +349,9 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
            tint=False)
     c.card(colx(4), y, span(1), "Named in a proof, not listed as a use", hyp_body, "amber", h=hk, size=S,
            tint=bool(hyp))
-    y += hk + 50
+    y += hk + 24
+    lc = lean_card(lean, edges, verd, hyp_lean, stmts, drawn)
+    y += c.card(colx(0), y, WW, "Against the formal proof", lc, "teal", size=S) + 50
 
     # ---------------------------------------------------------------------------------- the grid
     y = band(c, X0, y, "2 · The chapter, from its leaves down to its theorem",
@@ -281,7 +370,7 @@ def build(ID, CH, EXPECTED, HYPOTHESES):
         y += hh + VG
     y -= VG
     bp.arrows(c, pos, rowof, edges + drawn_dashed, lambda a: PROV_ACCENT[g.nodes[a].get("provenance")], VG, G,
-              X0, X1, NCOLS, colx, dashed=drawn_dashed)
+              X0, X1, NCOLS, colx, dashed=drawn_dashed, verdicts=verd)
 
     # ---------------------------------------------------------------------------------- the chapter's own account
     y += 60

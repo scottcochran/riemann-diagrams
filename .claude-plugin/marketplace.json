@@ -1,0 +1,16 @@
+{
+  "name": "riemann-diagrams",
+  "owner": {
+    "name": "Scott Cochran"
+  },
+  "metadata": {
+    "description": "The proof-posters skills, from the riemann-diagrams repository."
+  },
+  "plugins": [
+    {
+      "name": "proof-posters",
+      "source": "./",
+      "description": "Skills for keeping generated diagrams of a formal proof true to their pinned sources."
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+# Where the proof-posters skills (./skills, the plugin this repository publishes) find this repository's parts.
+# The skills hold the method; this file holds the paths and names, so the same skills serve another project
+# with its own copy of this file. The scripts in skills/*/scripts read it from the root of the git tree, or from
+# --config FILE. Every path is relative to the root of this repository unless it says otherwise.
+
+[project]
+name = "riemann-diagrams"
+custodian = "scottcochran"            # the only account whose release tags the workflow accepts
+default_branch = "main"
+plan = "PLAN.md"                      # decisions, the release table (Phase 5), and a done note per phase
+poster_skill = "drawing-posters"      # this repository's own skill for adding or reworking a poster (.claude/skills/)
+docs = ["README.md", "diagrams/README.md", "diagrams/TEXT.md", "diagrams/EDGES.md", "tools/lean-edges/README.md"]
+
+[build]
+# Both sets, in this order. A run exits 1 with a NOTE line when a poster's anchors moved: run it again.
+regenerate = ["uv run python diagrams/gen-diagrams.py", "uv run python diagrams/gen-diagrams.py --map"]
+failure_markers = ["WARNING", "ERROR"]
+rerun_marker = "NOTE "                # a run that exits 1 with a line starting so is run once more
+# One table per round of moving-pins' determinism.py: the rounds must give the same bytes.
+vary_env = [{ PYTHONHASHSEED = "0" }, { PYTHONHASHSEED = "1" }]
+outputs = ["diagrams/*.svg", "diagrams/map/*.svg"]
+manifests = ["diagrams/manifest.json", "diagrams/map/manifest.json"]
+# Each manifest is a JSON object keyed by poster id. cutting-releases reports each poster whose values of these
+# fields differ between a tag and HEAD.
+manifest_counts = ["cards", "arrows"]
+modules = "diagrams/src/d_*.py"       # one per poster; each records what it expects the sources to say
+ci = ".github/workflows/posters.yml"  # regenerates at the pins and fails on any byte that differs
+
+# Module-level names in the poster modules that record what the sources say. A pin move may change their values
+# to what the sources now say; it never removes a check or widens one. cutting-releases compares them between
+# a tag and HEAD.
+expected_names = ["EXPECTED", "HYPOTHESES", "VERDICTS", "VERDICT", "HYPOTHESES_LEAN", "PLACE", "TARGET",
+                  "BORNE", "BY_KIND", "CHAPTER_THEOREM", "CLASSES", "CONCENTRATED", "COUNTS", "EXPECTED_DEPTHS",
+                  "HEAVIEST", "INTERFACES", "KINDS", "LIBRARY", "MOVES", "NAME_STATUS", "NOLEAN", "NO_LEAN",
+                  "N_CITING", "N_DECLS", "N_DEFS", "N_MODULES2", "N_REFS", "N_SECTIONS", "N_UNITS", "OPENED",
+                  "OTHERS_MAX", "TOP", "TOPS", "TOTALS", "UNREACHED", "UPWARD", "USER_LEFT", "YEARS"]
+# The expected_names whose change makes a release MINOR: PLAN.md, Phase 5, keeps PATCH for "every EXPECTED and
+# HYPOTHESES list unchanged". A change to the others is reported, and is PATCH unless something else moved.
+minor_names = ["EXPECTED", "HYPOTHESES"]
+
+[pins]
+file = "diagrams/src/bp.py"
+
+[[pins.commit]]
+name = "BP_COMMIT"
+what = "the riemann-blueprint commit every statement is read from"
+repo = "chrisflav/riemann-blueprint"
+checkout_env = "RIEMANN_BLUEPRINT"    # the blueprint/ directory inside the checkout
+checkout_default = "../riemann-blueprint/blueprint"
+
+[[pins.commit]]
+name = "MIRROR_PIN"
+what = "the mirror commit the blueprint pins in its lakefile.toml; lean-facts.json and the derived files were read at it"
+repo = "leanprover-community/riemann-hypothesis"
+read_from = "lakefile.toml in the blueprint checkout at BP_COMMIT"
+read_in = "BP_COMMIT"                 # the pin whose checkout holds the file
+read_file = "lakefile.toml"           # relative to the top of that checkout
+read_regex = 'name = "tree"\ngit = ".*?riemann-hypothesis"\nrev = "(\w+)"'
+
+[[pins.commit]]
+name = "MIRROR_COMMIT"
+what = "the mirror commit Main.lean, Statements.lean, comparator.json and verification/NOTES.md are read from"
+repo = "leanprover-community/riemann-hypothesis"
+checkout_env = "RIEMANN_MIRROR"
+checkout_default = "../leanprover-community/riemann-hypothesis"
+
+# Hashes that stop the build until a person has re-read the poster's own prose against a changed source.
+[[pins.reread]]
+name = "NOTES_SHA256"
+source = "verification/NOTES.md in the mirror at MIRROR_COMMIT"
+reread = "the three cards of R1's band 5, in diagrams/src/d_r1_main_theorems.py"
+
+[[pins.reread]]
+name = "CHECKS_SHA256"
+source = "the pages of diagrams/src/checks.toml"
+refresh = "python3 tools/check-sources.py --save /tmp/pages --update"
+watch = ".github/workflows/sources.yml, daily; its artifact `pages` holds each page as fetched"
+reread = "the cards of R1's band 5, arranged by the Xena post's four questions: a paraphrase, and one quoted sentence of the joint statement"
+
+# Files derived outside the build, each pinned by its hash and by the commits it was read from.
+[[pins.derived]]
+name = "LEAN_EDGES_SHA256"
+file = "diagrams/src/lean-edges.json"
+meta = "tools/lean-edges/meta.json"
+[[pins.derived]]
+name = "LEAN_HYPOTHESES_SHA256"
+file = "diagrams/src/lean-hypotheses.json"
+meta = "tools/lean-edges/meta-hypotheses.json"
+[[pins.derived]]
+name = "LEAN_WEIGHT_SHA256"
+file = "diagrams/src/lean-weight.json"
+meta = "tools/lean-edges/meta-weight.json"
+[[pins.derived]]
+name = "LEAN_DRIFT_SHA256"
+file = "diagrams/src/lean-drift.json"
+meta = "tools/lean-edges/meta-drift.json"
+
+[papers]
+file = "diagrams/src/papers.toml"
+references = "references/ in the blueprint checkout: one file per reference, with author, title, journal and year"
+checked_by = "diagrams/src/d_f4_literature.py"   # fails on a reference with no entry, or an entry with no reference
+regenerate = "uv run python diagrams/gen-diagrams.py F4"
+entry = """
+["<reference id>"]
+url = "https://doi.org/<doi>"
+via = "crossref"          # crossref | zbmath | hand | blueprint
+note = "only where the choice needs one"
+"""
+
+[release]
+classification = "PLAN.md, Phase 5: the MAJOR / MINOR / PATCH table"
+tag = "vMAJOR.MINOR.PATCH, annotated and signed (git tag -s), on main, pushed by the custodian"
+tag_match = "v*"                                   # the glob that finds the last release tag (git describe --match)
+workflow = ".github/workflows/release.yml"
+pages_workflow = ".github/workflows/pages.yml"
+pages_url = "https://scottcochran.github.io/riemann-diagrams/"
+assets = ["diagrams/*.svg", "diagrams/map/*.svg"]  # each is in the release's checksum file under its file name
+generated_assets = ["pins.json"]                   # written by the workflow, not in the tree
+checksums = "SHA256SUMS"                           # the release asset with the SHA-256 of every other asset
+metadata = "pins.json"                             # the workflow's record of the release; the site serves it too
+metadata_tag = "tag"                               # the key in metadata that names the release's tag
+done_note = "the phase's Done paragraph in PLAN.md: tag, commit, run id, asset count, checksums against the tree"
+
+[lean]
+method = "tools/lean-edges/README.md"   # the commands, in order, with timings and sizes
+tools = "tools/lean-edges"
+data_dir = "outside the repository: an 8 GB export that indexes to 9 GB, and 95 GB for the build cache"
+export = "https://math.mit.edu/~drew/grh/solution.ndjson.zst"
+cache_toolchain = "tools/lean-edges/lean-toolchain"

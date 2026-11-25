@@ -8,6 +8,10 @@ ERROR instead of drawing something stale.
   load()                     the blueprint as a graph (blueprint_graph.Graph), after the commit checks
   read_mirror()              the five theorems of Main.lean and the Prop definitions of Statements.lean
   read_checks()              the pages R1's band 5 rests on, from src/checks.toml, checked against CHECKS_SHA256
+  read_edges(g)              the verdicts on the blueprint's arrows, from src/lean-edges.json (LEAN_EDGES_SHA256)
+  read_hypotheses(g)         the proof's assumptions and what discharges them, from src/lean-hypotheses.json
+  read_weight(g)             the declarations under each statement's Lean and their size, from src/lean-weight.json
+  read_drift(g)              what changed in the formal proof between the pins, from src/lean-drift.json
   body(g, id) / proof(g, id) the Markdown of a statement and of its proof
   rich(md)                   blueprint Markdown to the drawing library's rich text, LaTeX simplified to Unicode
   lean_block(sig, cols)      a Lean signature wrapped to a column count, for the formula panel
@@ -53,6 +57,45 @@ CHECKS_SHA256 = {
     "community": "eca667dfe1751846fb4d459f3546c9a202a871757066eb78a97b5437cd483b6b",
     "xena": "797a85a3b3bf28b4f819d4a7c369476a97d8ce6c452c15df6c0a3475eaef88e1",
 }
+# src/lean-edges.json, the verdict on every blueprint arrow from the formal proof's references (tools/lean-edges/,
+# diagrams/EDGES.md). The build fails if the file no longer hashes to this, so that a rebuilt file is read, and
+# EDGES.md and the cards that quote it are brought up to date, before it is drawn.
+LEAN_EDGES_SHA256 = "7b040dedf54b19027c8b0eea2dfc38ed14f9b878c138d080551e8bd620b516b3"
+VERDICTS = ("direct", "hypothesis", "through", "beside", "apart", "no-lean-source", "no-lean-target")
+# src/lean-hypotheses.json, where the formal proof's assumptions enter and where they are discharged
+# (tools/lean-edges/hypotheses.py, diagrams/EDGES.md). Pinned the same way as lean-edges.json.
+LEAN_HYPOTHESES_SHA256 = "d67aac5a954934429bfb37ccf6717fd208e6f104a623681b29ff2489490fe8d9"
+PROP_CLASSES = ("outright", "conditional", "never", "absent")
+# src/lean-weight.json, the declarations under each statement's Lean and their size (tools/lean-edges/weight.py).
+# src/lean-drift.json, what changed in the formal proof between MIRROR_PIN and MIRROR_COMMIT (tools/lean-edges/drift.py).
+LEAN_DRIFT_SHA256 = "07b7eb53e59f7ccf0f2d8e93c4babba212e9ef6ac539d157274f320de83d1688"
+LEAN_WEIGHT_SHA256 = "7ec0f3c130e12446aa1b6b1729d4945e64b6ec07c5921392017159a874f46245"
+# How an arrow is drawn by its verdict: (accent, or None for the arrow's own; dash; stroke width). An arrow the
+# formal proof bears out, directly or as a hypothesis, is drawn as before.
+VERDICT_STYLE = {
+    "through": (None, None, 1.1),
+    "beside": ("grey", "2 4", 2.2),
+    "apart": ("red", "2 4", 2.4),
+    "no-lean-source": ("faint", "1 5", 2),
+    "no-lean-target": ("faint", "1 5", 2),
+}
+VERDICT_LEGEND = {
+    "through": ("A → B, thin: the Lean of B reaches A's only by way of other statements", "muted"),
+    "beside": ("A ⋯ B, grey: the Lean never reaches A's, but uses it beside B's", "grey"),
+    "apart": ("A ⋯ B, red: the formal proof does not bear the arrow out", "red"),
+    "no-lean": ("A ⋯ B, faint: A or B names no Lean the proof contains", "faint"),
+}
+
+
+def verdict_legend(used):
+    """Legend items for the verdict styles among `used`, in a fixed order; none for an arrow borne out."""
+    out = []
+    for v in ("through", "beside", "apart", "no-lean"):
+        if v in used or (v == "no-lean" and used & {"no-lean-source", "no-lean-target"}):
+            label, acc = VERDICT_LEGEND[v]
+            st = VERDICT_STYLE["no-lean-source" if v == "no-lean" else v]
+            out.append(("arrow", acc, label, st[1], st[2]))
+    return out
 
 # Map mode: no text of the blueprint and no Lean source is quoted. Each card keeps the statement's title, id,
 # kind, provenance, Lean name and location, and every edge. Set by gen-diagrams.py --map, before the modules load.
@@ -233,6 +276,120 @@ def read_checks():
     lib.SOURCES.clear()
     lib.SOURCES.update({k: e["url"] for k, e in checks.items()})
     return checks
+
+
+class Edges:
+    """src/lean-edges.json, checked: its hash against LEAN_EDGES_SHA256, its commits against the blueprint's and the
+    mirror pin's, and its verdicts against VERDICTS.
+
+      verdict(user, used)   the verdict on the blueprint arrow user -> used (user's statement or proof uses used)
+      formal(a)             the statements a's Lean uses directly (with helpers followed, and structure fields)
+      reaches(a, b)         whether a's Lean reaches b's, directly or by way of other statements
+      undrawn(a)            what a's Lean uses directly that the blueprint draws no arrow for
+    """
+
+    def __init__(self, g):
+        path = pathlib.Path(__file__).parent / "lean-edges.json"
+        raw = path.read_bytes()
+        digest = hashlib.sha256(raw).hexdigest()
+        if digest != LEAN_EDGES_SHA256:
+            raise ValueError(f"src/lean-edges.json hashes to {digest[:12]}…, not {LEAN_EDGES_SHA256[:12]}…: read what "
+                             "changed, bring diagrams/EDGES.md and the cards that quote it up to date, and update "
+                             "LEAN_EDGES_SHA256")
+        e = json.loads(raw)
+        if e["blueprint"] != g.bp_full:
+            raise ValueError(f"src/lean-edges.json was read from the blueprint at {e['blueprint'][:10]}, the diagrams "
+                             f"are drawn from {g.bp_full[:10]}: rebuild it (tools/lean-edges/README.md)")
+        if e["proof"]["mirror"] != g.mirror_pin_full:
+            raise ValueError(f"src/lean-edges.json judges the proof at {e['proof']['mirror'][:10]}, the blueprint "
+                             f"pins {g.mirror_pin_full[:10]}: rebuild it (tools/lean-edges/README.md)")
+        bad = sorted({v for us in e["arrows"].values() for v in us.values()} - set(VERDICTS))
+        if bad:
+            raise ValueError(f"src/lean-edges.json has verdicts the diagrams do not know: {bad}")
+        self.raw, self.sha256 = e, digest
+        self.export_sha256 = e["proof"]["export_sha256"]
+        self._formal = {}
+        for a in set(e["arrows"]) | set(e["undrawn"]):
+            f = set(e["undrawn"].get(a, ()))
+            f |= {b for b, v in e["arrows"].get(a, {}).items() if v in ("direct", "hypothesis")}
+            self._formal[a] = f
+        self._reach = {}
+
+    def verdict(self, user, used):
+        v = self.raw["arrows"].get(user, {}).get(used)
+        if v is None:
+            raise ValueError(f"src/lean-edges.json has no verdict on {user} -> {used}: not a blueprint arrow")
+        return v
+
+    def formal(self, a):
+        return self._formal.get(a, set())
+
+    def undrawn(self, a):
+        return set(self.raw["undrawn"].get(a, ()))
+
+    def reaches(self, a, b):
+        if a not in self._reach:
+            seen, todo = set(), list(self.formal(a))
+            while todo:
+                x = todo.pop()
+                if x not in seen:
+                    seen.add(x)
+                    todo.extend(self.formal(x))
+            self._reach[a] = seen
+        return b in self._reach[a]
+
+
+def read_edges(g):
+    return Edges(g)
+
+
+def read_drift(g):
+    """src/lean-drift.json, checked: its hash against LEAN_DRIFT_SHA256, and its commits against the blueprint's,
+    the mirror pin's and MIRROR_COMMIT."""
+    raw = (pathlib.Path(__file__).parent / "lean-drift.json").read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != LEAN_DRIFT_SHA256:
+        raise ValueError(f"src/lean-drift.json hashes to {digest[:12]}…, not {LEAN_DRIFT_SHA256[:12]}…: read what "
+                         "changed, bring diagrams/EDGES.md and F10 up to date, and update LEAN_DRIFT_SHA256")
+    d = json.loads(raw)
+    if (d["blueprint"] != g.bp_full or d["proof"]["mirror"] != g.mirror_pin_full
+            or d["later"]["mirror"] != g.mirror_full):
+        raise ValueError("src/lean-drift.json was read from other commits than the diagrams are drawn from: "
+                         "rebuild it (tools/lean-edges/README.md)")
+    return d
+
+
+def read_weight(g):
+    """src/lean-weight.json, checked: its hash against LEAN_WEIGHT_SHA256, and its commits against the
+    blueprint's and the mirror pin's."""
+    raw = (pathlib.Path(__file__).parent / "lean-weight.json").read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != LEAN_WEIGHT_SHA256:
+        raise ValueError(f"src/lean-weight.json hashes to {digest[:12]}…, not {str(LEAN_WEIGHT_SHA256)[:12]}…: read "
+                         "what changed, bring diagrams/EDGES.md and F9 up to date, and update LEAN_WEIGHT_SHA256")
+    w = json.loads(raw)
+    if w["blueprint"] != g.bp_full or w["proof"]["mirror"] != g.mirror_pin_full:
+        raise ValueError("src/lean-weight.json was read from other commits than the diagrams are drawn from: "
+                         "rebuild it (tools/lean-edges/README.md)")
+    return w
+
+
+def read_hypotheses(g):
+    """src/lean-hypotheses.json, checked: its hash against LEAN_HYPOTHESES_SHA256, its commits against the
+    blueprint's and the mirror pin's, and its classes against PROP_CLASSES."""
+    raw = (pathlib.Path(__file__).parent / "lean-hypotheses.json").read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != LEAN_HYPOTHESES_SHA256:
+        raise ValueError(f"src/lean-hypotheses.json hashes to {digest[:12]}…, not {LEAN_HYPOTHESES_SHA256[:12]}…: read "
+                         "what changed, bring diagrams/EDGES.md and F8 up to date, and update LEAN_HYPOTHESES_SHA256")
+    h = json.loads(raw)
+    if h["blueprint"] != g.bp_full or h["proof"]["mirror"] != g.mirror_pin_full:
+        raise ValueError("src/lean-hypotheses.json was read from other commits than the diagrams are drawn from: "
+                         "rebuild it (tools/lean-edges/README.md)")
+    bad = sorted({v["class"] for v in h["props"].values()} - set(PROP_CLASSES))
+    if bad:
+        raise ValueError(f"src/lean-hypotheses.json has classes the diagrams do not know: {bad}")
+    return h
 
 
 def _text_after_front_matter(path):
@@ -574,13 +731,14 @@ def code(s, limit=34):
 
 
 # ------------------------------------------------------------------------------------------------ arrows
-def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), labels=None):
+def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), labels=None, verdicts=None):
     """Draw every (a, b) of `edges` as an arrow from the bottom (or top) of card a to the top of card b: a is
     drawn above b, or in the same row. Adjacent cards in a row are joined across the gutter; other pairs in a row
     go over the lane above; cards one row apart go through the lane between; farther pairs drop through a free
     gutter, or round a margin. Edges sharing a lane or a gutter are staggered. `labels`: (a, b) -> text set on
-    the arrow's lane segment."""
+    the arrow's lane segment. `verdicts`: (a, b) -> the arrow's verdict, which sets its style (VERDICT_STYLE)."""
     labels = labels or {}
+    verdicts = verdicts or {}
     rows = {}
     for k, r in rowof.items():
         rows.setdefault(r, []).append(k)
@@ -651,7 +809,12 @@ def arrows(c, pos, rowof, edges, accent, vg, g, x0, x1, ncols, colx, dashed=(), 
     for kind, a, b, data in plans:
         acc = "amber" if (a, b) in dashed else accent(a)
         dash = "7 5" if (a, b) in dashed else None
+        sw = 2
+        st = VERDICT_STYLE.get(verdicts.get((a, b)))
+        if st and (a, b) not in dashed:
+            acc, dash, sw = st[0] or acc, st[1], st[2]
         lab = {"label": labels[(a, b)], "lpos": 0.5} if (a, b) in labels else {}
+        lab["sw"] = sw
         xa, ya, wa, ha = pos[a]
         xb, yb, wb, hb = pos[b]
         if kind == "across":

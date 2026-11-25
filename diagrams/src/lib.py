@@ -617,7 +617,8 @@ class Canvas:
         return cy - y
 
     def legend(self, x, y, items, title="Legend", size=13, maxw=None):
-        """items: list of (kind, accent, label, dash) where kind is 'box', 'line', 'arrow', 'status'."""
+        """items: list of (kind, accent, label, dash[, stroke width]) where kind is 'box', 'line', 'arrow',
+        'status'."""
         maxw = maxw or (self.x1 - x)
         cx, cy = x, y
         self.text(cx, cy + size, title, size, "faint", bold=True)
@@ -625,6 +626,7 @@ class Canvas:
         for it in items:
             kind, acc, lab = it[0], it[1], it[2]
             dash = it[3] if len(it) > 3 else None
+            sw = it[4] if len(it) > 4 else 2
             iw = 34 + text_width(lab, size) + 26
             if cx + iw > x + maxw:
                 cx = x + text_width(title, size, True) + 18
@@ -638,7 +640,7 @@ class Canvas:
                          f'{sonly(acc)} stroke-width="2.2"{d}/>')
             elif kind == "arrow":
                 self.add(f'<path d="M {cx} {cy + size / 2 + 2} L {cx + 24} {cy + size / 2 + 2}" {sonly(acc)} '
-                         f'stroke-width="2"{d} marker-end="url(#arw-{acc})"/>')
+                         f'stroke-width="{sw}"{d} marker-end="url(#arw-{acc})"/>')
             self.text(cx + 34, cy + size, lab, size, "muted")
             cx += iw
         self.ymax = max(self.ymax, cy + size + 6)
