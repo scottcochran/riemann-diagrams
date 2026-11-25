@@ -17,6 +17,8 @@ repository is the first user, and its own copy of the project config is `proof-p
 
 Each skill has a `SKILL.md` and, where a step is mechanical, a script under `scripts/` (Python standard library
 only) and reference tables under `references/`. Under Claude Code they are named `proof-posters:<skill>`.
+`extracting-lean-deps/references/sketch.md` is where to start learning that skill: the method in one picture, a
+ten-statement example run through the reference tools, and each lesson with what it does to the example.
 
 What stays out of the plugin because it is this repository's own: the poster recipe
 (`.claude/skills/drawing-posters/`), which applies recording-expectations with this repository's library, and the

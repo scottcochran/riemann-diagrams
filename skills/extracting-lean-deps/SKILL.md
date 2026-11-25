@@ -13,7 +13,9 @@ Lean is built and the result can be repeated by anyone with the files.
 
 Read `[lean]` and `[[pins.derived]]` in `proof-posters.toml`. `[lean].method` is the project's own runbook, with
 the exact commands in order, their timings and their sizes. Follow it for the commands. This skill is the
-method behind them: what to trust, in what order, and what goes wrong.
+method behind them: what to trust, in what order, and what goes wrong. To learn it, start with
+`references/sketch.md`: the method in one picture, a ten-statement example run through the reference tools, each
+lesson with what it does to that example, and five questions to check yourself.
 
 The data is large (tens to a hundred GB) and lives outside the repository, on a disk with room. Say how much
 before starting, and ask where to put it.
